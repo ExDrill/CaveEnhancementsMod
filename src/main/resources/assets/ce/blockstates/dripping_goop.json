@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "hanging=true": { "model": "ce:block/dripping_goop_head" },
+    "hanging=false": { "model":  "ce:block/dripping_goop_body"}
+  }
+}

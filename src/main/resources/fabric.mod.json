@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "ce",
+  "version": "${version}",
+
+  "name": "Cave Enhancements",
+  "description": "Port of thing.",
+  "authors": [
+    "ExDrill"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/ce/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.exdrill.ce.Main"
+    ],
+    "client": [
+     "com.exdrill.ce.Client"
+    ]
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.18.x",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
