@@ -25,7 +25,9 @@
      "com.exdrill.ce.Client"
     ]
   },
-  "mixins": [],
+  "mixins": [
+    "modid.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
