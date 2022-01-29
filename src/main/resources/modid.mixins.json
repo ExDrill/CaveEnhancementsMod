@@ -3,7 +3,9 @@
   "minVersion": "0.8",
   "package": "com.exdrill.ce.mixin",
   "compatibilityLevel": "JAVA_16",
-  "mixins": [],
+  "mixins": [
+    "GlowPasteBanUnbreaking"
+  ],
   "client": [],
   "injectors": {
     "defaultRequire": 1
