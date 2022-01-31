@@ -4,5 +4,6 @@
   "block.ce.goop_splat": "Goop",
   "block.ce.goop_trap": "Goop Trap",
   "block.ce.dripping_goop": "Dripping Goop",
-  "block.ce.glow_splotch": "Glow Paste"
+  "block.ce.glow_splotch": "Glow Paste",
+  "item.glow_paste.place": "Glow Splotch placed"
 }

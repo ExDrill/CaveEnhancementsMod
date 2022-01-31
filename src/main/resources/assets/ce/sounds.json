@@ -1,0 +1,8 @@
+{
+  "item.glow_paste.place": {
+    "sounds": [
+      "ce:item/glow_paste/place"
+    ],
+    "subtitle": "item.glow_paste.place"
+  }
+}

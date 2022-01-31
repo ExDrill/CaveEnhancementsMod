@@ -1,8 +1,6 @@
 package com.exdrill.ce;
 
-import com.exdrill.ce.registry.ModBlocks;
-import com.exdrill.ce.registry.ModItems;
-import com.exdrill.ce.registry.ModParticles;
+import com.exdrill.ce.registry.*;
 import net.fabricmc.api.ModInitializer;
 
 public class Main implements ModInitializer {
@@ -13,5 +11,8 @@ public class Main implements ModInitializer {
         ModBlocks.registerBlocks();
         ModItems.registerItems();
         ModParticles.registerParticles();
+        ModBlocks.registerBlockEntities();
+        ModSounds.registerSounds();
+
     }
 }

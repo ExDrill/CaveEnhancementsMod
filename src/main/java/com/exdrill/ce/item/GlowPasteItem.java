@@ -3,6 +3,8 @@ package com.exdrill.ce.item;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import com.exdrill.ce.registry.ModSounds;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -78,8 +80,6 @@ public class GlowPasteItem extends Item {
                         }
                     }
 
-                    BlockSoundGroup blockSoundGroup = blockState2.getSoundGroup();
-                    world.playSound(playerEntity, blockPos, this.getPlaceSound(blockState2), SoundCategory.BLOCKS, (blockSoundGroup.getVolume() + 1.0F) / 2.0F, blockSoundGroup.getPitch() * 0.8F);
                     world.emitGameEvent(playerEntity, GameEvent.BLOCK_PLACE, blockPos);
                     if (playerEntity == null || !playerEntity.getAbilities().creativeMode) {
                         itemStack.damage(1, playerEntity, (player) -> {
@@ -87,7 +87,7 @@ public class GlowPasteItem extends Item {
                         });
                     }
                     if (!world.isClient) {
-                        world.playSound(null, blockPos, SoundEvents.ENTITY_GLOW_SQUID_SQUIRT, SoundCategory.BLOCKS, 0.5f, 0.8f);
+                        world.playSound(null, blockPos, ModSounds.GLOW_PASTE_PLACE_SOUND_EVENT, SoundCategory.BLOCKS, 1f, 1.1f);
                     }
 
                     return ActionResult.success(world.isClient);
