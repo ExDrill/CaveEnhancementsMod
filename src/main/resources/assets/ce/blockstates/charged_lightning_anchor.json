@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "ce:block/charged_lightning_anchor" }
+  }
+}

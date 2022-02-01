@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "ce:block/charged_lightning_anchor_top",
+    "side": "ce:block/charged_lightning_anchor"
+  }
+}
