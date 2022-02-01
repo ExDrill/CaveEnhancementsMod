@@ -22,6 +22,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
+import net.minecraft.world.explosion.Explosion;
 
 import java.util.Iterator;
 import java.util.List;
@@ -46,14 +47,14 @@ public class ChargedLightningAnchor extends BlockWithEntity {
         double d = entity.getX() - pos.getX();
         double e = entity.getZ() - pos.getZ();
         double f = Math.max(d * d + e * e, 0.001D);
-        entity.addVelocity(d / f * 0.75D, 0.1D, e / f * 0.75D);
+        entity.addVelocity(d / f * 0.8D, 0.1D, e / f * 0.8D);
 
         entity.velocityModified = true;
     }
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        List<? extends LivingEntity> list = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(4.0D), new Predicate<LivingEntity>() {
+        List<? extends LivingEntity> list = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(8.0D), new Predicate<LivingEntity>() {
             @Override
             public boolean test(LivingEntity livingEntity) {
                 return true;
@@ -63,6 +64,7 @@ public class ChargedLightningAnchor extends BlockWithEntity {
         LivingEntity livingEntity;
         for(Iterator var2 = list.iterator(); var2.hasNext(); knockBack(livingEntity, pos)) {
             livingEntity = (LivingEntity)var2.next();
+            livingEntity.damage(DamageSource.LIGHTNING_BOLT, 20.0F);
         }
 
         player.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1, 1);
