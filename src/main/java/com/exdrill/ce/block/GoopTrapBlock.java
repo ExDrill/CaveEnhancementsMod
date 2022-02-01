@@ -1,16 +1,20 @@
 package com.exdrill.ce.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
+import com.exdrill.ce.block.entity.GoopTrapBlockEntity;
+import com.exdrill.ce.registry.ModBlocks;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
-public class GoopTrapBlock extends Block {
+public class GoopTrapBlock extends BlockWithEntity {
 
     public GoopTrapBlock(Settings settings) {
         super(settings);
@@ -34,8 +38,23 @@ public class GoopTrapBlock extends Block {
     }
 
 
+
     static {
         COLLISION_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D);
         OUTLINE_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D);
+    }
+
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new GoopTrapBlockEntity(pos, state);
+    }
+
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
+
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, ModBlocks.GOOP_TRAP_BLOCK_ENTITY, (world1, pos, state1, be) -> GoopTrapBlockEntity.tick(world1, pos, state1, be));
     }
 }
