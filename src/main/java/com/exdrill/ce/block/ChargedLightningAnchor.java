@@ -54,12 +54,7 @@ public class ChargedLightningAnchor extends BlockWithEntity {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        List<? extends LivingEntity> list = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(8.0D), new Predicate<LivingEntity>() {
-            @Override
-            public boolean test(LivingEntity livingEntity) {
-                return true;
-            }
-        });
+        List<? extends LivingEntity> list = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(8.0D), (e) -> {return true;});
 
         LivingEntity livingEntity;
         for(Iterator var2 = list.iterator(); var2.hasNext(); knockBack(livingEntity, pos)) {
