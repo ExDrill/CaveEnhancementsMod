@@ -32,7 +32,7 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "glow_paste"), GLOW_PASTE);
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "spectacle_candle"), SPECTACLE_CANDLE);
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "lightning_anchor"), LIGHTNING_ANCHOR);
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "lightning_anchor_charged"), CHARGED_LIGHTNING_ANCHOR);
+        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "charged_lightning_anchor"), CHARGED_LIGHTNING_ANCHOR);
     }
 
 }
