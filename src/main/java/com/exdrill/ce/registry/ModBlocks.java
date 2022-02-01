@@ -49,6 +49,7 @@ public class ModBlocks {
     }
 
     public static BlockEntityType<SpectacleCandleBlockEntity> SPECTACLE_CANDLE_BLOCK_ENTITY;
+    public static BlockEntityType<GoopTrapBlockEntity> GOOP_TRAP_BLOCK_ENTITY;
     public static BlockEntityType<LightningAnchorBlockEntity> LIGHTNING_ANCHOR_BLOCK_ENTITY;
     public static BlockEntityType<ChargedLightningAnchorBlockEntity> CHARGED_LIGHTNING_ANCHOR_BLOCK_ENTITY;
 
