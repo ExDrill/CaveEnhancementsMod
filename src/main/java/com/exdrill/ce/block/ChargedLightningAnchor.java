@@ -1,6 +1,7 @@
 package com.exdrill.ce.block;
 
 import com.exdrill.ce.block.entity.ChargedLightningAnchorBlockEntity;
+import com.exdrill.ce.block.entity.LightningAnchorBlockEntity;
 import com.exdrill.ce.registry.ModBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -57,8 +58,6 @@ public class ChargedLightningAnchor extends BlockWithEntity {
     }
 
     private void activate(World world, BlockPos pos, boolean interact){
-        System.out.println(pos);
-
         if(world.isReceivingRedstonePower(pos) || interact) {
             List<? extends LivingEntity> list = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(4.0D), (e) -> {
                 return true;
@@ -74,6 +73,8 @@ public class ChargedLightningAnchor extends BlockWithEntity {
             }
 
             world.setBlockState(pos, ModBlocks.LIGHTNING_ANCHOR.getDefaultState());
+
+            ((LightningAnchorBlockEntity)world.getBlockEntity(pos)).FX();
 
             world.createAndScheduleBlockTick(pos, this, 4);
 

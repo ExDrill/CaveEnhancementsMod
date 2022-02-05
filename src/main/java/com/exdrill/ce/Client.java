@@ -17,6 +17,7 @@ public class Client implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ModBlocks.TransparentBlocks();
+        ModBlocks.registerEntityRenderers();
 
         // Small Goop Drip Client Particle
         ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {
