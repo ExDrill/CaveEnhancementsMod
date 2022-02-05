@@ -6,9 +6,7 @@ import com.exdrill.ce.block.entity.ChargedLightningAnchorBlockEntity;
 import com.exdrill.ce.block.entity.LightningAnchorBlockEntity;
 import com.exdrill.ce.block.entity.GoopTrapBlockEntity;
 import com.exdrill.ce.block.entity.SpectacleCandleBlockEntity;
-import com.exdrill.ce.block.entity.renderer.LightningAnchorBlockEntityRenderer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.*;
@@ -62,9 +60,5 @@ public class ModBlocks {
         SPECTACLE_CANDLE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "ce:spectacle_candle", FabricBlockEntityTypeBuilder.create(SpectacleCandleBlockEntity::new, SPECTACLE_CANDLE).build(null));
         LIGHTNING_ANCHOR_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.NAMESPACE, "lightning_anchor_block_entity"), FabricBlockEntityTypeBuilder.create(LightningAnchorBlockEntity::new, LIGHTNING_ANCHOR).build(null));
         CHARGED_LIGHTNING_ANCHOR_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.NAMESPACE, "charged_lightning_anchor_block_entity"), FabricBlockEntityTypeBuilder.create(ChargedLightningAnchorBlockEntity::new, CHARGED_LIGHTNING_ANCHOR).build(null));
-    }
-
-    public static void registerEntityRenderers() {
-        BlockEntityRendererRegistry.INSTANCE.register(LIGHTNING_ANCHOR_BLOCK_ENTITY, LightningAnchorBlockEntityRenderer::new);
     }
 }

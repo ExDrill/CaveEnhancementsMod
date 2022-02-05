@@ -14,10 +14,9 @@ import net.minecraft.world.World;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 public class LightningAnchorBlockEntity extends BlockEntity {
-    public float scale = 0;
-
     public LightningAnchorBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlocks.LIGHTNING_ANCHOR_BLOCK_ENTITY, pos, state);
     }
@@ -34,10 +33,5 @@ public class LightningAnchorBlockEntity extends BlockEntity {
                 world.setBlockState(pos, ModBlocks.CHARGED_LIGHTNING_ANCHOR.getDefaultState());
             }
         }
-    }
-
-    public void FX(){
-        scale = 1;
-        System.out.println("FX!");
     }
 }
