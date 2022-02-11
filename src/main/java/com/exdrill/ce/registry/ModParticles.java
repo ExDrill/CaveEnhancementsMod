@@ -9,10 +9,10 @@ import net.minecraft.util.registry.Registry;
 public class ModParticles {
 
     public static final DefaultParticleType SMALL_GOOP_DRIP = FabricParticleTypes.simple();
+    public static final DefaultParticleType SHOCKWAVE = FabricParticleTypes.simple();
 
     public static void registerParticles() {
         Registry.register(Registry.PARTICLE_TYPE, new Identifier(Main.NAMESPACE, "small_goop_drip"), SMALL_GOOP_DRIP);
+        Registry.register(Registry.PARTICLE_TYPE, new Identifier(Main.NAMESPACE, "shockwave"), SHOCKWAVE);
     }
-
-
 }

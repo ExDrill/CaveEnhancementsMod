@@ -1,5 +1,6 @@
 package com.exdrill.ce;
 
+import com.exdrill.ce.particle.Shockwave;
 import com.exdrill.ce.registry.ModBlocks;
 import com.exdrill.ce.registry.ModParticles;
 import net.fabricmc.api.ClientModInitializer;
@@ -8,6 +9,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.minecraft.client.particle.BlockLeakParticle;
+import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.util.Identifier;
 
@@ -23,5 +25,10 @@ public class Client implements ClientModInitializer {
             registry.register(new Identifier(Main.NAMESPACE, "particle/small_goop_drip"));
         }));
         ParticleFactoryRegistry.getInstance().register(ModParticles.SMALL_GOOP_DRIP, BlockLeakParticle.DrippingWaterFactory::new);
+
+        ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {
+            registry.register(new Identifier(Main.NAMESPACE, "particle/shockwave"));
+        }));
+        ParticleFactoryRegistry.getInstance().register(ModParticles.SHOCKWAVE, Shockwave.Factory::new);
     }
 }

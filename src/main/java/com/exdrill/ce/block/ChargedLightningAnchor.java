@@ -1,19 +1,12 @@
 package com.exdrill.ce.block;
 
-import com.exdrill.ce.block.entity.ChargedLightningAnchorBlockEntity;
 import com.exdrill.ce.registry.ModBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.mob.IllagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -22,29 +15,15 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.world.event.GameEvent;
-import net.minecraft.world.explosion.Explosion;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-import java.util.function.Predicate;
 
-public class ChargedLightningAnchor extends BlockWithEntity {
+public class ChargedLightningAnchor extends Block {
     public ChargedLightningAnchor(FabricBlockSettings settings){
         super(settings);
-    }
-
-    @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new ChargedLightningAnchorBlockEntity(pos, state);
-    }
-
-    @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
     }
 
     private void knockBack(LivingEntity entity, BlockPos pos, double power, double verticlePower) {
@@ -77,7 +56,9 @@ public class ChargedLightningAnchor extends BlockWithEntity {
 
             world.createAndScheduleBlockTick(pos, this, 4);
 
-            world.playSound((PlayerEntity) null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            if (!world.isClient) {
+                world.playSound((PlayerEntity) null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            }
         }
     }
 
