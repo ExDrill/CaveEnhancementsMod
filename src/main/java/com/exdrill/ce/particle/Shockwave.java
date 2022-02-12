@@ -27,8 +27,9 @@ public class Shockwave extends Particle {
         this.red = 1;
         this.green = 1;
         this.blue = 1;
-        this.scale *= 1.5F;
         this.maxAge = 6;
+        //this.spacingXZ = 10;
+        //this.spacingY = 10;
     }
 
     public void buildGeometry(VertexConsumer vertexConsumer, Camera camera, float tickDelta) {
