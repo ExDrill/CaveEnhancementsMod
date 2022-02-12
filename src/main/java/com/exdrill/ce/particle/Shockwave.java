@@ -46,7 +46,8 @@ public class Shockwave extends Particle {
         float minV = this.getMinV();
         float maxV = this.getMaxV();
 
-        int light = this.getBrightness(tickDelta);
+        //Makes it fully bright
+        int light = 15728640;
 
         float xVO = 0.5f;
         float yVO = 1F/16F;
