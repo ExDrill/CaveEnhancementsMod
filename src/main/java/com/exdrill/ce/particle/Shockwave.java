@@ -33,41 +33,47 @@ public class Shockwave extends Particle {
     }
 
     public void buildGeometry(VertexConsumer vertexConsumer, Camera camera, float tickDelta) {
-        Vec3d vec3d = camera.getPos();
-        float f = (float)(MathHelper.lerp((double)tickDelta, this.prevPosX, this.x) - vec3d.getX());
-        float g = (float)(MathHelper.lerp((double)tickDelta, this.prevPosY, this.y) - vec3d.getY());
-        float h = (float)(MathHelper.lerp((double)tickDelta, this.prevPosZ, this.z) - vec3d.getZ());
-        Quaternion quaternion;
-        if (this.angle == 0.0F) {
-            quaternion = camera.getRotation();
-        } else {
-            quaternion = new Quaternion(camera.getRotation());
-            float i = MathHelper.lerp(tickDelta, this.prevAngle, this.angle);
-            quaternion.hamiltonProduct(Vec3f.POSITIVE_Z.getRadialQuaternion(i));
+        Vec3d cameraPos = camera.getPos();
+
+        float x = (float)(MathHelper.lerp((double)tickDelta, this.prevPosX, this.x) - cameraPos.getX());
+        float y = (float)(MathHelper.lerp((double)tickDelta, this.prevPosY, this.y) - cameraPos.getY());
+        float z = (float)(MathHelper.lerp((double)tickDelta, this.prevPosZ, this.z) - cameraPos.getZ());
+
+        float size = this.getSize(tickDelta);
+
+        float minU = this.getMinU();
+        float maxU = this.getMaxU();
+        float minV = this.getMinV();
+        float maxV = this.getMaxV();
+
+        int light = this.getBrightness(tickDelta);
+
+        Vec3f[] vertices = new Vec3f[]{new Vec3f(-1.0F, -1.0F, 0.0F), new Vec3f(-1.0F, 1.0F, 0.0F), new Vec3f(1.0F, 1.0F, 0.0F), new Vec3f(1.0F, -1.0F, 0.0F)};
+
+        for(int i = 0; i < 4; ++i) {
+            Vec3f vec3f = vertices[i];
+            vec3f.scale(size);
+            vec3f.add(x, y, z);
         }
 
-        Vec3f i = new Vec3f(-1.0F, -1.0F, 0.0F);
-        i.rotate(quaternion);
-        Vec3f[] vec3fs = new Vec3f[]{new Vec3f(-1.0F, -1.0F, 0.0F), new Vec3f(-1.0F, 1.0F, 0.0F), new Vec3f(1.0F, 1.0F, 0.0F), new Vec3f(1.0F, -1.0F, 0.0F)};
-        float j = this.getSize(tickDelta);
+        vertexConsumer.vertex(vertices[0].getX(), vertices[0].getY(), vertices[0].getZ()).texture(maxU, maxV).color(this.red, this.green, this.blue, this.alpha).light(light).next();
+        vertexConsumer.vertex(vertices[1].getX(), vertices[1].getY(), vertices[1].getZ()).texture(maxU, minV).color(this.red, this.green, this.blue, this.alpha).light(light).next();
+        vertexConsumer.vertex(vertices[2].getX(), vertices[2].getY(), vertices[2].getZ()).texture(minU, minV).color(this.red, this.green, this.blue, this.alpha).light(light).next();
+        vertexConsumer.vertex(vertices[3].getX(), vertices[3].getY(), vertices[3].getZ()).texture(minU, maxV).color(this.red, this.green, this.blue, this.alpha).light(light).next();
 
-        for(int k = 0; k < 4; ++k) {
-            Vec3f vec3f = vec3fs[k];
-            vec3f.rotate(quaternion);
-            vec3f.scale(j);
-            vec3f.add(f, g, h);
+        vertices = new Vec3f[]{new Vec3f(1.0F, -1.0F, 0.0F), new Vec3f(1.0F, 1.0F, 0.0F), new Vec3f(-1.0F, 1.0F, 0.0F), new Vec3f(-1.0F, -1.0F, 0.0F)};
+
+        for(int i = 0; i < 4; ++i) {
+            Vec3f vec3f = vertices[i];
+            vec3f.scale(size);
+            vec3f.add(x, y, z);
         }
 
-        float k = this.getMinU();
-        float vec3f = this.getMaxU();
-        float l = this.getMinV();
-        float m = this.getMaxV();
-        int n = this.getBrightness(tickDelta);
-        vertexConsumer.vertex((double)vec3fs[0].getX(), (double)vec3fs[0].getY(), (double)vec3fs[0].getZ()).texture(vec3f, m).color(this.red, this.green, this.blue, this.alpha).light(n).next();
-        vertexConsumer.vertex((double)vec3fs[1].getX(), (double)vec3fs[1].getY(), (double)vec3fs[1].getZ()).texture(vec3f, l).color(this.red, this.green, this.blue, this.alpha).light(n).next();
-        vertexConsumer.vertex((double)vec3fs[2].getX(), (double)vec3fs[2].getY(), (double)vec3fs[2].getZ()).texture(k, l).color(this.red, this.green, this.blue, this.alpha).light(n).next();
-        vertexConsumer.vertex((double)vec3fs[3].getX(), (double)vec3fs[3].getY(), (double)vec3fs[3].getZ()).texture(k, m).color(this.red, this.green, this.blue, this.alpha).light(n).next();
-    }
+        vertexConsumer.vertex(vertices[0].getX(), vertices[0].getY(), vertices[0].getZ()).texture(maxU, maxV).color(this.red, this.green, this.blue, this.alpha).light(light).next();
+        vertexConsumer.vertex(vertices[1].getX(), vertices[1].getY(), vertices[1].getZ()).texture(maxU, minV).color(this.red, this.green, this.blue, this.alpha).light(light).next();
+        vertexConsumer.vertex(vertices[2].getX(), vertices[2].getY(), vertices[2].getZ()).texture(minU, minV).color(this.red, this.green, this.blue, this.alpha).light(light).next();
+        vertexConsumer.vertex(vertices[3].getX(), vertices[3].getY(), vertices[3].getZ()).texture(minU, maxV).color(this.red, this.green, this.blue, this.alpha).light(light).next();
+}
 
     public ParticleTextureSheet getType() {
         return ParticleTextureSheet.PARTICLE_SHEET_OPAQUE;
