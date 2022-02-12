@@ -20,13 +20,10 @@ public class Shockwave extends Particle {
 
     Shockwave(ClientWorld world, double x, double y, double z, double d) {
         super(world, x, y, z, 0.0D, 0.0D, 0.0D);
-        this.scale = 0.1F * (this.random.nextFloat() * 0.5F + 0.5F) * 2.0F;
-        this.velocityMultiplier = 0.66F;
-        this.field_28787 = true;
-        this.velocityX *= 0.009999999776482582D;
-        this.velocityY *= 0.009999999776482582D;
-        this.velocityZ *= 0.009999999776482582D;
-        this.velocityY += 0.2D;
+        this.scale = 1;
+        this.velocityX = 0;
+        this.velocityY = 0;
+        this.velocityZ = 0;
         this.red = Math.max(0.0F, MathHelper.sin(((float)d + 0.0F) * 6.2831855F) * 0.65F + 0.35F);
         this.green = Math.max(0.0F, MathHelper.sin(((float)d + 0.33333334F) * 6.2831855F) * 0.65F + 0.35F);
         this.blue = Math.max(0.0F, MathHelper.sin(((float)d + 0.6666667F) * 6.2831855F) * 0.65F + 0.35F);
@@ -92,11 +89,6 @@ public class Shockwave extends Particle {
             shockwave.setSprite(this.spriteProvider);
             return shockwave;
         }
-    }
-
-    public Particle scale(float scale) {
-        this.scale *= scale;
-        return super.scale(scale);
     }
 
     protected void setSprite(Sprite sprite) {
