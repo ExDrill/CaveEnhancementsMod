@@ -5,7 +5,10 @@ import com.exdrill.ce.registry.ModParticles;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.piston.PistonBehavior;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
@@ -37,10 +40,45 @@ public class ChargedLightningAnchor extends Block {
         entity.velocityModified = true;
     }
 
-    private void activate(World world, BlockPos pos, boolean interact){
+    private boolean isLightningNearby(World world, BlockPos pos){
+        Box box = new Box(pos).expand(1.5);
+
+        List<Entity> list = world.getEntitiesByClass(Entity.class, box, (e) -> {return true;});
+
+        Entity otherEntity;
+        for(Iterator var2 = list.iterator(); var2.hasNext();) {
+            otherEntity = (Entity)var2.next();
+            if(otherEntity.getClass() == LightningEntity.class){
+                return  true;
+            }
+        }
+
+        return false;
+    }
+
+    private void activate(World world, BlockPos pos, boolean interact, BlockPos fromPos){
         if(world.isClient) return;
 
-        if(world.isReceivingRedstonePower(pos) || interact) {
+        boolean powered = world.isReceivingRedstonePower(pos);
+
+        boolean isLightningNearby = isLightningNearby(world, pos);
+
+        System.out.println(pos);
+
+        /*boolean rodAbove = world.getBlockState(pos.up()).isOf(Blocks.LIGHTNING_ROD);
+
+        System.out.println(pos);
+        System.out.println(fromPos);
+        System.out.println(fromPos.getX() == pos.up().getX() && fromPos.getY() == pos.up().getY() && fromPos.getZ() == pos.up().getZ());
+        System.out.println(rodAbove);
+        System.out.println(world.getBlockState(pos.up()).isOf(Blocks.LIGHTNING_ROD));
+        System.out.println("~~~");
+
+        if(rodAbove && powered && fromPos.getX() == pos.up().getX() && fromPos.getY() == pos.up().getY() && fromPos.getZ() == pos.up().getZ()){
+            powered = false;
+        }&*/
+
+        if((powered || interact) && !isLightningNearby) {
             List<? extends LivingEntity> list = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(4.0D), (e) -> true);
 
             double power = 0.9D;
@@ -64,24 +102,24 @@ public class ChargedLightningAnchor extends Block {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        activate(world, pos, true);
+        activate(world, pos, true, pos);
 
         return ActionResult.SUCCESS;
     }
 
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
-        activate(world, pos, false);
+        activate(world, pos, false, fromPos);
     }
 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        activate(world, pos, false);
+        //activate(world, pos, false);
     }
 
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-        activate(world, pos, false);
+        //activate(world, pos, false);
     }
 
     @Override
