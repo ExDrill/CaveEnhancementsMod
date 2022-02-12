@@ -24,9 +24,9 @@ public class Shockwave extends Particle {
         this.velocityX = 0;
         this.velocityY = 0;
         this.velocityZ = 0;
-        this.red = Math.max(0.0F, MathHelper.sin(((float)d + 0.0F) * 6.2831855F) * 0.65F + 0.35F);
-        this.green = Math.max(0.0F, MathHelper.sin(((float)d + 0.33333334F) * 6.2831855F) * 0.65F + 0.35F);
-        this.blue = Math.max(0.0F, MathHelper.sin(((float)d + 0.6666667F) * 6.2831855F) * 0.65F + 0.35F);
+        this.red = 1;
+        this.green = 1;
+        this.blue = 1;
         this.scale *= 1.5F;
         this.maxAge = 6;
     }
