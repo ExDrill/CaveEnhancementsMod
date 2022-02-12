@@ -114,12 +114,12 @@ public class ChargedLightningAnchor extends Block {
 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        activate(world, pos, false);
+        activate(world, pos, false, pos);
     }
 
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-        activate(world, pos, false);
+        activate(world, pos, false, pos);
     }
 
     @Override
