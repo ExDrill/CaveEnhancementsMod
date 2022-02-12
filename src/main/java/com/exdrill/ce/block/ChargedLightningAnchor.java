@@ -1,6 +1,7 @@
 package com.exdrill.ce.block;
 
 import com.exdrill.ce.registry.ModBlocks;
+import com.exdrill.ce.registry.ModParticles;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -59,6 +60,8 @@ public class ChargedLightningAnchor extends Block {
             if (!world.isClient) {
                 world.playSound((PlayerEntity) null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0F, 1.0F);
             }
+
+            world.addParticle(ModParticles.SHOCKWAVE, pos.getX(), pos.getY(),pos.getZ(),0, 0, 0);
         }
     }
 
