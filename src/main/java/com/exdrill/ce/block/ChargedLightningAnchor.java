@@ -37,7 +37,9 @@ public class ChargedLightningAnchor extends Block {
     }
 
     private void activate(World world, BlockPos pos, boolean interact){
-        System.out.println(pos);
+        world.addParticle(ModParticles.SHOCKWAVE, pos.getX(), pos.getY(), pos.getZ(), 0, 0, 0);
+
+        if(world.isClient) return;
 
         if(world.isReceivingRedstonePower(pos) || interact) {
             List<? extends LivingEntity> list = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(4.0D), (e) -> {
@@ -57,11 +59,7 @@ public class ChargedLightningAnchor extends Block {
 
             world.createAndScheduleBlockTick(pos, this, 4);
 
-            if (!world.isClient) {
-                world.playSound((PlayerEntity) null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            }
-
-            world.addParticle(ModParticles.SHOCKWAVE, pos.getX(), pos.getY(),pos.getZ(),0, 0, 0);
+            world.playSound((PlayerEntity) null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
     }
 

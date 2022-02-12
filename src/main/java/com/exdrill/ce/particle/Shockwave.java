@@ -29,6 +29,7 @@ public class Shockwave extends Particle {
         this.green = 1;
         this.blue = 1;
         this.maxAge = 5;
+        this.setColor(1, 1, 1);
     }
 
     public void buildGeometry(VertexConsumer vertexConsumer, Camera camera, float tickDelta) {
