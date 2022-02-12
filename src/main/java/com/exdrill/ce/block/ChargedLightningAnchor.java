@@ -18,6 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 
+import java.awt.*;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -37,8 +38,6 @@ public class ChargedLightningAnchor extends Block {
     }
 
     private void activate(World world, BlockPos pos, boolean interact){
-        world.addParticle(ModParticles.SHOCKWAVE, pos.getX(), pos.getY(), pos.getZ(), 0, 0, 0);
-
         if(world.isClient) return;
 
         if(world.isReceivingRedstonePower(pos) || interact) {
@@ -59,7 +58,9 @@ public class ChargedLightningAnchor extends Block {
 
             world.createAndScheduleBlockTick(pos, this, 4);
 
-            world.playSound((PlayerEntity) null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+
+            ((ServerWorld)world).spawnParticles(ModParticles.SHOCKWAVE, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 1, 0, 0, 0, 1);
         }
     }
 
