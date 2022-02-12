@@ -27,9 +27,7 @@ public class Shockwave extends Particle {
         this.red = 1;
         this.green = 1;
         this.blue = 1;
-        this.maxAge = 6;
-        //this.spacingXZ = 10;
-        //this.spacingY = 10;
+        this.maxAge = 20;
     }
 
     public void buildGeometry(VertexConsumer vertexConsumer, Camera camera, float tickDelta) {
@@ -48,7 +46,14 @@ public class Shockwave extends Particle {
 
         int light = this.getBrightness(tickDelta);
 
-        Vec3f[] vertices = new Vec3f[]{new Vec3f(-1.0F, -1.0F, 0.0F), new Vec3f(-1.0F, 1.0F, 0.0F), new Vec3f(1.0F, 1.0F, 0.0F), new Vec3f(1.0F, -1.0F, 0.0F)};
+        float xVO = 0.5f;
+        float yVO = 1F/16F;
+
+        addBand(vertexConsumer, xVO, yVO, size, x, y, z, minU, maxU, minV, maxV, light);
+    }
+
+    public void addBand(VertexConsumer vertexConsumer, float xVO, float yVO, float size, float x, float y, float z, float minU, float maxU, float minV, float maxV, int light){
+        Vec3f[] vertices = new Vec3f[]{new Vec3f(-xVO, -yVO, 0.0F), new Vec3f(-xVO, yVO, 0.0F), new Vec3f(xVO, yVO, 0.0F), new Vec3f(xVO, -yVO, 0.0F)};
 
         for(int i = 0; i < 4; ++i) {
             Vec3f vec3f = vertices[i];
@@ -60,20 +65,7 @@ public class Shockwave extends Particle {
         vertexConsumer.vertex(vertices[1].getX(), vertices[1].getY(), vertices[1].getZ()).texture(maxU, minV).color(this.red, this.green, this.blue, this.alpha).light(light).next();
         vertexConsumer.vertex(vertices[2].getX(), vertices[2].getY(), vertices[2].getZ()).texture(minU, minV).color(this.red, this.green, this.blue, this.alpha).light(light).next();
         vertexConsumer.vertex(vertices[3].getX(), vertices[3].getY(), vertices[3].getZ()).texture(minU, maxV).color(this.red, this.green, this.blue, this.alpha).light(light).next();
-
-        vertices = new Vec3f[]{new Vec3f(1.0F, -1.0F, 0.0F), new Vec3f(1.0F, 1.0F, 0.0F), new Vec3f(-1.0F, 1.0F, 0.0F), new Vec3f(-1.0F, -1.0F, 0.0F)};
-
-        for(int i = 0; i < 4; ++i) {
-            Vec3f vec3f = vertices[i];
-            vec3f.scale(size);
-            vec3f.add(x, y, z);
-        }
-
-        vertexConsumer.vertex(vertices[0].getX(), vertices[0].getY(), vertices[0].getZ()).texture(maxU, maxV).color(this.red, this.green, this.blue, this.alpha).light(light).next();
-        vertexConsumer.vertex(vertices[1].getX(), vertices[1].getY(), vertices[1].getZ()).texture(maxU, minV).color(this.red, this.green, this.blue, this.alpha).light(light).next();
-        vertexConsumer.vertex(vertices[2].getX(), vertices[2].getY(), vertices[2].getZ()).texture(minU, minV).color(this.red, this.green, this.blue, this.alpha).light(light).next();
-        vertexConsumer.vertex(vertices[3].getX(), vertices[3].getY(), vertices[3].getZ()).texture(minU, maxV).color(this.red, this.green, this.blue, this.alpha).light(light).next();
-}
+    }
 
     public ParticleTextureSheet getType() {
         return ParticleTextureSheet.PARTICLE_SHEET_OPAQUE;
