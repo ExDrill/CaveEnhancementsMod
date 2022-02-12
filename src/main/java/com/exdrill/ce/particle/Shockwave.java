@@ -2,7 +2,6 @@ package com.exdrill.ce.particle;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.loader.impl.lib.sat4j.core.Vec;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.VertexConsumer;
@@ -35,9 +34,9 @@ public class Shockwave extends Particle {
     public void buildGeometry(VertexConsumer vertexConsumer, Camera camera, float tickDelta) {
         Vec3d cameraPos = camera.getPos();
 
-        float x = (float)(MathHelper.lerp((double)tickDelta, this.prevPosX, this.x) - cameraPos.getX());
-        float y = (float)(MathHelper.lerp((double)tickDelta, this.prevPosY, this.y) - cameraPos.getY());
-        float z = (float)(MathHelper.lerp((double)tickDelta, this.prevPosZ, this.z) - cameraPos.getZ());
+        float x = (float)(MathHelper.lerp(tickDelta, this.prevPosX, this.x) - cameraPos.getX());
+        float y = (float)(MathHelper.lerp(tickDelta, this.prevPosY, this.y) - cameraPos.getY());
+        float z = (float)(MathHelper.lerp(tickDelta, this.prevPosZ, this.z) - cameraPos.getZ());
 
         float size = this.getSize(tickDelta) * this.age / 20F * 25F + tickDelta / 20F * 25F;
 
@@ -76,7 +75,6 @@ public class Shockwave extends Particle {
         for(int i = 0; i < 4; ++i) {
             Vec3f vec3f = vertices[i];
             vec3f.rotate(quaternion);
-            //vec3f.scale(size);
             vec3f.add(x, y, z);
         }
 
@@ -90,7 +88,6 @@ public class Shockwave extends Particle {
         for(int i = 0; i < 4; ++i) {
             Vec3f vec3f = vertices[i];
             vec3f.rotate(quaternion);
-            //vec3f.scale(size);
             vec3f.add(x, y, z);
         }
 

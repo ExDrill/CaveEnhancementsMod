@@ -18,7 +18,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 
-import java.awt.*;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -41,9 +40,7 @@ public class ChargedLightningAnchor extends Block {
         if(world.isClient) return;
 
         if(world.isReceivingRedstonePower(pos) || interact) {
-            List<? extends LivingEntity> list = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(4.0D), (e) -> {
-                return true;
-            });
+            List<? extends LivingEntity> list = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(4.0D), (e) -> true);
 
             double power = 0.9D;
             double verticalPower = 0.5D;
