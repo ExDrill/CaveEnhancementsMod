@@ -3,7 +3,6 @@ package com.exdrill.ce.registry;
 import com.exdrill.ce.Main;
 import com.exdrill.ce.worldgen.feature.SpiralFeature;
 import com.exdrill.ce.worldgen.feature.config.SpiralFeatureConfig;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
@@ -23,13 +22,11 @@ public class ModGeneration {
 
     public static final ConfiguredFeature<?, ?> STONE_SPIRAL = SPIRAL.configure(new SpiralFeatureConfig(ConstantIntProvider.create(15), BlockStateProvider.of(Blocks.STONE.getDefaultState())));
 
-    public static final PlacedFeature STONE_SPIRAL_PLACED = STONE_SPIRAL.withPlacement(RarityFilterPlacementModifier.of(1), PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP, BiomePlacementModifier.of());
+    public static final PlacedFeature STONE_SPIRAL_PLACED = STONE_SPIRAL.withPlacement(RarityFilterPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
     public static void registerFeatures(){
         Registry.register(Registry.FEATURE, new Identifier(Main.NAMESPACE, "spiral"), SPIRAL);
 
-        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.NAMESPACE, "stone_spiral"), STONE_SPIRAL);
-
-        Registry.register(BuiltinRegistries.PLACED_FEATURE, new Identifier(Main.NAMESPACE, "stone_spiral"), STONE_SPIRAL_PLACED);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Main.NAMESPACE, "spiral"), STONE_SPIRAL);
     }
 }
