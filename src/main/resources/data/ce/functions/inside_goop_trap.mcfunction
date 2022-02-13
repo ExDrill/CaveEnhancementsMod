@@ -1,1 +1,0 @@
-execute as @a[limit=1] positioned as @s if block ~ ~ ~ ce:goop_trap run effect give @s minecraft:slowness 1 7 false
