@@ -13,8 +13,8 @@ import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class LightningAnchor extends BlockWithEntity {
-    public LightningAnchor(FabricBlockSettings settings){
+public class LightningAnchorBlock extends BlockWithEntity {
+    public LightningAnchorBlock(FabricBlockSettings settings){
         super(settings);
     }
 
