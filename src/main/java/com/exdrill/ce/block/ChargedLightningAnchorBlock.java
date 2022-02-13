@@ -5,7 +5,6 @@ import com.exdrill.ce.registry.ModParticles;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LightningEntity;
@@ -26,8 +25,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-public class ChargedLightningAnchor extends Block {
-    public ChargedLightningAnchor(FabricBlockSettings settings){
+public class ChargedLightningAnchorBlock extends Block {
+    public ChargedLightningAnchorBlock(FabricBlockSettings settings){
         super(settings);
     }
 
