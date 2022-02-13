@@ -35,7 +35,7 @@ public class SpectacleCandleBlockEntity extends BlockEntity {
             range = 9;
         }
 
-        Box box = new Box(pos).stretch(range - 1, range - 1, range - 1);
+        Box box = new Box(pos).expand(range - 1);
 
         List<Entity> list = world.getEntitiesByClass(Entity.class, box, (e) -> {return true;});
 
@@ -44,9 +44,7 @@ public class SpectacleCandleBlockEntity extends BlockEntity {
             otherEntity = (Entity)var2.next();
 
             if(otherEntity.getClass() == ServerPlayerEntity.class){
-                if(((PlayerEntity)otherEntity).getStatusEffect(StatusEffects.NIGHT_VISION) == null || true){
-                    ((PlayerEntity)otherEntity).addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 202, 1, true, false));
-                }
+                ((PlayerEntity)otherEntity).addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 1, true, false));
             }
         }
     }
