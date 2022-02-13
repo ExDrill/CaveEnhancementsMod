@@ -35,7 +35,7 @@ public class SpectacleCandleBlockEntity extends BlockEntity {
             range = 9;
         }
 
-        Box box = new Box(pos).stretch(range - 1, range - 1, range - 1);
+        Box box = new Box(pos).expand(range - 1);
 
         List<Entity> list = world.getEntitiesByClass(Entity.class, box, (e) -> {return true;});
 
