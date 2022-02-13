@@ -1,12 +1,16 @@
 package com.exdrill.ce.block;
 
+import com.exdrill.ce.block.entity.LightningAnchorBlockEntity;
 import com.exdrill.ce.block.entity.SpectacleCandleBlockEntity;
+import com.exdrill.ce.registry.ModBlocks;
 import com.google.common.collect.ImmutableList;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -146,6 +150,11 @@ public class SpectacleCandleBlock extends AbstractSpectacleCandleBlock implement
 
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         return Block.sideCoversSmallSquare(world, pos.down(), Direction.UP);
+    }
+
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, ModBlocks.SPECTACLE_CANDLE_BLOCK_ENTITY, SpectacleCandleBlockEntity::tick);
     }
 
     static {
