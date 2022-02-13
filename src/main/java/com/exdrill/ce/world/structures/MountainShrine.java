@@ -21,21 +21,15 @@ import net.minecraft.world.gen.feature.StructurePoolFeatureConfig;
 
 import java.util.Optional;
 
-public class RunDownHouseStructure extends StructureFeature<StructurePoolFeatureConfig> {
+public class MountainShrine extends StructureFeature<StructurePoolFeatureConfig> {
 
-    public RunDownHouseStructure(Codec<StructurePoolFeatureConfig> codec) {
-        super(codec, RunDownHouseStructure::createPiecesGenerator, PostPlacementProcessor.EMPTY);
+    public MountainShrine(Codec<StructurePoolFeatureConfig> codec) {
+        super(codec, MountainShrine::createPiecesGenerator, PostPlacementProcessor.EMPTY);
     }
 
-    public static final Pool<SpawnSettings.SpawnEntry> STRUCTURE_MONSTERS = Pool.of(
-            new SpawnSettings.SpawnEntry(EntityType.ILLUSIONER, 100, 4, 9),
-            new SpawnSettings.SpawnEntry(EntityType.VINDICATOR, 100, 4, 9)
-    );
+    public static final Pool<SpawnSettings.SpawnEntry> STRUCTURE_MONSTERS = Pool.of();
 
-    public static final Pool<SpawnSettings.SpawnEntry> STRUCTURE_CREATURES = Pool.of(
-            new SpawnSettings.SpawnEntry(EntityType.SHEEP, 30, 10, 15),
-            new SpawnSettings.SpawnEntry(EntityType.RABBIT, 100, 1, 2)
-    );
+    public static final Pool<SpawnSettings.SpawnEntry> STRUCTURE_CREATURES = Pool.of();
 
     private static boolean isFeatureChunk(StructureGeneratorFactory.Context<StructurePoolFeatureConfig> context) {
         BlockPos spawnXZPosition = context.chunkPos().getCenterAtY(0);
@@ -50,12 +44,12 @@ public class RunDownHouseStructure extends StructureFeature<StructurePoolFeature
     }
 
     public static Optional<StructurePiecesGenerator<StructurePoolFeatureConfig>> createPiecesGenerator(StructureGeneratorFactory.Context<StructurePoolFeatureConfig> context) {
-        if (!RunDownHouseStructure.isFeatureChunk(context)) {
+        if (!MountainShrine.isFeatureChunk(context)) {
             return Optional.empty();
         }
 
         StructurePoolFeatureConfig newConfig = new StructurePoolFeatureConfig(
-                () -> context.registryManager().get(Registry.STRUCTURE_POOL_KEY).get(new Identifier(Main.NAMESPACE, "run_down_house/start_pool")),
+                () -> context.registryManager().get(Registry.STRUCTURE_POOL_KEY).get(new Identifier(Main.NAMESPACE, "mountain_shrine/start_pool")),
                 10
         );
 
@@ -71,7 +65,7 @@ public class RunDownHouseStructure extends StructureFeature<StructurePoolFeature
                 context.registryManager()
         );
 
-        BlockPos blockpos = context.chunkPos().getCenterAtY(0);
+        BlockPos blockpos = context.chunkPos().getCenterAtY(0).down(14);
 
         Optional<StructurePiecesGenerator<StructurePoolFeatureConfig>> structurePiecesGenerator = StructurePoolBasedGenerator.generate(newContext, PoolStructurePiece::new, blockpos, false, true);
 

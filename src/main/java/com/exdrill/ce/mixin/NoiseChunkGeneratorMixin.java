@@ -1,7 +1,7 @@
 package com.exdrill.ce.mixin;
 
 import com.exdrill.ce.registry.ModGeneration;
-import com.exdrill.ce.world.structures.RunDownHouseStructure;
+import com.exdrill.ce.world.structures.MountainShrine;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.collection.Pool;
 import net.minecraft.util.math.BlockPos;
@@ -35,13 +35,13 @@ public class NoiseChunkGeneratorMixin {
     private static Pool<SpawnSettings.SpawnEntry> getStructureSpawns(Biome biome, StructureAccessor accessor, SpawnGroup group, BlockPos pos){
 
         if (group == SpawnGroup.MONSTER) {
-            if (accessor.getStructureAt(pos, ModGeneration.RUN_DOWN_HOUSE).hasChildren()) {
-                return RunDownHouseStructure.STRUCTURE_MONSTERS;
+            if (accessor.getStructureAt(pos, ModGeneration.MOUNTAIN_SHRINE).hasChildren()) {
+                return MountainShrine.STRUCTURE_MONSTERS;
             }
         }
         else if (group == SpawnGroup.CREATURE) {
-            if (accessor.getStructureAt(pos, ModGeneration.RUN_DOWN_HOUSE).hasChildren()) {
-                return RunDownHouseStructure.STRUCTURE_CREATURES;
+            if (accessor.getStructureAt(pos, ModGeneration.MOUNTAIN_SHRINE).hasChildren()) {
+                return MountainShrine.STRUCTURE_CREATURES;
             }
         }
 
