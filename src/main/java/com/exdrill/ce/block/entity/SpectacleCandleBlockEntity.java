@@ -44,7 +44,7 @@ public class SpectacleCandleBlockEntity extends BlockEntity {
             otherEntity = (Entity)var2.next();
 
             if(otherEntity.getClass() == ServerPlayerEntity.class){
-                ((PlayerEntity)otherEntity).addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 1, true, false));
+                ((PlayerEntity)otherEntity).addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0, true, true));
             }
         }
     }

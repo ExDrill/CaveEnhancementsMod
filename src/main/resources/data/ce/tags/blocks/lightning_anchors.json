@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "ce:lightning_anchor",
+    "ce:charged_lightning_anchor"
+  ]
+}

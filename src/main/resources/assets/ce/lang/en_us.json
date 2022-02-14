@@ -5,5 +5,8 @@
   "block.ce.goop_trap": "Goop Trap",
   "block.ce.dripping_goop": "Dripping Goop",
   "block.ce.glow_splotch": "Glow Paste",
+  "block.ce.lightning_anchor": "Lightning Anchor",
+  "block.ce.charged_lightning_anchor": "Charged Lightning Anchor",
+  "block.ce.spectacle_candle": "Spectacle Candle",
   "item.glow_paste.place": "Glow Splotch placed"
 }

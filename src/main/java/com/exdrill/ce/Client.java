@@ -26,6 +26,7 @@ public class Client implements ClientModInitializer {
         }));
         ParticleFactoryRegistry.getInstance().register(ModParticles.SMALL_GOOP_DRIP, BlockLeakParticle.DrippingWaterFactory::new);
 
+        // Shockwave Client Particle
         ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {
             registry.register(new Identifier(Main.NAMESPACE, "particle/shockwave"));
         }));
