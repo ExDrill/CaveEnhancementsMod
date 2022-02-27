@@ -8,5 +8,7 @@
   "block.ce.lightning_anchor": "Lightning Anchor",
   "block.ce.charged_lightning_anchor": "Charged Lightning Anchor",
   "block.ce.spectacle_candle": "Spectacle Candle",
-  "item.glow_paste.place": "Glow Splotch placed"
+  "item.glow_paste.place": "Glow Splotch placed",
+  "advancements.adventure.find_mountain_shrine.title": "The Copper Relic",
+  "advancements.adventure.find_mountain_shrine.description": "Find a Mountain Shrine in the Meadows."
 }
