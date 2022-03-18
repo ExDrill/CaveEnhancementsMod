@@ -1,6 +1,6 @@
 {
   "config": {
-    "start_pool": "minecraft:village/plains/town_centers",
+    "start_pool": "ce:mountain_shrine/start_pool",
     "size": 6
   },
   "biomes": "#ce:has_structure/mountain_shrine",
