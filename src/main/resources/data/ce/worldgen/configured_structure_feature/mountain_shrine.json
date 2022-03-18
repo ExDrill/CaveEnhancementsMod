@@ -1,0 +1,10 @@
+{
+  "config": {
+    "start_pool": "minecraft:village/plains/town_centers",
+    "size": 6
+  },
+  "biomes": "#ce:has_structure/mountain_shrine",
+  "adapt_noise": true,
+  "spawn_overrides": {},
+  "type": "minecraft:village"
+}
