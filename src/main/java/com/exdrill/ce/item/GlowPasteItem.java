@@ -32,8 +32,6 @@ import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 public class GlowPasteItem extends Item {
-    private static final String BLOCK_ENTITY_TAG_KEY = "BlockEntityTag";
-    public static final String BLOCK_STATE_TAG_KEY = "BlockStateTag";
 
     private final Block block;
 

@@ -4,9 +4,12 @@
   "version": "${version}",
 
   "name": "Cave Enhancements",
-  "description": "Port of thing.",
+  "description": "The official port for Cave Enhancements!",
   "authors": [
-    "ExDrill"
+    "ExDrill",
+    "Warhead51707",
+    "KekeCreations",
+    "OuterCloudStudio"
   ],
   "contact": {
     "homepage": "",
@@ -22,14 +25,14 @@
       "com.exdrill.ce.Main"
     ],
     "client": [
-     "com.exdrill.ce.Client"
+      "com.exdrill.ce.Client"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "ce.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.11.3",
+    "fabricloader": ">=0.13.3",
     "fabric": "*",
     "minecraft": "1.18.x",
     "java": ">=17"
