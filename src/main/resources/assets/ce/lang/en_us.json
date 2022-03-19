@@ -1,10 +1,11 @@
 {
   "item.ce.goop": "Goop",
+  "item.ce.glow_paste": "Glow Paste",
+  "item.ce.amethyst_flute": "Amethyst Flute",
   "block.ce.goop_block": "Goop Block",
   "block.ce.goop_splat": "Goop",
   "block.ce.goop_trap": "Goop Trap",
   "block.ce.dripping_goop": "Dripping Goop",
-  "block.ce.glow_splotch": "Glow Paste",
   "block.ce.lightning_anchor": "Lightning Anchor",
   "block.ce.charged_lightning_anchor": "Charged Lightning Anchor",
   "block.ce.spectacle_candle": "Spectacle Candle",

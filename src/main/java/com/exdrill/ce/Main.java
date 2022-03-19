@@ -13,5 +13,6 @@ public class Main implements ModInitializer {
         ModParticles.registerParticles();
         ModBlocks.registerBlockEntities();
         ModSounds.registerSounds();
+
     }
 }

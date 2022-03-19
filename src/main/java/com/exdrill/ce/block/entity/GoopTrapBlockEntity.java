@@ -36,7 +36,7 @@ public class GoopTrapBlockEntity extends BlockEntity {
         for(Iterator var2 = list.iterator(); var2.hasNext();) {
             otherEntity = (LivingEntity)var2.next();
 
-            otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 2, 6, true, false));
+            otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 2, 6, true, true));
         }
     }
 }
