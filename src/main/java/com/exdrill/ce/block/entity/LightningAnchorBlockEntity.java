@@ -29,7 +29,7 @@ public class LightningAnchorBlockEntity extends BlockEntity {
         Entity otherEntity;
         for(Iterator var2 = list.iterator(); var2.hasNext();) {
             otherEntity = (Entity)var2.next();
-            if(otherEntity.getClass() == LightningEntity.class && !world.isReceivingRedstonePower(pos)){
+            if(otherEntity.getClass() == LightningEntity.class){
                 world.setBlockState(pos, ModBlocks.CHARGED_LIGHTNING_ANCHOR.getDefaultState());
             }
         }
