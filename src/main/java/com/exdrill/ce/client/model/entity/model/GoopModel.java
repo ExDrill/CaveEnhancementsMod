@@ -1,9 +1,7 @@
 package com.exdrill.ce.client.model.entity.model;
 
-import com.exdrill.ce.Main;
 import com.exdrill.ce.entity.GoopEntity;
 import net.minecraft.util.Identifier;
-import software.bernie.geckolib3.GeckoLib;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public class GoopModel extends AnimatedGeoModel<GoopEntity>

@@ -1,5 +1,6 @@
 package com.exdrill.ce;
 
+import com.exdrill.ce.client.model.entity.CruncherRenderer;
 import com.exdrill.ce.client.model.entity.GoopRenderer;
 import com.exdrill.ce.client.model.entity.model.GoopModel;
 import com.exdrill.ce.particle.Shockwave;
@@ -22,6 +23,7 @@ import net.minecraft.util.Identifier;
 public class Client implements ClientModInitializer {
 
     public static final EntityModelLayer GOOP_ENTITY = new EntityModelLayer(new Identifier(Main.NAMESPACE, "goop"), "goop");
+    public static final EntityModelLayer CRUNCHER_ENTITY = new EntityModelLayer(new Identifier(Main.NAMESPACE, "cruncher"), "cruncher");
 
 
     @Override
@@ -42,5 +44,6 @@ public class Client implements ClientModInitializer {
 
 
         EntityRendererRegistry.register(ModEntities.GOOP, GoopRenderer::new);
+        EntityRendererRegistry.register(ModEntities.CRUNCHER, CruncherRenderer::new);
     }
 }
