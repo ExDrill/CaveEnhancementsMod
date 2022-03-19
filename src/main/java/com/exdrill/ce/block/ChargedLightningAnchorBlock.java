@@ -111,24 +111,10 @@ public class ChargedLightningAnchorBlock extends Block {
         activate(world, pos, false, fromPos);
     }
 
-
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         activate(world, pos, true, pos);
         System.out.println("I just scheduled myself");
-    }
-
-
-    @Override
-    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
-        boolean isLightningNearby = isLightningNearby(world, pos);
-        super.onPlaced(world, pos, state, placer, itemStack);
-        if (world.isReceivingRedstonePower(pos) && isLightningNearby ) {
-            world.createAndScheduleBlockTick(pos, this, 40);
-        }
-        else if (world.isReceivingRedstonePower(pos)) {
-            activate(world, pos, true, pos);
-        }
     }
 
     @Override
