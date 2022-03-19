@@ -4,6 +4,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.ai.goal.WanderAroundFarGoal;
+import net.minecraft.entity.ai.goal.WanderAroundGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.HostileEntity;
@@ -37,14 +38,14 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
     }
 
     protected void initGoals() {
-        this.goalSelector.add(5, new WanderAroundFarGoal(this, 1.0D));
+        this.goalSelector.add(5, new WanderAroundGoal(this, 1.5D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8F));
         this.goalSelector.add(6, new LookAroundGoal(this));
     }
 
     public static DefaultAttributeContainer.Builder createDripstoneTortoiseAttributes() {
         return HostileEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.1D)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.125D)
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 40)
                 .add(EntityAttributes.GENERIC_ARMOR, 5)
                 .add(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, 2)
