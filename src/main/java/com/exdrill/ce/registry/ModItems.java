@@ -6,6 +6,7 @@ import com.exdrill.ce.item.GlowPasteItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -21,6 +22,7 @@ public class ModItems {
     public static final BlockItem LIGHTNING_ANCHOR = new BlockItem(ModBlocks.LIGHTNING_ANCHOR, new Item.Settings().group(ItemGroup.REDSTONE));
     public static final BlockItem CHARGED_LIGHTNING_ANCHOR = new BlockItem(ModBlocks.CHARGED_LIGHTNING_ANCHOR, new Item.Settings().group(ItemGroup.REDSTONE));
     public static final AmethystFluteItem AMETHYST_FLUTE = new AmethystFluteItem(new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));
+    public static final SpawnEggItem GOOP_SPAWN_EGG = new SpawnEggItem(ModEntities.GOOP, 13946012, 11637089, new Item.Settings().group(ItemGroup.MISC));
 
     //Registry
     public static void registerItems() {
@@ -33,6 +35,7 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "lightning_anchor"), LIGHTNING_ANCHOR);
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "charged_lightning_anchor"), CHARGED_LIGHTNING_ANCHOR);
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "amethyst_flute"), AMETHYST_FLUTE);
+        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "goop_spawn_egg"), GOOP_SPAWN_EGG);
     }
 
 }
