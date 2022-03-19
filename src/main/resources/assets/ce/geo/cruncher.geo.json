@@ -1,0 +1,99 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.cruncher",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "body",
+					"parent": "root",
+					"locators": {
+						"lead": [ 0, 5, 0 ]
+					},
+					"pivot": [0, 2, 0],
+					"cubes": [
+						{"origin": [-3, 2.5, -3], "size": [6, 2, 6], "uv": [0, 26]}
+					]
+				},
+				{
+					"name": "leg3",
+					"parent": "body",
+					"pivot": [2.25, 2.5, -1.25],
+					"cubes": [
+						{"origin": [1.25, 0, -3.25], "size": [2, 3, 2], "uv": [0, 18]}
+					]
+				},
+				{
+					"name": "leg2",
+					"parent": "body",
+					"pivot": [-2.25, 2.5, -1.25],
+					"cubes": [
+						{"origin": [-3.25, 0, -3.25], "size": [2, 3, 2], "uv": [0, 18], "mirror": true}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "body",
+					"pivot": [0, 3, 0]
+				},
+				{
+					"name": "upper_jaw",
+					"parent": "head",
+					"pivot": [0, 6, 4],
+					"cubes": [
+						{"origin": [-4, 7, -6], "size": [8, 3, 10], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "moss_cap",
+					"parent": "upper_jaw",
+					"pivot": [0, 6, 4],
+					"cubes": [
+						{"origin": [-4, 7, -6], "size": [8, 3, 10], "inflate": 0.25, "uv": [0, 51]}
+					]
+				},
+				{
+					"name": "lower_jaw",
+					"parent": "head",
+					"pivot": [0, 6, 4],
+					"cubes": [
+						{"origin": [-4, 4, -6], "size": [8, 3, 10], "uv": [0, 13]}
+					]
+				},
+				{
+					"name": "leg0",
+					"parent": "root",
+					"pivot": [-2.25, 2.5, 3.25],
+					"cubes": [
+						{"origin": [-3.25, 0, 1.25], "size": [2, 3, 2], "uv": [0, 18], "mirror": true}
+					]
+				},
+				{
+					"name": "leg1",
+					"parent": "root",
+					"pivot": [2.25, 2.5, 3.25],
+					"cubes": [
+						{"origin": [1.25, 0, 1.25], "size": [2, 3, 2], "uv": [0, 18]}
+					]
+				},
+				{
+					"name": "rightItem",
+					"parent": "head",
+					"pivot": [ -2, 7.5, 0 ],
+					"rotation": [ 10, 0, -10 ]
+				}
+			]
+		}
+	]
+}
