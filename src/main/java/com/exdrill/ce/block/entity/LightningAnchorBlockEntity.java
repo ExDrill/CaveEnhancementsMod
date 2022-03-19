@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class LightningAnchorBlockEntity extends BlockEntity {
-    public int ticksTillActivate = 20;
+    public int ticksTillActivate = 30;
 
     public LightningAnchorBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlocks.LIGHTNING_ANCHOR_BLOCK_ENTITY, pos, state);

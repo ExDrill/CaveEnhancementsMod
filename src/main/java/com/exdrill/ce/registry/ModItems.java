@@ -23,6 +23,8 @@ public class ModItems {
     public static final BlockItem CHARGED_LIGHTNING_ANCHOR = new BlockItem(ModBlocks.CHARGED_LIGHTNING_ANCHOR, new Item.Settings().group(ItemGroup.REDSTONE));
     public static final AmethystFluteItem AMETHYST_FLUTE = new AmethystFluteItem(new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));
     public static final SpawnEggItem GOOP_SPAWN_EGG = new SpawnEggItem(ModEntities.GOOP, 13946012, 11637089, new Item.Settings().group(ItemGroup.MISC));
+    public static final SpawnEggItem CRUNCHER_SPAWN_EGG = new SpawnEggItem(ModEntities.CRUNCHER, 11127234, 5757312, new Item.Settings().group(ItemGroup.MISC));
+    public static final SpawnEggItem DRIPSTONE_TORTOISE_SPAWN_EGG = new SpawnEggItem(ModEntities.DRIPSTONE_TORTOISE, 8156236, 6967114, new Item.Settings().group(ItemGroup.MISC));
 
     //Registry
     public static void registerItems() {
@@ -36,6 +38,8 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "charged_lightning_anchor"), CHARGED_LIGHTNING_ANCHOR);
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "amethyst_flute"), AMETHYST_FLUTE);
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "goop_spawn_egg"), GOOP_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "cruncher_spawn_egg"), CRUNCHER_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "dripstone_tortoise_spawn_egg"), DRIPSTONE_TORTOISE_SPAWN_EGG);
     }
 
 }

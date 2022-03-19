@@ -68,7 +68,6 @@ public class ChargedLightningAnchorBlock extends Block {
         if(world.getEmittedRedstonePower(pos.south(), Direction.SOUTH) > 0 && !world.getBlockState(pos.south()).isOf(Blocks.LIGHTNING_ROD)){
             return true;
         }
-
         return false;
     }
 

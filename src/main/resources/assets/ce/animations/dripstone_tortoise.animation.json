@@ -1,0 +1,106 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.dripstone_tortoise.walk" : {
+			"loop" : true,
+			"bones" : {
+				"leg0" : {
+					"rotation" : [ "math.cos(query.anim_time * 360) *  40.0", 0.0, 0.0 ]
+				},
+				"leg1" : {
+					"rotation" : [ "math.cos(query.anim_time * 360) * -40.0", 0.0, 0.0 ]
+				},
+				"leg2" : {
+					"rotation" : [ "math.cos(query.anim_time * 360) * -40.0", 0.0, 0.0 ]
+				},
+				"leg3" : {
+					"rotation" : [ "math.cos(query.anim_time * 360) *  40.0", 0.0, 0.0 ]
+				}
+			}
+		},
+		"animation.dripstone_tortoise.stomp": {
+			"animation_length": 0.52,
+			"bones": {
+				"body": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.16": {
+							"post": [0, 0, 12.5],
+							"lerp_mode": "catmullrom"
+						},
+						"0.28": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.16": {
+							"post": [-25, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.28": {
+							"post": [20, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.48": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"leg0": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.16": {
+							"post": [0, 0, 45],
+							"lerp_mode": "catmullrom"
+						},
+						"0.28": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"leg2": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.16": {
+							"post": [0, 0, 22.5],
+							"lerp_mode": "catmullrom"
+						},
+						"0.28": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				}
+			},
+			"sound_effects": {
+				"0.28": {
+					"effect": "block_destroyed"
+				}
+			},
+			"particle_effects": {
+				"0.28": {
+					"effect": "stomp",
+					"locator": "locator"
+				}
+			}
+		}
+	}
+}

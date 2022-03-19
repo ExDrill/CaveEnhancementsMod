@@ -2,6 +2,7 @@ package com.exdrill.ce.registry;
 
 import com.exdrill.ce.Main;
 import com.exdrill.ce.entity.CruncherEntity;
+import com.exdrill.ce.entity.DripstoneTortoiseEntity;
 import com.exdrill.ce.entity.GoopEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
@@ -29,8 +30,17 @@ public class ModEntities {
                     .build()
     );
 
+    public static final EntityType<DripstoneTortoiseEntity> DRIPSTONE_TORTOISE = Registry.register(
+            Registry.ENTITY_TYPE,
+            new Identifier(Main.NAMESPACE, "dripstone_tortoise"),
+            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, DripstoneTortoiseEntity::new)
+                    .dimensions(EntityDimensions.fixed(1.3F, 0.8F))
+                    .build()
+    );
+
     public static void registerEntities() {
         FabricDefaultAttributeRegistry.register(GOOP, GoopEntity.createGoopAttributes());
         FabricDefaultAttributeRegistry.register(CRUNCHER, CruncherEntity.createCruncherAttributes());
+        FabricDefaultAttributeRegistry.register(DRIPSTONE_TORTOISE, DripstoneTortoiseEntity.createDripstoneTortoiseAttributes());
     }
 }
