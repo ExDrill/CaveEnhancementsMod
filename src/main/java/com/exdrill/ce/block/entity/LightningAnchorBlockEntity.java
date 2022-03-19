@@ -17,11 +17,17 @@ import java.util.List;
 import java.util.Objects;
 
 public class LightningAnchorBlockEntity extends BlockEntity {
+    public int ticksTillActivate = 20;
+
     public LightningAnchorBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlocks.LIGHTNING_ANCHOR_BLOCK_ENTITY, pos, state);
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, LightningAnchorBlockEntity entity) {
+        if(entity.ticksTillActivate > 0){
+            entity.ticksTillActivate--;
+        }
+
         Box box = new Box(pos).expand(1.5);
 
         List<Entity> list = world.getEntitiesByClass(Entity.class, box, (e) -> {return true;});
@@ -29,7 +35,7 @@ public class LightningAnchorBlockEntity extends BlockEntity {
         Entity otherEntity;
         for(Iterator var2 = list.iterator(); var2.hasNext();) {
             otherEntity = (Entity)var2.next();
-            if(otherEntity.getClass() == LightningEntity.class){
+            if(otherEntity.getClass() == LightningEntity.class && entity.ticksTillActivate <= 0){
                 world.setBlockState(pos, ModBlocks.CHARGED_LIGHTNING_ANCHOR.getDefaultState());
             }
         }

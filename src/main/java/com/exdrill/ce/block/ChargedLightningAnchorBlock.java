@@ -5,6 +5,7 @@ import com.exdrill.ce.registry.ModParticles;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LightningEntity;
@@ -20,6 +21,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Position;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -41,17 +44,29 @@ public class ChargedLightningAnchorBlock extends Block {
         entity.velocityModified = true;
     }
 
-    private boolean isLightningNearby(World world, BlockPos pos){
-        Box box = new Box(pos).expand(1.5);
+    private boolean isPowered(World world, BlockPos pos){
+        if(world.getEmittedRedstonePower(pos.down(), Direction.DOWN) > 0 && !world.getBlockState(pos.down()).isOf(Blocks.LIGHTNING_ROD)){
+            return true;
+        }
 
-        List<Entity> list = world.getEntitiesByClass(Entity.class, box, (e) -> {return true;});
+        if(world.getEmittedRedstonePower(pos.up(), Direction.UP) > 0 && !world.getBlockState(pos.up()).isOf(Blocks.LIGHTNING_ROD)){
+            return true;
+        }
 
-        Entity otherEntity;
-        for(Iterator var2 = list.iterator(); var2.hasNext();) {
-            otherEntity = (Entity)var2.next();
-            if(otherEntity.getClass() == LightningEntity.class){
-                return  true;
-            }
+        if(world.getEmittedRedstonePower(pos.east(), Direction.EAST) > 0 && !world.getBlockState(pos.east()).isOf(Blocks.LIGHTNING_ROD)){
+            return true;
+        }
+
+        if(world.getEmittedRedstonePower(pos.west(), Direction.WEST) > 0 && !world.getBlockState(pos.west()).isOf(Blocks.LIGHTNING_ROD)){
+            return true;
+        }
+
+        if(world.getEmittedRedstonePower(pos.north(), Direction.NORTH) > 0 && !world.getBlockState(pos.north()).isOf(Blocks.LIGHTNING_ROD)){
+            return true;
+        }
+
+        if(world.getEmittedRedstonePower(pos.south(), Direction.SOUTH) > 0 && !world.getBlockState(pos.south()).isOf(Blocks.LIGHTNING_ROD)){
+            return true;
         }
 
         return false;
@@ -60,26 +75,9 @@ public class ChargedLightningAnchorBlock extends Block {
     private void activate(World world, BlockPos pos, boolean interact, BlockPos fromPos){
         if(world.isClient) return;
 
-        boolean powered = world.isReceivingRedstonePower(pos);
+        boolean powered = isPowered(world, pos);
 
-        boolean isLightningNearby = isLightningNearby(world, pos);
-
-        System.out.println(pos);
-
-        /*boolean rodAbove = world.getBlockState(pos.up()).isOf(Blocks.LIGHTNING_ROD);
-
-        System.out.println(pos);
-        System.out.println(fromPos);
-        System.out.println(fromPos.getX() == pos.up().getX() && fromPos.getY() == pos.up().getY() && fromPos.getZ() == pos.up().getZ());
-        System.out.println(rodAbove);
-        System.out.println(world.getBlockState(pos.up()).isOf(Blocks.LIGHTNING_ROD));
-        System.out.println("~~~");
-
-        if(rodAbove && powered && fromPos.getX() == pos.up().getX() && fromPos.getY() == pos.up().getY() && fromPos.getZ() == pos.up().getZ()){
-            powered = false;
-        }&*/
-
-        if((powered || interact) && !isLightningNearby) {
+        if((powered || interact)) {
 
             List<? extends LivingEntity> list = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(4.0D), (e) -> true);
 
@@ -111,24 +109,21 @@ public class ChargedLightningAnchorBlock extends Block {
         activate(world, pos, false, fromPos);
     }
 
+    @Override
+    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        activate(world, pos, false, pos);
+    }
 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        activate(world, pos, true, pos);
-        System.out.println("I just scheduled myself");
+        activate(world, pos, false, pos);
     }
-
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
-        boolean isLightningNearby = isLightningNearby(world, pos);
         super.onPlaced(world, pos, state, placer, itemStack);
-        if (world.isReceivingRedstonePower(pos) && isLightningNearby ) {
-            world.createAndScheduleBlockTick(pos, this, 40);
-        }
-        else if (world.isReceivingRedstonePower(pos)) {
-            activate(world, pos, true, pos);
-        }
+
+        activate(world, pos, true, pos);
     }
 
     @Override
