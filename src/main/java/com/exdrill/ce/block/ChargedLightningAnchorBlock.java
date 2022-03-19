@@ -11,6 +11,7 @@ import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -20,6 +21,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;
 import java.util.List;
@@ -78,6 +80,7 @@ public class ChargedLightningAnchorBlock extends Block {
         }&*/
 
         if((powered || interact) && !isLightningNearby) {
+
             List<? extends LivingEntity> list = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(4.0D), (e) -> true);
 
             double power = 0.9D;
@@ -90,9 +93,6 @@ public class ChargedLightningAnchorBlock extends Block {
             }
 
             world.setBlockState(pos, ModBlocks.LIGHTNING_ANCHOR.getDefaultState());
-
-            world.createAndScheduleBlockTick(pos, this, 4);
-
             world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0F, 1.0F);
 
             ((ServerWorld)world).spawnParticles(ModParticles.SHOCKWAVE, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 1, 0, 0, 0, 1);
@@ -111,9 +111,24 @@ public class ChargedLightningAnchorBlock extends Block {
         activate(world, pos, false, fromPos);
     }
 
+
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        activate(world, pos, false, pos);
+        activate(world, pos, true, pos);
+        System.out.println("I just scheduled myself");
+    }
+
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        boolean isLightningNearby = isLightningNearby(world, pos);
+        super.onPlaced(world, pos, state, placer, itemStack);
+        if (world.isReceivingRedstonePower(pos) && isLightningNearby ) {
+            world.createAndScheduleBlockTick(pos, this, 40);
+        }
+        else if (world.isReceivingRedstonePower(pos)) {
+            activate(world, pos, true, pos);
+        }
     }
 
     @Override
