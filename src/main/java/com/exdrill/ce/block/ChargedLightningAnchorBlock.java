@@ -119,12 +119,6 @@ public class ChargedLightningAnchorBlock extends Block {
         activate(world, pos, false, pos);
     }
 
-    @Override
-    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
-        super.onPlaced(world, pos, state, placer, itemStack);
-
-        activate(world, pos, true, pos);
-    }
 
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
