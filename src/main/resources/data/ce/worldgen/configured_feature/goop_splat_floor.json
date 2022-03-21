@@ -4,7 +4,10 @@
     "direction": "up",
     "allowed_placement": {
       "type": "minecraft:matching_blocks",
-      "blocks": "minecraft:air"
+      "blocks": [
+        "minecraft:air",
+        "minecraft:water"
+      ]
     },
     "prioritize_tip": false,
     "layers": [

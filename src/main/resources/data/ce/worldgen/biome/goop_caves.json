@@ -25,7 +25,7 @@
     "monster": [
       {
         "type": "minecraft:spider",
-        "weight": 50,
+        "weight": 75,
         "minCount": 4,
         "maxCount": 4
       },
@@ -43,13 +43,13 @@
       },
       {
         "type": "minecraft:skeleton",
-        "weight": 50,
+        "weight": 100,
         "minCount": 4,
         "maxCount": 4
       },
       {
         "type": "minecraft:creeper",
-        "weight": 50,
+        "weight": 25,
         "minCount": 4,
         "maxCount": 4
       },
@@ -61,13 +61,13 @@
       },
       {
         "type": "minecraft:witch",
-        "weight": 100,
+        "weight": 10,
         "minCount": 1,
         "maxCount": 1
       },
       {
         "type": "ce:goop",
-        "weight": 5,
+        "weight": 50,
         "minCount": 1,
         "maxCount": 1
       }
