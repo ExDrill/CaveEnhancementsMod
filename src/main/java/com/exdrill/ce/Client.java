@@ -3,6 +3,7 @@ package com.exdrill.ce;
 import com.exdrill.ce.client.model.entity.CruncherRenderer;
 import com.exdrill.ce.client.model.entity.DripstoneTortoiseRenderer;
 import com.exdrill.ce.client.model.entity.GoopRenderer;
+import com.exdrill.ce.particle.RoseQuartzAura;
 import com.exdrill.ce.particle.Shockwave;
 import com.exdrill.ce.registry.ModBlocks;
 import com.exdrill.ce.registry.ModEntities;
@@ -14,6 +15,7 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.minecraft.client.particle.BlockLeakParticle;
+import net.minecraft.client.particle.TotemParticle;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.util.Identifier;
 
@@ -34,6 +36,12 @@ public class Client implements ClientModInitializer {
             registry.register(new Identifier(Main.NAMESPACE, "particle/shockwave"));
         }));
         ParticleFactoryRegistry.getInstance().register(ModParticles.SHOCKWAVE, Shockwave.Factory::new);
+
+        // Rose Quartz Aura Client Particle
+        ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {
+            registry.register(new Identifier(Main.NAMESPACE, "particle/rose_quartz_aura"));
+        }));
+        ParticleFactoryRegistry.getInstance().register(ModParticles.ROSE_QUARTZ_AURA, RoseQuartzAura.RoseQuartzFactory::new);
 
         // Entity Renderer Registry
         EntityRendererRegistry.register(ModEntities.GOOP, GoopRenderer::new);

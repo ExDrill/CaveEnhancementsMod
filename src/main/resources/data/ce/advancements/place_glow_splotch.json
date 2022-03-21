@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "ce:glow_paste"
+    },
+    "title": {
+      "translate": "advancements.adventure.place_glow_paste.title"
+    },
+    "description": {
+      "translate": "advancements.adventure.place_glow_paste.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "glow_splotch": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "block": "ce:glow_splotch"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "glow_splotch"
+    ]
+  ]
+}

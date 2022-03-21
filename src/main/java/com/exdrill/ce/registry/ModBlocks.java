@@ -25,10 +25,9 @@ public class ModBlocks {
     public static final GlowSplotchBlock GLOW_SPLOTCH = new GlowSplotchBlock(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).sounds(BlockSoundGroup.HONEY).nonOpaque().noCollision().luminance(8).mapColor(MapColor.PALE_YELLOW));
     public static final SpectacleCandleBlock SPECTACLE_CANDLE = new SpectacleCandleBlock(FabricBlockSettings.of(Material.DECORATION).sounds(BlockSoundGroup.CANDLE).luminance(CandleBlock.STATE_TO_LUMINANCE).strength(0.1F, 0F));
     public static final Block LIGHTNING_ANCHOR = new LightningAnchorBlock(FabricBlockSettings.of(Material.METAL).strength(4, 100).requiresTool().mapColor(MapColor.ORANGE).sounds(BlockSoundGroup.COPPER));
-    public static final Block CHARGED_LIGHTNING_ANCHOR = new ChargedLightningAnchorBlock(FabricBlockSettings.of(Material.METAL).strength(4, 100).requiresTool().mapColor(MapColor.ORANGE).sounds(BlockSoundGroup.COPPER).luminance((state) -> {
-        return 15;
-    }));
-
+    public static final Block CHARGED_LIGHTNING_ANCHOR = new ChargedLightningAnchorBlock(FabricBlockSettings.of(Material.METAL).strength(4, 100).requiresTool().mapColor(MapColor.ORANGE).sounds(BlockSoundGroup.COPPER).luminance((state) -> {return 15;}));
+    public static final Block ROSE_QUARTZ_BLOCK = new Block(FabricBlockSettings.of(Material.STONE).strength(0.8F, 10).requiresTool().mapColor(MapColor.PINK).sounds(BlockSoundGroup.CALCITE));
+    public static final JaggedRoseQuartzBlock JAGGED_ROSE_QUARTZ = new JaggedRoseQuartzBlock(FabricBlockSettings.of(Material.STONE).strength(0.8F, 10).requiresTool().mapColor(MapColor.PINK).noCollision().sounds(BlockSoundGroup.CALCITE));
     // Block Registry
     public static void registerBlocks() {
         Registry.register(Registry.BLOCK, new Identifier(Main.NAMESPACE, "goop_block"), GOOP_BLOCK);
@@ -39,14 +38,17 @@ public class ModBlocks {
         Registry.register(Registry.BLOCK, new Identifier(Main.NAMESPACE, "spectacle_candle"), SPECTACLE_CANDLE);
         Registry.register(Registry.BLOCK, new Identifier(Main.NAMESPACE, "lightning_anchor"), LIGHTNING_ANCHOR);
         Registry.register(Registry.BLOCK, new Identifier(Main.NAMESPACE, "charged_lightning_anchor"), CHARGED_LIGHTNING_ANCHOR);
+        Registry.register(Registry.BLOCK, new Identifier(Main.NAMESPACE, "rose_quartz_block"), ROSE_QUARTZ_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier(Main.NAMESPACE, "jagged_rose_quartz"), JAGGED_ROSE_QUARTZ);
     }
 
     // Block Render Type
     public static void TransparentBlocks() {
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GOOP_SPLAT, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DRIPPING_GOOP, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GLOW_SPLOTCH, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPECTACLE_CANDLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(GOOP_SPLAT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(DRIPPING_GOOP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(GLOW_SPLOTCH, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(SPECTACLE_CANDLE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JAGGED_ROSE_QUARTZ, RenderLayer.getCutout());
     }
 
     public static BlockEntityType<SpectacleCandleBlockEntity> SPECTACLE_CANDLE_BLOCK_ENTITY;

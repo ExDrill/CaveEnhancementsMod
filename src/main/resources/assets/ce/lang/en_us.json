@@ -12,7 +12,14 @@
   "block.ce.lightning_anchor": "Lightning Anchor",
   "block.ce.charged_lightning_anchor": "Charged Lightning Anchor",
   "block.ce.spectacle_candle": "Spectacle Candle",
+  "block.ce.rose_quartz_block": "Rose Quartz Block",
+  "block.ce.jagged_rose_quartz": "Jagged Rose Quartz",
+  "item.ce.rose_quartz": "Rose Quartz",
   "item.glow_paste.place": "Glow Splotch placed",
   "advancements.adventure.find_mountain_shrine.title": "The Copper Relic",
-  "advancements.adventure.find_mountain_shrine.description": "Find a Mountain Shrine in the Meadows."
+  "advancements.adventure.find_mountain_shrine.description": "Find the mountain shrine in the meadows.",
+  "advancements.adventure.spyglass_at_goop.title": "A Gooey Little Friend..?",
+  "advancements.adventure.spyglass_at_goop.description": "Look at a goop through a spyglass",
+  "advancements.adventure.place_glow_paste.title": "Not just one use...",
+  "advancements.adventure.place_glow_paste.description": "Light up an area using glow paste."
 }

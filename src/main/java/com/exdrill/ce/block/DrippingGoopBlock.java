@@ -41,7 +41,7 @@ public class DrippingGoopBlock extends Block implements Waterloggable {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
-        stateManager.add(HANGING).add(new Property[]{WATERLOGGED});
+        stateManager.add(HANGING).add(WATERLOGGED);
     }
 
     static {
