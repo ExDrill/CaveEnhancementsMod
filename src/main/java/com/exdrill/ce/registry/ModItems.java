@@ -1,7 +1,6 @@
 package com.exdrill.ce.registry;
 
 import com.exdrill.ce.Main;
-import com.exdrill.ce.item.AmethystFluteItem;
 import com.exdrill.ce.item.GlowPasteItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
