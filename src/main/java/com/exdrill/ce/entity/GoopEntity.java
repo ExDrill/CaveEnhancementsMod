@@ -16,13 +16,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
-import net.minecraft.world.LocalDifficulty;
-import net.minecraft.world.ServerWorldAccess;
-import net.minecraft.world.World;
+import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+
+import java.util.Random;
 
 
 public class GoopEntity extends MobEntity implements IAnimatable {
@@ -74,6 +74,27 @@ public class GoopEntity extends MobEntity implements IAnimatable {
     }
 
     public void pushAwayFrom(Entity entity) {
+    }
+
+    public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {
+        if (world.getLightLevel(LightType.SKY, pos) > random.nextInt(32)) {
+            return false;
+        } else if (world.getLightLevel(LightType.BLOCK, pos) > 0) {
+            return false;
+        } else {
+            int i = world.toServerWorld().isThundering() ? world.getLightLevel(pos, 10) : world.getLightLevel(pos);
+            return i <= random.nextInt(8);
+        }
+    }
+
+
+
+    public static boolean canSpawnInDark(EntityType<? extends MobEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+        return world.getDifficulty() != Difficulty.PEACEFUL && isSpawnDark(world, pos, random) && canMobSpawn(type, world, spawnReason, pos, random);
+    }
+
+    public static boolean canSpawnIgnoreLightLevel(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+        return world.getDifficulty() != Difficulty.PEACEFUL && canMobSpawn(type, world, spawnReason, pos, random);
     }
 
     public EntityData initialize(ServerWorldAccess serverWorld, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
