@@ -148,6 +148,8 @@
     [
       "minecraft:glow_lichen",
       "ce:ore_goop",
+      "ce:goop_splat_ceiling_feature",
+      "ce:goop_splat_floor_feature",
       "ce:dripping_goop_feature"
     ],
     [
