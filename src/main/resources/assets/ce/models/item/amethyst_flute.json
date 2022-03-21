@@ -1,5 +1,6 @@
 {
   "parent": "item/generated",
+  "model" : "ce:item/amethyst_flute_in_hand",
   "textures": {
     "layer0": "ce:items/amethyst_flute"
   }
