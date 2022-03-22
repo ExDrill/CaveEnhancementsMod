@@ -3,6 +3,7 @@ package com.exdrill.ce.registry;
 import com.exdrill.ce.Main;
 import com.exdrill.ce.item.AmethystFluteItem;
 import com.exdrill.ce.item.GlowPasteItem;
+import com.exdrill.ce.item.GoopBucketItem;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.sound.SoundEvents;
@@ -27,8 +28,7 @@ public class ModItems {
     public static final BlockItem ROSE_QUARTZ_BLOCK = new BlockItem(ModBlocks.ROSE_QUARTZ_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
     public static final BlockItem JAGGED_ROSE_QUARTZ = new BlockItem(ModBlocks.JAGGED_ROSE_QUARTZ, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
     public static final Item ROSE_QUARTZ = new Item(new Item.Settings().group(ItemGroup.MATERIALS));
-    public static final EntityBucketItem GOOP_BUCKET = new EntityBucketItem(ModEntities.GOOP, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new Item.Settings().group(ItemGroup.MISC).maxCount(1));
-
+    public static final GoopBucketItem GOOP_BUCKET = new GoopBucketItem(ModEntities.GOOP, Fluids.EMPTY, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new Item.Settings().group(ItemGroup.MISC).maxCount(1));
     //Registry
     public static void registerItems() {
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "goop"), GOOP);

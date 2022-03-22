@@ -6,37 +6,33 @@ import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 
-@Environment(EnvType.CLIENT)
-public class RoseQuartzAura extends AnimatedParticle {
-
-
-    RoseQuartzAura(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
+public class SmallGoopDrip extends AnimatedParticle {
+    SmallGoopDrip(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
         super(world, x, y, z, spriteProvider, 0.0F);
         this.velocityX = velocityX;
         this.velocityY = velocityY;
         this.velocityZ = velocityZ;
-        this.scale *= 0.5F;
-        this.collidesWithWorld = false;
-        this.gravityStrength = 0.0F;
+        this.scale *= 2F;
+        this.collidesWithWorld = true;
+        this.gravityStrength = 1F;
         this.maxAge = 60 + this.random.nextInt(12);
         this.setSpriteForAge(spriteProvider);
 
     }
 
     @Environment(EnvType.CLIENT)
-    public static class RoseQuartzFactory implements ParticleFactory<DefaultParticleType> {
+    public static class SmallGoopDripFactory implements ParticleFactory<DefaultParticleType> {
         private final SpriteProvider spriteProvider;
 
-        public RoseQuartzFactory(SpriteProvider spriteProvider) {
+        public SmallGoopDripFactory(SpriteProvider spriteProvider) {
             this.spriteProvider = spriteProvider;
         }
 
         public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
-            RoseQuartzAura glowParticle = new RoseQuartzAura(clientWorld, d, e, f, 0.0D, 0.0D, 0.0D, this.spriteProvider);
-            glowParticle.setVelocity(g * 0.25D / 2D, h * 3D, i * 0.25D / 2D);
+            SmallGoopDrip smallGoopDrip = new SmallGoopDrip(clientWorld, d, e, f, 0.0D, 0.0D, 0.0D, this.spriteProvider);
             boolean j = true;
             boolean k = true;
-            return glowParticle;
+            return smallGoopDrip;
         }
     }
 }

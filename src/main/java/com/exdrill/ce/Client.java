@@ -6,6 +6,7 @@ import com.exdrill.ce.client.model.entity.GoopRenderer;
 import com.exdrill.ce.entity.EntitySpawnPacket;
 import com.exdrill.ce.particle.RoseQuartzAura;
 import com.exdrill.ce.particle.Shockwave;
+import com.exdrill.ce.particle.SmallGoopDrip;
 import com.exdrill.ce.registry.ModBlocks;
 import com.exdrill.ce.registry.ModEntities;
 import com.exdrill.ce.registry.ModParticles;
@@ -39,7 +40,7 @@ public class Client implements ClientModInitializer {
         ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {
             registry.register(new Identifier(Main.NAMESPACE, "particle/small_goop_drip"));
         }));
-        ParticleFactoryRegistry.getInstance().register(ModParticles.SMALL_GOOP_DRIP, BlockLeakParticle.DrippingWaterFactory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.SMALL_GOOP_DRIP, SmallGoopDrip.SmallGoopDripFactory::new);
 
         // Shockwave Client Particle
         ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {

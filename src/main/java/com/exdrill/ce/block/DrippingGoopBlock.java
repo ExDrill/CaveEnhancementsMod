@@ -1,6 +1,7 @@
 package com.exdrill.ce.block;
 
 import com.exdrill.ce.registry.ModBlocks;
+import com.exdrill.ce.registry.ModParticles;
 import net.minecraft.block.*;
 import net.minecraft.block.Waterloggable;
 import net.minecraft.block.enums.RailShape;
@@ -99,8 +100,8 @@ public class DrippingGoopBlock extends Block implements Waterloggable {
             double e = (double)pos.getX() + 0.5D + vec3d.x;
             double f = (double)((float)(pos.getY() + 1) - 0.8F) - 0.0625D;
             double g = (double)pos.getZ() + 0.5D + vec3d.z;
-            ParticleEffect particleEffect = ParticleTypes.DRIPPING_HONEY;
-            world.addParticle(particleEffect, e, f, g, 0.0D, 0.0D, 0.0D);
+            ParticleEffect particleEffect = ModParticles.SMALL_GOOP_DRIP;
+            world.addParticle(particleEffect, e, f, g, 0.0D, -0.5D, 0.0D);
         }
     }
 
