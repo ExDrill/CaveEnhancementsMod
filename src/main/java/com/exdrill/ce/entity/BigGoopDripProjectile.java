@@ -6,6 +6,7 @@ import com.exdrill.ce.registry.ModEntities;
 import com.exdrill.ce.registry.ModItems;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -17,9 +18,11 @@ import net.minecraft.network.Packet;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
 public class BigGoopDripProjectile extends ThrownItemEntity {
@@ -38,13 +41,13 @@ public class BigGoopDripProjectile extends ThrownItemEntity {
     //Item projectile is rendered as
     @Override
     protected Item getDefaultItem() {
-        return ModItems.GOOP;
+        return ModItems.BIG_GOOP_DRIP;
     }
 
     //On hit particles
     @Environment(EnvType.CLIENT)
     private ParticleEffect getParticleParameters() {
-        return new ItemStackParticleEffect(ParticleTypes.ITEM, new ItemStack(ModItems.GOOP, 1));
+        return new ItemStackParticleEffect(ParticleTypes.ITEM, new ItemStack(ModItems.BIG_GOOP_DRIP, 1));
     }
 
     @Environment(EnvType.CLIENT)
@@ -76,7 +79,12 @@ public class BigGoopDripProjectile extends ThrownItemEntity {
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
         if (!this.world.isClient) {
+            double x = this.getX();
+            double y = this.getY();
+            double z = this.getZ();
+            BlockPos checkBlock = new BlockPos( x, y, z );
             if(!hitEntity) { //If Hit Block
+                if (world.getBlockState(checkBlock).isAir())
                 world.setBlockState(new BlockPos(getPos()), ModBlocks.GOOP_TRAP.getDefaultState());
             }
 

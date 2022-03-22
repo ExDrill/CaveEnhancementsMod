@@ -48,6 +48,7 @@ public class GoopBucketItem extends BucketItem {
         if (world instanceof ServerWorld) {
             this.spawnEntity((ServerWorld)world, stack, pos);
             world.emitGameEvent(player, GameEvent.ENTITY_PLACE, pos);
+            this.playEmptyingSound(null, world, pos);
         }
 
     }

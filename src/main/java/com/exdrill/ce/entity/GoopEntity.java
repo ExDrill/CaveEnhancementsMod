@@ -16,11 +16,11 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -145,21 +145,13 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
     }
 
     // Spawn Conditions
-    public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {
-        if (world.getLightLevel(LightType.SKY, pos) > random.nextInt(32)) {
-            return false;
-        } else if (world.getLightLevel(LightType.BLOCK, pos) > 0) {
-            return false;
-        } else {
-            int i = world.toServerWorld().isThundering() ? world.getLightLevel(pos, 10) : world.getLightLevel(pos);
-            return i <= random.nextInt(8);
-        }
+
+    public boolean canSpawn(WorldAccess world, SpawnReason spawnReason) {
+        return true;
     }
-    public static boolean canSpawnInDark(EntityType<? extends MobEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return world.getDifficulty() != Difficulty.PEACEFUL && isSpawnDark(world, pos, random) && canMobSpawn(type, world, spawnReason, pos, random);
-    }
-    public static boolean canSpawnIgnoreLightLevel(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return world.getDifficulty() != Difficulty.PEACEFUL && canMobSpawn(type, world, spawnReason, pos, random);
+
+    public boolean canSpawn(WorldView world) {
+        return !world.containsFluid(this.getBoundingBox()) && world.doesNotIntersectEntities(this);
     }
 
     // Bucket Components

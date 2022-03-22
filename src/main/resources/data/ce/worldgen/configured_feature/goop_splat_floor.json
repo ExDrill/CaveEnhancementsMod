@@ -20,10 +20,10 @@
             "Properties": {
               "down": "true",
               "up": "false",
-              "north": false,
-              "south": false,
+              "north": "false",
+              "south": "false",
               "west": "false",
-              "east": false
+              "east": "false"
             }
           }
         }

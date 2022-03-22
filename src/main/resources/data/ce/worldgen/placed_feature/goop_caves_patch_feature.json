@@ -1,9 +1,9 @@
 {
-  "feature": "ce:goop_splat_floor",
+  "feature": "ce:goop_patch",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 150
+      "count": 125
     },
     {
       "type": "minecraft:in_square"
@@ -25,8 +25,7 @@
       "direction_of_search": "down",
       "max_steps": 12,
       "target_condition": {
-        "type": "minecraft:has_sturdy_face",
-        "direction": "up"
+        "type": "minecraft:solid"
       },
       "allowed_search_condition": {
         "type": "minecraft:matching_blocks",

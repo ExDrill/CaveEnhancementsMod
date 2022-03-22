@@ -67,7 +67,7 @@
       },
       {
         "type": "ce:goop",
-        "weight": 50,
+        "weight": 25,
         "minCount": 1,
         "maxCount": 1
       }
@@ -148,6 +148,7 @@
     [
       "minecraft:glow_lichen",
       "ce:ore_goop",
+      "ce:goop_caves_patch_feature",
       "ce:goop_splat_ceiling_feature",
       "ce:goop_splat_floor_feature",
       "ce:dripping_goop_feature"

@@ -29,6 +29,8 @@ public class ModItems {
     public static final BlockItem JAGGED_ROSE_QUARTZ = new BlockItem(ModBlocks.JAGGED_ROSE_QUARTZ, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
     public static final Item ROSE_QUARTZ = new Item(new Item.Settings().group(ItemGroup.MATERIALS));
     public static final GoopBucketItem GOOP_BUCKET = new GoopBucketItem(ModEntities.GOOP, Fluids.EMPTY, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new Item.Settings().group(ItemGroup.MISC).maxCount(1));
+    public static final Item BIG_GOOP_DRIP = new Item(new Item.Settings());
+
     //Registry
     public static void registerItems() {
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "goop"), GOOP);
@@ -47,6 +49,7 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "jagged_rose_quartz"), JAGGED_ROSE_QUARTZ);
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "rose_quartz"), ROSE_QUARTZ);
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "goop_bucket"), GOOP_BUCKET);
+        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "big_goop_drip"), BIG_GOOP_DRIP);
     }
 
 }
