@@ -34,6 +34,11 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable {
     private AnimationFactory factory = new AnimationFactory(this);
 
     @Override
+    public boolean canBeLeashedBy(PlayerEntity player) {
+        return super.canBeLeashedBy(player);
+    }
+
+    @Override
     public AnimationFactory getFactory() {
         return this.factory;
     }

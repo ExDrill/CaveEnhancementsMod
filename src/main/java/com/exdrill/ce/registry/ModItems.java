@@ -3,10 +3,9 @@ package com.exdrill.ce.registry;
 import com.exdrill.ce.Main;
 import com.exdrill.ce.item.AmethystFluteItem;
 import com.exdrill.ce.item.GlowPasteItem;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.SpawnEggItem;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.item.*;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -28,6 +27,7 @@ public class ModItems {
     public static final BlockItem ROSE_QUARTZ_BLOCK = new BlockItem(ModBlocks.ROSE_QUARTZ_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
     public static final BlockItem JAGGED_ROSE_QUARTZ = new BlockItem(ModBlocks.JAGGED_ROSE_QUARTZ, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
     public static final Item ROSE_QUARTZ = new Item(new Item.Settings().group(ItemGroup.MATERIALS));
+    public static final EntityBucketItem GOOP_BUCKET = new EntityBucketItem(ModEntities.GOOP, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new Item.Settings().group(ItemGroup.MISC).maxCount(1));
 
     //Registry
     public static void registerItems() {
@@ -46,6 +46,7 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "rose_quartz_block"), ROSE_QUARTZ_BLOCK);
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "jagged_rose_quartz"), JAGGED_ROSE_QUARTZ);
         Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "rose_quartz"), ROSE_QUARTZ);
+        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "goop_bucket"), GOOP_BUCKET);
     }
 
 }
