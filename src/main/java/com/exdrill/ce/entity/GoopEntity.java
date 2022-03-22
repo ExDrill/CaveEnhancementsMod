@@ -28,10 +28,10 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.Random;
 public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketable {
-    private static final TrackedData<Boolean> FROM_BUCKET;
-    private static final TrackedData<Boolean> STICKING_UP;
+    private static final TrackedData<Boolean> FROM_BUCKET = DataTracker.registerData(GoopEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    private static final TrackedData<Boolean> STICKING_UP = DataTracker.registerData(GoopEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+
     public ServerWorld world;
-    private boolean stickingUp;
 
     public GoopEntity(EntityType<? extends GoopEntity> entityType, World world) {
         super(entityType, world);
@@ -80,15 +80,22 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
     }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
+        System.out.println("WRITING NBT");
+        System.out.println(this.isStickingUp());
+
         super.writeCustomDataToNbt(nbt);
         nbt.putBoolean("FromBucket", this.isFromBucket());
-        nbt.putBoolean("StickingUp", this.stickingUp());
+        nbt.putBoolean("StickingUp", this.isStickingUp());
     }
 
     public void readCustomDataFromNbt(NbtCompound nbt) {
-        super.readCustomDataFromNbt(nbt);;
+        super.readCustomDataFromNbt(nbt);
         this.setFromBucket(nbt.getBoolean("FromBucket"));
-        this.stickingUp();
+
+        System.out.println("READING NBT");
+        System.out.println(nbt.getBoolean("StickingUp"));
+
+        setStickingUp(nbt.getBoolean("StickingUp"));
     }
 
     public void copyDataToStack(ItemStack stack) {
@@ -99,20 +106,25 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
     @Override
     public void copyDataFromNbt(NbtCompound nbt) {
         CustomBucketable.copyDataFromNbt(this, nbt);
+
         if (nbt.contains("StickingUp")) {
-            this.stickingUp();
+            this.isStickingUp();
         }
     }
 
     public boolean isFromBucket() {
         return (Boolean)this.dataTracker.get(FROM_BUCKET);
     }
-    public boolean stickingUp() {
+    public boolean isStickingUp() {
         return (Boolean)this.dataTracker.get(STICKING_UP);
     }
 
     public void setFromBucket(boolean fromBucket) {
         this.dataTracker.set(FROM_BUCKET, fromBucket);
+    }
+
+    public void setStickingUp(boolean stickingUp) {
+        this.dataTracker.set(STICKING_UP, stickingUp);
     }
 
     // Components
@@ -180,8 +192,9 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
         BlockPos blockUpPos = new BlockPos(x, y + 1, z);
         if (spawnReason != SpawnReason.NATURAL) {
             System.out.println("ARTIFICIAL");
+
             if (serverWorld.getBlockState(blockUpPos).isSolidSurface(world, blockUpPos, this, Direction.DOWN)) {
-                stickingUp = true;
+                setStickingUp(true);
             }
         }
         if (spawnReason == SpawnReason.NATURAL) {
@@ -202,7 +215,9 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
                 }
                 System.out.println(y);
             }
-            stickingUp = true;
+
+
+            setStickingUp(true);
         }
         if (spawnReason == SpawnReason.BUCKET) {
             System.out.println("BUCKET");
@@ -215,8 +230,9 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
     public void tick() {
         super.tick();
     }
+
     public void tickMovement() {
-        if(stickingUp) {
+        if(isStickingUp()) {
             this.setVelocity(this.getVelocity().multiply(0D, 0D, 0D));
             if(world != null){
                 double x = this.getX();
@@ -226,17 +242,10 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
                 BlockPos blockUpPos = new BlockPos(x, y + 1, z);
 
                 if(!world.getBlockState(blockUpPos).isSolidSurface(world, blockUpPos, this, Direction.DOWN)){
-                    stickingUp = false;
+                    //setStickingUp(false);
                 }
             }
         }
         super.tickMovement();
-    }
-
-
-    // Nbt Registry
-    static {
-        FROM_BUCKET = DataTracker.registerData(GoopEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-        STICKING_UP = DataTracker.registerData(GoopEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 }
