@@ -1,5 +1,6 @@
 package com.exdrill.ce.entity;
 
+import com.exdrill.ce.Client;
 import com.exdrill.ce.registry.ModItems;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -13,6 +14,7 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.Packet;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -196,6 +198,12 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
             if (serverWorld.getBlockState(blockUpPos).isSolidSurface(world, blockUpPos, this, Direction.DOWN)) {
                 setStickingUp(true);
             }
+
+            BigGoopDripProjectile bigGoopDripEntity = new BigGoopDripProjectile(world, x, y, z);
+
+            bigGoopDripEntity.setVelocity(0D, 1D, 0D);
+
+            world.spawnEntity(bigGoopDripEntity);
         }
         if (spawnReason == SpawnReason.NATURAL) {
             System.out.println("NATURAL");
@@ -252,5 +260,10 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
             }
         }
         super.tickMovement();
+    }
+
+    @Override
+    public Packet<?> createSpawnPacket() {
+        return EntitySpawnPacket.create(this, Client.PacketID);
     }
 }

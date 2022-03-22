@@ -1,6 +1,7 @@
 package com.exdrill.ce.registry;
 
 import com.exdrill.ce.Main;
+import com.exdrill.ce.entity.BigGoopDripProjectile;
 import com.exdrill.ce.entity.CruncherEntity;
 import com.exdrill.ce.entity.DripstoneTortoiseEntity;
 import com.exdrill.ce.entity.GoopEntity;
@@ -35,6 +36,15 @@ public class ModEntities {
             new Identifier(Main.NAMESPACE, "dripstone_tortoise"),
             FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, DripstoneTortoiseEntity::new)
                     .dimensions(EntityDimensions.fixed(1.3F, 0.8F))
+                    .build()
+    );
+
+    public static final EntityType<BigGoopDripProjectile> BIG_GOOP_DRIP_PROJECTILE_ENTITY = Registry.register(
+            Registry.ENTITY_TYPE,
+            new Identifier(Main.NAMESPACE, "big_goop_drip"),
+            FabricEntityTypeBuilder.<BigGoopDripProjectile>create(SpawnGroup.MISC, BigGoopDripProjectile::new)
+                    .dimensions(EntityDimensions.fixed(0.25F, 0.25F)) // dimensions in Minecraft units of the projectile
+                    .trackRangeBlocks(4).trackedUpdateRate(10) // necessary for all thrown projectiles (as it prevents it from breaking, lol)
                     .build()
     );
 
