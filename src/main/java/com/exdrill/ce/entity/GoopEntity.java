@@ -258,9 +258,4 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
         }
         super.tickMovement();
     }
-
-    @Override
-    public Packet<?> createSpawnPacket() {
-        return EntitySpawnPacket.create(this, Client.PacketID);
-    }
 }
