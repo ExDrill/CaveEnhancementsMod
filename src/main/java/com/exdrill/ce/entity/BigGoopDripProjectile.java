@@ -84,7 +84,7 @@ public class BigGoopDripProjectile extends ThrownItemEntity {
             double z = this.getZ();
             BlockPos checkBlock = new BlockPos( x, y, z );
             if(!hitEntity) { //If Hit Block
-                if (world.getBlockState(checkBlock).isAir())
+                if (world.getBlockState(checkBlock).isOf(Blocks.AIR))
                 world.setBlockState(new BlockPos(getPos()), ModBlocks.GOOP_TRAP.getDefaultState());
             }
 
