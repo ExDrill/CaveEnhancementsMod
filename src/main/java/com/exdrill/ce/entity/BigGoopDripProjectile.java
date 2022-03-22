@@ -1,7 +1,9 @@
 package com.exdrill.ce.entity;
 
 import com.exdrill.ce.Main;
+import com.exdrill.ce.registry.ModBlocks;
 import com.exdrill.ce.registry.ModEntities;
+import com.exdrill.ce.registry.ModItems;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.Entity;
@@ -21,6 +23,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BigGoopDripProjectile extends ThrownItemEntity {
@@ -38,17 +41,16 @@ public class BigGoopDripProjectile extends ThrownItemEntity {
 
     @Override
     protected Item getDefaultItem() {
-        return null; // We will configure this later, once we have created the ProjectileItem.
+        return ModItems.GOOP;
     }
 
     @Environment(EnvType.CLIENT)
-    private ParticleEffect getParticleParameters() { // Not entirely sure, but probably has do to with the snowball's particles. (OPTIONAL)
-        ItemStack itemStack = this.getItem();
-        return (ParticleEffect)(itemStack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack));
+    private ParticleEffect getParticleParameters() {
+        return new ItemStackParticleEffect(ParticleTypes.ITEM, new ItemStack(ModItems.GOOP, 1));
     }
 
     @Environment(EnvType.CLIENT)
-    public void handleStatus(byte status) { // Also not entirely sure, but probably also has to do with the particles. This method (as well as the previous one) are optional, so if you don't understand, don't include this one.
+    public void handleStatus(byte status) {
         if (status == 3) {
             ParticleEffect particleEffect = this.getParticleParameters();
 
@@ -59,26 +61,28 @@ public class BigGoopDripProjectile extends ThrownItemEntity {
 
     }
 
-    protected void onEntityHit(EntityHitResult entityHitResult) { // called on entity hit.
-        super.onEntityHit(entityHitResult);
-        Entity entity = entityHitResult.getEntity(); // sets a new Entity instance as the EntityHitResult (victim)
-        int i = entity instanceof BlazeEntity ? 3 : 0; // sets i to 3 if the Entity instance is an instance of BlazeEntity
-        entity.damage(DamageSource.thrownProjectile(this, this.getOwner()), (float)i); // deals damage
+    public boolean hitEntity = false;
 
-        if (entity instanceof LivingEntity livingEntity) { // checks if entity is an instance of LivingEntity (meaning it is not a boat or minecart)
-            livingEntity.addStatusEffect((new StatusEffectInstance(StatusEffects.BLINDNESS, 20 * 3, 0))); // applies a status effect
-            livingEntity.addStatusEffect((new StatusEffectInstance(StatusEffects.SLOWNESS, 20 * 3, 2))); // applies a status effect
-            livingEntity.addStatusEffect((new StatusEffectInstance(StatusEffects.POISON, 20 * 3, 1))); // applies a status effect
-            livingEntity.playSound(SoundEvents.AMBIENT_CAVE, 2F, 1F); // plays a sound for the entity hit only
-        }
+    protected void onEntityHit(EntityHitResult entityHitResult) {
+        super.onEntityHit(entityHitResult);
+
+        Entity entity = entityHitResult.getEntity();
+
+        entity.damage(DamageSource.GENERIC, 3F);
+
+        hitEntity = true;
     }
 
-    protected void onCollision(HitResult hitResult) { // called on collision with a block
+    protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
-        if (!this.world.isClient) { // checks if the world is client
-            this.world.sendEntityStatus(this, (byte)3); // particle?
-            this.kill(); // kills the projectile
-        }
+        if (!this.world.isClient) {
+            if(!hitEntity) {
+                world.setBlockState(new BlockPos(getPos()), ModBlocks.GOOP_TRAP.getDefaultState());
+            }
 
+            this.world.sendEntityStatus(this, (byte)3);
+
+            this.kill();
+        }
     }
 }

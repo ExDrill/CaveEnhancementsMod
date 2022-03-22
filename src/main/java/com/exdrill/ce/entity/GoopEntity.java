@@ -200,9 +200,6 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
             }
 
             BigGoopDripProjectile bigGoopDripEntity = new BigGoopDripProjectile(world, x, y, z);
-
-            bigGoopDripEntity.setVelocity(0D, 1D, 0D);
-
             world.spawnEntity(bigGoopDripEntity);
         }
         if (spawnReason == SpawnReason.NATURAL) {
