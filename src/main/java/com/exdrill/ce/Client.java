@@ -62,6 +62,7 @@ public class Client implements ClientModInitializer {
         receiveEntityPacket();
     }
 
+    //For spawning projectiles
     public static final Identifier PacketID = new Identifier(Main.NAMESPACE, "spawn_packet");
 
     public void receiveEntityPacket() {

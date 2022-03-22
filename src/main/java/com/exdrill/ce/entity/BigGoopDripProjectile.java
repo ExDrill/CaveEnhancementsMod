@@ -35,11 +35,13 @@ public class BigGoopDripProjectile extends ThrownItemEntity {
         super(ModEntities.BIG_GOOP_DRIP_PROJECTILE_ENTITY, x, y, z, world); // null will be changed later
     }
 
+    //Item projectile is rendered as
     @Override
     protected Item getDefaultItem() {
         return ModItems.GOOP;
     }
 
+    //On hit particles
     @Environment(EnvType.CLIENT)
     private ParticleEffect getParticleParameters() {
         return new ItemStackParticleEffect(ParticleTypes.ITEM, new ItemStack(ModItems.GOOP, 1));
@@ -59,6 +61,7 @@ public class BigGoopDripProjectile extends ThrownItemEntity {
 
     public boolean hitEntity = false;
 
+    //When Hit Entity
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
 
@@ -69,10 +72,11 @@ public class BigGoopDripProjectile extends ThrownItemEntity {
         hitEntity = true;
     }
 
+    //Generic Hit (Has block hit inside)
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
         if (!this.world.isClient) {
-            if(!hitEntity) {
+            if(!hitEntity) { //If Hit Block
                 world.setBlockState(new BlockPos(getPos()), ModBlocks.GOOP_TRAP.getDefaultState());
             }
 
@@ -82,6 +86,7 @@ public class BigGoopDripProjectile extends ThrownItemEntity {
         }
     }
 
+    //Spawn Packet For Less Lag
     @Override
     public Packet<?> createSpawnPacket() {
         return EntitySpawnPacket.create(this, Client.PacketID);

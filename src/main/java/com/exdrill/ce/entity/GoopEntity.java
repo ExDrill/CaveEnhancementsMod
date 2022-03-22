@@ -183,7 +183,7 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
         return !this.isFromBucket() && !this.hasCustomName();
     }
 
-    // Initialize
+    //Spawn Event
     public EntityData initialize(ServerWorldAccess serverWorld, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
         world = serverWorld.toServerWorld();
         double x = this.getX();
@@ -227,6 +227,7 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
         return super.initialize(serverWorld, difficulty, spawnReason, entityData, entityNbt);
     }
 
+    //Tick for checking if sticking up
     public void tickMovement() {
         if(!getEntityWorld().isClient()){
             if(isStickingUp()) {
@@ -252,6 +253,7 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
 
     public int dripCooldown = 6;
 
+    //Tick For Spawning Drip
     public void mobTick() {
        dripCooldown--;
 
@@ -266,6 +268,7 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
         super.mobTick();
     }
 
+    //Spawn Drip Entity
     public void drip(){
         if(world != null) {
             double x = this.getX();
