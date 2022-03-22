@@ -1,6 +1,5 @@
 package com.exdrill.ce.entity;
 
-import com.exdrill.ce.Client;
 import com.exdrill.ce.registry.ModItems;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -14,7 +13,6 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.Packet;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -22,6 +20,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -198,9 +197,6 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
             if (serverWorld.getBlockState(blockUpPos).isSolidSurface(world, blockUpPos, this, Direction.DOWN)) {
                 setStickingUp(true);
             }
-
-            BigGoopDripProjectile bigGoopDripEntity = new BigGoopDripProjectile(world, x, y, z);
-            world.spawnEntity(bigGoopDripEntity);
         }
         if (spawnReason == SpawnReason.NATURAL) {
             System.out.println("NATURAL");
@@ -231,11 +227,6 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
         return super.initialize(serverWorld, difficulty, spawnReason, entityData, entityNbt);
     }
 
-    // Ticking
-    public void tick() {
-        super.tick();
-    }
-
     public void tickMovement() {
         if(!getEntityWorld().isClient()){
             if(isStickingUp()) {
@@ -257,5 +248,32 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
             }
         }
         super.tickMovement();
+    }
+
+    public int dripCooldown = 6;
+
+    public void mobTick() {
+       dripCooldown--;
+
+       if(dripCooldown <= 0){
+           dripCooldown = 6;
+
+           if(getRandom().nextInt(1, 100) == 1) {
+               drip();
+           }
+       }
+
+        super.mobTick();
+    }
+
+    public void drip(){
+        if(world != null) {
+            double x = this.getX();
+            double y = this.getY();
+            double z = this.getZ();
+
+            BigGoopDripProjectile bigGoopDripEntity = new BigGoopDripProjectile(world, x, y, z);
+            world.spawnEntity(bigGoopDripEntity);
+        }
     }
 }
