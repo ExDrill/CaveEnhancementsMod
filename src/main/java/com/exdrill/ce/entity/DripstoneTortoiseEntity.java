@@ -52,6 +52,16 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.6);
     }
 
+    @Override
+    public boolean canBeLeashedBy(PlayerEntity player) {
+        return false;
+    }
+
+    @Override
+    protected void pushOutOfBlocks(double x, double y, double z) {
+        super.pushOutOfBlocks(x, y, z);
+    }
+
     private <E extends IAnimatable> PlayState isWalking(AnimationEvent<E> event) {
         if (event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.dripstone_tortoise.walk", true));

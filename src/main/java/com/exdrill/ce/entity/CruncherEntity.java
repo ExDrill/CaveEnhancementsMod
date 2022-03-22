@@ -10,6 +10,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -38,6 +39,8 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable {
         return super.canBeLeashedBy(player);
     }
 
+
+
     @Override
     public AnimationFactory getFactory() {
         return this.factory;
@@ -59,6 +62,10 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable {
         }
     }
 
+    public Vec3d getLeashOffset() {
+        return new Vec3d(0.0D, (double)(0.6F * this.getStandingEyeHeight()), (double)(this.getWidth() * 0.4F));
+    }
+
 
     public static DefaultAttributeContainer.Builder createCruncherAttributes() {
         return HostileEntity.createMobAttributes()
@@ -67,6 +74,6 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable {
     }
 
     static {
-        TEMPTING_ITEMS = Ingredient.ofItems(new ItemConvertible[]{Items.GLOW_BERRIES});
+        TEMPTING_ITEMS = Ingredient.ofItems(Items.GLOW_BERRIES);
     }
 }
