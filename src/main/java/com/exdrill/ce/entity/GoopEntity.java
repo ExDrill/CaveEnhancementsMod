@@ -232,17 +232,22 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
     }
 
     public void tickMovement() {
-        if(isStickingUp()) {
-            this.setVelocity(this.getVelocity().multiply(0D, 0D, 0D));
-            if(world != null){
-                double x = this.getX();
-                double y = this.getY();
-                double z = this.getZ();
+        if(!getEntityWorld().isClient()){
+            if(isStickingUp()) {
+                this.setVelocity(this.getVelocity().multiply(0D, 0D, 0D));
 
-                BlockPos blockUpPos = new BlockPos(x, y + 1, z);
+                if(world != null){
+                    double x = this.getX();
+                    double y = this.getY();
+                    double z = this.getZ();
 
-                if(!world.getBlockState(blockUpPos).isSolidSurface(world, blockUpPos, this, Direction.DOWN)){
-                    //setStickingUp(false);
+                    BlockPos blockUpPos = new BlockPos(x, y + 1, z);
+
+                    if(!world.getBlockState(blockUpPos).isSolidSurface(world, blockUpPos, this, Direction.DOWN)){
+                        setStickingUp(false);
+                    }
+                }else{
+                    world = getServer().getWorld(getEntityWorld().getRegistryKey());
                 }
             }
         }
