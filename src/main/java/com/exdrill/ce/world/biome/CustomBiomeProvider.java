@@ -24,9 +24,12 @@ public class CustomBiomeProvider extends Region {
     }
 
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
-        Set<RegistryKey<Biome>> replaced = new HashSet<>();
         this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
-            builder.replaceBiome(BiomeKeys.LUSH_CAVES, ModBiomes.GOOP_CAVES_KEY);
+            builder.replaceBiome(BiomeKeys.DRIPSTONE_CAVES, ModBiomes.GOOP_CAVES_KEY);
         });
+
+        //this.addBiome(mapper, MultiNoiseUtil.createNoiseHypercube(1.0F, 1F, 0.4F, 1, 1, 1, 1), ModBiomes.GOOP_CAVES_KEY);
+
+
     }
 }
