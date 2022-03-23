@@ -1,7 +1,59 @@
 {
-  "parent": "item/generated",
-  "model" : "ce:item/amethyst_flute_in_hand",
-  "textures": {
-    "layer0": "ce:items/amethyst_flute"
-  }
+	"credit": "Made with Blockbench",
+	"texture_size": [64, 64],
+	"textures": {
+		"0": "ce:entity/amethyst_flute"
+	},
+	"elements": [
+		{
+			"name": "flute",
+			"from": [-1.5, 0, -8],
+			"to": [1.5, 3, 8],
+			"faces": {
+				"north": {"uv": [4, 4, 4.75, 4.75], "texture": "#0"},
+				"east": {"uv": [0, 4, 4, 4.75], "texture": "#0"},
+				"south": {"uv": [8.75, 4, 9.5, 4.75], "texture": "#0"},
+				"west": {"uv": [4.75, 4, 8.75, 4.75], "texture": "#0"},
+				"up": {"uv": [4.75, 4, 4, 0], "texture": "#0"},
+				"down": {"uv": [5.5, 0, 4.75, 4], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [63, 91, 7],
+			"translation": [9.25, 9.25, 2]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [78, -86, 6],
+			"translation": [-23, 8.75, 2.75]
+		},
+		"firstperson_righthand": {
+			"translation": [15, 3, 0],
+			"scale": [1.15, 1.15, 1.15]
+		},
+		"firstperson_lefthand": {
+			"translation": [-1, 2, -1],
+			"scale": [1.15, 1.15, 1.15]
+		},
+		"ground": {
+			"translation": [0, 3.5, 0]
+		},
+		"gui": {
+			"rotation": [35, 72, 109],
+			"translation": [4.75, -2.75, 1.25]
+		},
+		"fixed": {
+			"rotation": [0, 90, 0],
+			"translation": [8, 7, -9.5]
+		}
+	},
+	"groups": [
+		{
+			"name": "flute",
+			"origin": [0, 1.5, 0],
+			"color": 0,
+			"children": [0]
+		}
+	]
 }

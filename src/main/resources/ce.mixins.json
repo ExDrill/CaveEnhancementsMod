@@ -6,7 +6,9 @@
   "mixins": [
     "GlowPasteBansUnbreaking",
     "GlowPasteBansMending",
-    "GoopBrewingRecipe"
+    "GoopBrewingRecipe",
+    "AmethystFluteFleePhantom",
+    "AmethystFluteFleeCreeper"
   ],
   "client": [],
   "injectors": {
