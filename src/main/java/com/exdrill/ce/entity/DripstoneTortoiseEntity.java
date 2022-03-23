@@ -1,6 +1,7 @@
 package com.exdrill.ce.entity;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.ai.goal.WanderAroundFarGoal;
@@ -11,6 +12,8 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -41,6 +44,14 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
         this.goalSelector.add(5, new WanderAroundGoal(this, 1.5D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8F));
         this.goalSelector.add(6, new LookAroundGoal(this));
+    }
+
+    public boolean canSpawn(WorldAccess world, SpawnReason spawnReason) {
+        return true;
+    }
+
+    public boolean canSpawn(WorldView world) {
+        return !world.containsFluid(this.getBoundingBox()) && world.doesNotIntersectEntities(this);
     }
 
     public static DefaultAttributeContainer.Builder createDripstoneTortoiseAttributes() {

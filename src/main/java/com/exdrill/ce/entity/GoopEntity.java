@@ -262,7 +262,7 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
 
     //Spawn Drip Entity
     public void drip(){
-        if(world != null) {
+        if(this.isStickingUp()) {
             double x = this.getX();
             double y = this.getY();
             double z = this.getZ();

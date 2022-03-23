@@ -19,7 +19,7 @@ public class ModEntities {
             Registry.ENTITY_TYPE,
             new Identifier(Main.NAMESPACE, "goop"),
             FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, GoopEntity::new)
-                    .dimensions(EntityDimensions.fixed(0.6f, 0.6f))
+                    .dimensions(EntityDimensions.fixed(0.6f, 0.9f))
                     .build()
     );
 

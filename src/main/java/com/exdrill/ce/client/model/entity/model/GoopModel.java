@@ -1,9 +1,14 @@
 package com.exdrill.ce.client.model.entity.model;
 
+import com.exdrill.ce.entity.CruncherEntity;
 import com.exdrill.ce.entity.DripstoneTortoiseEntity;
 import com.exdrill.ce.entity.GoopEntity;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 public class GoopModel extends AnimatedGeoModel<GoopEntity>
 {
@@ -22,5 +27,17 @@ public class GoopModel extends AnimatedGeoModel<GoopEntity>
     @Override
     public Identifier getAnimationFileLocation(GoopEntity animatable) {
         return new Identifier("ce", "animations/goop.animation.json");
+    }
+
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @Override
+    public void setLivingAnimations(GoopEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+        super.setLivingAnimations(entity, uniqueID, customPredicate);
+        IBone goop = this.getAnimationProcessor().getBone("goop");
+        EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
+        if (entity.isStickingUp()) {
+            goop.setRotationX(267.05F);
+            goop.setPositionY(-1F);
+        }
     }
 }
