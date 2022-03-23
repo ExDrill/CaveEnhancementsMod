@@ -243,14 +243,14 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
         super.tickMovement();
     }
 
-    public int dripCooldown = 6;
+    public int dripCooldown = 12;
 
     //Tick For Spawning Drip
     public void mobTick() {
        dripCooldown--;
 
        if(dripCooldown <= 0){
-           dripCooldown = 6;
+           dripCooldown = 12;
 
            if(getRandom().nextInt(1, 100) == 1) {
                drip();
