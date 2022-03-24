@@ -22,13 +22,13 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.exdrill.ce.Main"
+      "com.exdrill.ce.CaveEnhancements"
     ],
     "client": [
-      "com.exdrill.ce.Client"
+      "com.exdrill.ce.CaveEnhancementsClient"
     ],
     "terrablender": [
-      "com.exdrill.ce.Main"
+      "com.exdrill.ce.CaveEnhancements"
     ]
   },
   "mixins": [

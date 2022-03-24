@@ -1,9 +1,13 @@
-# Fabric Example Mod
+# Cave Enhancements!
 
-## Setup
+## Description
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+Cave Enhancements is a mod for Fabric that expands upon the Caves and Cliffs update by adding new exciting utility items, mobs, blocks, biomes, etc.
 
-## License
+## Other
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+This mod needs [Terrablender](https://github.com/Glitchfiend/TerraBlender) and [GeckoLib](https://github.com/bernie-g/geckolib) to function properly!
+
+There are no current plans for a Forge port, please do not ask :)
+
+
