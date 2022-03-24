@@ -39,5 +39,11 @@ public class GoopModel extends AnimatedGeoModel<GoopEntity>
             goop.setRotationX(267.05F);
             goop.setPositionY(-1F);
         }
+
+        if (entity.isInvisible()) {
+            goop.setScaleX(0F);
+            goop.setScaleY(0F);
+            goop.setScaleZ(0F);
+        }
     }
 }

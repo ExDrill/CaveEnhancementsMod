@@ -13,6 +13,7 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.scoreboard.AbstractTeam;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -143,6 +144,8 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
 
     public void pushAwayFrom(Entity entity) {
     }
+
+
 
     // Spawn Conditions
 
