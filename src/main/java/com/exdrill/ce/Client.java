@@ -7,6 +7,7 @@ import com.exdrill.ce.entity.EntitySpawnPacket;
 import com.exdrill.ce.particle.RoseQuartzAura;
 import com.exdrill.ce.particle.Shockwave;
 import com.exdrill.ce.particle.SmallGoopDrip;
+import com.exdrill.ce.particle.SoothingNote;
 import com.exdrill.ce.registry.ModBlocks;
 import com.exdrill.ce.registry.ModEntities;
 import com.exdrill.ce.registry.ModParticles;
@@ -51,6 +52,12 @@ public class Client implements ClientModInitializer {
             registry.register(new Identifier(Main.NAMESPACE, "particle/rose_quartz_aura"));
         }));
         ParticleFactoryRegistry.getInstance().register(ModParticles.ROSE_QUARTZ_AURA, RoseQuartzAura.RoseQuartzFactory::new);
+
+        // Soothing Note Client Particle
+        ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {
+            registry.register(new Identifier(Main.NAMESPACE, "particle/soothing_note"));
+        }));
+        ParticleFactoryRegistry.getInstance().register(ModParticles.SOOTHINGNOTE, SoothingNote.SoothingNoteFactory::new);
 
         // Entity Renderer Registry
         EntityRendererRegistry.register(ModEntities.GOOP, GoopRenderer::new);
