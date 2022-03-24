@@ -74,7 +74,11 @@ public class ChargedLightningAnchorBlock extends Block {
     private void activate(World world, BlockPos pos, boolean interact, BlockPos fromPos){
         if(world.isClient) return;
 
+        System.out.println("ACTIVATED");
+
         boolean powered = isPowered(world, pos);
+
+        System.out.println(powered);
 
         if((powered || interact)) {
 
@@ -93,35 +97,53 @@ public class ChargedLightningAnchorBlock extends Block {
             world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0F, 1.0F);
 
             ((ServerWorld)world).spawnParticles(ModParticles.SHOCKWAVE, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 1, 0, 0, 0, 1);
+
+            System.out.println("WENT OFF");
         }
     }
 
-    @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         activate(world, pos, true, pos);
 
         return ActionResult.SUCCESS;
     }
 
-    @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
         activate(world, pos, false, fromPos);
     }
 
-    @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         activate(world, pos, false, pos);
     }
 
-    @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        System.out.println("SCHEDULED TICK");
+
         activate(world, pos, false, pos);
     }
 
-
-    @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
+        System.out.println("ADDED");
+
         activate(world, pos, false, pos);
+
+        world.createAndScheduleBlockTick(pos, this, 2);
+    }
+
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        System.out.println("PLACED");
+
+        activate(world, pos, false, pos);
+
+        world.createAndScheduleBlockTick(pos, this, 2);
+    }
+
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        System.out.println("REPL");
+
+        activate(world, pos, false, pos);
+
+        world.createAndScheduleBlockTick(pos, this, 2);
     }
 
     @Override
