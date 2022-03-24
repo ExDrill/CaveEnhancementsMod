@@ -36,6 +36,9 @@ public class AmethystFluteItem extends Item {
         double z = user.getZ();
         BlockPos pos = new BlockPos(x, y, z);
         if (!world.isClient) {
+            itemStack.damage(1, user, (userx) -> {
+                userx.sendToolBreakStatus(hand);
+            });
             world.playSound(null, pos, SoundEvents.BLOCK_NOTE_BLOCK_FLUTE, SoundCategory.PLAYERS, 1.0F, 1.0F);
             ((ServerWorld)world).spawnParticles(ModParticles.SOOTHINGNOTE, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, 3, 0, 0, 0, 0);
             user.world.getOtherEntities(user, user.getBoundingBox().expand(10D), user::canSee).forEach(entity -> {
