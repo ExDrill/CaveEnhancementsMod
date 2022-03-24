@@ -1,6 +1,6 @@
 package com.exdrill.ce.registry;
 
-import com.exdrill.ce.Main;
+import com.exdrill.ce.CaveEnhancements;
 import com.exdrill.ce.item.*;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
@@ -34,25 +34,25 @@ public class ModItems {
 
     //Registry
     public static void registerItems() {
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "goop"), GOOP);
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "goop_block"), GOOP_BLOCK);
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "goop_trap"), GOOP_TRAP);
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "dripping_goop"), DRIPPING_GOOP);
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "glow_paste"), GLOW_PASTE);
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "spectacle_candle"), SPECTACLE_CANDLE);
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "lightning_anchor"), LIGHTNING_ANCHOR);
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "charged_lightning_anchor"), CHARGED_LIGHTNING_ANCHOR);
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "amethyst_flute"), AMETHYST_FLUTE);
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "goop_spawn_egg"), GOOP_SPAWN_EGG);
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "goop_bucket"), GOOP_BUCKET);
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "big_goop_drip"), BIG_GOOP_DRIP);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop"), GOOP);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_block"), GOOP_BLOCK);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_trap"), GOOP_TRAP);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "dripping_goop"), DRIPPING_GOOP);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "glow_paste"), GLOW_PASTE);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "spectacle_candle"), SPECTACLE_CANDLE);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "lightning_anchor"), LIGHTNING_ANCHOR);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "charged_lightning_anchor"), CHARGED_LIGHTNING_ANCHOR);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "amethyst_flute"), AMETHYST_FLUTE);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_spawn_egg"), GOOP_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_bucket"), GOOP_BUCKET);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "big_goop_drip"), BIG_GOOP_DRIP);
 
         // Unreleased Content
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "rose_quartz_block"), ROSE_QUARTZ_BLOCK);
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "jagged_rose_quartz"), JAGGED_ROSE_QUARTZ);
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "rose_quartz"), ROSE_QUARTZ);
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "cruncher_spawn_egg"), CRUNCHER_SPAWN_EGG);
-        Registry.register(Registry.ITEM, new Identifier(Main.NAMESPACE, "dripstone_tortoise_spawn_egg"), DRIPSTONE_TORTOISE_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_block"), ROSE_QUARTZ_BLOCK);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "jagged_rose_quartz"), JAGGED_ROSE_QUARTZ);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz"), ROSE_QUARTZ);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "cruncher_spawn_egg"), CRUNCHER_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "dripstone_tortoise_spawn_egg"), DRIPSTONE_TORTOISE_SPAWN_EGG);
     }
 
 }

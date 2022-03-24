@@ -1,6 +1,6 @@
 package com.exdrill.ce.world.biome;
 
-import com.exdrill.ce.Main;
+import com.exdrill.ce.CaveEnhancements;
 import com.exdrill.ce.registry.ModBiomes;
 import com.exdrill.ce.registry.ModEntities;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -30,7 +30,7 @@ public class CaveBiomes {
         DefaultBiomeFeatures.addDefaultOres(featureSettings);
         DefaultBiomeFeatures.addDefaultDisks(featureSettings);
 
-        BiomeModifications.create(new Identifier(Main.NAMESPACE + "goop_caves"))
+        BiomeModifications.create(new Identifier(CaveEnhancements.NAMESPACE + "goop_caves"))
                 .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(ModBiomes.GOOP_CAVES_KEY), ctx -> {
                 });
 

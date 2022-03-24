@@ -1,6 +1,6 @@
 package com.exdrill.ce.registry;
 
-import com.exdrill.ce.Main;
+import com.exdrill.ce.CaveEnhancements;
 import com.exdrill.ce.block.*;
 import com.exdrill.ce.block.entity.LightningAnchorBlockEntity;
 import com.exdrill.ce.block.entity.GoopTrapBlockEntity;
@@ -12,7 +12,6 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -32,16 +31,16 @@ public class ModBlocks {
 
     // Block Registry
     public static void registerBlocks() {
-        Registry.register(Registry.BLOCK, new Identifier(Main.NAMESPACE, "goop_block"), GOOP_BLOCK);
-        Registry.register(Registry.BLOCK, new Identifier(Main.NAMESPACE, "goop_splat"), GOOP_SPLAT);
-        Registry.register(Registry.BLOCK, new Identifier(Main.NAMESPACE, "goop_trap"), GOOP_TRAP);
-        Registry.register(Registry.BLOCK, new Identifier(Main.NAMESPACE, "dripping_goop"), DRIPPING_GOOP);
-        Registry.register(Registry.BLOCK, new Identifier(Main.NAMESPACE, "glow_splotch"), GLOW_SPLOTCH);
-        Registry.register(Registry.BLOCK, new Identifier(Main.NAMESPACE, "spectacle_candle"), SPECTACLE_CANDLE);
-        Registry.register(Registry.BLOCK, new Identifier(Main.NAMESPACE, "lightning_anchor"), LIGHTNING_ANCHOR);
-        Registry.register(Registry.BLOCK, new Identifier(Main.NAMESPACE, "charged_lightning_anchor"), CHARGED_LIGHTNING_ANCHOR);
-        Registry.register(Registry.BLOCK, new Identifier(Main.NAMESPACE, "rose_quartz_block"), ROSE_QUARTZ_BLOCK);
-        Registry.register(Registry.BLOCK, new Identifier(Main.NAMESPACE, "jagged_rose_quartz"), JAGGED_ROSE_QUARTZ);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "goop_block"), GOOP_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "goop_splat"), GOOP_SPLAT);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "goop_trap"), GOOP_TRAP);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "dripping_goop"), DRIPPING_GOOP);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "glow_splotch"), GLOW_SPLOTCH);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "spectacle_candle"), SPECTACLE_CANDLE);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "lightning_anchor"), LIGHTNING_ANCHOR);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "charged_lightning_anchor"), CHARGED_LIGHTNING_ANCHOR);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_block"), ROSE_QUARTZ_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "jagged_rose_quartz"), JAGGED_ROSE_QUARTZ);
     }
 
     // Block Render Type
@@ -60,6 +59,6 @@ public class ModBlocks {
     public static void registerBlockEntities() {
         GOOP_TRAP_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "ce:goop_trap", FabricBlockEntityTypeBuilder.create(GoopTrapBlockEntity::new, GOOP_TRAP).build(null));
         SPECTACLE_CANDLE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "ce:spectacle_candle", FabricBlockEntityTypeBuilder.create(SpectacleCandleBlockEntity::new, SPECTACLE_CANDLE).build(null));
-        LIGHTNING_ANCHOR_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(Main.NAMESPACE, "lightning_anchor"), FabricBlockEntityTypeBuilder.create(LightningAnchorBlockEntity::new, LIGHTNING_ANCHOR).build(null));
+        LIGHTNING_ANCHOR_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "lightning_anchor"), FabricBlockEntityTypeBuilder.create(LightningAnchorBlockEntity::new, LIGHTNING_ANCHOR).build(null));
     }
 }

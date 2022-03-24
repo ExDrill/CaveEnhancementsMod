@@ -1,6 +1,6 @@
 package com.exdrill.ce.entity;
 
-import com.exdrill.ce.Client;
+import com.exdrill.ce.CaveEnhancementsClient;
 import com.exdrill.ce.registry.ModBlocks;
 import com.exdrill.ce.registry.ModEntities;
 import com.exdrill.ce.registry.ModItems;
@@ -18,11 +18,9 @@ import net.minecraft.network.Packet;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
 public class BigGoopDripProjectile extends ThrownItemEntity {
@@ -97,6 +95,6 @@ public class BigGoopDripProjectile extends ThrownItemEntity {
     //Spawn Packet For Less Lag
     @Override
     public Packet<?> createSpawnPacket() {
-        return EntitySpawnPacket.create(this, Client.PacketID);
+        return EntitySpawnPacket.create(this, CaveEnhancementsClient.PacketID);
     }
 }

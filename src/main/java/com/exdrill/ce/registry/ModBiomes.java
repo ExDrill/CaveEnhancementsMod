@@ -1,6 +1,6 @@
 package com.exdrill.ce.registry;
 
-import com.exdrill.ce.Main;
+import com.exdrill.ce.CaveEnhancements;
 import com.exdrill.ce.world.biome.CaveBiomes;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -13,7 +13,7 @@ public class ModBiomes {
     public static final RegistryKey<Biome> GOOP_CAVES_KEY = registerBiomeKeys("goop_caves");
 
     private static RegistryKey<Biome> registerBiomeKeys(String name) {
-        return RegistryKey.of(Registry.BIOME_KEY, new Identifier(Main.NAMESPACE, name));
+        return RegistryKey.of(Registry.BIOME_KEY, new Identifier(CaveEnhancements.NAMESPACE, name));
     }
 
     public static void registerBiomes() {

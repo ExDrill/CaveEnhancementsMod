@@ -8,7 +8,7 @@ import terrablender.api.RegionType;
 import terrablender.api.Regions;
 import terrablender.api.TerraBlenderApi;
 
-public class Main implements ModInitializer, TerraBlenderApi {
+public class CaveEnhancements implements ModInitializer, TerraBlenderApi {
     public static final String NAMESPACE = "ce";
 
     @Override
