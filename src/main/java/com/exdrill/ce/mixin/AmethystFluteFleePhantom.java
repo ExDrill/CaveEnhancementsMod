@@ -22,8 +22,8 @@ public abstract class AmethystFluteFleePhantom extends Goal {
     @Inject(method = "shouldContinue", at = @At(value = "INVOKE", target = "Ljava/util/List;isEmpty()Z"), cancellable = true)
     private void shouldContinue(CallbackInfoReturnable<Boolean> cir) {
         this.field_7333.world.getOtherEntities(this.field_7333, this.field_7333.getBoundingBox().expand(16.0D), this.field_7333::canSee).forEach(entity -> {
-            if (entity instanceof LivingEntity livingEntity) {
-                cir.setReturnValue(AmethystFluteItem.isScary(livingEntity));
+            if (entity instanceof LivingEntity livingEntity && AmethystFluteItem.isScary(livingEntity)) {
+                cir.setReturnValue(false);
             }
         });
     }
