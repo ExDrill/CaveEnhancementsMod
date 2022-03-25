@@ -3,6 +3,10 @@
   "values": [
     "#ce:lightning_anchors",
     "ce:rose_quartz_block",
-    "ce:jagged_rose_quartz"
+    "ce:jagged_rose_quartz",
+    "ce:polished_rose_quartz",
+    "ce:polished_rose_quartz_stairs",
+    "ce:polished_rose_quartz_slab",
+    "ce:rose_quartz_tiles"
   ]
 }

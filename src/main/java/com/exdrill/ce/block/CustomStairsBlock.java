@@ -87,7 +87,7 @@ public class CustomStairsBlock extends Block implements Waterloggable {
 
     public CustomStairsBlock(BlockState baseBlockState, Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(HALF, BlockHalf.BOTTOM)).with(SHAPE, StairShape.STRAIGHT)).with(WATERLOGGED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(HALF, BlockHalf.BOTTOM).with(SHAPE, StairShape.STRAIGHT).with(WATERLOGGED, false));
         this.baseBlock = baseBlockState.getBlock();
         this.baseBlockState = baseBlockState;
     }
@@ -166,7 +166,7 @@ public class CustomStairsBlock extends Block implements Waterloggable {
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if ((Boolean)state.get(WATERLOGGED)) {
+        if (state.get(WATERLOGGED)) {
             world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
 

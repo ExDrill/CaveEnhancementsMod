@@ -30,6 +30,8 @@ public class ModItems {
     public static final Item ROSE_QUARTZ = new Item(new Item.Settings().group(ItemGroup.MATERIALS));
     public static final BlockItem POLISHED_ROSE_QUARTZ = new BlockItem(ModBlocks.POLISHED_ROSE_QUARTZ, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
     public static final BlockItem ROSE_QUARTZ_TILES = new BlockItem(ModBlocks.ROSE_QUARTZ_TILES, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
+    public static final BlockItem POLISHED_ROSE_QUARTZ_SLAB = new BlockItem(ModBlocks.POLISHED_ROSE_QUARTZ_SLAB, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
+    public static final BlockItem POLISHED_ROSE_QUARTZ_STAIRS = new BlockItem(ModBlocks.POLISHED_ROSE_QUARTZ_STAIRS, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
 
     //Registry
     public static void registerItems() {
@@ -42,7 +44,6 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "lightning_anchor"), LIGHTNING_ANCHOR);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "charged_lightning_anchor"), CHARGED_LIGHTNING_ANCHOR);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "amethyst_flute"), AMETHYST_FLUTE);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_spawn_egg"), GOOP_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_bucket"), GOOP_BUCKET);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "big_goop_drip"), BIG_GOOP_DRIP);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_block"), ROSE_QUARTZ_BLOCK);
@@ -50,6 +51,10 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz"), ROSE_QUARTZ);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "polished_rose_quartz"), POLISHED_ROSE_QUARTZ);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_tiles"), ROSE_QUARTZ_TILES);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "polished_rose_quartz_slab"), POLISHED_ROSE_QUARTZ_SLAB);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "polished_rose_quartz_stairs"), POLISHED_ROSE_QUARTZ_STAIRS);
+        // Spawn Eggs
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_spawn_egg"), GOOP_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "cruncher_spawn_egg"), CRUNCHER_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "dripstone_tortoise_spawn_egg"), DRIPSTONE_TORTOISE_SPAWN_EGG);
     }
