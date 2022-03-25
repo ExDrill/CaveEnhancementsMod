@@ -11,6 +11,7 @@ import net.minecraft.world.biome.Biome;
 
 public class ModBiomes {
     public static final RegistryKey<Biome> GOOP_CAVES_KEY = registerBiomeKeys("goop_caves");
+    public static final RegistryKey<Biome> ROSE_QUARTZ_CAVES_KEY = registerBiomeKeys("rose_quartz_caves");
 
     private static RegistryKey<Biome> registerBiomeKeys(String name) {
         return RegistryKey.of(Registry.BIOME_KEY, new Identifier(CaveEnhancements.NAMESPACE, name));
@@ -18,7 +19,9 @@ public class ModBiomes {
 
     public static void registerBiomes() {
         register(GOOP_CAVES_KEY, CaveBiomes.createGoopCaves());
+        register(ROSE_QUARTZ_CAVES_KEY, CaveBiomes.createRoseQuartzCaves());
     }
+
 
     private static RegistryEntry<Biome> register(RegistryKey<Biome> key, Biome biome) {
         return BuiltinRegistries.add(BuiltinRegistries.BIOME, key, biome);

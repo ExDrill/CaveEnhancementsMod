@@ -53,4 +53,39 @@ public class CaveBiomes {
                 .build();
 
     }
+
+    public static Biome createRoseQuartzCaves() {
+        SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
+        DefaultBiomeFeatures.addBatsAndMonsters(spawnSettings);
+
+        GenerationSettings.Builder featureSettings = new GenerationSettings.Builder();
+
+
+        DefaultBiomeFeatures.addPlainsTallGrass(featureSettings);
+        DefaultBiomeFeatures.addDefaultOres(featureSettings);
+        DefaultBiomeFeatures.addDefaultDisks(featureSettings);
+
+        BiomeModifications.create(new Identifier(CaveEnhancements.NAMESPACE + "rose_quartz_caves"))
+                .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(ModBiomes.ROSE_QUARTZ_CAVES_KEY), ctx -> {
+                });
+
+        return (new Biome.Builder())
+                .precipitation(Biome.Precipitation.RAIN)
+                .category(Biome.Category.UNDERGROUND)
+                .temperature(0.6F)
+                .downfall(0.9F)
+                .effects((new BiomeEffects.Builder())
+                        .grassColor(0x6F932A)
+                        .foliageColor(0x6F932A)
+                        .waterColor(0xAEC1BE)
+                        .waterFogColor(0xC9DDDA)
+                        .fogColor(0x878787)
+                        .skyColor(0x878787)
+                        .music(MusicType.GAME)
+                        .build())
+                .spawnSettings(spawnSettings.build())
+                .generationSettings(featureSettings.build())
+                .build();
+
+    }
 }

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "ce:jagged_rose_quartz",
+        "Properties": {
+          "waterlogged": "true",
+          "down": "true",
+          "up": "false",
+          "north": "false",
+          "south": "false",
+          "west": "false",
+          "east": "false"
+        }
+      }
+    }
+  }
+}
