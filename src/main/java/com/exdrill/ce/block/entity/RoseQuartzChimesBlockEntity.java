@@ -12,6 +12,8 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
@@ -51,6 +53,13 @@ public class RoseQuartzChimesBlockEntity extends BlockEntity  {
             otherEntity = (LivingEntity)var2.next();
 
             if (!LivingEntity.class.isAssignableFrom(otherEntity.getClass()) || PlayerEntity.class.isAssignableFrom(otherEntity.getClass())) continue;
+            
+            if (world.isRaining() && ticksTillActivateClear <= 300) {
+                world.playSound(null, pos, SoundEvents.BLOCK_NOTE_BLOCK_CHIME, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            }
+            else if (!world.isRaining() && ticksTillActivateClear <= 0) {
+                world.playSound(null, pos, SoundEvents.BLOCK_NOTE_BLOCK_CHIME, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            }
 
             if(HostileEntity.class.isAssignableFrom(otherEntity.getClass())) {
                 if(world.isRaining() && ticksTillActivateClear <= 300){
