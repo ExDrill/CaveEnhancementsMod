@@ -208,7 +208,7 @@ public class CustomStairsBlock extends Block implements Waterloggable {
     }
 
     public static boolean isStairs(BlockState state) {
-        return state.getBlock() instanceof StairsBlock;
+        return state.getBlock() instanceof StairsBlock || state.getBlock() instanceof CustomStairsBlock;
     }
 
     public BlockState rotate(BlockState state, BlockRotation rotation) {
