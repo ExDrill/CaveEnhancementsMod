@@ -24,6 +24,8 @@ public class LightningAnchorBlockEntity extends BlockEntity {
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, LightningAnchorBlockEntity entity) {
+        if(world.isClient()) return;
+
         if(entity.ticksTillActivate > 0){
             entity.ticksTillActivate--;
         }
@@ -37,6 +39,7 @@ public class LightningAnchorBlockEntity extends BlockEntity {
             otherEntity = (Entity)var2.next();
             if(otherEntity.getClass() == LightningEntity.class && entity.ticksTillActivate <= 0){
                 world.setBlockState(pos, ModBlocks.CHARGED_LIGHTNING_ANCHOR.getDefaultState());
+                return;
             }
         }
     }
