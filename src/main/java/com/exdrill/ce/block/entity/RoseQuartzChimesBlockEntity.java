@@ -1,6 +1,7 @@
 package com.exdrill.ce.block.entity;
 
 import com.exdrill.ce.registry.ModBlocks;
+import com.exdrill.ce.registry.ModParticles;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.world.ClientWorld;
@@ -18,6 +19,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -32,7 +34,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class RoseQuartzChimesBlockEntity extends BlockEntity implements IAnimatable {
-    public static int ticksTillActivateClear = 600;
+    public int ticksTillActivateClear = 600;
 
 
     public RoseQuartzChimesBlockEntity(BlockPos pos, BlockState state) {
@@ -40,17 +42,8 @@ public class RoseQuartzChimesBlockEntity extends BlockEntity implements IAnimata
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, RoseQuartzChimesBlockEntity entity) {
-        if (ticksTillActivateClear <= 300 && world.isRaining()) {
-            ticksTillActivateClear = 600;
-        }
-
-        if (ticksTillActivateClear <= 0 && !world.isRaining()) {
-            ticksTillActivateClear = 600;
-        }
-
-        if(ticksTillActivateClear > 0) {
-            ticksTillActivateClear--;
-            //System.out.println(ticksTillActivateClear);
+        if(entity.ticksTillActivateClear > 0) {
+            entity.ticksTillActivateClear--;
         }
 
         Box box = new Box(pos).expand(8);
@@ -63,33 +56,42 @@ public class RoseQuartzChimesBlockEntity extends BlockEntity implements IAnimata
 
             if (!LivingEntity.class.isAssignableFrom(otherEntity.getClass()) || PlayerEntity.class.isAssignableFrom(otherEntity.getClass())) continue;
 
-            if (world.isRaining() && ticksTillActivateClear <= 300) {
+            if (world.isRaining() && entity.ticksTillActivateClear <= 300) {
                 world.playSound(null, pos, SoundEvents.BLOCK_NOTE_BLOCK_CHIME, SoundCategory.BLOCKS, 1.0F, 1.0F);
             }
-            else if (!world.isRaining() && ticksTillActivateClear <= 0) {
+            else if (!world.isRaining() && entity.ticksTillActivateClear <= 0) {
                 world.playSound(null, pos, SoundEvents.BLOCK_NOTE_BLOCK_CHIME, SoundCategory.BLOCKS, 1.0F, 1.0F);
             }
 
             if(HostileEntity.class.isAssignableFrom(otherEntity.getClass())) {
-                if(world.isRaining() && ticksTillActivateClear <= 300){
+                if(world.isRaining() && entity.ticksTillActivateClear <= 300){
                     otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200, 2, true, true));
                     otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 100, 0, true, true));
                     System.out.println("Hostile Applied II");
-                }else if(!world.isRaining() && ticksTillActivateClear <= 0 ){
+                }else if(!world.isRaining() && entity.ticksTillActivateClear <= 0 ){
                     otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 150, 2, true, true));
                     otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 100, 0, true, true));
                     System.out.println("Hostile Applied I");
                 }
             }
             else{
-                if(world.isRaining() && ticksTillActivateClear <= 300){
+                if(world.isRaining() && entity.ticksTillActivateClear <= 300){
                     otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 10, 1, true, true));
                     System.out.println("Non Hostile Applied");
-                }else if(!world.isRaining() && ticksTillActivateClear <= 0 ){
+                }else if(!world.isRaining() && entity.ticksTillActivateClear <= 0 ){
                     otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 10, 0, true, true));
                     System.out.println("Non Hostile Applied");
                 }
             }
+        }
+
+        if (entity.ticksTillActivateClear <= 300 && world.isRaining()) {
+            entity.ticksTillActivateClear = 600;
+            world.addParticle(ModParticles.SHOCKWAVE, entity.getPos().getX() + 0.5D, entity.getPos().getY() + 0.7D, entity.getPos().getZ() + 0.5D, 0D, 0D, 0D);
+            System.out.println("CHIMED!");
+            System.out.println(entity.getPos());
+        }else if (entity.ticksTillActivateClear <= 0 && !world.isRaining()) {
+            entity.ticksTillActivateClear = 600;
         }
     }
 
