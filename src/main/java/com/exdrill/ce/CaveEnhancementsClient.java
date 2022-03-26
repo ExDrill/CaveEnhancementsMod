@@ -39,30 +39,7 @@ public class CaveEnhancementsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ModBlocks.TransparentBlocks();
-
-        // Small Goop Drip Client Particle
-        ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {
-            registry.register(new Identifier(CaveEnhancements.NAMESPACE, "particle/small_goop_drip"));
-        }));
-        ParticleFactoryRegistry.getInstance().register(ModParticles.SMALL_GOOP_DRIP, SmallGoopDrip.SmallGoopDripFactory::new);
-
-        // Shockwave Client Particle
-        ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {
-            registry.register(new Identifier(CaveEnhancements.NAMESPACE, "particle/shockwave"));
-        }));
-        ParticleFactoryRegistry.getInstance().register(ModParticles.SHOCKWAVE, Shockwave.Factory::new);
-
-        // Rose Quartz Aura Client Particle
-        ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {
-            registry.register(new Identifier(CaveEnhancements.NAMESPACE, "particle/rose_quartz_aura"));
-        }));
-        ParticleFactoryRegistry.getInstance().register(ModParticles.ROSE_QUARTZ_AURA, RoseQuartzAura.RoseQuartzFactory::new);
-
-        // Soothing Note Client Particle
-        ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {
-            registry.register(new Identifier(CaveEnhancements.NAMESPACE, "particle/soothing_note"));
-        }));
-        ParticleFactoryRegistry.getInstance().register(ModParticles.SOOTHINGNOTE, SoothingNote.SoothingNoteFactory::new);
+        ModParticles.registerClientParticles();
 
         // Entity Renderer Registry
         EntityRendererRegistry.register(ModEntities.GOOP, GoopRenderer::new);
