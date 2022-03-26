@@ -74,10 +74,10 @@ public class RoseQuartzChimesBlockEntity extends BlockEntity  {
             }
             else{
                 if(world.isRaining() && ticksTillActivateClear <= 300){
-                    otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 10, 3, true, true));
+                    otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 10, 1, true, true));
                     System.out.println("Non Hostile Applied");
                 }else if(!world.isRaining() && ticksTillActivateClear <= 0 ){
-                    otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 10, 2, true, true));
+                    otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 10, 0, true, true));
                     System.out.println("Non Hostile Applied");
                 }
             }
