@@ -31,6 +31,7 @@ public class GoopTrapBlock extends BlockWithEntity {
         return OUTLINE_SHAPE;
     }
 
+
     public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
         if (entity.handleFallDamage(fallDistance, 0.7F, DamageSource.FALL)) {
             entity.playSound(this.soundGroup.getFallSound(), this.soundGroup.getVolume() * 0.5F, this.soundGroup.getPitch() * 0.75F);

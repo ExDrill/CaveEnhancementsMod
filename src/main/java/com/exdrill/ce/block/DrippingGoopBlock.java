@@ -106,7 +106,7 @@ public class DrippingGoopBlock extends Block implements Waterloggable {
     }
 
     static {
-        SHAPE = Block.createCuboidShape(1,0,1,14,16,14);
+        SHAPE = Block.createCuboidShape(1,0,1,15,16,15);
     }
 
     @Override
@@ -119,6 +119,8 @@ public class DrippingGoopBlock extends Block implements Waterloggable {
     public VoxelShape getOutlineShape(BlockState blockState, BlockView blockView, BlockPos pos, ShapeContext shapeContext) {
         return SHAPE;
     }
+
+
 
     public boolean isTranslucent(BlockState state, BlockView world, BlockPos pos) {
         return state.getFluidState().isEmpty();
