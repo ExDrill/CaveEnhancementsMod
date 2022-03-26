@@ -63,11 +63,11 @@ public class RoseQuartzChimesBlockEntity extends BlockEntity  {
 
             if(HostileEntity.class.isAssignableFrom(otherEntity.getClass())) {
                 if(world.isRaining() && ticksTillActivateClear <= 300){
-                    otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 2, true, true));
+                    otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200, 2, true, true));
                     otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 100, 0, true, true));
                     System.out.println("Hostile Applied II");
                 }else if(!world.isRaining() && ticksTillActivateClear <= 0 ){
-                    otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 2, true, true));
+                    otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 150, 2, true, true));
                     otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 100, 0, true, true));
                     System.out.println("Hostile Applied I");
                 }
