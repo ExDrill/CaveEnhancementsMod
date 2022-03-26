@@ -20,15 +20,11 @@ public class RoseQuartzAura extends AnimatedParticle {
         this.velocityX = velX;
         this.velocityY = velY;
         this.velocityZ = velZ;
-        this.scale *= 0.5F;
+        this.scale *= 1.5F;
         this.collidesWithWorld = false;
         this.gravityStrength = 0.0F;
         this.maxAge = 25 * 10;
         this.setSpriteForAge(spriteProvider);
-    }
-
-    public double Lerp(double a, double b, double t){
-        return a + (b - a) * t;
     }
 
     @Override
