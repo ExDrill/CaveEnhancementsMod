@@ -10,6 +10,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 public class RoseQuartzChimesBlock extends BlockWithEntity {
@@ -24,8 +25,13 @@ public class RoseQuartzChimesBlock extends BlockWithEntity {
     }
 
     @Override
+    public boolean isTranslucent(BlockState state, BlockView world, BlockPos pos) {
+        return super.isTranslucent(state, world, pos);
+    }
+
+    @Override
     public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
+        return BlockRenderType.ENTITYBLOCK_ANIMATED;
     }
 
     @Override

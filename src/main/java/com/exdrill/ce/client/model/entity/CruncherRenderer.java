@@ -1,5 +1,6 @@
 package com.exdrill.ce.client.model.entity;
 
+import com.exdrill.ce.block.entity.RoseQuartzChimesBlockEntity;
 import com.exdrill.ce.client.model.entity.feature.CruncherFeature;
 import com.exdrill.ce.client.model.entity.model.CruncherModel;
 import com.exdrill.ce.entity.CruncherEntity;
@@ -31,8 +32,8 @@ public class CruncherRenderer extends GeoEntityRenderer<CruncherEntity> {
 
     @Override
     public RenderLayer getRenderType(CruncherEntity animatable, float partialTicks, MatrixStack stack,
-                                     @Nullable VertexConsumerProvider renderTypeBuffer, @Nullable VertexConsumer vertexBuilder,
-                                     int packedLightIn, Identifier textureLocation) {
-        return RenderLayer.getEntityTranslucent(this.getTextureLocation(animatable));
+                                     VertexConsumerProvider renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn,
+                                     Identifier textureLocation) {
+        return RenderLayer.getEntityTranslucent(getTextureLocation(animatable));
     }
 }
