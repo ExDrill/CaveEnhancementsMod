@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "ce:polished_rose_quartz"
+  },
+  "result": "ce:rose_quartz_tile_stairs",
+  "count": 1
+}
