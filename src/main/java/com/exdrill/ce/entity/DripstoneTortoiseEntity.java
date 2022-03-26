@@ -132,7 +132,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
 
     //Anger
     public int getAngerTime() {
-        return (Integer)this.dataTracker.get(ANGER);
+        return this.dataTracker.get(ANGER);
     }
 
     public void setAngerTime(int angerTime) {
@@ -140,7 +140,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
     }
 
     public void chooseRandomAngerTime() {
-        this.setAngerTime(200);
+        this.setAngerTime(400);
     }
 
     @Nullable
