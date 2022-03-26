@@ -1,32 +1,47 @@
 {
-  "item.ce.goop": "Goop",
   "item.ce.glow_paste": "Glow Paste",
+  "block.ce.spectacle_candle": "Spectacle Candle",
+
   "item.ce.amethyst_flute": "Amethyst Flute",
+  "item.ce.goop": "Goop",
   "block.ce.goop_block": "Goop Block",
   "block.ce.goop_splat": "Goop",
+  "block.ce.dripping_goop": "Dripping Goop",
   "block.ce.goop_trap": "Goop Trap",
   "item.ce.goop_bucket": "Bucket of Goop",
+
   "item.ce.goop_spawn_egg": "Goop Spawn Egg",
   "item.ce.dripstone_tortoise_spawn_egg": "Dripstone Tortoise Spawn Egg",
   "item.ce.cruncher_spawn_egg": "Cruncher Spawn Egg",
-  "block.ce.dripping_goop": "Dripping Goop",
+
   "block.ce.lightning_anchor": "Lightning Anchor",
   "block.ce.charged_lightning_anchor": "Charged Lightning Anchor",
-  "block.ce.spectacle_candle": "Spectacle Candle",
+
+  "item.ce.rose_quartz": "Rose Quartz",
   "block.ce.rose_quartz_block": "Rose Quartz Block",
   "block.ce.jagged_rose_quartz": "Jagged Rose Quartz",
+
   "block.ce.polished_rose_quartz": "Polished Rose Quartz",
-  "block.ce.rose_quartz_chimes": "Rose Quartz Chimes",
   "block.ce.polished_rose_quartz_slab": "Polished Rose Quartz Slab",
   "block.ce.polished_rose_quartz_stairs": "Polished Rose Quartz Stairs",
+  "block.ce.polished_rose_quartz_wall": "Polished Rose Quartz Wall",
+
   "block.ce.rose_quartz_tiles": "Rose Quartz Tiles",
-  "item.ce.rose_quartz": "Rose Quartz",
+  "block.ce.rose_quartz_tile_slab": "Rose Quartz Tile Slab",
+  "block.ce.rose_quartz_tile_stairs": "Rose Quartz Tile Stairs",
+  "block.ce.rose_quartz_tile_wall": "Rose Quartz Tile Wall",
+  "block.ce.rose_quartz_chimes": "Rose Quartz Chimes",
+
   "item.glow_paste.place": "Glow Splotch placed",
+
   "advancements.adventure.find_mountain_shrine.title": "The Copper Relic",
   "advancements.adventure.find_mountain_shrine.description": "Find the mountain shrine in the meadows.",
+
   "advancements.adventure.spyglass_at_goop.title": "A Gooey Little Friend..?",
   "advancements.adventure.spyglass_at_goop.description": "Look at a goop through a spyglass",
+
   "advancements.adventure.place_glow_paste.title": "Not just one use...",
   "advancements.adventure.place_glow_paste.description": "Light up an area using glow paste.",
+
   "gameplay.unobtainable": "§eUnreleased Content"
 }

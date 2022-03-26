@@ -2,6 +2,15 @@
   "replace": false,
   "values": [
     "ce:rose_quartz_block",
-    "ce:jagged_rose_quartz"
+    "ce:jagged_rose_quartz",
+    "ce:polished_rose_quartz",
+    "ce:polished_rose_quartz_stairs",
+    "ce:polished_rose_quartz_slab",
+    "ce:polished_rose_quartz_wall",
+    "ce:rose_quartz_tiles",
+    "ce:rose_quartz_tile_slab",
+    "ce:rose_quartz_tile_stairs",
+    "ce:rose_quartz_tile_wall",
+    "ce:rose_quartz_chimes"
   ]
 }

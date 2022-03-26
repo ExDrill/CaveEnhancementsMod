@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "ce:block/rose_quartz_tile_slab"
+    },
+    "type=double": {
+      "model": "ce:block/rose_quartz_tile"
+    },
+    "type=top": {
+      "model": "ce:block/rose_quartz_tile_slab_top"
+    }
+  }
+}
