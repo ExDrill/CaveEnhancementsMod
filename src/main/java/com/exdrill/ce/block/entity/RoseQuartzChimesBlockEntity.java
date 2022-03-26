@@ -83,7 +83,8 @@ public class RoseQuartzChimesBlockEntity extends BlockEntity implements IAnimata
 
     @Override
     public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController(this, "clearController", 0, this::animationClear));
+        animationData.addAnimationController(new AnimationController(this, "chimes_setup", 100, this::animationClear));
+        animationData.addAnimationController(new AnimationController(this, "rain", 100, this::animationRain));
         animationData.addAnimationController(new AnimationController(this, "none", 0, this::none));
     }
 
@@ -95,9 +96,25 @@ public class RoseQuartzChimesBlockEntity extends BlockEntity implements IAnimata
     private AnimationFactory factory = new AnimationFactory(this);
 
     private <E extends IAnimatable> PlayState animationClear(AnimationEvent<E> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rose_quartz_chimes.clear", true));
-        return PlayState.CONTINUE;
+        assert this.world != null;
+        if (!world.isRaining()) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rose_quartz_chimes.clear", true));
+            return PlayState.CONTINUE;
+        } else {
+            return PlayState.STOP;
+        }
     }
+
+    private <E extends IAnimatable> PlayState animationRain(AnimationEvent<E> event) {
+        assert this.world != null;
+        if (world.isRaining()) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rose_quartz_chimes.rain", true));
+            return PlayState.CONTINUE;
+        } else {
+            return PlayState.STOP;
+        }
+    }
+
 
     private <E extends IAnimatable> PlayState none(AnimationEvent<E> event) {
         event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rose_quartz_chimes.render", true));
