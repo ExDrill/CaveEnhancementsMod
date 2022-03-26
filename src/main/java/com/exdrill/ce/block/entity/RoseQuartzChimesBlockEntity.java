@@ -56,42 +56,28 @@ public class RoseQuartzChimesBlockEntity extends BlockEntity implements IAnimata
 
             if (!LivingEntity.class.isAssignableFrom(otherEntity.getClass()) || PlayerEntity.class.isAssignableFrom(otherEntity.getClass())) continue;
 
-            if (world.isRaining() && entity.ticksTillActivateClear <= 300) {
-                world.playSound(null, pos, SoundEvents.BLOCK_NOTE_BLOCK_CHIME, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            }
-            else if (!world.isRaining() && entity.ticksTillActivateClear <= 0) {
-                world.playSound(null, pos, SoundEvents.BLOCK_NOTE_BLOCK_CHIME, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            }
-
             if(HostileEntity.class.isAssignableFrom(otherEntity.getClass())) {
                 if(world.isRaining() && entity.ticksTillActivateClear <= 300){
                     otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200, 2, true, true));
                     otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 100, 0, true, true));
-                    System.out.println("Hostile Applied II");
                 }else if(!world.isRaining() && entity.ticksTillActivateClear <= 0 ){
                     otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 150, 2, true, true));
                     otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 100, 0, true, true));
-                    System.out.println("Hostile Applied I");
                 }
             }
             else{
                 if(world.isRaining() && entity.ticksTillActivateClear <= 300){
                     otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 10, 1, true, true));
-                    System.out.println("Non Hostile Applied");
                 }else if(!world.isRaining() && entity.ticksTillActivateClear <= 0 ){
                     otherEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 10, 0, true, true));
-                    System.out.println("Non Hostile Applied");
                 }
             }
         }
 
-        if (entity.ticksTillActivateClear <= 300 && world.isRaining()) {
+        if ((entity.ticksTillActivateClear <= 300 && world.isRaining()) || (entity.ticksTillActivateClear <= 0 && !world.isRaining())) {
             entity.ticksTillActivateClear = 600;
-            world.addParticle(ModParticles.SHOCKWAVE, entity.getPos().getX() + 0.5D, entity.getPos().getY() + 0.7D, entity.getPos().getZ() + 0.5D, 0D, 0D, 0D);
-            System.out.println("CHIMED!");
-            System.out.println(entity.getPos());
-        }else if (entity.ticksTillActivateClear <= 0 && !world.isRaining()) {
-            entity.ticksTillActivateClear = 600;
+            world.addParticle(ModParticles.ROSE_CHIMES, entity.getPos().getX() + 0.5D, entity.getPos().getY() + 0.3D, entity.getPos().getZ() + 0.5D, 0D, 0D, 0D);
+            world.playSound(null, pos, SoundEvents.BLOCK_NOTE_BLOCK_CHIME, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
     }
 

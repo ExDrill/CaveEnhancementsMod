@@ -1,10 +1,7 @@
 package com.exdrill.ce.registry;
 
 import com.exdrill.ce.CaveEnhancements;
-import com.exdrill.ce.particle.RoseQuartzAura;
-import com.exdrill.ce.particle.Shockwave;
-import com.exdrill.ce.particle.SmallGoopDrip;
-import com.exdrill.ce.particle.SoothingNote;
+import com.exdrill.ce.particle.*;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
