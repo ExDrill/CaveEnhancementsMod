@@ -65,14 +65,15 @@ public class JaggedRoseQuartzBlock extends Block implements Waterloggable {
     }
 
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        int l = pos.getX();
-        int j = pos.getY();
-        int k = pos.getZ();
-        double d = (double)l + random.nextDouble();
-        double e = (double)j + 0.5D;
-        double f = (double)k + random.nextDouble();
-        world.addParticle(ModParticles.ROSE_QUARTZ_AURA, d, e, f, MathHelper.nextInt(random, -1, 1), 0.05D, MathHelper.nextInt(random, -1, 1));
-
+        if(random.nextInt(0,3) == 0){
+            int l = pos.getX();
+            int j = pos.getY();
+            int k = pos.getZ();
+            double d = (double)l + random.nextDouble();
+            double e = (double)j + 0.5D;
+            double f = (double)k + random.nextDouble();
+            world.addParticle(ModParticles.ROSE_QUARTZ_AURA, d, e, f, MathHelper.nextFloat(random, -1, 1) / 50, 0.01D, MathHelper.nextFloat(random, -1, 1) / 50);
+        }
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {

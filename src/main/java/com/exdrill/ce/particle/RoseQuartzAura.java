@@ -8,19 +8,43 @@ import net.minecraft.particle.DefaultParticleType;
 
 @Environment(EnvType.CLIENT)
 public class RoseQuartzAura extends AnimatedParticle {
-
+    double velX = -1;
+    double velY = -1;
+    double velZ = -1;
 
     RoseQuartzAura(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
         super(world, x, y, z, spriteProvider, 0.0F);
-        this.velocityX = velocityX;
-        this.velocityY = velocityY;
-        this.velocityZ = velocityZ;
+        velX = velocityX;
+        velY = velocityY;
+        velZ = velocityZ;
+        this.velocityX = velX;
+        this.velocityY = velY;
+        this.velocityZ = velZ;
         this.scale *= 0.5F;
         this.collidesWithWorld = false;
         this.gravityStrength = 0.0F;
-        this.maxAge = 60 + this.random.nextInt(12);
+        this.maxAge = 25 * 10;
         this.setSpriteForAge(spriteProvider);
+    }
 
+    public double Lerp(double a, double b, double t){
+        return a + (b - a) * t;
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+        velocityX = velX;
+        velocityY = velY;
+        velocityZ = velZ;
+
+        float magnitude = 1F;
+        float smoothness = 300;
+
+        velX += random.nextFloat(-magnitude, magnitude) / smoothness;
+        velY += random.nextFloat(-magnitude, magnitude) / smoothness;
+        velZ += random.nextFloat(-magnitude, magnitude) / smoothness;
     }
 
     @Environment(EnvType.CLIENT)
@@ -32,10 +56,8 @@ public class RoseQuartzAura extends AnimatedParticle {
         }
 
         public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
-            RoseQuartzAura glowParticle = new RoseQuartzAura(clientWorld, d, e, f, 0.0D, 0.0D, 0.0D, this.spriteProvider);
-            glowParticle.setVelocity(g * 0.25D / 2D, h * 3D, i * 0.25D / 2D);
-            boolean j = true;
-            boolean k = true;
+            RoseQuartzAura glowParticle = new RoseQuartzAura(clientWorld, d, e, f, g, h, i, this.spriteProvider);
+
             return glowParticle;
         }
     }
