@@ -19,12 +19,14 @@ public class ModParticles {
     public static final DefaultParticleType SHOCKWAVE = FabricParticleTypes.simple();
     public static final DefaultParticleType ROSE_QUARTZ_AURA = FabricParticleTypes.simple();
     public static final DefaultParticleType SOOTHINGNOTE = FabricParticleTypes.simple();
+    public static final DefaultParticleType ROSE_CHIMES = FabricParticleTypes.simple();
 
     public static void registerParticles() {
         Registry.register(Registry.PARTICLE_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "small_goop_drip"), SMALL_GOOP_DRIP);
         Registry.register(Registry.PARTICLE_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "shockwave"), SHOCKWAVE);
         Registry.register(Registry.PARTICLE_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_aura"), ROSE_QUARTZ_AURA);
         Registry.register(Registry.PARTICLE_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "soothing_note"), SOOTHINGNOTE);
+        Registry.register(Registry.PARTICLE_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "rose_chimes"), ROSE_CHIMES);
     }
 
     public static void registerClientParticles() {
@@ -51,5 +53,11 @@ public class ModParticles {
             registry.register(new Identifier(CaveEnhancements.NAMESPACE, "particle/soothing_note"));
         }));
         ParticleFactoryRegistry.getInstance().register(ModParticles.SOOTHINGNOTE, SoothingNote.SoothingNoteFactory::new);
+
+        // Rose Chimes Client Particle
+        ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {
+            registry.register(new Identifier(CaveEnhancements.NAMESPACE, "particle/rose_chimes"));
+        }));
+        ParticleFactoryRegistry.getInstance().register(ModParticles.ROSE_CHIMES, RoseChimes.RoseChimesFactory::new);
     }
 }
