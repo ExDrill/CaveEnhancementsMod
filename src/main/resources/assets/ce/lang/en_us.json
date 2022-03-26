@@ -43,5 +43,10 @@
   "advancements.adventure.place_glow_paste.title": "Not just one use...",
   "advancements.adventure.place_glow_paste.description": "Light up an area using glow paste.",
 
-  "gameplay.unobtainable": "§eUnreleased Content"
+  "gameplay.unobtainable": "§eUnreleased Content",
+
+  "entity.ce.goop": "Goop",
+  "entity.ce.dripstone_tortoise": "Dripstone Tortoise",
+  "entity.ce.cruncher": "Cruncher",
+  "entity.ce.big_goop_drip": "Big Goop Drip"
 }
