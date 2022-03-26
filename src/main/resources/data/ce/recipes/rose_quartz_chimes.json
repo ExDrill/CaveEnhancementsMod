@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sss",
+    "tgt",
+    "r r"
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:stone_bricks"
+    },
+    "t": {
+      "item": "minecraft:string"
+    },
+    "g": {
+      "item": "cer:goop"
+    },
+    "r": {
+      "item": "cer:rose_quartz"
+    }
+  },
+  "result": {
+    "item": "ce:rose_quartz_chimes",
+    "count": 1
+  }
+}
