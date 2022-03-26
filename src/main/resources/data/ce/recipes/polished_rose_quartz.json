@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "ce:rose_quartz_block"
+    }
+  },
+  "result": {
+    "item": "ce:polished_rose_quartz",
+    "count": 4
+  }
+}
