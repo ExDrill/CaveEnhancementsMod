@@ -82,21 +82,16 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
     }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
-        System.out.println("WRITING NBT");
-        System.out.println(this.isStickingUp());
-
         super.writeCustomDataToNbt(nbt);
+
         nbt.putBoolean("FromBucket", this.isFromBucket());
         nbt.putBoolean("StickingUp", this.isStickingUp());
     }
 
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
-        this.setFromBucket(nbt.getBoolean("FromBucket"));
 
-        System.out.println("READING NBT");
-        System.out.println(nbt.getBoolean("StickingUp"));
-
+        setFromBucket(nbt.getBoolean("FromBucket"));
         setStickingUp(nbt.getBoolean("StickingUp"));
     }
 
