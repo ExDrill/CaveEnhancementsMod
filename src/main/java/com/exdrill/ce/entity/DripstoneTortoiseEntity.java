@@ -84,6 +84,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
         return this.factory;
     }
 
+    //AI
     protected void initGoals() {
         //this.targetSelector.add(3, new UniversalAngerGoal(this, true));
         this.targetSelector.add(1, (new DripstoneTortoiseRevengeGoal(this)).setGroupRevenge(new Class[0]));

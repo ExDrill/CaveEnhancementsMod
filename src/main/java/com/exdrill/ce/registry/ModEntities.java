@@ -1,10 +1,7 @@
 package com.exdrill.ce.registry;
 
 import com.exdrill.ce.CaveEnhancements;
-import com.exdrill.ce.entity.BigGoopDripProjectile;
-import com.exdrill.ce.entity.CruncherEntity;
-import com.exdrill.ce.entity.DripstoneTortoiseEntity;
-import com.exdrill.ce.entity.GoopEntity;
+import com.exdrill.ce.entity.*;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
@@ -48,9 +45,18 @@ public class ModEntities {
                     .build()
     );
 
+    public static final EntityType<DripstonePikeEntity> DRIPSTONE_PIKE = Registry.register(
+            Registry.ENTITY_TYPE,
+            new Identifier(CaveEnhancements.NAMESPACE, "dripstone_pike"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MISC, DripstonePikeEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.3F, 0.3F))
+                    .build()
+    );
+
     public static void registerEntities() {
         FabricDefaultAttributeRegistry.register(GOOP, GoopEntity.createGoopAttributes());
         FabricDefaultAttributeRegistry.register(CRUNCHER, CruncherEntity.createCruncherAttributes());
         FabricDefaultAttributeRegistry.register(DRIPSTONE_TORTOISE, DripstoneTortoiseEntity.createDripstoneTortoiseAttributes());
+        FabricDefaultAttributeRegistry.register(DRIPSTONE_PIKE, DripstonePikeEntity.createDripstonePikeAttributes());
     }
 }

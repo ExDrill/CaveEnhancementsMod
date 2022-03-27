@@ -2,6 +2,7 @@ package com.exdrill.ce;
 
 import com.exdrill.ce.client.model.block.RoseQuartzChimesRenderer;
 import com.exdrill.ce.client.model.entity.CruncherRenderer;
+import com.exdrill.ce.client.model.entity.DripstonePikeRenderer;
 import com.exdrill.ce.client.model.entity.DripstoneTortoiseRenderer;
 import com.exdrill.ce.client.model.entity.GoopRenderer;
 import com.exdrill.ce.entity.EntitySpawnPacket;
@@ -45,6 +46,7 @@ public class CaveEnhancementsClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.GOOP, GoopRenderer::new);
         EntityRendererRegistry.register(ModEntities.CRUNCHER, CruncherRenderer::new);
         EntityRendererRegistry.register(ModEntities.DRIPSTONE_TORTOISE, DripstoneTortoiseRenderer::new);
+        EntityRendererRegistry.register(ModEntities.DRIPSTONE_PIKE, DripstonePikeRenderer::new);
         EntityRendererRegistry.register(ModEntities.BIG_GOOP_DRIP_PROJECTILE_ENTITY, FlyingItemEntityRenderer::new);
 
         BlockEntityRendererRegistry.register(ModBlocks.ROSE_QUARTZ_CHIMES_BLOCK_ENTITY,
