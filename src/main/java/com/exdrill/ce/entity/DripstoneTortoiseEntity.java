@@ -25,8 +25,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -137,6 +141,13 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
                 .add(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, 2)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.6)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3);
+    }
+
+    @Override
+    public boolean isInvulnerableTo(DamageSource damageSource) {
+        if(damageSource == DamageSource.STALAGMITE || damageSource == DamageSource.FALLING_STALACTITE || damageSource.isProjectile()) return true;
+
+        return super.isInvulnerableTo(damageSource);
     }
 
     public boolean shouldAngerAt(Object entity) {
@@ -256,6 +267,8 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
                 setShouldStomp(true);
 
                 stompTimer = 10;
+
+                world.playSound(null, new BlockPos(getPos()), SoundEvents.BLOCK_DRIPSTONE_BLOCK_BREAK, SoundCategory.HOSTILE, 1F, 1F);
             }
         }
 

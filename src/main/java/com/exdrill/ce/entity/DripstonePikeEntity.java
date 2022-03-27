@@ -37,6 +37,8 @@ import java.util.List;
 public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
     public int dieTimer = 20;
 
+    public int damageDelay = 4;
+
     public boolean didDamage = false;
 
     private static final TrackedData<Boolean> INVULNERABLE = DataTracker.registerData(DripstonePikeEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -104,8 +106,6 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 1);
     }
 
-
-
     @Override
     public boolean hasNoGravity() {
         return true;
@@ -116,7 +116,9 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
         super.tick();
 
         if(!world.isClient()) {
-            if(!didDamage){
+            damageDelay--;
+
+            if(!didDamage && damageDelay <= 0){
                 didDamage = true;
 
                 Box box = new Box(new BlockPos(getPos().getX(), getPos().getY(), getPos().getZ())).expand(1.5);
