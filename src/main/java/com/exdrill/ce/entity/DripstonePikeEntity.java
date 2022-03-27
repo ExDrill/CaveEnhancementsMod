@@ -41,6 +41,8 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
 
     public boolean didDamage = false;
 
+    public LivingEntity owner;
+
     private static final TrackedData<Boolean> INVULNERABLE = DataTracker.registerData(DripstonePikeEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
     public DripstonePikeEntity(EntityType<? extends DripstonePikeEntity> entityType, World world) {
@@ -130,7 +132,7 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
                 for(Iterator var2 = list.iterator(); var2.hasNext();) {
                     otherEntity = (Entity)var2.next();
 
-                    otherEntity.damage(DamageSource.STALAGMITE, 12);
+                    otherEntity.damage(DamageSource.mobProjectile(this, owner), 12);
                 }
             }
 

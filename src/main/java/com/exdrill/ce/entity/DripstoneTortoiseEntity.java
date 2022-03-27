@@ -33,6 +33,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
@@ -147,7 +148,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
 
     @Override
     public boolean isInvulnerableTo(DamageSource damageSource) {
-        if(damageSource == DamageSource.STALAGMITE || damageSource == DamageSource.FALLING_STALACTITE || damageSource.isProjectile()) return true;
+        if(damageSource == DamageSource.STALAGMITE || damageSource == DamageSource.FALLING_STALACTITE || damageSource.isProjectile() || damageSource.getAttacker() instanceof DripstoneTortoiseEntity) return true;
 
         return super.isInvulnerableTo(damageSource);
     }
@@ -240,6 +241,16 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
         }
     }
 
+    public void summonPike(Vec3d pos){
+        DripstonePikeEntity spellPart = new DripstonePikeEntity(ModEntities.DRIPSTONE_PIKE, world);
+
+        spellPart.setPos(pos.getX(), pos.getY(), pos.getZ());
+
+        spellPart.owner = this;
+
+        world.spawnEntity(spellPart);
+    }
+
     private class SpikeAttackGoal extends Goal {
         protected final PathAwareEntity mob;
         private final double speed;
@@ -263,13 +274,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
                 Vec3d targetPos = target.getPos();
 
                 for(int i = 0; i < 10; i++){
-                    Vec3d offset = new Vec3d(random.nextFloat(-1.5F, 1.5F), 0, random.nextFloat(-1.5F, 1.5F));
-
-                    DripstonePikeEntity spellPart = new DripstonePikeEntity(ModEntities.DRIPSTONE_PIKE, world);
-
-                    spellPart.setPos(targetPos.getX() + offset.getX(), targetPos.getY(), targetPos.getZ() + offset.getZ());
-
-                    world.spawnEntity(spellPart);
+                    summonPike(new Vec3d(random.nextFloat(-1.5F, 1.5F) + targetPos.getX(),  targetPos.getY(), random.nextFloat(-1.5F, 1.5F)  + targetPos.getZ()));
                 }
 
                 setShouldStomp(true);
@@ -393,13 +398,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
                 Vec3d targetPos = getPos();
 
                 for(int i = 0; i < 10; i++){
-                    Vec3d offset = new Vec3d(random.nextFloat(-1.5F, 1.5F), 0, random.nextFloat(-1.5F, 1.5F));
-
-                    DripstonePikeEntity spellPart = new DripstonePikeEntity(ModEntities.DRIPSTONE_PIKE, world);
-
-                    spellPart.setPos(targetPos.getX() + offset.getX(), targetPos.getY(), targetPos.getZ() + offset.getZ());
-
-                    world.spawnEntity(spellPart);
+                    summonPike(new Vec3d(random.nextFloat(-1.5F, 1.5F) + targetPos.getX(),  targetPos.getY(), random.nextFloat(-1.5F, 1.5F)  + targetPos.getZ()));
                 }
 
                 setShouldStomp(true);
