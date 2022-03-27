@@ -1,5 +1,6 @@
 package com.exdrill.ce.registry;
 
+import com.eliotlash.mclib.math.functions.classic.Mod;
 import com.exdrill.ce.CaveEnhancements;
 import com.exdrill.ce.world.biome.CaveBiomes;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -27,8 +28,9 @@ public class ModBiomes {
     }
 
     public static void registerBiomeModifications() {
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), SpawnGroup.AMBIENT, ModEntities.DRIPSTONE_TORTOISE, 100, 1, 2);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DRIPSTONE_CAVES), SpawnGroup.MONSTER, ModEntities.DRIPSTONE_TORTOISE, 100, 1, 1);
     }
+
 
     private static RegistryEntry<Biome> register(RegistryKey<Biome> key, Biome biome) {
         return BuiltinRegistries.add(BuiltinRegistries.BIOME, key, biome);
