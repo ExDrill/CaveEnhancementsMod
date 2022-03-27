@@ -55,6 +55,8 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
 
     public int stompTimer;
 
+    public int soothed;
+
     @Nullable
     private UUID angryAt;
 
@@ -195,9 +197,13 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
     }
 
     public void setAngryAt(@Nullable UUID angryAt) {
-        System.out.println("SET ANGRY AT");
-        System.out.println(angryAt);
         this.angryAt = angryAt;
+    }
+
+    public void sooth(){
+        soothed = 2;
+        setAngryAt(null);
+        setAngerTime(0);
     }
 
     //Tick
@@ -211,6 +217,8 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
             if(stompTimer <= 0){
                 setShouldStomp(false);
             }
+
+            soothed--;
         }
     }
 
@@ -302,7 +310,10 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
         }
 
         public boolean shouldContinue() {
+            if(soothed > 0) return false;
+
             LivingEntity livingEntity = this.mob.getTarget();
+
             if (livingEntity == null) {
                 return false;
             } else if (!livingEntity.isAlive()) {
@@ -368,7 +379,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
         }
 
         protected void resetCooldown() {
-            this.cooldown = 40;
+            this.cooldown = 20;
         }
     }
 
@@ -402,6 +413,8 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
         public RandomSpikeGoal() {}
 
         public boolean canStart() {
+            if(isAttacking()) return false;
+
             long l = world.getTime();
             if (l - this.lastUpdateTime < 20L) {
                 return false;
@@ -434,7 +447,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
         }
 
         protected void resetCooldown() {
-            this.cooldown = 200;
+            this.cooldown = 400;
         }
     }
 }

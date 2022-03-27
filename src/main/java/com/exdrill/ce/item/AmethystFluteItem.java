@@ -1,6 +1,7 @@
 package com.exdrill.ce.item;
 
 
+import com.exdrill.ce.entity.DripstoneTortoiseEntity;
 import com.exdrill.ce.registry.ModParticles;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -48,6 +49,8 @@ public class AmethystFluteItem extends Item {
                     world.sendEntityStatus(ravagerEntity, (byte)39);
                 } else if (entity instanceof VexEntity vexEntity) {
                     vexEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 10, 0));
+                } else if (entity instanceof DripstoneTortoiseEntity dripstoneTortoiseEntity) {
+                    dripstoneTortoiseEntity.sooth();
                 }
             });
 
