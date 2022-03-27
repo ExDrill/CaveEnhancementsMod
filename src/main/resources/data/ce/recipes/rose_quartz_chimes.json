@@ -13,10 +13,10 @@
       "item": "minecraft:string"
     },
     "g": {
-      "item": "cer:goop"
+      "item": "ce:goop"
     },
     "r": {
-      "item": "cer:rose_quartz"
+      "item": "ce:rose_quartz"
     }
   },
   "result": {
