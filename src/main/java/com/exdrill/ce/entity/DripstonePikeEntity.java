@@ -40,6 +40,7 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
     public boolean didDamage = false;
 
     private static final TrackedData<Boolean> INVULNERABLE = DataTracker.registerData(DripstonePikeEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+
     public DripstonePikeEntity(EntityType<? extends DripstonePikeEntity> entityType, World world) {
         super(entityType, world);
 

@@ -100,7 +100,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
     private <E extends IAnimatable> PlayState controller(AnimationEvent<E> event) {
         if(getShouldStomp()){
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.dripstone_tortoise.stomp", false));
-            
+
             return PlayState.CONTINUE;
         } else if (event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.dripstone_tortoise.walk", true));
@@ -234,7 +234,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
         private long lastUpdateTime;
 
         protected double getSquaredMaxAttackDistance(LivingEntity entity) {
-            return 10;
+            return 20;
         }
 
         protected void attack(LivingEntity target, double squaredDistance) {
