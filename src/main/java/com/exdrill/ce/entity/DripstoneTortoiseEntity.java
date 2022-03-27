@@ -381,7 +381,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
         }
 
         protected void resetCooldown() {
-            this.cooldown = 100;
+            this.cooldown = 20;
         }
     }
 
@@ -409,12 +409,16 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
                 stompTimer = 10;
 
                 world.playSound(null, new BlockPos(getPos()), SoundEvents.BLOCK_DRIPSTONE_BLOCK_BREAK, SoundCategory.HOSTILE, 1F, 1F);
+
+                System.out.println("RAND SPIKE!");
             }
         }
 
         public RandomSpikeGoal() {}
 
         public boolean canStart() {
+            if(isAttacking()) return false;
+
             long l = world.getTime();
             if (l - this.lastUpdateTime < 20L) {
                 return false;
@@ -447,7 +451,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
         }
 
         protected void resetCooldown() {
-            this.cooldown = 200;
+            this.cooldown = 400;
         }
     }
 }
