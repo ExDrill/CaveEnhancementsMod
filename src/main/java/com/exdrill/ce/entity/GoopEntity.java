@@ -182,16 +182,12 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
         double origY = y;
         BlockPos blockUpPos = new BlockPos(x, y + 1, z);
         if (spawnReason != SpawnReason.NATURAL) {
-            System.out.println("ARTIFICIAL");
-
             if (serverWorld.getBlockState(blockUpPos).isSolidSurface(world, blockUpPos, this, Direction.DOWN)) {
                 setStickingUp(true);
             }
         }
         if (spawnReason == SpawnReason.NATURAL) {
-            System.out.println("NATURAL");
             if (!world.isClient()) {
-                System.out.println(world.getTopY());
                 while(y < world.getTopY() && !serverWorld.getBlockState(blockUpPos).isSolidSurface(world, blockUpPos, this, Direction.DOWN)){
                     x = this.getX();
                     y = this.getY();
@@ -204,14 +200,12 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
                     y = origY;
                     teleport(x, y + 0.1D, z);
                 }
-                System.out.println(y);
             }
 
 
             setStickingUp(true);
         }
         if (spawnReason == SpawnReason.BUCKET) {
-            System.out.println("BUCKET");
             return entityData;
         }
         return super.initialize(serverWorld, difficulty, spawnReason, entityData, entityNbt);

@@ -197,8 +197,6 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
     }
 
     public void setAngryAt(@Nullable UUID angryAt) {
-        System.out.println("SET ANGRY AT");
-        System.out.println(angryAt);
         this.angryAt = angryAt;
     }
 
@@ -409,8 +407,6 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
                 stompTimer = 10;
 
                 world.playSound(null, new BlockPos(getPos()), SoundEvents.BLOCK_DRIPSTONE_BLOCK_BREAK, SoundCategory.HOSTILE, 1F, 1F);
-
-                System.out.println("RAND SPIKE!");
             }
         }
 
