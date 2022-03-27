@@ -121,7 +121,7 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
             if(!didDamage && damageDelay <= 0){
                 didDamage = true;
 
-                Box box = new Box(new BlockPos(getPos().getX(), getPos().getY(), getPos().getZ())).expand(1.5);
+                Box box = new Box(new BlockPos(getPos().getX(), getPos().getY(), getPos().getZ())).expand(.5);
 
                 List<Entity> list = world.getEntitiesByClass(Entity.class, box, (e) -> LivingEntity.class.isAssignableFrom(e.getClass()));
 

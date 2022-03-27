@@ -124,13 +124,13 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
 
     //AI
     protected void initGoals() {
-        //this.targetSelector.add(3, new UniversalAngerGoal(this, true));
         this.targetSelector.add(1, (new DripstoneTortoiseRevengeGoal(this)).setGroupRevenge(new Class[0]));
         this.targetSelector.add(3, new ActiveTargetGoal(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
         this.goalSelector.add(4, new SpikeAttackGoal(this, 1.5D, true));
         this.goalSelector.add(5, new WanderAroundGoal(this, 1.5D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8F));
         this.goalSelector.add(6, new LookAroundGoal(this));
+        this.targetSelector.add(6, new RandomSpikeGoal());
     }
 
     public static DefaultAttributeContainer.Builder createDripstoneTortoiseAttributes() {
@@ -369,6 +369,72 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
 
         protected void resetCooldown() {
             this.cooldown = 40;
+        }
+    }
+
+    private class RandomSpikeGoal extends Goal {
+        private int cooldown;
+        private long lastUpdateTime;
+
+        protected void spike() {
+            if (this.cooldown <= 0) {
+                this.resetCooldown();
+                Vec3d targetPos = getPos();
+
+                for(int i = 0; i < 10; i++){
+                    Vec3d offset = new Vec3d(random.nextFloat(-1.5F, 1.5F), 0, random.nextFloat(-1.5F, 1.5F));
+
+                    DripstonePikeEntity spellPart = new DripstonePikeEntity(ModEntities.DRIPSTONE_PIKE, world);
+
+                    spellPart.setPos(targetPos.getX() + offset.getX(), targetPos.getY(), targetPos.getZ() + offset.getZ());
+
+                    world.spawnEntity(spellPart);
+                }
+
+                setShouldStomp(true);
+
+                stompTimer = 10;
+
+                world.playSound(null, new BlockPos(getPos()), SoundEvents.BLOCK_DRIPSTONE_BLOCK_BREAK, SoundCategory.HOSTILE, 1F, 1F);
+            }
+        }
+
+        public RandomSpikeGoal() {}
+
+        public boolean canStart() {
+            long l = world.getTime();
+            if (l - this.lastUpdateTime < 20L) {
+                return false;
+            } else {
+                this.lastUpdateTime = l;
+
+                return true;
+            }
+        }
+
+        public boolean shouldContinue() {
+            return !isAttacking();
+        }
+
+        public void start() {
+            this.cooldown = 0;
+        }
+
+        public void stop() {
+        }
+
+        public boolean shouldRunEveryTick() {
+            return true;
+        }
+
+        public void tick() {
+            this.cooldown = Math.max(this.cooldown - 1, 0);
+
+            this.spike();
+        }
+
+        protected void resetCooldown() {
+            this.cooldown = 200;
         }
     }
 }
