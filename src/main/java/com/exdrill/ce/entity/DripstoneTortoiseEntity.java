@@ -100,9 +100,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
     private <E extends IAnimatable> PlayState controller(AnimationEvent<E> event) {
         if(getShouldStomp()){
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.dripstone_tortoise.stomp", false));
-
-            System.out.println(event.getAnimationTick());
-
+            
             return PlayState.CONTINUE;
         } else if (event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.dripstone_tortoise.walk", true));
