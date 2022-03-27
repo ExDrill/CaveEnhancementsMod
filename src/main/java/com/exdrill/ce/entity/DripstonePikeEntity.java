@@ -5,6 +5,15 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -30,10 +39,16 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
 
     public boolean didDamage = false;
 
+    private static final TrackedData<Boolean> INVULNERABLE = DataTracker.registerData(DripstonePikeEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     public DripstonePikeEntity(EntityType<? extends DripstonePikeEntity> entityType, World world) {
         super(entityType, world);
 
         noClip = true;
+    }
+
+    public void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(INVULNERABLE, true);
     }
 
     //Animations
@@ -45,6 +60,14 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
     private <E extends IAnimatable> PlayState base(AnimationEvent<E> event) {
         event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.dripstone_pike.general"));
         return PlayState.CONTINUE;
+    }
+
+    public boolean isInvulnerableTo(DamageSource damageSource) {
+        return damageSource != DamageSource.OUT_OF_WORLD;
+    }
+
+    public boolean isInvulnerable() {
+        return this.dataTracker.get(INVULNERABLE);
     }
 
     private AnimationFactory factory = new AnimationFactory(this);
@@ -76,8 +99,11 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
 
     public static DefaultAttributeContainer.Builder createDripstonePikeAttributes() {
         return HostileEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 9999);
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 1)
+                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 1);
     }
+
+
 
     @Override
     public boolean hasNoGravity() {
