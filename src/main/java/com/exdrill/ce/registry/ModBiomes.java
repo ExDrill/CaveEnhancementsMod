@@ -2,12 +2,16 @@ package com.exdrill.ce.registry;
 
 import com.exdrill.ce.CaveEnhancements;
 import com.exdrill.ce.world.biome.CaveBiomes;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
 
 public class ModBiomes {
     public static final RegistryKey<Biome> GOOP_CAVES_KEY = registerBiomeKeys("goop_caves");
@@ -22,6 +26,9 @@ public class ModBiomes {
         register(ROSE_QUARTZ_CAVES_KEY, CaveBiomes.createRoseQuartzCaves());
     }
 
+    public static void registerBiomeModifications() {
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), SpawnGroup.AMBIENT, ModEntities.DRIPSTONE_TORTOISE, 100, 1, 2);
+    }
 
     private static RegistryEntry<Biome> register(RegistryKey<Biome> key, Biome biome) {
         return BuiltinRegistries.add(BuiltinRegistries.BIOME, key, biome);
