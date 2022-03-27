@@ -1,11 +1,15 @@
 package com.exdrill.ce.entity;
 
+import com.exdrill.ce.registry.ModEntities;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -16,9 +20,13 @@ import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.DyeColor;
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
@@ -38,6 +46,8 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
 
     @Nullable
     private UUID angryAt;
+
+    public boolean shouldStomp;
 
     public DripstoneTortoiseEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
@@ -65,12 +75,20 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
     //Animations
     @Override
     public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController(this, "controller", 0, this::isWalking));
+        animationData.addAnimationController(new AnimationController(this, "controller", 0, this::controller));
     }
 
-    private <E extends IAnimatable> PlayState isWalking(AnimationEvent<E> event) {
-        if (event.isMoving()) {
+    private <E extends IAnimatable> PlayState controller(AnimationEvent<E> event) {
+        if(shouldStomp){
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.dripstone_tortoise.stomp"));
+
+            //shouldStomp = false;
+            System.out.println(event.getAnimationTick());
+
+            return PlayState.CONTINUE;
+        } else if (event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.dripstone_tortoise.walk", true));
+
             return PlayState.CONTINUE;
         } else {
             return PlayState.STOP;
@@ -89,7 +107,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
         //this.targetSelector.add(3, new UniversalAngerGoal(this, true));
         this.targetSelector.add(1, (new DripstoneTortoiseRevengeGoal(this)).setGroupRevenge(new Class[0]));
         this.targetSelector.add(3, new ActiveTargetGoal(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
-        this.goalSelector.add(4, new MeleeAttackGoal(this, 1.5D, true));
+        this.goalSelector.add(4, new SpikeAttackGoal(this, 1.5D, true));
         this.goalSelector.add(5, new WanderAroundGoal(this, 1.5D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8F));
         this.goalSelector.add(6, new LookAroundGoal(this));
@@ -178,6 +196,36 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
                 mob.setTarget(target);
             }
 
+        }
+    }
+
+    private class SpikeAttackGoal extends MeleeAttackGoal {
+        public SpikeAttackGoal(PathAwareEntity mob, double speed, boolean pauseWhenMobIdle) {
+            super(mob, speed, pauseWhenMobIdle);
+        }
+
+        protected double getSquaredMaxAttackDistance(LivingEntity entity) {
+            return 10;
+        }
+
+        protected void attack(LivingEntity target, double squaredDistance) {
+            double d = this.getSquaredMaxAttackDistance(target);
+            if (squaredDistance <= d && this.getCooldown() <= 0) {
+                this.resetCooldown();
+                Vec3d targetPos = target.getPos();
+
+                for(int i = 0; i < 10; i++){
+                    Vec3d offset = new Vec3d(random.nextFloat(-1.5F, 1.5F), 0, random.nextFloat(-1.5F, 1.5F));
+
+                    DripstonePikeEntity spellPart = new DripstonePikeEntity(ModEntities.DRIPSTONE_PIKE, world);
+
+                    spellPart.setPos(targetPos.getX() + offset.getX(), targetPos.getY(), targetPos.getZ() + offset.getZ());
+
+                    world.spawnEntity(spellPart);
+                }
+
+                shouldStomp = true;
+            }
         }
     }
 }
