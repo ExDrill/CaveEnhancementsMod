@@ -20,6 +20,7 @@ public class CaveEnhancements implements ModInitializer, TerraBlenderApi {
         ModSounds.registerSounds();
         ModEntities.registerEntities();
         ModBiomes.registerBiomes();
+        ModBiomes.registerBiomeModifications();
     }
 
 
