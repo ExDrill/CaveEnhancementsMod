@@ -55,7 +55,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
 
     public int stompTimer;
 
-    public boolean soothed;
+    public int soothed;
 
     @Nullable
     private UUID angryAt;
@@ -203,7 +203,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
     }
 
     public void sooth(){
-        soothed = true;
+        soothed = 2;
         setAngryAt(null);
         setAngerTime(0);
     }
@@ -220,7 +220,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
                 setShouldStomp(false);
             }
 
-            soothed = false;
+            soothed--;
         }
     }
 
@@ -312,7 +312,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
         }
 
         public boolean shouldContinue() {
-            if(soothed) return false;
+            if(soothed > 0) return false;
 
             LivingEntity livingEntity = this.mob.getTarget();
 
@@ -381,7 +381,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
         }
 
         protected void resetCooldown() {
-            this.cooldown = 40;
+            this.cooldown = 100;
         }
     }
 
