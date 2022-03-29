@@ -17,7 +17,6 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
-	maven { url = 'https://maven.minecraftforge.net/' }
 }
 
 dependencies {
@@ -28,7 +27,6 @@ dependencies {
 
 	// Other Libraries
 	modImplementation 'software.bernie.geckolib:geckolib-fabric-1.18:3.0.35'
-	modImplementation 'com.github.glitchfiend:TerraBlender-fabric:1.18.2-1.1.0.94'
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
