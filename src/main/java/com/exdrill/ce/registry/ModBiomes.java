@@ -1,6 +1,7 @@
 package com.exdrill.ce.registry;
 
 import com.exdrill.ce.CaveEnhancements;
+import com.exdrill.ce.world.biome.CaveBiomes;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.entity.SpawnGroup;
