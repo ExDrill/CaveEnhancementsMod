@@ -132,7 +132,7 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
                 for(Iterator var2 = list.iterator(); var2.hasNext();) {
                     otherEntity = (Entity)var2.next();
 
-                    otherEntity.damage(DamageSource.mobProjectile(this, owner), 12);
+                    otherEntity.damage(DamageSource.mobProjectile(this, owner), 8);
                 }
             }
 

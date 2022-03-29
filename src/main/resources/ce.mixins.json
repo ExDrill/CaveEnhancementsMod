@@ -8,7 +8,8 @@
     "GlowPasteBansMending",
     "GoopBrewingRecipe",
     "AmethystFluteFleePhantom",
-    "AmethystFluteFleeCreeper"
+    "AmethystFluteFleeCreeper",
+    "BiomeGeneration"
   ],
   "client": [],
   "injectors": {
