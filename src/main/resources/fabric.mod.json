@@ -26,9 +26,6 @@
     ],
     "client": [
       "com.exdrill.ce.CaveEnhancementsClient"
-    ],
-    "terrablender": [
-      "com.exdrill.ce.CaveEnhancements"
     ]
   },
   "mixins": [

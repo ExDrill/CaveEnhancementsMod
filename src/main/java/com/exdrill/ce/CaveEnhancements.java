@@ -18,12 +18,5 @@ public class CaveEnhancements implements ModInitializer, TerraBlenderApi {
         ModBiomes.registerBiomes();
         ModBiomes.registerBiomeModifications();
     }
-
-
-
-    @Override
-        public void onTerraBlenderInitialized() {
-            //Regions.register(new CustomBiomeProvider(new Identifier(NAMESPACE, "custom_biome_provider"), RegionType.OVERWORLD, 10));
-        }
-    }
+}
 
