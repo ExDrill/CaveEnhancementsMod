@@ -161,17 +161,9 @@
       "minecraft:glow_lichen",
       "ce:rose_quartz_patch_feature",
       "ce:rose_quartz_patch_down_feature",
-      "minecraft:patch_tall_grass_2",
-      "minecraft:trees_plains",
-      "minecraft:flower_plains",
-      "minecraft:patch_grass_plain",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
-      "minecraft:patch_sugar_cane",
-      "minecraft:patch_pumpkin"
+      "ce:jagged_rose_quartz_feature"
     ],
     [
-      "ce:jagged_rose_quartz_feature",
       "minecraft:freeze_top_layer"
     ]
   ]
