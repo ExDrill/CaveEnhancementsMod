@@ -2,6 +2,7 @@ package com.exdrill.ce;
 
 import com.exdrill.ce.registry.*;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.util.Identifier;
 
 public class CaveEnhancements implements ModInitializer {
     public static final String NAMESPACE = "ce";
@@ -17,5 +18,7 @@ public class CaveEnhancements implements ModInitializer {
         ModBiomes.registerBiomes();
         ModBiomes.registerBiomeModifications();
     }
+
+    public static final Identifier PacketID = new Identifier(CaveEnhancements.NAMESPACE, "spawn_packet");
 }
 

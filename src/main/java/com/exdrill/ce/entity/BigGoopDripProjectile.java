@@ -1,5 +1,6 @@
 package com.exdrill.ce.entity;
 
+import com.exdrill.ce.CaveEnhancements;
 import com.exdrill.ce.CaveEnhancementsClient;
 import com.exdrill.ce.registry.ModBlocks;
 import com.exdrill.ce.registry.ModEntities;
@@ -95,6 +96,6 @@ public class BigGoopDripProjectile extends ThrownItemEntity {
     //Spawn Packet For Less Lag
     @Override
     public Packet<?> createSpawnPacket() {
-        return EntitySpawnPacket.create(this, CaveEnhancementsClient.PacketID);
+        return EntitySpawnPacket.create(this, CaveEnhancements.PacketID);
     }
 }

@@ -56,10 +56,8 @@ public class CaveEnhancementsClient implements ClientModInitializer {
     }
 
     //For spawning projectiles
-    public static final Identifier PacketID = new Identifier(CaveEnhancements.NAMESPACE, "spawn_packet");
-
     public void receiveEntityPacket() {
-        ClientSidePacketRegistry.INSTANCE.register(PacketID, (ctx, byteBuf) -> {
+        ClientSidePacketRegistry.INSTANCE.register(CaveEnhancements.PacketID, (ctx, byteBuf) -> {
             EntityType<?> et = Registry.ENTITY_TYPE.get(byteBuf.readVarInt());
             UUID uuid = byteBuf.readUuid();
             int entityId = byteBuf.readVarInt();
