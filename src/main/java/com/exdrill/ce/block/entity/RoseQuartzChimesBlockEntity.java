@@ -83,8 +83,8 @@ public class RoseQuartzChimesBlockEntity extends BlockEntity implements IAnimata
 
     @Override
     public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController(this, "chimes_setup", 100, this::animationClear));
-        animationData.addAnimationController(new AnimationController(this, "rain", 100, this::animationRain));
+        animationData.addAnimationController(new AnimationController(this, "chimes_setup", 40, this::animationClear));
+        animationData.addAnimationController(new AnimationController(this, "rain", 40, this::animationRain));
         animationData.addAnimationController(new AnimationController(this, "none", 0, this::none));
     }
 

@@ -3,8 +3,10 @@ package com.exdrill.ce.particle;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;
+import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.util.math.BlockPos;
 
 public class SmallGoopDrip extends AnimatedParticle {
     SmallGoopDrip(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
@@ -18,6 +20,11 @@ public class SmallGoopDrip extends AnimatedParticle {
         this.maxAge = 60 + this.random.nextInt(12);
         this.setSpriteForAge(spriteProvider);
 
+    }
+
+    public int getBrightness(float tint) {
+        BlockPos blockPos = new BlockPos(this.x, this.y, this.z);
+        return this.world.isChunkLoaded(blockPos) ? WorldRenderer.getLightmapCoordinates(this.world, blockPos) : 0;
     }
 
     @Environment(EnvType.CLIENT)
