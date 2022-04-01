@@ -6,13 +6,7 @@
       "state": {
         "Name": "ce:jagged_rose_quartz",
         "Properties": {
-          "waterlogged": "true",
-          "down": "true",
-          "up": "false",
-          "north": "false",
-          "south": "false",
-          "west": "false",
-          "east": "false"
+          "waterlogged": "true"
         }
       }
     }

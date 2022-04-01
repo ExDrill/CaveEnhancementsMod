@@ -1,9 +1,9 @@
 {
-  "feature": "ce:jagged_rose_quartz_patch",
+  "feature": "ce:jagged_rose_quartz",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 30
+      "count": 188
     },
     {
       "type": "minecraft:in_square"

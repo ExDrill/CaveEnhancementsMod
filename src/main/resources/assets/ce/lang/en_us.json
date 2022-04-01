@@ -48,5 +48,8 @@
   "entity.ce.goop": "Goop",
   "entity.ce.dripstone_tortoise": "Dripstone Tortoise",
   "entity.ce.cruncher": "Cruncher",
-  "entity.ce.big_goop_drip": "Big Goop Drip"
+  "entity.ce.big_goop_drip": "Big Goop Drip",
+
+  "biome.ce.goop_caves": "Goop Caves",
+  "biome.ce.rose_quartz_caves": "Rose Quartz Caves"
 }
