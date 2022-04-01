@@ -15,7 +15,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @Mixin(targets = "net.minecraft.entity.mob.PhantomEntity$SwoopMovementGoal")
 public abstract class AmethystFluteFleePhantom extends Goal {
-    @Shadow @Final
+    @Final
     PhantomEntity field_7333;
 
     @ParametersAreNonnullByDefault

@@ -4,12 +4,13 @@
   "package": "com.exdrill.ce.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "GlowPasteBansUnbreaking",
-    "GlowPasteBansMending",
-    "GoopBrewingRecipe",
-    "AmethystFluteFleePhantom",
     "AmethystFluteFleeCreeper",
-    "BiomeGeneration"
+    "AmethystFluteFleePhantom",
+    "AmethystFluteMixin",
+    "BiomeGeneration",
+    "GlowPasteBansMending",
+    "GlowPasteBansUnbreaking",
+    "GoopBrewingRecipe"
   ],
   "client": [],
   "injectors": {
