@@ -9,43 +9,56 @@ import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeEffects;
-import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.SpawnSettings;
+import net.minecraft.world.biome.*;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
 public class CaveBiomes {
 
+    public static void addBasicFeatures(net.minecraft.world.biome.GenerationSettings.Builder generationSettings) {
+        DefaultBiomeFeatures.addLandCarvers(generationSettings);
+        DefaultBiomeFeatures.addAmethystGeodes(generationSettings);
+        DefaultBiomeFeatures.addDungeons(generationSettings);
+        DefaultBiomeFeatures.addMineables(generationSettings);
+        DefaultBiomeFeatures.addSprings(generationSettings);
+        DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
+    }
+
+    // Goop Caves
     public static Biome createGoopCaves() {
+        // Spawn Settings
         SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
         DefaultBiomeFeatures.addBatsAndMonsters(spawnSettings);
-
-
+        DefaultBiomeFeatures.addBatsAndMonsters(spawnSettings);
         spawnSettings.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(ModEntities.GOOP, 10, 1, 1));
+
+        // Generation Settings
+        net.minecraft.world.biome.GenerationSettings.Builder builder2 = new net.minecraft.world.biome.GenerationSettings.Builder();
+        addBasicFeatures(builder2);
+
+        // Feature Settings
         GenerationSettings.Builder featureSettings = new GenerationSettings.Builder();
-
-
         DefaultBiomeFeatures.addPlainsTallGrass(featureSettings);
         DefaultBiomeFeatures.addDefaultOres(featureSettings);
         DefaultBiomeFeatures.addDefaultDisks(featureSettings);
 
+        // Goop Caves
         BiomeModifications.create(new Identifier(CaveEnhancements.NAMESPACE + "goop_caves"))
                 .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(ModBiomes.GOOP_CAVES_KEY), ctx -> {
                 });
 
+        // Biome Builder
         return (new Biome.Builder())
                 .precipitation(Biome.Precipitation.RAIN)
                 .category(Biome.Category.UNDERGROUND)
-                .temperature(0.6F)
-                .downfall(0.9F)
+                .temperature(0.5F)
+                .downfall(0.5F)
                 .effects((new BiomeEffects.Builder())
                         .grassColor(0x6F932A)
                         .foliageColor(0x6F932A)
-                        .waterColor(0xAEC1BE)
-                        .waterFogColor(0xC9DDDA)
+                        .waterColor(0x3F76E4)
+                        .waterFogColor(0x50533)
                         .fogColor(0x878787)
-                        .skyColor(0x878787)
+                        .skyColor(0xC0D8FF)
                         .music(MusicType.GAME)
                         .build())
                 .spawnSettings(spawnSettings.build())
@@ -54,6 +67,7 @@ public class CaveBiomes {
 
     }
 
+    // Rose Quartz Caves
     public static Biome createRoseQuartzCaves() {
         SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
         DefaultBiomeFeatures.addBatsAndMonsters(spawnSettings);
