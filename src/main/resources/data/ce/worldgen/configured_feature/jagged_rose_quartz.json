@@ -1,27 +1,14 @@
 {
-  "type": "minecraft:block_column",
+  "type": "minecraft:simple_block",
   "config": {
-    "direction": "up",
-    "allowed_placement": {
-      "type": "minecraft:matching_blocks",
-      "blocks": [
-        "minecraft:water"
-      ]
-    },
-    "prioritize_tip": false,
-    "layers": [
-      {
-        "height": 1,
-        "provider": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "ce:jagged_rose_quartz",
-            "Properties": {
-              "waterlogged": true
-            }
-          }
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "ce:jagged_rose_quartz",
+        "Properties": {
+          "waterlogged": "true"
         }
       }
-    ]
+    }
   }
 }
