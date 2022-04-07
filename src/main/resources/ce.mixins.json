@@ -6,11 +6,12 @@
   "mixins": [
     "AmethystFluteFleeCreeper",
     "AmethystFluteFleePhantom",
-    "AmethystFluteMixin",
     "BiomeGeneration",
     "GlowPasteBansMending",
     "GlowPasteBansUnbreaking",
-    "GoopBrewingRecipe"
+    "GoopBrewingRecipe",
+    "ItemRendererMixin",
+    "ModelLoaderMixin"
   ],
   "client": [],
   "injectors": {
