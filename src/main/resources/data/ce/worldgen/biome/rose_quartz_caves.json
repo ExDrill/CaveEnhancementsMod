@@ -6,20 +6,15 @@
   "effects": {
     "sky_color": 9084415,
     "fog_color": 12638463,
-    "water_color": 6280690,
-    "water_fog_color": 16234210,
+    "water_color": 4178164,
+    "water_fog_color": 4178164,
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
       "block_search_extent": 8,
       "offset": 2
     },
-    "music": {
-      "sound": "minecraft:music.overworld.dripstone_caves",
-      "min_delay": 12000,
-      "max_delay": 24000,
-      "replace_current_music": false
-    }
+    "music": {}
   },
   "spawners": {
     "monster": [
@@ -70,12 +65,6 @@
         "weight": 5,
         "minCount": 1,
         "maxCount": 1
-      },
-      {
-        "type": "minecraft:drowned",
-        "weight": 95,
-        "minCount": 4,
-        "maxCount": 4
       }
     ],
     "creature": [],
@@ -91,7 +80,7 @@
     "underground_water_creature": [
       {
         "type": "minecraft:glow_squid",
-        "weight": 25,
+        "weight": 50,
         "minCount": 4,
         "maxCount": 6
       }

@@ -53,8 +53,6 @@ public class CaveBiomes {
                 .temperature(0.5F)
                 .downfall(0.5F)
                 .effects((new BiomeEffects.Builder())
-                        .grassColor(0x6F932A)
-                        .foliageColor(0x6F932A)
                         .waterColor(0x3F76E4)
                         .waterFogColor(0x50533)
                         .fogColor(0x878787)
@@ -69,12 +67,17 @@ public class CaveBiomes {
 
     // Rose Quartz Caves
     public static Biome createRoseQuartzCaves() {
+        // Spawn Settings
         SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
         DefaultBiomeFeatures.addBatsAndMonsters(spawnSettings);
+        DefaultBiomeFeatures.addBatsAndMonsters(spawnSettings);
 
+        // Generation Settings
+        net.minecraft.world.biome.GenerationSettings.Builder builder2 = new net.minecraft.world.biome.GenerationSettings.Builder();
+        addBasicFeatures(builder2);
+
+        // Feature Settings
         GenerationSettings.Builder featureSettings = new GenerationSettings.Builder();
-
-
         DefaultBiomeFeatures.addPlainsTallGrass(featureSettings);
         DefaultBiomeFeatures.addDefaultOres(featureSettings);
         DefaultBiomeFeatures.addDefaultDisks(featureSettings);
@@ -86,20 +89,17 @@ public class CaveBiomes {
         return (new Biome.Builder())
                 .precipitation(Biome.Precipitation.RAIN)
                 .category(Biome.Category.UNDERGROUND)
-                .temperature(0.6F)
-                .downfall(0.9F)
+                .temperature(0.9F)
+                .downfall(0.6F)
                 .effects((new BiomeEffects.Builder())
-                        .grassColor(0x6F932A)
-                        .foliageColor(0x6F932A)
-                        .waterColor(0xAEC1BE)
-                        .waterFogColor(0xC9DDDA)
-                        .fogColor(0x878787)
-                        .skyColor(0x878787)
+                        .waterColor(0x6BC0FF)
+                        .waterFogColor(0x6BC0FF)
+                        .fogColor(0xC0D8FF)
+                        .skyColor(0x9084415)
                         .music(MusicType.GAME)
                         .build())
                 .spawnSettings(spawnSettings.build())
                 .generationSettings(featureSettings.build())
                 .build();
-
     }
 }

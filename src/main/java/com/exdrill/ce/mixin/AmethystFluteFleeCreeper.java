@@ -19,6 +19,6 @@ public abstract class AmethystFluteFleeCreeper extends HostileEntity {
 
     @Inject(method = "initGoals", at = @At("HEAD"))
     protected void initGoals(CallbackInfo ci) {
-        this.goalSelector.add(1, new FleeTheFluteGoal<>(this, EntityPredicates.EXCEPT_CREATIVE_OR_SPECTATOR, 8.0F, 1.2D, 1.8D));
+        this.goalSelector.add(1, new FleeTheFluteGoal<>(this, EntityPredicates.EXCEPT_CREATIVE_OR_SPECTATOR, 8.0F, 1.25D, 1.25D));
     }
 }
