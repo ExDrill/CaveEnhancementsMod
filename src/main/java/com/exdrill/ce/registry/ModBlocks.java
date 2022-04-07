@@ -20,7 +20,7 @@ public class ModBlocks {
     
     // Block Components
     public static final Block GOOP_BLOCK = new Block(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).velocityMultiplier(0.3F).strength(0.5F, 1.0F).sounds(BlockSoundGroup.SLIME).jumpVelocityMultiplier(0.9F));
-    public static final GoopTrapBlock GOOP_TRAP = new GoopTrapBlock(FabricBlockSettings.of(Material.GOURD).strength(1.0F, 5.0F).sounds(BlockSoundGroup.SLIME).velocityMultiplier( 0.01F).jumpVelocityMultiplier(0.3F).slipperiness(0.8F).mapColor(MapColor.PALE_YELLOW));
+    public static final GoopTrapBlock GOOP_TRAP = new GoopTrapBlock(FabricBlockSettings.of(Material.GOURD).strength(2.0F, 5.0F).sounds(BlockSoundGroup.SLIME).velocityMultiplier( 0.01F).jumpVelocityMultiplier(0.3F).slipperiness(0.8F).mapColor(MapColor.PALE_YELLOW));
     public static final MultifaceBlock GOOP_SPLAT = new GoopSplatBlock(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).breakInstantly().sounds(BlockSoundGroup.CORAL).noCollision().nonOpaque().mapColor(MapColor.PALE_YELLOW));
     public static final DrippingGoopBlock DRIPPING_GOOP = new DrippingGoopBlock(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).sounds(BlockSoundGroup.CORAL).nonOpaque().noCollision().luminance(2).mapColor(MapColor.PALE_YELLOW));
     public static final GlowSplotchBlock GLOW_SPLOTCH = new GlowSplotchBlock(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).sounds(BlockSoundGroup.HONEY).nonOpaque().noCollision().luminance(8).mapColor(MapColor.PALE_YELLOW));
