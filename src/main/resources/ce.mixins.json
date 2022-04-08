@@ -11,8 +11,7 @@
     "GlowPasteBansUnbreaking",
     "GoopBrewingRecipe",
     "ItemRendererMixin",
-    "ModelLoaderMixin",
-    "PlayerMixin"
+    "ModelLoaderMixin"
   ],
   "client": [],
   "injectors": {
