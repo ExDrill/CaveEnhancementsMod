@@ -31,20 +31,31 @@
   "block.ce.rose_quartz_tile_stairs": "Rose Quartz Tile Stairs",
   "block.ce.rose_quartz_tile_wall": "Rose Quartz Tile Wall",
   "block.ce.rose_quartz_chimes": "Rose Quartz Chimes",
+  "block.ce.rose_quartz_lamp": "Rose Quartz Lamp",
+  "block.ce.soul_rose_quartz_lamp": "Soul Rose Quartz Lamp",
 
   "item.glow_paste.place": "Glow Splotch placed",
 
-  "advancements.adventure.find_mountain_shrine.title": "Copper Relic",
+  "advancements.underground.root.title": "The Underground",
+  "advancements.underground.root.description": "The deeper you go, the more you can find.",
+
+  "advancements.adventure.find_mountain_shrine.title": "Shrine of the Relic",
   "advancements.adventure.find_mountain_shrine.description": "Find the mountain shrine in the meadows.",
 
-  "advancements.adventure.spyglass_at_goop.title": "A Gooey Little Friend",
-  "advancements.adventure.spyglass_at_goop.description": "Look at a goop through a spyglass",
+  "advancements.adventure.spyglass_at_goop.title": "A Gooey Discovery!",
+  "advancements.adventure.spyglass_at_goop.description": "Look at a goop through a spyglass.",
+
+  "advancements.adventure.stuck_in_goop_trap.title": "Sticky Situation!",
+  "advancements.adventure.stuck_in_goop_trap.description": "Get stuck in a goop trap.",
 
   "advancements.adventure.place_glow_paste.title": "A Splotch of Glow!",
   "advancements.adventure.place_glow_paste.description": "Light up an area using glow paste.",
 
-  "advancements.adventure.collect_rose_quartz.title": "Pristine Aura",
+  "advancements.adventure.collect_rose_quartz.title": "Undersea Minerals!",
   "advancements.adventure.collect_rose_quartz.description": "Collect some rose quartz.",
+
+  "advancements.adventure.cave_explorer.title": "A True Spelunker!",
+  "advancements.adventure.cave_explorer.description": "Discover every cave biome.",
 
   "gameplay.unobtainable": "§eUnreleased Content",
 

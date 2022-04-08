@@ -37,10 +37,9 @@ public class ModBlocks {
     public static final SlabBlock ROSE_QUARTZ_TILE_SLAB = new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(1F, 10).requiresTool().mapColor(MapColor.PINK).sounds(BlockSoundGroup.CALCITE));
     public static final StairsBlock ROSE_QUARTZ_TILE_STAIRS = new StairsBlock(ROSE_QUARTZ_TILES.getDefaultState(), FabricBlockSettings.of(Material.STONE).strength(1F, 10).requiresTool().mapColor(MapColor.PINK).sounds(BlockSoundGroup.CALCITE));
     public static final WallBlock ROSE_QUARTZ_TILE_WALL = new WallBlock(FabricBlockSettings.of(Material.STONE).strength(1F, 10).requiresTool().mapColor(MapColor.PINK).sounds(BlockSoundGroup.CALCITE));
-
-
     public static final Block ROSE_QUARTZ_CHIMES = new RoseQuartzChimesBlock(FabricBlockSettings.of(Material.STONE).strength(2F, 10).requiresTool().mapColor(MapColor.PINK).sounds(BlockSoundGroup.CALCITE).nonOpaque());
-
+    public static final RoseQuartzLampBlock ROSE_QUARTZ_LAMP = new RoseQuartzLampBlock(FabricBlockSettings.of(Material.STONE).strength(1F, 10).requiresTool().mapColor(MapColor.PINK).sounds(BlockSoundGroup.LANTERN).luminance(15));
+    public static final RoseQuartzLampBlock SOUL_ROSE_QUARTZ_LAMP = new RoseQuartzLampBlock(FabricBlockSettings.of(Material.STONE).strength(1F, 10).requiresTool().mapColor(MapColor.PINK).sounds(BlockSoundGroup.LANTERN).luminance(15));
 
     // Block Registry
     public static void registerBlocks() {
@@ -63,6 +62,8 @@ public class ModBlocks {
         Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_tile_stairs"), ROSE_QUARTZ_TILE_STAIRS);
         Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_tile_wall"), ROSE_QUARTZ_TILE_WALL);
         Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_chimes"), ROSE_QUARTZ_CHIMES);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_lamp"), ROSE_QUARTZ_LAMP);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "soul_rose_quartz_lamp"), SOUL_ROSE_QUARTZ_LAMP);
     }
 
     // Block Render Type

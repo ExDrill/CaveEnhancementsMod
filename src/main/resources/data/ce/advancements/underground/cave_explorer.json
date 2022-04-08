@@ -1,0 +1,70 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:iron_boots",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancements.adventure.cave_explorer.title"
+    },
+    "description": {
+      "translate": "advancements.adventure.cave_explorer.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:adventure/sleep_in_bed",
+  "criteria": {
+    "lush_caves": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "minecraft:lush_caves"
+        }
+      }
+    },
+    "dripstone_caves": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "minecraft:dripstone_caves"
+        }
+      }
+    },
+    "goop_caves": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome":  "ce:goop_caves"
+        }
+      }
+    },
+    "rose_quartz_caves": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "location": {
+          "biome": "minecraft:rose_quartz_caves"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "lush_caves"
+    ],
+    [
+      "dripstone_caves"
+    ],
+    [
+      "goop_caves"
+    ],
+    [
+      "rose_quartz_caves"
+    ]
+  ],
+  "rewards": {
+    "experience": 350
+  }
+}

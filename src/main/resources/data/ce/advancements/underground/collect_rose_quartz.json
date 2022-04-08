@@ -14,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "minecraft:adventure/root",
+  "parent": "ce:underground/root",
   "criteria": {
     "rose_quartz": {
       "trigger": "minecraft:inventory_changed",

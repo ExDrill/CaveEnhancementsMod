@@ -2,6 +2,7 @@ package com.exdrill.ce.registry;
 
 import com.exdrill.ce.CaveEnhancements;
 import com.exdrill.ce.item.*;
+import net.minecraft.block.Block;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.sound.SoundEvents;
@@ -38,6 +39,8 @@ public class ModItems {
     public static final BlockItem ROSE_QUARTZ_TILE_STAIRS = new BlockItem(ModBlocks.ROSE_QUARTZ_TILE_STAIRS, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
     public static final BlockItem ROSE_QUARTZ_TILE_WALL = new BlockItem(ModBlocks.ROSE_QUARTZ_TILE_WALL, new Item.Settings().group(ItemGroup.DECORATIONS));
     public static final BlockItem ROSE_QUARTZ_CHIMES = new BlockItem(ModBlocks.ROSE_QUARTZ_CHIMES, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
+    public static final BlockItem ROSE_QUARTZ_LAMP = new BlockItem(ModBlocks.ROSE_QUARTZ_LAMP, new Item.Settings().group(ItemGroup.DECORATIONS));
+    public static final BlockItem SOUL_ROSE_QUARTZ_LAMP  = new BlockItem(ModBlocks.SOUL_ROSE_QUARTZ_LAMP, new Item.Settings().group(ItemGroup.DECORATIONS));
 
 
     //Registry
@@ -65,6 +68,9 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_tile_stairs"), ROSE_QUARTZ_TILE_STAIRS);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_tile_wall"), ROSE_QUARTZ_TILE_WALL);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_chimes"), ROSE_QUARTZ_CHIMES);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_lamp"), ROSE_QUARTZ_LAMP);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "soul_rose_quartz_lamp"), SOUL_ROSE_QUARTZ_LAMP);
+
         // Spawn Eggs
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_spawn_egg"), GOOP_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "cruncher_spawn_egg"), CRUNCHER_SPAWN_EGG);

@@ -1,8 +1,8 @@
 {
 	"parent": "block/block",
 	"textures": {
-		"0": "ce:block/rose_quartz_lamp",
-		"particle": "ce:block/rose_quartz_lamp"
+		"0": "ce:block/soul_rose_quartz_lamp",
+		"particle": "ce:block/soul_rose_quartz_lamp"
 	},
 	"elements": [
 		{
