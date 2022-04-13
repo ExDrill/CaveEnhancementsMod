@@ -121,6 +121,23 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
         return this.factory;
     }
 
+    // Sounds
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.ENTITY_TURTLE_DEATH;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return SoundEvents.ENTITY_TURTLE_HURT;
+    }
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return SoundEvents.ENTITY_TURTLE_AMBIENT_LAND;
+    }
+
     //AI
     protected void initGoals() {
         this.targetSelector.add(1, (new DripstoneTortoiseRevengeGoal(this)).setGroupRevenge(new Class[0]));
