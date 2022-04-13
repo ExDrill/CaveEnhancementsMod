@@ -1,8 +1,6 @@
 package com.exdrill.ce.entity;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
+import com.exdrill.ce.entity.ai.goal.EatBlockGoal;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -10,17 +8,14 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.world.event.GameEvent;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -31,6 +26,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class CruncherEntity extends PathAwareEntity implements IAnimatable {
     private static final Ingredient TEMPTING_ITEMS;
+    public long lastEatTick;
     public int eatingTicks = 0;
     public CruncherEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
@@ -38,16 +34,22 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable {
     }
 
     @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.putLong("lastEatTick", this.lastEatTick);
+        nbt.putInt("eatingTicks", this.eatingTicks);
+
+    }
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        this.lastEatTick = nbt.getLong("lastEatTick");
+        this.eatingTicks = nbt.getInt("eatingTicks");
+    }
+
+    @Override
     public void tick() {
         if (this.eatingTicks > 0) {
-            if (this.eatingTicks % 100 == 0) {
-                BlockPos pos = this.getBlockPos().down();
-                Block block = world.getBlockState(pos).getBlock();
-                if (block == Blocks.STONE || block == Blocks.TUFF || block == Blocks.GRAVEL || block == Blocks.DEEPSLATE) {
-                    world.breakBlock(pos, false, this);
-                }
-
-            }
             this.eatingTicks--;
 
         }
@@ -77,6 +79,7 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable {
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 1.0D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8F));
         this.goalSelector.add(6, new LookAroundGoal(this));
+        this.goalSelector.add(0, new EatBlockGoal(this));
         this.goalSelector.add(3, new TemptGoal(this, 1.25, TEMPTING_ITEMS, false));
     }
 
@@ -90,7 +93,7 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable {
     }
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
-        if (itemStack.isOf(Items.GLOW_BERRIES)) {
+        if (itemStack.isOf(Items.GLOW_BERRIES) && this.eatingTicks == 0) {
             if (!this.world.isClient) {
                 this.eatingTicks = 1200;
                 itemStack.decrement(1);
