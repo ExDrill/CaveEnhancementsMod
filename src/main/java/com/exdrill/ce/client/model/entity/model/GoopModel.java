@@ -1,9 +1,6 @@
 package com.exdrill.ce.client.model.entity.model;
 
-import com.exdrill.ce.entity.CruncherEntity;
-import com.exdrill.ce.entity.DripstoneTortoiseEntity;
 import com.exdrill.ce.entity.GoopEntity;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;

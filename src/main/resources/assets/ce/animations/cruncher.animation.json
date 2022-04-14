@@ -21,24 +21,15 @@
         "animation.cruncher.grazing": {
 			"loop": true,
 			"bones": {
-				"root": {
-					"position": [0, 0, 0]
-				},
-				"body": {
-					"position": [0, 0, 0]
-				},
-				"leg1": {
-					"rotation": [0, 0, 0]
-				},
 				"head": {
 					"rotation": [67.5, 0, 0],
 					"position": [0, 0, -3]
 				},
 				"upper_jaw": {
-					"rotation": ["-5 + math.cos(query.anim_time*720)*-5", 0, 0]
+					"rotation": ["-5 + (math.cos(query.anim_time*720)*-5)", 0, 0]
 				},
 				"lower_jaw": {
-					"rotation": ["5 + math.cos(query.anim_time*720)*5", 0, 0]
+					"rotation": ["5 + (math.cos(query.anim_time*720)*5)", 0, 0]
 				}
 			}
 		}

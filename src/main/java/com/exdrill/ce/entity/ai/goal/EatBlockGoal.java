@@ -13,13 +13,13 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.predicate.block.BlockStatePredicate;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
 public class EatBlockGoal extends Goal {
-    private static final int MAX_TIMER = 40;
     private final CruncherEntity mob;
     private final World world;
     private int timer;
@@ -33,7 +33,8 @@ public class EatBlockGoal extends Goal {
     public boolean canStart() {
         if (this.mob.eatingTicks > 0 && this.mob.world.getTime() - this.mob.lastEatTick > 120L) {
             BlockPos blockPos = this.mob.getBlockPos().down();
-                return this.world.getBlockState(blockPos.down()).isOf(Blocks.STONE);
+
+                return this.world.getBlockState(blockPos.down()).isIn(BlockTags.BASE_STONE_OVERWORLD);
         }
         return false;
     }
@@ -53,16 +54,13 @@ public class EatBlockGoal extends Goal {
         return this.timer > 0;
     }
 
-    public int getTimer() {
-        return this.timer;
-    }
-
     public void tick() {
         this.timer = Math.max(0, this.timer - 1);
         if (this.timer == this.getTickCount(4)) {
             BlockPos blockPos = this.mob.getBlockPos().down();
             if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
                 this.world.breakBlock(blockPos, false);
+                this.mob.isEatingBlock = true;
             }
 
             this.mob.onEatingGrass();
