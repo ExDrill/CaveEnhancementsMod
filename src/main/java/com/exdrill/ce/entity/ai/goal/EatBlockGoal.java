@@ -1,23 +1,14 @@
 package com.exdrill.ce.entity.ai.goal;
 
-import java.util.EnumSet;
-import java.util.function.Predicate;
-
 import com.exdrill.ce.entity.CruncherEntity;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.ai.goal.Goal.Control;
-import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.predicate.block.BlockStatePredicate;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
+
+import java.util.EnumSet;
 
 public class EatBlockGoal extends Goal {
     private final CruncherEntity mob;
@@ -48,6 +39,7 @@ public class EatBlockGoal extends Goal {
     public void stop() {
         this.mob.lastEatTick = this.mob.world.getTime();
         this.timer = 0;
+
     }
 
     public boolean shouldContinue() {
@@ -60,7 +52,7 @@ public class EatBlockGoal extends Goal {
             BlockPos blockPos = this.mob.getBlockPos().down();
             if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
                 this.world.breakBlock(blockPos, false);
-                this.mob.isEatingBlock = true;
+                this.mob.isEatingBlock(true);
             }
 
             this.mob.onEatingGrass();

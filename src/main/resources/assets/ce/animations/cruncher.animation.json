@@ -32,6 +32,14 @@
 					"rotation": ["5 + (math.cos(query.anim_time*720)*5)", 0, 0]
 				}
 			}
+		},
+		"animation.cruncher.sheared": {
+			"loop": true,
+			"bones": {
+				"moss_cap": {
+					"scale": [0, 0, 0]
+				}
+			}
 		}
 	}
 }
