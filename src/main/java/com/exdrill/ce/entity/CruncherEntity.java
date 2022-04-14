@@ -111,8 +111,14 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
         return age;
     }
 
+    @Override
+    protected boolean shouldSwimInFluids() {
+        return true;
+    }
+
     // Goals
     protected void initGoals() {
+        this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 1.0D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8F));
         this.goalSelector.add(6, new LookAroundGoal(this));

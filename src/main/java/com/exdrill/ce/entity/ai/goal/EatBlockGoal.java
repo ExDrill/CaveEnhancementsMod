@@ -50,7 +50,7 @@ public class EatBlockGoal extends Goal {
         this.timer = Math.max(0, this.timer - 1);
         if (this.timer == this.getTickCount(4)) {
             BlockPos blockPos = this.mob.getBlockPos().down();
-            if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
+            if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING) && this.world.getBlockState(blockPos).isIn(BlockTags.BASE_STONE_OVERWORLD)) {
                 this.world.breakBlock(blockPos, false);
                 this.mob.isEatingBlock(true);
             }
