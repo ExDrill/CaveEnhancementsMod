@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 
 @Mixin(Enchantment.class)
-public class GlowPasteBansMending {
+public class EnchantmentMixin {
     @Inject(method="isAcceptableItem", at = @At("HEAD"), cancellable=true)
     private void isAcceptableItem(ItemStack stack, CallbackInfoReturnable<Boolean> ci) {
         if(stack.getItem() == ModItems.GLOW_PASTE){

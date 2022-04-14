@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.function.Consumer;
 
 @Mixin(VanillaBiomeParameters.class)
-public class BiomeGeneration {
+public class VanillaBiomeParametersMixin {
     @Shadow @Final private MultiNoiseUtil.ParameterRange oceanContinentalness;
     private final MultiNoiseUtil.ParameterRange defaultParameter = MultiNoiseUtil.ParameterRange.of(-1.0F, 1.0F);
     @Inject(method="writeCaveBiomes", at = @At("TAIL"))

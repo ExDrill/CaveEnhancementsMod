@@ -6,7 +6,6 @@ import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.mob.PhantomEntity;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -14,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @Mixin(targets = "net.minecraft.entity.mob.PhantomEntity$SwoopMovementGoal")
-public abstract class AmethystFluteFleePhantom extends Goal {
+public abstract class PhantomEntityMixin extends Goal {
     @Final
     PhantomEntity field_7333;
 

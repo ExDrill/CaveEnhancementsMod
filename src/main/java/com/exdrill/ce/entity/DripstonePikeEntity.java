@@ -14,6 +14,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -133,6 +134,10 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
                     otherEntity = (Entity)var2.next();
 
                     otherEntity.damage(DamageSource.mobProjectile(this, owner), 8);
+
+                    if (otherEntity instanceof CreeperEntity) {
+                        otherEntity.damage(DamageSource.mobProjectile(this, owner), 20);
+                    }
                 }
             }
 

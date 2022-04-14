@@ -1,9 +1,6 @@
 package com.exdrill.ce.entity;
 
 import com.exdrill.ce.registry.ModEntities;
-import net.minecraft.block.BlockState;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
@@ -15,24 +12,22 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.mob.*;
-import net.minecraft.entity.passive.BeeEntity;
-import net.minecraft.entity.passive.WolfEntity;
+import net.minecraft.entity.mob.Angerable;
+import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.DyeColor;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.*;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
+import net.minecraft.tag.BlockTags;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -41,11 +36,11 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
-
 import java.util.EnumSet;
+import java.util.Random;
 import java.util.UUID;
 
-public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimatable, Angerable {
+public class DripstoneTortoiseEntity extends HostileEntity implements IAnimatable, Angerable {
     private static final TrackedData<Integer> ANGER = DataTracker.registerData(DripstoneTortoiseEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
     private static final TrackedData<Boolean> SHOULD_STOMP = DataTracker.registerData(DripstoneTortoiseEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -57,9 +52,14 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
     @Nullable
     private UUID angryAt;
 
-    public DripstoneTortoiseEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
+    public DripstoneTortoiseEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
         this.experiencePoints = 30;
+    }
+
+    @Override
+    public boolean isAngryAt(PlayerEntity player) {
+        return false;
     }
 
     //NBT
@@ -170,17 +170,10 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
         if (!this.canTarget((LivingEntity)entity)) {
             return false;
         } else {
-            return ((LivingEntity)entity).getType() == EntityType.PLAYER && this.isUniversallyAngry(((LivingEntity)entity).world) ? true : ((LivingEntity)entity).getUuid().equals(this.getAngryAt());
+            return ((LivingEntity) entity).getType() == EntityType.PLAYER && this.isUniversallyAngry(((LivingEntity) entity).world) || ((LivingEntity) entity).getUuid().equals(this.getAngryAt());
         }
     }
 
-    public boolean canSpawn(WorldAccess world, SpawnReason spawnReason) {
-        return true;
-    }
-
-    public boolean canSpawn(WorldView world) {
-        return !world.containsFluid(this.getBoundingBox()) && world.doesNotIntersectEntities(this);
-    }
 
     @Override
     public boolean canBeLeashedBy(PlayerEntity player) {
@@ -474,6 +467,12 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements IAnimata
 
         protected void resetCooldown() {
             this.cooldown = 400;
+        }
+
+        // Spawning Conditions
+
+        public static boolean canSpawn(EntityType<? extends LivingEntity> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
+            return world.getBlockState(pos.down()).isIn(BlockTags.AXOLOTLS_SPAWNABLE_ON);
         }
     }
 }

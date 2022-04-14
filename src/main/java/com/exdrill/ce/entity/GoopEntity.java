@@ -1,7 +1,10 @@
 package com.exdrill.ce.entity;
 
 import com.exdrill.ce.registry.ModItems;
-import net.minecraft.entity.*;
+import net.minecraft.entity.EntityData;
+import net.minecraft.entity.EntityGroup;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -9,7 +12,6 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -20,12 +22,15 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.world.*;
+import net.minecraft.world.LocalDifficulty;
+import net.minecraft.world.ServerWorldAccess;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
-public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketable {
+
+public class GoopEntity extends HostileEntity implements IAnimatable, CustomBucketable {
     private static final TrackedData<Boolean> FROM_BUCKET = DataTracker.registerData(GoopEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Boolean> STICKING_UP = DataTracker.registerData(GoopEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
@@ -121,31 +126,13 @@ public class GoopEntity extends MobEntity implements IAnimatable, CustomBucketab
     }
 
     // Components
-    protected boolean isDisallowedInPeaceful() {
-        return true;
-    }
-
     public boolean canBreatheInWater() {
         return false;
     }
 
+    @Override
     public boolean isPushable() {
         return false;
-    }
-
-    public void pushAwayFrom(Entity entity) {
-    }
-
-
-
-    // Spawn Conditions
-
-    public boolean canSpawn(WorldAccess world, SpawnReason spawnReason) {
-        return true;
-    }
-
-    public boolean canSpawn(WorldView world) {
-        return !world.containsFluid(this.getBoundingBox()) && world.doesNotIntersectEntities(this);
     }
 
     // Bucket Components

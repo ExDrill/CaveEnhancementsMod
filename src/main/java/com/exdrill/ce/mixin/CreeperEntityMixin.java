@@ -1,9 +1,12 @@
 package com.exdrill.ce.mixin;
 
+import com.exdrill.ce.entity.DripstoneTortoiseEntity;
 import com.exdrill.ce.entity.ai.goal.FleeTheFluteGoal;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.goal.FleeEntityGoal;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.passive.CatEntity;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -12,8 +15,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(CreeperEntity.class)
-public abstract class AmethystFluteFleeCreeper extends HostileEntity {
-    protected AmethystFluteFleeCreeper(EntityType<? extends HostileEntity> entityType, World world) {
+public abstract class CreeperEntityMixin extends HostileEntity {
+    protected CreeperEntityMixin(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
     }
 

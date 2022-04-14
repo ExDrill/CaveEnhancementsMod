@@ -1,15 +1,15 @@
 {
-  "required": false,
+  "required": true,
   "minVersion": "0.8",
   "package": "com.exdrill.ce.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "AmethystFluteFleeCreeper",
-    "AmethystFluteFleePhantom",
-    "BiomeGeneration",
-    "GlowPasteBansMending",
-    "GlowPasteBansUnbreaking",
-    "GoopBrewingRecipe",
+    "CreeperEntityMixin",
+    "PhantomEntityMixin",
+    "VanillaBiomeParametersMixin",
+    "EnchantmentMixin",
+    "UnbreakingEnchantmentMixin",
+    "BrewingRecipeRegistryMixin",
     "ItemRendererMixin",
     "ModelLoaderMixin"
   ],
