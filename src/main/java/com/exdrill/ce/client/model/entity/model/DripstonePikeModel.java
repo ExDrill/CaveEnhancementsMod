@@ -1,7 +1,6 @@
 package com.exdrill.ce.client.model.entity.model;
 
 import com.exdrill.ce.entity.DripstonePikeEntity;
-import com.exdrill.ce.entity.DripstoneTortoiseEntity;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 

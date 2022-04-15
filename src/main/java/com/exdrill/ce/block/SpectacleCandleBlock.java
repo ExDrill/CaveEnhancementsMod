@@ -1,6 +1,5 @@
 package com.exdrill.ce.block;
 
-import com.exdrill.ce.block.entity.LightningAnchorBlockEntity;
 import com.exdrill.ce.block.entity.SpectacleCandleBlockEntity;
 import com.exdrill.ce.registry.ModBlocks;
 import com.google.common.collect.ImmutableList;

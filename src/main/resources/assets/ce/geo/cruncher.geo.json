@@ -72,10 +72,12 @@
 					]
 				},
 				{
-					"name": "rightItem",
+					"name": "Item",
 					"parent": "head",
-					"pivot": [-2, 7.5, 0],
-					"rotation": [10, 0, -10]
+					"pivot": [0, 7, -6],
+					"cubes": [
+						{"origin": [0, 7, -6], "size": [0, 0, 0], "uv": [0, 0]}
+					]
 				},
 				{
 					"name": "leg0",

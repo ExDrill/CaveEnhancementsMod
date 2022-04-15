@@ -63,14 +63,7 @@ public class DripstoneTortoiseEntity extends HostileEntity implements IAnimatabl
         return false;
     }
 
-    @Nullable
-    @Override
-    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        if (spawnReason == SpawnReason.NATURAL) {
-            System.out.println("Spawning Dripstone Tortoise");
-        }
-        return entityData;
-    }
+
 
     //NBT
     protected void initDataTracker() {

@@ -33,12 +33,15 @@ public class CruncherModel extends AnimatedTickingGeoModel<CruncherEntity> {
         IBone head = this.getAnimationProcessor().getBone("head");
         IBone upperJaw = this.getAnimationProcessor().getBone("upper_jaw");
         IBone lowerJaw = this.getAnimationProcessor().getBone("lower_jaw");
+        IBone Item = this.getAnimationProcessor().getBone("Item");
 
         EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
         if (!entity.isEating()) {
             head.setRotationX(extraData.headPitch * ((float) Math.PI / 360F));
             head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 340F));
         }
+        Item.setRotationX(90F);
+        Item.setPositionZ(-4F);
      }
 
 }

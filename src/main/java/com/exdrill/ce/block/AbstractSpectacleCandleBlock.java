@@ -1,8 +1,6 @@
 
 package com.exdrill.ce.block;
 
-import java.util.Random;
-import net.minecraft.block.AbstractBlock.Settings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -20,6 +18,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Random;
 
 public abstract class AbstractSpectacleCandleBlock extends BlockWithEntity {
     public static final int field_30987 = 3;
