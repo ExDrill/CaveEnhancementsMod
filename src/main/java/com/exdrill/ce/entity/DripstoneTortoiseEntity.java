@@ -1,6 +1,7 @@
 package com.exdrill.ce.entity;
 
 import com.exdrill.ce.registry.ModEntities;
+import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
@@ -60,6 +61,15 @@ public class DripstoneTortoiseEntity extends HostileEntity implements IAnimatabl
     @Override
     public boolean isAngryAt(PlayerEntity player) {
         return false;
+    }
+
+    @Nullable
+    @Override
+    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+        if (spawnReason == SpawnReason.NATURAL) {
+            System.out.println("Spawning Dripstone Tortoise");
+        }
+        return entityData;
     }
 
     //NBT
@@ -467,12 +477,6 @@ public class DripstoneTortoiseEntity extends HostileEntity implements IAnimatabl
 
         protected void resetCooldown() {
             this.cooldown = 400;
-        }
-
-        // Spawning Conditions
-
-        public static boolean canSpawn(EntityType<? extends LivingEntity> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
-            return world.getBlockState(pos.down()).isIn(BlockTags.AXOLOTLS_SPAWNABLE_ON);
         }
     }
 }

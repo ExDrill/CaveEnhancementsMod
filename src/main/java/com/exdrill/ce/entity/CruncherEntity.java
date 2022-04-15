@@ -1,7 +1,9 @@
 package com.exdrill.ce.entity;
 
 import com.exdrill.ce.entity.ai.goal.EatBlockGoal;
+import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -20,8 +22,11 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.LocalDifficulty;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.IAnimationTickable;
 import software.bernie.geckolib3.core.PlayState;
@@ -172,6 +177,15 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
     }
 
 
+    @Nullable
+    @Override
+    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+        if (spawnReason == SpawnReason.NATURAL) {
+            System.out.println("Spawning cruncher");
+        }
+        return entityData;
+    }
+
     // Interactions
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
@@ -213,6 +227,8 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.15D)
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 15);
     }
+
+
 
     static {
         TEMPTING_ITEMS = Ingredient.ofItems(Items.GLOW_BERRIES);

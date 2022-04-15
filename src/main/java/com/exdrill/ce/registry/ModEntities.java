@@ -4,11 +4,14 @@ import com.exdrill.ce.CaveEnhancements;
 import com.exdrill.ce.entity.*;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.fabricmc.fabric.mixin.object.builder.SpawnRestrictionAccessor;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.Heightmap.Type;
 
 public class ModEntities {
 
@@ -58,5 +61,6 @@ public class ModEntities {
         FabricDefaultAttributeRegistry.register(CRUNCHER, CruncherEntity.createCruncherAttributes());
         FabricDefaultAttributeRegistry.register(DRIPSTONE_TORTOISE, DripstoneTortoiseEntity.createDripstoneTortoiseAttributes());
         FabricDefaultAttributeRegistry.register(DRIPSTONE_PIKE, DripstonePikeEntity.createDripstonePikeAttributes());
+        SpawnRestrictionAccessor.callRegister(CRUNCHER, SpawnRestriction.Location.ON_GROUND, Type.MOTION_BLOCKING, CruncherEntity::canMobSpawn);
     }
 }
