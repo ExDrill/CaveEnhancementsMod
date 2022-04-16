@@ -44,6 +44,8 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
 
     public LivingEntity owner;
 
+    public boolean checkedSight =  false;
+
     private static final TrackedData<Boolean> INVULNERABLE = DataTracker.registerData(DripstonePikeEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
     public DripstonePikeEntity(EntityType<? extends DripstonePikeEntity> entityType, World world) {
@@ -119,12 +121,20 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
         super.tick();
 
         if(!world.isClient()) {
+            if(!checkedSight){
+                checkedSight = true;
+
+                if(owner != null && !canSee(owner)){
+                    discard();
+                }
+            }
+
             damageDelay--;
 
             if(!didDamage && damageDelay <= 0){
                 didDamage = true;
 
-                Box box = new Box(new BlockPos(getPos().getX(), getPos().getY(), getPos().getZ())).expand(.5);
+                Box box = new Box(new BlockPos(getPos().getX(), getPos().getY(), getPos().getZ())).expand(.1);
 
                 List<Entity> list = world.getEntitiesByClass(Entity.class, box, (e) -> LivingEntity.class.isAssignableFrom(e.getClass()));
 
