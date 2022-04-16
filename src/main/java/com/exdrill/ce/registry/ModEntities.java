@@ -9,6 +9,7 @@ import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.SpawnRestriction;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap.Type;
@@ -61,6 +62,7 @@ public class ModEntities {
         FabricDefaultAttributeRegistry.register(CRUNCHER, CruncherEntity.createCruncherAttributes());
         FabricDefaultAttributeRegistry.register(DRIPSTONE_TORTOISE, DripstoneTortoiseEntity.createDripstoneTortoiseAttributes());
         FabricDefaultAttributeRegistry.register(DRIPSTONE_PIKE, DripstonePikeEntity.createDripstonePikeAttributes());
+        SpawnRestrictionAccessor.callRegister(DRIPSTONE_TORTOISE, SpawnRestriction.Location.ON_GROUND, Type.MOTION_BLOCKING, HostileEntity::canSpawnIgnoreLightLevel);
         SpawnRestrictionAccessor.callRegister(CRUNCHER, SpawnRestriction.Location.ON_GROUND, Type.MOTION_BLOCKING, CruncherEntity::canMobSpawn);
     }
 }
