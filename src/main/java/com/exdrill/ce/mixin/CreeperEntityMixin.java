@@ -1,12 +1,9 @@
 package com.exdrill.ce.mixin;
 
-import com.exdrill.ce.entity.DripstoneTortoiseEntity;
 import com.exdrill.ce.entity.ai.goal.FleeTheFluteGoal;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.goal.FleeEntityGoal;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.passive.CatEntity;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
