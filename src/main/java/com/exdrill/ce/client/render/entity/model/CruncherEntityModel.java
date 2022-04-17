@@ -21,7 +21,7 @@ public class CruncherEntityModel<E extends MobEntity> extends EntityModel<Crunch
     private final ModelPart leg2;
     private final ModelPart leg3;
     public final ModelPart head;
-    private final ModelPart upperJaw;
+    public final ModelPart upperJaw;
     private final ModelPart lowerJaw;
     private final ModelPart mossCap;
 

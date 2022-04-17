@@ -22,17 +22,18 @@ public class CruncherEntityFeatureRenderer extends FeatureRenderer<CruncherEntit
 
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CruncherEntity cruncherEntity, float f, float g, float h, float j, float k, float l) {
         matrixStack.push();
-        float m;
 
-        matrixStack.translate(this.getContextModel().head.pivotX / 10F, (this.getContextModel()).head.pivotY / 8.0F, ((this.getContextModel()).head.pivotZ / 10F));
-        m = 0.0F;
-        matrixStack.multiply(Vec3f.POSITIVE_Z.getRadialQuaternion(m));
-        matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(k));
-        matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(l));
-        matrixStack.translate(0.0D, 1.15D, -0.5D);
+        matrixStack.translate(0, 1.25, 0);
+
+        matrixStack.multiply(Vec3f.POSITIVE_Y.getRadialQuaternion(getContextModel().head.yaw));
+        matrixStack.multiply(Vec3f.POSITIVE_X.getRadialQuaternion(getContextModel().head.pitch));
+
+        matrixStack.translate(0, -.2, -.5);
+
         matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(90.0F));
 
         ItemStack itemStack = cruncherEntity.getEquippedStack(EquipmentSlot.MAINHAND);
+
         MinecraftClient.getInstance().getHeldItemRenderer().renderItem(cruncherEntity, itemStack, Mode.GROUND, false, matrixStack, vertexConsumerProvider, i);
         matrixStack.pop();
     }
