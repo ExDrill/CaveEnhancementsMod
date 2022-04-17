@@ -34,8 +34,6 @@ public class RoseQuartzLampBlock extends Block implements Waterloggable {
         super(settings);
     }
 
-
-
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(WATERLOGGED, FACING);
     }
