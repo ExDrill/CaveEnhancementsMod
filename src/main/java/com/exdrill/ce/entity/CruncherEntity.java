@@ -1,10 +1,7 @@
 package com.exdrill.ce.entity;
 
 import com.exdrill.ce.entity.ai.goal.EatBlockGoal;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -13,9 +10,7 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
-import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
@@ -50,6 +45,7 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
     public int eatingTicks = 0;
     public int eatingAnimation = 0;
     public int eatingTime;
+    public boolean hasItem;
 
     public CruncherEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
@@ -105,6 +101,7 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
     // Ticking
     @Override
     public void tick() {
+        ItemStack itemStack = this.getEquippedStack(EquipmentSlot.MAINHAND);
         if (this.eatingTicks > 0) {
             this.eatingTicks--;
         }
@@ -118,6 +115,15 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
             this.eatingAnimation = 0;
             this.isEatingBlock(false);
         }
+        if (itemStack.isOf(Items.GLOW_BERRIES)) {
+            hasItem = true;
+        }
+        if (itemStack.isEmpty() && hasItem == true) {
+            hasItem = false;
+            this.eatingTicks = 1200;
+            System.out.println("Finished Eating?");
+        }
+
         super.tick();
     }
 
@@ -191,9 +197,11 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
     // Interactions
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
+        ItemEntity itemEntity = new ItemEntity(this.world, this.getX(), this.getY(), this.getZ(), Items.MOSS_CARPET.getDefaultStack());
         if (itemStack.isOf(Items.SHEARS) && !this.hasBeenSheared() && this.isAlive()) {
             this.isSheared(true);
             itemStack.damage(1, player, (playerx) -> playerx.sendToolBreakStatus(hand));
+            this.world.spawnEntity(itemEntity);
             this.world.playSoundFromEntity(null, this, SoundEvents.ENTITY_SHEEP_SHEAR, SoundCategory.PLAYERS, 1.0F, 1.0F);
             this.emitGameEvent(GameEvent.SHEAR, player);
             return ActionResult.SUCCESS;
@@ -233,7 +241,7 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
     // Can Pick Up Items
     public boolean canPickupItem(ItemStack stack) {
         ItemStack itemStack = this.getEquippedStack(EquipmentSlot.MAINHAND);
-        return itemStack.isEmpty() || this.eatingTime > 0 && itemStack.isOf(Items.GLOW_BERRIES);
+        return itemStack.isEmpty() && this.eatingTime > 0 && this.eatingTicks == 0 && stack.isOf(Items.GLOW_BERRIES);
     }
 
     boolean wantsToPickupItem() {
@@ -242,7 +250,39 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
     }
 
     private boolean canEat(ItemStack stack) {
-        return stack.getItem().isFood() && this.getTarget() == null && this.onGround && !this.isSleeping();
+        return stack.getItem().isFood() && this.onGround;
+    }
+    // Can Drop Items
+    private void spit(ItemStack stack) {
+        if (!stack.isEmpty() && !this.world.isClient) {
+            ItemEntity itemEntity = new ItemEntity(this.world, this.getX() + this.getRotationVector().x, this.getY() + 1.0D, this.getZ() + this.getRotationVector().z, stack);
+            itemEntity.setPickupDelay(40);
+            itemEntity.setThrower(this.getUuid());
+            this.world.spawnEntity(itemEntity);
+        }
+    }
+    private void dropItem(ItemStack stack) {
+        ItemEntity itemEntity = new ItemEntity(this.world, this.getX(), this.getY(), this.getZ(), stack);
+        this.world.spawnEntity(itemEntity);
+    }
+
+    protected void loot(ItemEntity item) {
+        ItemStack itemStack = item.getStack();
+        if (this.canPickupItem(itemStack)) {
+            int i = itemStack.getCount();
+            if (i > 1) {
+                this.dropItem(itemStack.split(i - 1));
+            }
+
+            this.spit(this.getEquippedStack(EquipmentSlot.MAINHAND));
+            this.triggerItemPickedUpByEntityCriteria(item);
+            this.equipStack(EquipmentSlot.MAINHAND, itemStack.split(1));
+            this.handDropChances[EquipmentSlot.MAINHAND.getEntitySlotId()] = 2.0F;
+            this.sendPickup(item, itemStack.getCount());
+            item.discard();
+            this.eatingTime = 0;
+        }
+
     }
 
     public void tickMovement() {
@@ -260,8 +300,6 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
                 } else if (this.eatingTime > 560 && this.random.nextFloat() < 0.1F) {
                     this.playSound(this.getEatSound(itemStack), 1.0F, 1.0F);
                     this.world.sendEntityStatus(this, (byte)45);
-                    this.eatingTicks = 1200;
-                    System.out.println("Finished Eating?");
                 }
             }
         }
