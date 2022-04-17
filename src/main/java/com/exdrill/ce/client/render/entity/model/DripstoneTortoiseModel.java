@@ -1,4 +1,4 @@
-package com.exdrill.ce.client.model.entity.model;
+package com.exdrill.ce.client.render.entity.model;
 
 import com.exdrill.ce.entity.DripstoneTortoiseEntity;
 import net.minecraft.util.Identifier;

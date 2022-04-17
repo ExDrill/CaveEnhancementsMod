@@ -37,7 +37,7 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAnimationTickable {
+public class CruncherEntity extends PathAwareEntity {
     private static final TrackedData<Boolean> IS_EATING_BLOCK = DataTracker.registerData(CruncherEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Boolean> IS_SHEARED = DataTracker.registerData(CruncherEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final Ingredient TEMPTING_ITEMS;
@@ -127,7 +127,6 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
         super.tick();
     }
 
-    @Override
     public int tickTimer() {
         return age;
     }
@@ -147,52 +146,6 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
         this.goalSelector.add(3, new TemptGoal(this, 1.25, TEMPTING_ITEMS, false));
         this.goalSelector.add(2, new CruncherEntity.PickupItemGoal());
     }
-
-
-    // Animations
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController(this, "idleController", 0, this::isWalking));
-        animationData.addAnimationController(new AnimationController(this, "grazingController", 5, this::isGrazing));
-        animationData.addAnimationController(new AnimationController(this, "shearedController", 0, this::isSheared));
-    }
-
-    private <E extends IAnimatable> PlayState isWalking(AnimationEvent<E> event) {
-        if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cruncher.walk", true));
-            return PlayState.CONTINUE;
-        } else {
-            return PlayState.STOP;
-        }
-    }
-
-    private <E extends IAnimatable> PlayState isGrazing(AnimationEvent<E> event) {
-        if (this.isEating()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cruncher.grazing", true));
-        } else {
-            event.getController().clearAnimationCache();
-            return PlayState.STOP;
-        }
-        return PlayState.CONTINUE;
-    }
-
-    private <E extends IAnimatable> PlayState isSheared(AnimationEvent<E> event) {
-        if (this.hasBeenSheared()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cruncher.sheared", true));
-        } else {
-            event.getController().clearAnimationCache();
-            return PlayState.STOP;
-        }
-        return PlayState.CONTINUE;
-    }
-
-    private final AnimationFactory factory = new AnimationFactory(this);
-
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
-    }
-
 
     // Interactions
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
@@ -228,7 +181,7 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
 
     @Override
     public boolean canBeLeashedBy(PlayerEntity player) {
-        return false;
+        return true;
     }
 
     // Attributes

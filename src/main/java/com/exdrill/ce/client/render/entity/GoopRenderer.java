@@ -1,6 +1,6 @@
-package com.exdrill.ce.client.model.entity;
+package com.exdrill.ce.client.render.entity;
 
-import com.exdrill.ce.client.model.entity.model.GoopModel;
+import com.exdrill.ce.client.render.entity.model.GoopModel;
 import com.exdrill.ce.entity.GoopEntity;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;

@@ -1,7 +1,7 @@
-package com.exdrill.ce.client.model.block;
+package com.exdrill.ce.client.render.block;
 
 import com.exdrill.ce.block.entity.RoseQuartzChimesBlockEntity;
-import com.exdrill.ce.client.model.block.model.RoseQuartzChimesModel;
+import com.exdrill.ce.client.render.block.model.RoseQuartzChimesModel;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;

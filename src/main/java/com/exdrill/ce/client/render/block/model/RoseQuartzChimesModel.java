@@ -1,4 +1,4 @@
-package com.exdrill.ce.client.model.block.model;
+package com.exdrill.ce.client.render.block.model;
 
 import com.exdrill.ce.CaveEnhancements;
 import com.exdrill.ce.block.entity.RoseQuartzChimesBlockEntity;
