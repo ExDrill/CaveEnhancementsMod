@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_crafting_table": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:crafting_table"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_crafting_table"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ce:goop_block",
+      "ce:dripping_goop",
+      "ce:glow_paste",
+      "ce:spectacle_candle",
+      "ce:rose_quartz_block",
+      "ce:polished_rose_quartz",
+      "ce:polished_rose_quartz_slab",
+      "ce:polished_rose_quartz_stairs",
+      "ce:polished_rose_quartz_wall",
+      "ce:rose_quartz_tiles",
+      "ce:rose_quartz_tile_slab",
+      "ce:rose_quartz_tile_stairs",
+      "ce:rose_quartz_tile_wall",
+      "ce:rose_quartz_chimes",
+      "ce:rose_quartz_lamp",
+      "ce:soul_rose_quartz_lamp"
+    ]
+  }
+}

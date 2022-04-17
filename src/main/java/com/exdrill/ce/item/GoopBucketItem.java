@@ -1,9 +1,7 @@
 package com.exdrill.ce.item;
 
 import com.exdrill.ce.entity.CustomBucketable;
-import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.FluidDrainable;
 import net.minecraft.block.FluidFillable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -12,10 +10,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BucketItem;
-import net.minecraft.item.EntityBucketItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsage;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;

@@ -3,22 +3,15 @@ package com.exdrill.ce.block;
 import com.exdrill.ce.registry.ModBlocks;
 import com.exdrill.ce.registry.ModParticles;
 import net.minecraft.block.*;
-import net.minecraft.block.Waterloggable;
-import net.minecraft.block.enums.RailShape;
-import net.minecraft.block.enums.Thickness;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.tag.FluidTags;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
@@ -29,7 +22,6 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Optional;
 import java.util.Random;
 
 public class DrippingGoopBlock extends Block implements Waterloggable {

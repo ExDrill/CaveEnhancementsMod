@@ -14,7 +14,7 @@
         "max_inclusive": 5
       }
     },
-    "replaceable": "#minecraft:base_stone_overworld",
+    "replaceable": "#ce:goop_caves_replaceable",
     "ground_state": {
       "type": "minecraft:simple_state_provider",
       "state": {

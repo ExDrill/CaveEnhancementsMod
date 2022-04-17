@@ -1,15 +1,19 @@
 package com.exdrill.ce.registry;
 
 import com.exdrill.ce.CaveEnhancements;
+import com.exdrill.ce.entity.CruncherEntity;
 import com.exdrill.ce.world.biome.CaveBiomes;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.mixin.object.builder.SpawnRestrictionAccessor;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 
@@ -27,7 +31,8 @@ public class ModBiomes {
     }
 
     public static void registerBiomeModifications() {
-          BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DRIPSTONE_CAVES), SpawnGroup.MONSTER, ModEntities.DRIPSTONE_TORTOISE, 100, 1, 1);
+          BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DRIPSTONE_CAVES), SpawnGroup.MONSTER, ModEntities.DRIPSTONE_TORTOISE, 100, 2, 3);
+          BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), SpawnGroup.MONSTER, ModEntities.CRUNCHER, 75, 1, 1);
     }
 
 
