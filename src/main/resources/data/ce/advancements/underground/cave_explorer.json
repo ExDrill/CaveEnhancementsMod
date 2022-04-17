@@ -15,7 +15,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "minecraft:adventure/sleep_in_bed",
+  "parent": "ce:underground/root",
   "criteria": {
     "lush_caves": {
       "trigger": "minecraft:location",
@@ -45,7 +45,7 @@
       "trigger": "minecraft:location",
       "conditions": {
         "location": {
-          "biome": "minecraft:rose_quartz_caves"
+          "biome": "ce:rose_quartz_caves"
         }
       }
     }

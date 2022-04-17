@@ -4,10 +4,10 @@
       "item": "ce:jagged_rose_quartz"
     },
     "title": {
-      "translate": "advancements.adventure.collect_rose_quartz.title"
+      "translate": "advancements.underground.collect_rose_quartz.title"
     },
     "description": {
-      "translate": "advancements.adventure.collect_rose_quartz.description"
+      "translate": "advancements.underground.collect_rose_quartz.description"
     },
     "frame": "task",
     "show_toast": true,

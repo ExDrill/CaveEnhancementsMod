@@ -115,10 +115,10 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
             this.eatingAnimation = 0;
             this.isEatingBlock(false);
         }
-        if (itemStack.isOf(Items.GLOW_BERRIES)) {
+        if (itemStack.isOf(Items.GLOW_BERRIES) && !hasItem) {
             hasItem = true;
         }
-        if (itemStack.isEmpty() && hasItem == true) {
+        if (itemStack.isEmpty() && hasItem) {
             hasItem = false;
             this.eatingTicks = 1200;
             System.out.println("Finished Eating?");
@@ -186,7 +186,7 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
         return PlayState.CONTINUE;
     }
 
-    private AnimationFactory factory = new AnimationFactory(this);
+    private final AnimationFactory factory = new AnimationFactory(this);
 
     @Override
     public AnimationFactory getFactory() {
@@ -228,7 +228,7 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
 
     @Override
     public boolean canBeLeashedBy(PlayerEntity player) {
-        return super.canBeLeashedBy(player);
+        return false;
     }
 
     // Attributes
@@ -314,7 +314,7 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
         public boolean canStart() {
             if (!CruncherEntity.this.getEquippedStack(EquipmentSlot.MAINHAND).isEmpty()) {
                 return false;
-            } else if (CruncherEntity.this.getTarget() == null && CruncherEntity.this.getAttacker() == null) {
+            } else {
                 if (!CruncherEntity.this.wantsToPickupItem()) {
                     return false;
                 } else if (CruncherEntity.this.getRandom().nextInt(toGoalTicks(10)) != 0) {
@@ -323,8 +323,6 @@ public class CruncherEntity extends PathAwareEntity implements IAnimatable, IAni
                     List<ItemEntity> list = CruncherEntity.this.world.getEntitiesByClass(ItemEntity.class, CruncherEntity.this.getBoundingBox().expand(8.0D, 8.0D, 8.0D), CruncherEntity.PICKABLE_DROP_FILTER);
                     return !list.isEmpty() && CruncherEntity.this.getEquippedStack(EquipmentSlot.MAINHAND).isEmpty();
                 }
-            } else {
-                return false;
             }
         }
 

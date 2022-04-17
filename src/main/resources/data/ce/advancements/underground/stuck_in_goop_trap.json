@@ -4,10 +4,10 @@
       "item": "ce:goop_trap"
     },
     "title": {
-      "translate": "advancements.adventure.stuck_in_goop_trap.title"
+      "translate": "advancements.underground.stuck_in_goop_trap.title"
     },
     "description": {
-      "translate": "advancements.adventure.stuck_in_goop_trap.description"
+      "translate": "advancements.underground.stuck_in_goop_trap.description"
     },
     "frame": "task",
     "show_toast": true,
