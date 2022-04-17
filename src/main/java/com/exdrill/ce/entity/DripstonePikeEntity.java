@@ -1,10 +1,6 @@
 package com.exdrill.ce.entity;
 
-import com.exdrill.ce.registry.ModBlocks;
-import net.minecraft.entity.*;
-import net.minecraft.entity.attribute.DefaultAttributeContainer;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -21,7 +17,6 @@ import net.minecraft.item.Items;
 import net.minecraft.util.Arm;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -43,6 +38,8 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
     public boolean didDamage = false;
 
     public LivingEntity owner;
+
+    public boolean checkedSight =  false;
 
     private static final TrackedData<Boolean> INVULNERABLE = DataTracker.registerData(DripstonePikeEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
@@ -119,12 +116,20 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
         super.tick();
 
         if(!world.isClient()) {
+            if(!checkedSight){
+                checkedSight = true;
+
+                if(owner != null && !canSee(owner)){
+                    discard();
+                }
+            }
+
             damageDelay--;
 
             if(!didDamage && damageDelay <= 0){
                 didDamage = true;
 
-                Box box = new Box(new BlockPos(getPos().getX(), getPos().getY(), getPos().getZ())).expand(.5);
+                Box box = new Box(new BlockPos(getPos().getX(), getPos().getY(), getPos().getZ())).expand(.1);
 
                 List<Entity> list = world.getEntitiesByClass(Entity.class, box, (e) -> LivingEntity.class.isAssignableFrom(e.getClass()));
 
