@@ -43,7 +43,7 @@ public class CruncherEntityModel<E extends MobEntity> extends EntityModel<Crunch
 
     @Override
     public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
-        root.render(matrices, vertices, light, overlay);
+        root.render(matrices, vertices, light, overlay, red, green, blue, alpha);
     }
 
     public static TexturedModelData getTexturedModelData() {

@@ -1,12 +1,12 @@
 package com.exdrill.ce;
 
-import com.eliotlash.mclib.math.functions.classic.Mod;
 import com.exdrill.ce.client.render.block.RoseQuartzChimesRenderer;
 import com.exdrill.ce.client.render.entity.CruncherEntityRenderer;
 import com.exdrill.ce.client.render.entity.DripstonePikeRenderer;
 import com.exdrill.ce.client.render.entity.DripstoneTortoiseRenderer;
-import com.exdrill.ce.client.render.entity.GoopRenderer;
+import com.exdrill.ce.client.render.entity.GoopEntityRenderer;
 import com.exdrill.ce.client.render.entity.model.CruncherEntityModel;
+import com.exdrill.ce.client.render.entity.model.GoopEntityModel;
 import com.exdrill.ce.entity.EntitySpawnPacket;
 import com.exdrill.ce.registry.ModBlocks;
 import com.exdrill.ce.registry.ModEntities;
@@ -21,10 +21,8 @@ import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 
@@ -39,7 +37,7 @@ public class CaveEnhancementsClient implements ClientModInitializer {
         ModParticles.registerClientParticles();
 
         // Entity Renderers
-        EntityRendererRegistry.register(ModEntities.GOOP, GoopRenderer::new);
+        EntityRendererRegistry.register(ModEntities.GOOP, GoopEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.CRUNCHER, CruncherEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.DRIPSTONE_TORTOISE, DripstoneTortoiseRenderer::new);
         EntityRendererRegistry.register(ModEntities.DRIPSTONE_PIKE, DripstonePikeRenderer::new);
@@ -47,6 +45,7 @@ public class CaveEnhancementsClient implements ClientModInitializer {
 
         // Render Layers
         EntityModelLayerRegistry.registerModelLayer(CruncherEntityModel.ENTITY_MODEL_LAYER, CruncherEntityModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(GoopEntityModel.ENTITY_MODEL_LAYER, GoopEntityModel::getTexturedModelData);
 
 
         BlockEntityRendererRegistry.register(ModBlocks.ROSE_QUARTZ_CHIMES_BLOCK_ENTITY,
