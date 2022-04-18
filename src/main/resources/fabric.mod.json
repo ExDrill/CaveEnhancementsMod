@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Cave Enhancements",
-  "description": "The official port for Cave Enhancements!",
+  "description": "Expands upon 1.18 by adding in new exciting features!",
   "authors": [
     "ExDrill",
     "Warhead51707",
@@ -37,7 +37,5 @@
     "minecraft": "1.18.x",
     "java": ">=17"
   },
-  "suggests": {
-    "another-mod": "*"
-  }
+  "suggests": {}
 }
