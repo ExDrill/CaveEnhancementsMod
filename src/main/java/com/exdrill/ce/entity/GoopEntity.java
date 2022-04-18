@@ -26,11 +26,8 @@ import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class GoopEntity extends HostileEntity implements IAnimatable, CustomBucketable {
+public class GoopEntity extends HostileEntity implements CustomBucketable {
     private static final TrackedData<Boolean> FROM_BUCKET = DataTracker.registerData(GoopEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Boolean> STICKING_UP = DataTracker.registerData(GoopEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
@@ -39,17 +36,6 @@ public class GoopEntity extends HostileEntity implements IAnimatable, CustomBuck
     public GoopEntity(EntityType<? extends GoopEntity> entityType, World world) {
         super(entityType, world);
         this.experiencePoints = 5;
-    }
-
-    // Geckolib
-    @Override
-    public void registerControllers(AnimationData animationData) {}
-
-    private AnimationFactory factory = new AnimationFactory(this);
-
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
     }
 
     // Sounds

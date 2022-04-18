@@ -32,7 +32,7 @@ public abstract class AbstractSpectacleCandleBlock extends BlockWithEntity {
     protected abstract Iterable<Vec3d> getParticleOffsets(BlockState state);
 
     public static boolean isLitCandle(BlockState state) {
-        return state.contains(LIT) && (state.isIn(BlockTags.CANDLES) || state.isIn(BlockTags.CANDLE_CAKES)) && (Boolean)state.get(LIT);
+        return state.contains(LIT) && (state.isIn(BlockTags.CANDLES) || state.isIn(BlockTags.CANDLE_CAKES)) && state.get(LIT);
     }
 
     public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
@@ -47,10 +47,8 @@ public abstract class AbstractSpectacleCandleBlock extends BlockWithEntity {
     }
 
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if ((Boolean)state.get(LIT)) {
-            this.getParticleOffsets(state).forEach((offset) -> {
-                spawnCandleParticles(world, offset.add((double)pos.getX(), (double)pos.getY(), (double)pos.getZ()), random);
-            });
+        if (state.get(LIT)) {
+            this.getParticleOffsets(state).forEach((offset) -> spawnCandleParticles(world, offset.add(pos.getX(), pos.getY(), pos.getZ()), random));
         }
     }
 
@@ -74,12 +72,12 @@ public abstract class AbstractSpectacleCandleBlock extends BlockWithEntity {
             });
         }
 
-        world.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CANDLE_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, 1.0F);
+        world.playSound(null, pos, SoundEvents.BLOCK_CANDLE_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, 1.0F);
         world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
     }
 
     private static void setLit(WorldAccess world, BlockState state, BlockPos pos, boolean lit) {
-        world.setBlockState(pos, (BlockState)state.with(LIT, lit), 11);
+        world.setBlockState(pos, state.with(LIT, lit), 11);
     }
 
     static {

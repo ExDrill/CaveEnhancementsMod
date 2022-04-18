@@ -18,7 +18,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -51,7 +50,7 @@ public class SpectacleCandleBlock extends AbstractSpectacleCandleBlock implement
 
     public SpectacleCandleBlock(Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(CANDLES, 1)).with(LIT, false)).with(WATERLOGGED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(CANDLES, 1).with(LIT, false).with(WATERLOGGED, false));
     }
 
     @Override
@@ -60,7 +59,7 @@ public class SpectacleCandleBlock extends AbstractSpectacleCandleBlock implement
     }
 
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (player.getAbilities().allowModifyWorld && player.getStackInHand(hand).isEmpty() && (Boolean)state.get(LIT)) {
+        if (player.getAbilities().allowModifyWorld && player.getStackInHand(hand).isEmpty() && state.get(LIT)) {
             extinguish(player, state, world, pos);
             return ActionResult.success(world.isClient);
         } else {
@@ -69,22 +68,22 @@ public class SpectacleCandleBlock extends AbstractSpectacleCandleBlock implement
     }
 
     public boolean canReplace(BlockState state, ItemPlacementContext context) {
-        return !context.shouldCancelInteraction() && context.getStack().getItem() == this.asItem() && (Integer)state.get(CANDLES) < 4 ? true : super.canReplace(state, context);
+        return !context.shouldCancelInteraction() && context.getStack().getItem() == this.asItem() && state.get(CANDLES) < 4 || super.canReplace(state, context);
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos());
         if (blockState.isOf(this)) {
-            return (BlockState)blockState.cycle(CANDLES);
+            return blockState.cycle(CANDLES);
         } else {
             FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
             boolean bl = fluidState.getFluid() == Fluids.WATER;
-            return (BlockState)super.getPlacementState(ctx).with(WATERLOGGED, bl);
+            return super.getPlacementState(ctx).with(WATERLOGGED, bl);
         }
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if ((Boolean)state.get(WATERLOGGED)) {
+        if (state.get(WATERLOGGED)) {
             world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
 
@@ -92,11 +91,11 @@ public class SpectacleCandleBlock extends AbstractSpectacleCandleBlock implement
     }
 
     public FluidState getFluidState(BlockState state) {
-        return (Boolean)state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        switch((Integer)state.get(CANDLES)) {
+        switch(state.get(CANDLES)) {
             case 1:
             default:
                 return ONE_CANDLE_SHAPE;
@@ -114,14 +113,14 @@ public class SpectacleCandleBlock extends AbstractSpectacleCandleBlock implement
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{CANDLES, LIT, WATERLOGGED});
+        builder.add(CANDLES, LIT, WATERLOGGED);
     }
 
     public boolean tryFillWithFluid(WorldAccess world, BlockPos pos, BlockState state, FluidState fluidState) {
         if (!(Boolean)state.get(WATERLOGGED) && fluidState.getFluid() == Fluids.WATER) {
-            BlockState blockState = (BlockState)state.with(WATERLOGGED, true);
-            if ((Boolean)state.get(LIT)) {
-                extinguish((PlayerEntity)null, blockState, world, pos);
+            BlockState blockState = state.with(WATERLOGGED, true);
+            if (state.get(LIT)) {
+                extinguish(null, blockState, world, pos);
             } else {
                 world.setBlockState(pos, blockState, 3);
             }
@@ -134,13 +133,11 @@ public class SpectacleCandleBlock extends AbstractSpectacleCandleBlock implement
     }
 
     public static boolean canBeLit(BlockState state) {
-        return state.isIn(BlockTags.CANDLES, (statex) -> {
-            return statex.contains(LIT) && statex.contains(WATERLOGGED);
-        }) && !(Boolean)state.get(LIT) && !(Boolean)state.get(WATERLOGGED);
+        return state.isIn(BlockTags.CANDLES, (statex) -> statex.contains(LIT) && statex.contains(WATERLOGGED)) && !(Boolean)state.get(LIT) && !(Boolean)state.get(WATERLOGGED);
     }
 
     protected Iterable<Vec3d> getParticleOffsets(BlockState state) {
-        return (Iterable)CANDLES_TO_PARTICLE_OFFSETS.get((Integer)state.get(CANDLES));
+        return CANDLES_TO_PARTICLE_OFFSETS.get(state.get(CANDLES));
     }
 
     protected boolean isNotLit(BlockState state) {
@@ -160,10 +157,8 @@ public class SpectacleCandleBlock extends AbstractSpectacleCandleBlock implement
         CANDLES = Properties.CANDLES;
         LIT = AbstractCandleBlock.LIT;
         WATERLOGGED = Properties.WATERLOGGED;
-        STATE_TO_LUMINANCE = (state) -> {
-            return (Boolean)state.get(LIT) ? 3 * (Integer)state.get(CANDLES) : 0;
-        };
-        CANDLES_TO_PARTICLE_OFFSETS = (Int2ObjectMap) Util.make(() -> {
+        STATE_TO_LUMINANCE = (state) -> (Boolean)state.get(LIT) ? 3 * state.get(CANDLES) : 0;
+        CANDLES_TO_PARTICLE_OFFSETS = Util.make(() -> {
             Int2ObjectMap<List<Vec3d>> int2ObjectMap = new Int2ObjectOpenHashMap();
             int2ObjectMap.defaultReturnValue(ImmutableList.of());
             int2ObjectMap.put(1, ImmutableList.of(new Vec3d(0.5D, 0.5D, 0.5D)));

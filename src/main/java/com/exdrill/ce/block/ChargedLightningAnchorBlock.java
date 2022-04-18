@@ -131,6 +131,6 @@ public class ChargedLightningAnchorBlock extends Block {
 
     @Override
     public PistonBehavior getPistonBehavior(BlockState state) {
-        return PistonBehavior.IGNORE;
+        return PistonBehavior.BLOCK;
     }
 }

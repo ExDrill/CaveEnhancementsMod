@@ -1,7 +1,9 @@
 package com.exdrill.ce.entity;
 
 import com.exdrill.ce.entity.ai.goal.EatBlockGoal;
-import net.minecraft.entity.*;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -24,14 +26,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.IAnimationTickable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.EnumSet;
 import java.util.List;
