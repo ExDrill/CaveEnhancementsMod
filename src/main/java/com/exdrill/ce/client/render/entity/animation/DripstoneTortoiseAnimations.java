@@ -15,8 +15,6 @@ public class DripstoneTortoiseAnimations {
 
     public static final Animation STOMPING;
 
-
-
     static {
         STOMPING = Builder.create(0.52F)
                 .addBoneAnimation("body",
@@ -29,18 +27,15 @@ public class DripstoneTortoiseAnimations {
                                 new Keyframe(0.0F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885),
                                 new Keyframe(0.16F, AnimationHelper.method_41829(-25.0F, 0.0F, 0.0F), Interpolations.field_37885),
                                 new Keyframe(0.28F, AnimationHelper.method_41829(20.0F, 0.0F, 0.0F), Interpolations.field_37885),
-                                new Keyframe(0.48F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885)
-                        ))
+                                new Keyframe(0.48F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885)))
                 .addBoneAnimation("leg0", new Transformation(Targets.ROTATE,
                                 new Keyframe(0.0F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885),
                                 new Keyframe(0.16F, AnimationHelper.method_41829(0.0F, 0.0F, 45.0F), Interpolations.field_37885),
-                                new Keyframe(0.28F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885)
-                    ))
+                                new Keyframe(0.28F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885)))
                 .addBoneAnimation("leg1", new Transformation(Targets.ROTATE,
                         new Keyframe(0.0F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885),
                         new Keyframe(0.16F, AnimationHelper.method_41829(0.0F, 0.0F, 22.5F), Interpolations.field_37885),
-                        new Keyframe(0.28F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885)
-                ))
+                        new Keyframe(0.28F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885)))
                 .build();
     }
 }
