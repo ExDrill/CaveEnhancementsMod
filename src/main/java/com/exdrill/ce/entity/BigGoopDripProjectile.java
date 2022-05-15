@@ -96,6 +96,6 @@ public class BigGoopDripProjectile extends ThrownItemEntity {
     //Spawn Packet For Less Lag
     @Override
     public Packet<?> createSpawnPacket() {
-        return EntitySpawnPacket.create(this, CaveEnhancements.PacketID);
+        return EntitySpawnPacket.create(this, CaveEnhancementsClient.PacketID);
     }
 }

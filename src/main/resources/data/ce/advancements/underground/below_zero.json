@@ -19,14 +19,22 @@
     "below_zero": {
       "trigger": "minecraft:location",
       "conditions": {
-        "location": {
-          "position": {
-            "y": {
-              "min": -64,
-              "max": 0
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "position": {
+                  "y": {
+                    "min": -64,
+                    "max": 0
+                  }
+                }
+              }
             }
           }
-        }
+        ]
       }
     }
   },

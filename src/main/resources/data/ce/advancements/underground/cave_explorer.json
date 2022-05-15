@@ -20,33 +20,65 @@
     "lush_caves": {
       "trigger": "minecraft:location",
       "conditions": {
-        "location": {
-          "biome": "minecraft:lush_caves"
-        }
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "minecraft:lush_caves"
+              }
+            }
+          }
+        ]
       }
     },
     "dripstone_caves": {
       "trigger": "minecraft:location",
       "conditions": {
-        "location": {
-          "biome": "minecraft:dripstone_caves"
-        }
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "minecraft:dripstone_caves"
+              }
+            }
+          }
+        ]
       }
     },
     "goop_caves": {
       "trigger": "minecraft:location",
       "conditions": {
-        "location": {
-          "biome":  "ce:goop_caves"
-        }
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "ce:goop_caves"
+              }
+            }
+          }
+        ]
       }
     },
     "rose_quartz_caves": {
       "trigger": "minecraft:location",
       "conditions": {
-        "location": {
-          "biome": "ce:rose_quartz_caves"
-        }
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "ce:rose_quartz_caves"
+              }
+            }
+          }
+        ]
       }
     }
   },

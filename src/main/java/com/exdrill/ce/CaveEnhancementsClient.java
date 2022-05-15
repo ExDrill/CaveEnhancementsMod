@@ -8,24 +8,33 @@ import com.exdrill.ce.client.render.entity.GoopEntityRenderer;
 import com.exdrill.ce.client.render.entity.model.CruncherEntityModel;
 import com.exdrill.ce.client.render.entity.model.DripstoneTortoiseEntityModel;
 import com.exdrill.ce.client.render.entity.model.GoopEntityModel;
+import com.exdrill.ce.entity.EntitySpawnPacket;
 import com.exdrill.ce.registry.ModBlocks;
 import com.exdrill.ce.registry.ModEntities;
 import com.exdrill.ce.registry.ModParticles;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 //import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.registry.Registry;
+
+import java.util.UUID;
 
 @Environment(EnvType.CLIENT)
 public class CaveEnhancementsClient implements ClientModInitializer {
 
-
-
+    public static final Identifier PacketID = new Identifier(CaveEnhancements.NAMESPACE, "spawn_packet");
 
     @Override
     public void onInitializeClient() {
@@ -49,35 +58,34 @@ public class CaveEnhancementsClient implements ClientModInitializer {
                 (BlockEntityRendererFactory.Context rendererDispatcherIn) -> new RoseQuartzChimesRenderer());
 
 
-        //receiveEntityPacket();
+        receiveEntityPacket();
     }
 
     //For spawning projectiles
     public void receiveEntityPacket() {
-//import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
-        /*
-        ClientSidePacketRegistry.INSTANCE.register(CaveEnhancements.PacketID, (ctx, byteBuf) -> {
-            EntityType<?> et = Registry.ENTITY_TYPE.get(byteBuf.readVarInt());
-            UUID uuid = byteBuf.readUuid();
-            int entityId = byteBuf.readVarInt();
-            Vec3d pos = EntitySpawnPacket.PacketBufUtil.readVec3d(byteBuf);
-            float pitch = EntitySpawnPacket.PacketBufUtil.readAngle(byteBuf);
-            float yaw = EntitySpawnPacket.PacketBufUtil.readAngle(byteBuf);
-            ctx.getTaskQueue().execute(() -> {
-                if (MinecraftClient.getInstance().world == null)
-                    throw new IllegalStateException("Tried to spawn entity in a null world!");
-                Entity e = et.create(MinecraftClient.getInstance().world);
-                if (e == null)
-                    throw new IllegalStateException("Failed to create instance of entity \"" + Registry.ENTITY_TYPE.getId(et) + "\"!");
-                e.updateTrackedPosition(pos);
-                e.setPos(pos.x, pos.y, pos.z);
-                e.setPitch(pitch);
-                e.setYaw(yaw);
-                e.setId(entityId);
-                e.setUuid(uuid);
-                MinecraftClient.getInstance().world.addEntity(entityId, e);
+        ClientPlayNetworking.registerGlobalReceiver(PacketID, ((client, handler, buf, responseSender) -> {
+            EntityType<?> entityType = Registry.ENTITY_TYPE.get(buf.readVarInt());
+            UUID uuid = buf.readUuid();
+            int entityId = buf.readVarInt();
+            Vec3d pos = EntitySpawnPacket.PacketBufUtil.readVec3d(buf);
+            float pitch = EntitySpawnPacket.PacketBufUtil.readAngle(buf);
+            float yaw = EntitySpawnPacket.PacketBufUtil.readAngle(buf);
+            client.executeTask(() -> {
+               if (MinecraftClient.getInstance().world == null)
+                   throw new IllegalStateException("Cannot spawn entity without world!");
+
+               Entity entity = entityType.create(MinecraftClient.getInstance().world);
+               if (entity == null)
+                   throw new IllegalStateException("Cannot create entity of type " + entityType);
+
+               entity.updateTrackedPosition(pos.x, pos.y, pos.z);
+               entity.setPos(pos.x, pos.y, pos.z);
+               entity.setYaw(yaw);
+               entity.setPitch(pitch);
+               entity.setId(entityId);
+               entity.setUuid(uuid);
+               MinecraftClient.getInstance().world.addEntity(entityId, entity);
             });
-        });
-        */
+        }));
     }
 }

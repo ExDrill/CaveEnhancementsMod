@@ -19,9 +19,17 @@
     "in_mountain_shrine": {
       "trigger": "minecraft:location",
       "conditions": {
-        "location": {
-          "feature": "ce:mountain_shrine"
-        }
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "ce:mountain_shrine"
+              }
+            }
+          }
+        ]
       }
     }
   },

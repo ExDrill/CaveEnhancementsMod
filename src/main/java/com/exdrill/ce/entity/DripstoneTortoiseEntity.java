@@ -4,6 +4,7 @@ import com.exdrill.ce.registry.ModEntities;
 import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.Path;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -26,6 +27,10 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.AbstractRandom;
+import net.minecraft.world.Difficulty;
+import net.minecraft.world.LightType;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -39,7 +44,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import java.util.EnumSet;
 import java.util.UUID;
 
-public class DripstoneTortoiseEntity extends HostileEntity implements Angerable {
+public class DripstoneTortoiseEntity extends PathAwareEntity implements Angerable {
     private static final TrackedData<Integer> ANGER = DataTracker.registerData(DripstoneTortoiseEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
     private static final TrackedData<Boolean> SHOULD_STOMP = DataTracker.registerData(DripstoneTortoiseEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -53,17 +58,10 @@ public class DripstoneTortoiseEntity extends HostileEntity implements Angerable 
     @Nullable
     private UUID angryAt;
 
-    public DripstoneTortoiseEntity(EntityType<? extends HostileEntity> entityType, World world) {
+    public DripstoneTortoiseEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
         this.experiencePoints = 30;
     }
-
-    @Override
-    public boolean isAngryAt(PlayerEntity player) {
-        return false;
-    }
-
-
 
     //NBT
     protected void initDataTracker() {
@@ -126,7 +124,7 @@ public class DripstoneTortoiseEntity extends HostileEntity implements Angerable 
     }
 
     public static DefaultAttributeContainer.Builder createDripstoneTortoiseAttributes() {
-        return HostileEntity.createMobAttributes()
+        return PathAwareEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.125D)
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 40)
                 .add(EntityAttributes.GENERIC_ARMOR, 5)
@@ -220,6 +218,22 @@ public class DripstoneTortoiseEntity extends HostileEntity implements Angerable 
         }
     }
 
+    public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, AbstractRandom random) {
+        if (world.getLightLevel(LightType.SKY, pos) > random.nextInt(32)) {
+            return false;
+        } else if (world.getLightLevel(LightType.BLOCK, pos) > 0) {
+            return false;
+        } else {
+            int i = world.toServerWorld().isThundering() ? world.getLightLevel(pos, 10) : world.getLightLevel(pos);
+            return i <= random.nextInt(8);
+        }
+    }
+
+    public static boolean canSpawnInDark(EntityType<? extends PathAwareEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos pos, AbstractRandom random) {
+        return world.getDifficulty() != Difficulty.PEACEFUL && isSpawnDark(world, pos, random) && canMobSpawn(type, world, spawnReason, pos, random);
+    }
+
+
     //Goals
     private class DripstoneTortoiseRevengeGoal extends RevengeGoal {
         DripstoneTortoiseRevengeGoal(DripstoneTortoiseEntity dripstoneTortoise) {
@@ -295,6 +309,8 @@ public class DripstoneTortoiseEntity extends HostileEntity implements Angerable 
                 world.playSound(null, new BlockPos(getPos()), SoundEvents.BLOCK_DRIPSTONE_BLOCK_BREAK, SoundCategory.HOSTILE, 1F, 1F);
             }
         }
+
+
 
         public SpikeAttackGoal(PathAwareEntity mob, double speed, boolean pauseWhenMobIdle) {
             this.mob = mob;

@@ -19,6 +19,6 @@ public class CaveEnhancements implements ModInitializer {
         ModBiomes.registerBiomeModifications();
     }
 
-    public static final Identifier PacketID = new Identifier(CaveEnhancements.NAMESPACE, "spawn_packet");
+
 }
 

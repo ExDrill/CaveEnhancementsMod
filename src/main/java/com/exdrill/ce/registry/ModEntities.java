@@ -62,7 +62,7 @@ public class ModEntities {
         FabricDefaultAttributeRegistry.register(CRUNCHER, CruncherEntity.createCruncherAttributes());
         FabricDefaultAttributeRegistry.register(DRIPSTONE_TORTOISE, DripstoneTortoiseEntity.createDripstoneTortoiseAttributes());
         FabricDefaultAttributeRegistry.register(DRIPSTONE_PIKE, DripstonePikeEntity.createDripstonePikeAttributes());
-        SpawnRestrictionAccessor.callRegister(DRIPSTONE_TORTOISE, SpawnRestriction.Location.ON_GROUND, Type.MOTION_BLOCKING, HostileEntity::canSpawnIgnoreLightLevel);
+        SpawnRestrictionAccessor.callRegister(DRIPSTONE_TORTOISE, SpawnRestriction.Location.ON_GROUND, Type.MOTION_BLOCKING, DripstoneTortoiseEntity::canSpawnInDark);
         SpawnRestrictionAccessor.callRegister(CRUNCHER, SpawnRestriction.Location.ON_GROUND, Type.MOTION_BLOCKING, CruncherEntity::canMobSpawn);
     }
 }
