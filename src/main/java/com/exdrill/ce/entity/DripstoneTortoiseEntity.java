@@ -1,6 +1,7 @@
 package com.exdrill.ce.entity;
 
 import com.exdrill.ce.registry.ModEntities;
+import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.*;
@@ -38,10 +39,12 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import java.util.EnumSet;
 import java.util.UUID;
 
-public class DripstoneTortoiseEntity extends HostileEntity implements IAnimatable, Angerable {
+public class DripstoneTortoiseEntity extends HostileEntity implements Angerable {
     private static final TrackedData<Integer> ANGER = DataTracker.registerData(DripstoneTortoiseEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
     private static final TrackedData<Boolean> SHOULD_STOMP = DataTracker.registerData(DripstoneTortoiseEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+
+    public final AnimationState stompingAnimationState = new AnimationState();
 
     public int stompTimer;
 
@@ -92,33 +95,6 @@ public class DripstoneTortoiseEntity extends HostileEntity implements IAnimatabl
 
     public boolean getShouldStomp(){
         return dataTracker.get(SHOULD_STOMP);
-    }
-
-    //Animations
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController(this, "controller", 0, this::controller));
-    }
-
-    private <E extends IAnimatable> PlayState controller(AnimationEvent<E> event) {
-        if(getShouldStomp()){
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.dripstone_tortoise.stomp", false));
-
-            return PlayState.CONTINUE;
-        } else if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.dripstone_tortoise.walk", true));
-
-            return PlayState.CONTINUE;
-        } else {
-            return PlayState.STOP;
-        }
-    }
-
-    private AnimationFactory factory = new AnimationFactory(this);
-
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
     }
 
     // Sounds
@@ -173,6 +149,21 @@ public class DripstoneTortoiseEntity extends HostileEntity implements IAnimatabl
             return ((LivingEntity) entity).getType() == EntityType.PLAYER && this.isUniversallyAngry(((LivingEntity) entity).world) || ((LivingEntity) entity).getUuid().equals(this.getAngryAt());
         }
     }
+
+
+
+    @Override
+    public void tick() {
+        if (this.world.isClient) {
+            if (this.getShouldStomp()) {
+                this.stompingAnimationState.startIfNotRunning();
+            } else {
+                this.stompingAnimationState.stop();
+            }
+        }
+        super.tick();
+    }
+
 
 
     @Override
@@ -232,7 +223,7 @@ public class DripstoneTortoiseEntity extends HostileEntity implements IAnimatabl
     //Goals
     private class DripstoneTortoiseRevengeGoal extends RevengeGoal {
         DripstoneTortoiseRevengeGoal(DripstoneTortoiseEntity dripstoneTortoise) {
-            super(dripstoneTortoise, new Class[0]);
+            super(dripstoneTortoise);
         }
 
         public boolean shouldContinue() {
