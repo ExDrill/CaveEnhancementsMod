@@ -14,6 +14,7 @@ import net.minecraft.client.render.entity.animation.Transformation.Targets;
 public class DripstoneTortoiseAnimations {
 
     public static final Animation STOMPING;
+    public static final Animation RISING;
 
     static {
         STOMPING = Builder.create(0.52F)
@@ -36,6 +37,13 @@ public class DripstoneTortoiseAnimations {
                         new Keyframe(0.0F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885),
                         new Keyframe(0.16F, AnimationHelper.method_41829(0.0F, 0.0F, 22.5F), Interpolations.field_37885),
                         new Keyframe(0.28F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885)))
+                .build();
+
+        RISING = Builder.create(0.84F)
+                .addBoneAnimation("pike", new Transformation(Targets.TRANSLATE,
+                        new Keyframe(0.0F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885),
+                        new Keyframe(0.2F, AnimationHelper.method_41829(0.0F, 8.0F, 0.0F), Interpolations.field_37885),
+                        new Keyframe(0.28F, AnimationHelper.method_41829(0.0F, 20.0F, 0.0F), Interpolations.field_37885)))
                 .build();
     }
 }
