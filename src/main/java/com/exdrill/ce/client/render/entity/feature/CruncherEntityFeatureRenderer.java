@@ -8,6 +8,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
+import net.minecraft.client.render.item.HeldItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformation.Mode;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
@@ -16,8 +17,12 @@ import net.minecraft.util.math.Vec3f;
 
 @Environment(EnvType.CLIENT)
 public class CruncherEntityFeatureRenderer extends FeatureRenderer<CruncherEntity, CruncherEntityModel<CruncherEntity>> {
-    public CruncherEntityFeatureRenderer(FeatureRendererContext<CruncherEntity, CruncherEntityModel<CruncherEntity>> featureRendererContext) {
+
+    private final HeldItemRenderer heldItemRenderer;
+
+    public CruncherEntityFeatureRenderer(FeatureRendererContext<CruncherEntity, CruncherEntityModel<CruncherEntity>> featureRendererContext, HeldItemRenderer heldItemRenderer) {
         super(featureRendererContext);
+        this.heldItemRenderer = heldItemRenderer;
     }
 
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CruncherEntity cruncherEntity, float f, float g, float h, float j, float k, float l) {
@@ -34,7 +39,8 @@ public class CruncherEntityFeatureRenderer extends FeatureRenderer<CruncherEntit
 
         ItemStack itemStack = cruncherEntity.getEquippedStack(EquipmentSlot.MAINHAND);
 
-        MinecraftClient.getInstance().getHeldItemRenderer().renderItem(cruncherEntity, itemStack, Mode.GROUND, false, matrixStack, vertexConsumerProvider, i);
+        this.heldItemRenderer.renderItem(cruncherEntity, itemStack, Mode.GROUND, false, matrixStack, vertexConsumerProvider, i);
         matrixStack.pop();
+
     }
 }

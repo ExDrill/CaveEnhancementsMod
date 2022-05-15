@@ -49,7 +49,6 @@ public class CaveBiomes {
         // Biome Builder
         return (new Biome.Builder())
                 .precipitation(Biome.Precipitation.RAIN)
-                .category(Biome.Category.UNDERGROUND)
                 .temperature(0.5F)
                 .downfall(0.5F)
                 .effects((new BiomeEffects.Builder())
@@ -88,7 +87,6 @@ public class CaveBiomes {
 
         return (new Biome.Builder())
                 .precipitation(Biome.Precipitation.RAIN)
-                .category(Biome.Category.UNDERGROUND)
                 .temperature(0.9F)
                 .downfall(0.6F)
                 .effects((new BiomeEffects.Builder())

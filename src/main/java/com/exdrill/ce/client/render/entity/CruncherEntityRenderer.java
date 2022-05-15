@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 public class CruncherEntityRenderer extends MobEntityRenderer<CruncherEntity, CruncherEntityModel<CruncherEntity>> {
     public CruncherEntityRenderer(EntityRendererFactory.Context context) {
         super(context, new CruncherEntityModel<>(context.getPart(CruncherEntityModel.ENTITY_MODEL_LAYER)), 0.5f);
-        this.addFeature(new CruncherEntityFeatureRenderer(this));
+        this.addFeature(new CruncherEntityFeatureRenderer(this, context.getHeldItemRenderer()));
     }
 
     @Override

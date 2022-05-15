@@ -24,7 +24,7 @@ public class GoopSplatBlock extends MultifaceBlock implements Waterloggable {
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(new Property[]{WATERLOGGED});
+        builder.add(WATERLOGGED);
     }
 
     static {

@@ -213,7 +213,7 @@ public class GoopEntity extends HostileEntity implements CustomBucketable {
        if(dripCooldown <= 0){
            dripCooldown = 12;
 
-           if(getRandom().nextInt(1, 100) == 1) {
+           if(getRandom().nextBetween(1, 100) == 1) {
                drip();
            }
        }

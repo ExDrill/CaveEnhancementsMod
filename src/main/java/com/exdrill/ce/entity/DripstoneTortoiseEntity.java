@@ -294,7 +294,7 @@ public class DripstoneTortoiseEntity extends HostileEntity implements IAnimatabl
                 Vec3d targetPos = target.getPos();
 
                 for(int i = 0; i < 10; i++){
-                    summonPike(new Vec3d(random.nextFloat(-1.5F, 1.5F) + targetPos.getX(),  targetPos.getY(), random.nextFloat(-1.5F, 1.5F)  + targetPos.getZ()));
+                    summonPike(new Vec3d(random.nextBetween((int) -1.5F, (int) 1.5F) + targetPos.getX(),  targetPos.getY(), random.nextBetween((int) -1.5F, (int) 1.5F)  + targetPos.getZ()));
                 }
 
                 setShouldStomp(true);
@@ -418,7 +418,7 @@ public class DripstoneTortoiseEntity extends HostileEntity implements IAnimatabl
                 Vec3d targetPos = getPos();
 
                 for(int i = 0; i < 10; i++){
-                    summonPike(new Vec3d(random.nextFloat(-1.5F, 1.5F) + targetPos.getX(),  targetPos.getY(), random.nextFloat(-1.5F, 1.5F)  + targetPos.getZ()));
+                    summonPike(new Vec3d(random.nextBetween((int) -1.5F, (int) 1.5F) + targetPos.getX(),  targetPos.getY(), random.nextBetween( (int) -1.5F,  (int) 1.5F)  + targetPos.getZ()));
                 }
 
                 setShouldStomp(true);

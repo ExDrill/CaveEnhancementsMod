@@ -38,9 +38,9 @@ public class RoseQuartzAura extends AnimatedParticle {
         float magnitude = 1F;
         float smoothness = 300;
 
-        velX += random.nextFloat(-magnitude, magnitude) / smoothness;
-        velY += random.nextFloat(-magnitude, magnitude) / smoothness;
-        velZ += random.nextFloat(-magnitude, magnitude) / smoothness;
+        velX += random.nextBetween((int) -magnitude, (int) magnitude) / smoothness;
+        velY += random.nextBetween((int) -magnitude, (int) magnitude) / smoothness;
+        velZ += random.nextBetween((int) -magnitude, (int) magnitude) / smoothness;
     }
 
     @Environment(EnvType.CLIENT)

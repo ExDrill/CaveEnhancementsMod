@@ -157,7 +157,7 @@ public class CruncherEntity extends PathAwareEntity {
             if (!this.world.isClient) {
                 this.eatingTicks = 1200;
                 itemStack.decrement(1);
-                this.emitGameEvent(GameEvent.MOB_INTERACT, player);
+                this.emitGameEvent(GameEvent.ENTITY_INTERACT, player);
                 return ActionResult.SUCCESS;
             } else {
                 return ActionResult.CONSUME;

@@ -6,19 +6,19 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public class DripstonePikeModel extends AnimatedGeoModel<DripstonePikeEntity> {
     @Override
-    public Identifier getModelLocation(DripstonePikeEntity object)
+    public Identifier getModelResource(DripstonePikeEntity object)
     {
         return new Identifier("ce", "geo/dripstone_pike.geo.json");
     }
 
     @Override
-    public Identifier getTextureLocation(DripstonePikeEntity object)
+    public Identifier getTextureResource(DripstonePikeEntity object)
     {
         return new Identifier("ce", "textures/entity/dripstone_tortoise/dripstone_pike.png");
     }
 
     @Override
-    public Identifier getAnimationFileLocation(DripstonePikeEntity object) {
+    public Identifier getAnimationResource(DripstonePikeEntity object) {
         return new Identifier("ce", "animations/dripstone_pike.animation.json");
     }
 }

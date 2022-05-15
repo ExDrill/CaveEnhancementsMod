@@ -9,14 +9,16 @@ import net.minecraft.client.particle.SpriteProvider;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 
+import java.util.Random;
+
 @Environment(EnvType.CLIENT)
 public class RoseChimes extends AnimatedParticle {
 
     RoseChimes(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
         super(world, x, y, z, spriteProvider, 0.0F);
-        this.velocityX = 0.1 * (random.nextInt(0, 2) * 2 - 1);
-        this.velocityY = 0.1 * (random.nextInt(0, 2) * 2 - 1);
-        this.velocityZ = 0.1 * (random.nextInt(0, 2) * 2 - 1);
+        this.velocityX = 0.1 * (random.nextBetween(0, 2) * 2 - 1);
+        this.velocityY = 0.1 * (random.nextBetween(0, 2) * 2 - 1);
+        this.velocityZ = 0.1 * (random.nextBetween(0, 2) * 2 - 1);
         this.scale = 0.2F;
         this.collidesWithWorld = false;
         this.gravityStrength = 0.0F;
@@ -41,8 +43,7 @@ public class RoseChimes extends AnimatedParticle {
         }
 
         public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
-            RoseChimes chimesParticle = new RoseChimes(clientWorld, d + clientWorld.random.nextFloat(-0.5F, 0.5F), e + clientWorld.random.nextFloat(-0.5F, 0.5F), f + clientWorld.random.nextFloat(-0.5F, 0.5F), 0.0D, 0.0D, 0.0D, this.spriteProvider);
-            return chimesParticle;
+            return new RoseChimes(clientWorld, d + clientWorld.random.nextBetween(-1, 1), e + clientWorld.random.nextBetween(-1, 1), f + clientWorld.random.nextBetween(-1, 1), 0.0D, 0.0D, 0.0D, this.spriteProvider);
         }
     }
 }

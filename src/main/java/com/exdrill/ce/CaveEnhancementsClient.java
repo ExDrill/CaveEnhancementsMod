@@ -17,7 +17,8 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
+//import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
@@ -30,6 +31,9 @@ import java.util.UUID;
 
 @Environment(EnvType.CLIENT)
 public class CaveEnhancementsClient implements ClientModInitializer {
+
+
+
 
     @Override
     public void onInitializeClient() {
@@ -47,15 +51,17 @@ public class CaveEnhancementsClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(CruncherEntityModel.ENTITY_MODEL_LAYER, CruncherEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(GoopEntityModel.ENTITY_MODEL_LAYER, GoopEntityModel::getTexturedModelData);
 
-
         BlockEntityRendererRegistry.register(ModBlocks.ROSE_QUARTZ_CHIMES_BLOCK_ENTITY,
                 (BlockEntityRendererFactory.Context rendererDispatcherIn) -> new RoseQuartzChimesRenderer());
 
-        receiveEntityPacket();
+
+        //receiveEntityPacket();
     }
 
     //For spawning projectiles
     public void receiveEntityPacket() {
+//import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
+        /*
         ClientSidePacketRegistry.INSTANCE.register(CaveEnhancements.PacketID, (ctx, byteBuf) -> {
             EntityType<?> et = Registry.ENTITY_TYPE.get(byteBuf.readVarInt());
             UUID uuid = byteBuf.readUuid();
@@ -78,5 +84,6 @@ public class CaveEnhancementsClient implements ClientModInitializer {
                 MinecraftClient.getInstance().world.addEntity(entityId, e);
             });
         });
+        */
     }
 }

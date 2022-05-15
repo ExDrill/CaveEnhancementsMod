@@ -4,6 +4,7 @@ import com.exdrill.ce.entity.CruncherEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
@@ -56,7 +57,7 @@ public class EatBlockGoal extends Goal {
             }
 
             this.mob.onEatingGrass();
-            this.mob.emitGameEvent(GameEvent.EAT, this.mob.getCameraBlockPos());
+            this.mob.emitGameEvent(GameEvent.EAT, this.mob);
         }
     }
 }
