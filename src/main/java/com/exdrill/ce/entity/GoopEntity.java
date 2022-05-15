@@ -1,10 +1,7 @@
 package com.exdrill.ce.entity;
 
 import com.exdrill.ce.registry.ModItems;
-import net.minecraft.entity.EntityData;
-import net.minecraft.entity.EntityGroup;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -12,6 +9,7 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.passive.FrogEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -142,6 +140,14 @@ public class GoopEntity extends HostileEntity implements CustomBucketable {
         return !this.isFromBucket() && !this.hasCustomName();
     }
 
+    @Override
+    public boolean damage(DamageSource source, float amount) {
+        if (source.getAttacker() instanceof FrogEntity) {
+            damage(source, 20);
+        }
+        return super.damage(source, amount);
+    }
+
     //Spawn Event
     public EntityData initialize(ServerWorldAccess serverWorld, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
         world = serverWorld.toServerWorld();
@@ -205,6 +211,8 @@ public class GoopEntity extends HostileEntity implements CustomBucketable {
     }
 
     public int dripCooldown = 12;
+
+
 
     //Tick For Spawning Drip
     public void mobTick() {
