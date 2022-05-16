@@ -140,13 +140,6 @@ public class GoopEntity extends HostileEntity implements CustomBucketable {
         return !this.isFromBucket() && !this.hasCustomName();
     }
 
-    @Override
-    public boolean damage(DamageSource source, float amount) {
-        if (source.getAttacker() instanceof FrogEntity) {
-            damage(source, 20);
-        }
-        return super.damage(source, amount);
-    }
 
     //Spawn Event
     public EntityData initialize(ServerWorldAccess serverWorld, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {

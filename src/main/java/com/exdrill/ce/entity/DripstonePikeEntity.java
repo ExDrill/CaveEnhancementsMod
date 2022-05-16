@@ -1,9 +1,6 @@
 package com.exdrill.ce.entity;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -12,34 +9,30 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Arm;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.world.LocalDifficulty;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
+public class DripstonePikeEntity extends MobEntity {
+
     public int dieTimer = 20;
-
     public int damageDelay = 4;
-
     public boolean didDamage = false;
-
     public LivingEntity owner;
-
     public boolean checkedSight =  false;
+
+    public final AnimationState risingAnimationState = new AnimationState();
 
     private static final TrackedData<Boolean> INVULNERABLE = DataTracker.registerData(DripstonePikeEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
@@ -54,30 +47,12 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
         this.dataTracker.startTracking(INVULNERABLE, true);
     }
 
-    //Animations
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController(this, "controller", 0, this::base));
-    }
-
-    private <E extends IAnimatable> PlayState base(AnimationEvent<E> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.dripstone_pike.general"));
-        return PlayState.CONTINUE;
-    }
-
     public boolean isInvulnerableTo(DamageSource damageSource) {
         return damageSource != DamageSource.OUT_OF_WORLD;
     }
 
     public boolean isInvulnerable() {
         return this.dataTracker.get(INVULNERABLE);
-    }
-
-    private AnimationFactory factory = new AnimationFactory(this);
-
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
     }
 
     @Override
@@ -93,6 +68,12 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
     @Override
     public void equipStack(EquipmentSlot slot, ItemStack stack) {
 
+    }
+
+    @Nullable
+    @Override
+    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
 
     @Override
@@ -114,7 +95,9 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
     @Override
     public void tick() {
         super.tick();
-
+        if (this.world.isClient) {
+            this.risingAnimationState.startIfNotRunning();
+        }
         if(!world.isClient()) {
             if(!checkedSight){
                 checkedSight = true;
@@ -135,8 +118,8 @@ public class DripstonePikeEntity extends LivingEntity implements IAnimatable {
 
                 Entity otherEntity;
 
-                for(Iterator var2 = list.iterator(); var2.hasNext();) {
-                    otherEntity = (Entity)var2.next();
+                for (Entity entity : list) {
+                    otherEntity = entity;
 
                     otherEntity.damage(DamageSource.mobProjectile(this, owner), 8);
 

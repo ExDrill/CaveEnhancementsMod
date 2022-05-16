@@ -17,6 +17,8 @@ public class CaveEnhancements implements ModInitializer {
         ModEntities.registerEntities();
         ModBiomes.registerBiomes();
         ModBiomes.registerBiomeModifications();
+
+
     }
 
 
