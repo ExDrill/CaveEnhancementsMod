@@ -16,6 +16,9 @@ public class DripstoneTortoiseAnimations {
     public static final Animation STOMPING;
     public static final Animation RISING;
 
+    // field_37884 = LINEAR
+    // field_37885 = CATMULLROM
+
     static {
         STOMPING = Builder.create(0.52F)
                 .addBoneAnimation("body",
@@ -41,9 +44,9 @@ public class DripstoneTortoiseAnimations {
 
         RISING = Builder.create(0.5F)
                 .addBoneAnimation("pike", new Transformation(Targets.TRANSLATE,
-                        new Keyframe(0.0F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885),
-                        new Keyframe(0.25F, AnimationHelper.method_41829(0.0F, -1200.0F, 0.0F), Interpolations.field_37885),
-                        new Keyframe(0.5F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885)))
+                        new Keyframe(0.0F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37884),
+                        new Keyframe(0.25F, AnimationHelper.method_41829(0.0F, -1200.0F, 0.0F), Interpolations.field_37884),
+                        new Keyframe(0.5F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37884)))
                 .build();
     }
 }

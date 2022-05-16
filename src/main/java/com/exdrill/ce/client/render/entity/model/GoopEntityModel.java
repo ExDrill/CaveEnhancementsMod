@@ -38,7 +38,7 @@ public class GoopEntityModel<E extends MobEntity> extends EntityModel<GoopEntity
 	@Override
 	public void setAngles(GoopEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
 		if (entity.isStickingUp()) {
-			this.goop.pitch = 267.05F;
+			this.goop.pitch = 3.1415927F;
 			this.goop.pivotY = 17.0F;
 		} else if (!entity.isStickingUp()) {
 			this.goop.pitch = 0.0F;
