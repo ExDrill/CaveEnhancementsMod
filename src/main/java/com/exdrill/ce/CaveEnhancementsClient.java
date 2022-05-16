@@ -1,7 +1,10 @@
 package com.exdrill.ce;
 
-import com.exdrill.ce.client.render.block.RoseQuartzChimesRenderer;
-import com.exdrill.ce.client.render.entity.*;
+import com.exdrill.ce.client.render.block.RoseQuartzChimesBlockEntityRenderer;
+import com.exdrill.ce.client.render.entity.CruncherEntityRenderer;
+import com.exdrill.ce.client.render.entity.DripstonePikeEntityRenderer;
+import com.exdrill.ce.client.render.entity.DripstoneTortoiseEntityRenderer;
+import com.exdrill.ce.client.render.entity.GoopEntityRenderer;
 import com.exdrill.ce.client.render.entity.model.CruncherEntityModel;
 import com.exdrill.ce.client.render.entity.model.DripstonePikeEntityModel;
 import com.exdrill.ce.client.render.entity.model.DripstoneTortoiseEntityModel;
@@ -17,11 +20,10 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-//import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
+import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
-import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
+import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.Identifier;
@@ -53,9 +55,12 @@ public class CaveEnhancementsClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(GoopEntityModel.ENTITY_MODEL_LAYER, GoopEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DripstoneTortoiseEntityModel.LAYER_LOCATION, DripstoneTortoiseEntityModel::texturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DripstonePikeEntityModel.LAYER_LOCATION, DripstonePikeEntityModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(RoseQuartzChimesBlockEntityRenderer.LAYER_LOCATION, RoseQuartzChimesBlockEntityRenderer::getTexturedModelData);
 
-        BlockEntityRendererRegistry.register(ModBlocks.ROSE_QUARTZ_CHIMES_BLOCK_ENTITY,
-                (BlockEntityRendererFactory.Context rendererDispatcherIn) -> new RoseQuartzChimesRenderer());
+        BlockEntityRendererRegistry.register(ModBlocks.ROSE_QUARTZ_CHIMES_BLOCK_ENTITY, RoseQuartzChimesBlockEntityRenderer::new);
+
+        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) ->
+                registry.register(new Identifier(CaveEnhancements.NAMESPACE, "entity/rose_quartz_chimes/chime")));
 
 
         receiveEntityPacket();

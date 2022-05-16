@@ -25,8 +25,9 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import java.util.Iterator;
 import java.util.List;
 
-public class RoseQuartzChimesBlockEntity extends BlockEntity implements IAnimatable {
+public class RoseQuartzChimesBlockEntity extends BlockEntity {
     public int ticksTillActivateClear = 600;
+    public int ticking = 0;
 
 
     public RoseQuartzChimesBlockEntity(BlockPos pos, BlockState state) {
@@ -34,6 +35,8 @@ public class RoseQuartzChimesBlockEntity extends BlockEntity implements IAnimata
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, RoseQuartzChimesBlockEntity entity) {
+        ++entity.ticking;
+
         if(entity.ticksTillActivateClear > 0) {
             entity.ticksTillActivateClear--;
         }
@@ -71,45 +74,5 @@ public class RoseQuartzChimesBlockEntity extends BlockEntity implements IAnimata
             world.addParticle(ModParticles.ROSE_CHIMES, entity.getPos().getX() + 0.5D, entity.getPos().getY() + 0.3D, entity.getPos().getZ() + 0.5D, 0D, 0D, 0D);
             world.playSound(null, pos, SoundEvents.BLOCK_NOTE_BLOCK_CHIME, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController(this, "chimes_setup", 40, this::animationClear));
-        animationData.addAnimationController(new AnimationController(this, "rain", 40, this::animationRain));
-        animationData.addAnimationController(new AnimationController(this, "none", 0, this::none));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
-    }
-
-    private AnimationFactory factory = new AnimationFactory(this);
-
-    private <E extends IAnimatable> PlayState animationClear(AnimationEvent<E> event) {
-        assert this.world != null;
-        if (!world.isRaining()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rose_quartz_chimes.clear", true));
-            return PlayState.CONTINUE;
-        } else {
-            return PlayState.STOP;
-        }
-    }
-
-    private <E extends IAnimatable> PlayState animationRain(AnimationEvent<E> event) {
-        assert this.world != null;
-        if (world.isRaining()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rose_quartz_chimes.rain", true));
-            return PlayState.CONTINUE;
-        } else {
-            return PlayState.STOP;
-        }
-    }
-
-
-    private <E extends IAnimatable> PlayState none(AnimationEvent<E> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.rose_quartz_chimes.render", true));
-        return PlayState.CONTINUE;
     }
 }
