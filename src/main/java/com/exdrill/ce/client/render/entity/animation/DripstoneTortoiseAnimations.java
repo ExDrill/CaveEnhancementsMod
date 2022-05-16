@@ -39,11 +39,11 @@ public class DripstoneTortoiseAnimations {
                         new Keyframe(0.28F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885)))
                 .build();
 
-        RISING = Builder.create(0.2F)
+        RISING = Builder.create(0.5F)
                 .addBoneAnimation("pike", new Transformation(Targets.TRANSLATE,
                         new Keyframe(0.0F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885),
-                        new Keyframe(0.1F, AnimationHelper.method_41829(0.0F, -10.0F, 0.0F), Interpolations.field_37885),
-                        new Keyframe(0.2F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885)))
+                        new Keyframe(0.25F, AnimationHelper.method_41829(0.0F, -1200.0F, 0.0F), Interpolations.field_37885),
+                        new Keyframe(0.5F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885)))
                 .build();
     }
 }
