@@ -78,14 +78,15 @@ public class RoseQuartzChimesBlockEntityRenderer implements BlockEntityRenderer<
     public void render(RoseQuartzChimesBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         this.chimes.pitch = 3.141592653589793F;
         float intensity;
+        float g = entity.ticking + tickDelta;
 
         if (Objects.requireNonNull(entity.getWorld()).isRaining()) {
-            intensity = 20F;
+            intensity = 1.5F;
         } else {
-            intensity = 10F;
+            intensity = 3.1415927F;
         }
 
-        float rot = MathHelper.sin(entity.ticking + tickDelta / intensity) * 0.2F;
+        float rot = MathHelper.sin(g / intensity) / 10.0F;
 
         this.chime0.roll = rot;
         this.chime1.roll = rot;
