@@ -2,11 +2,10 @@ package com.exdrill.ce;
 
 import com.exdrill.ce.client.render.block.RoseQuartzChimesRenderer;
 import com.exdrill.ce.client.render.entity.CruncherEntityRenderer;
-import com.exdrill.ce.client.render.entity.DripstonePikeEntityRenderer;
+import com.exdrill.ce.client.render.entity.DripstonePikeRenderer;
 import com.exdrill.ce.client.render.entity.DripstoneTortoiseEntityRenderer;
 import com.exdrill.ce.client.render.entity.GoopEntityRenderer;
 import com.exdrill.ce.client.render.entity.model.CruncherEntityModel;
-import com.exdrill.ce.client.render.entity.model.DripstonePikeEntityModel;
 import com.exdrill.ce.client.render.entity.model.DripstoneTortoiseEntityModel;
 import com.exdrill.ce.client.render.entity.model.GoopEntityModel;
 import com.exdrill.ce.entity.EntitySpawnPacket;
@@ -20,6 +19,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+//import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
@@ -45,7 +45,7 @@ public class CaveEnhancementsClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.GOOP, GoopEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.CRUNCHER, CruncherEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.DRIPSTONE_TORTOISE, DripstoneTortoiseEntityRenderer::new);
-        EntityRendererRegistry.register(ModEntities.DRIPSTONE_PIKE, DripstonePikeEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.DRIPSTONE_PIKE, DripstonePikeRenderer::new);
         EntityRendererRegistry.register(ModEntities.BIG_GOOP_DRIP_PROJECTILE_ENTITY, FlyingItemEntityRenderer::new);
 
 
@@ -53,7 +53,6 @@ public class CaveEnhancementsClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(CruncherEntityModel.ENTITY_MODEL_LAYER, CruncherEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(GoopEntityModel.ENTITY_MODEL_LAYER, GoopEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DripstoneTortoiseEntityModel.LAYER_LOCATION, DripstoneTortoiseEntityModel::texturedModelData);
-        EntityModelLayerRegistry.registerModelLayer(DripstonePikeEntityModel.LAYER_LOCATION, DripstonePikeEntityModel::getTexturedModelData);
 
         BlockEntityRendererRegistry.register(ModBlocks.ROSE_QUARTZ_CHIMES_BLOCK_ENTITY,
                 (BlockEntityRendererFactory.Context rendererDispatcherIn) -> new RoseQuartzChimesRenderer());
