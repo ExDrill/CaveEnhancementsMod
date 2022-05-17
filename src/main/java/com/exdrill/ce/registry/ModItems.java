@@ -5,10 +5,7 @@ import com.exdrill.ce.item.AmethystFluteItem;
 import com.exdrill.ce.item.GlowPasteItem;
 import com.exdrill.ce.item.GoopBucketItem;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.SpawnEggItem;
+import net.minecraft.item.*;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -27,6 +24,10 @@ public class ModItems {
     public static final AmethystFluteItem AMETHYST_FLUTE = new AmethystFluteItem(new Item.Settings().group(ItemGroup.TOOLS).maxCount(1).maxDamage(64));
     public static final SpawnEggItem GOOP_SPAWN_EGG = new SpawnEggItem(ModEntities.GOOP, 13946012, 11637089, new Item.Settings().group(ItemGroup.MISC));
     public static final GoopBucketItem GOOP_BUCKET = new GoopBucketItem(ModEntities.GOOP, Fluids.EMPTY, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new Item.Settings().group(ItemGroup.MISC).maxCount(1));
+    public static final BannerPatternItem GOOP_BANNER_PATTERN = new BannerPatternItem(ModTags.GOOP_PATTERN_ITEM,new Item.Settings().group(ItemGroup.MISC));
+
+
+
     public static final Item BIG_GOOP_DRIP = new Item(new Item.Settings());
     
     public static final SpawnEggItem CRUNCHER_SPAWN_EGG = new SpawnEggItem(ModEntities.CRUNCHER, 11127234, 5757312, new Item.Settings().group(ItemGroup.MISC));
@@ -75,6 +76,7 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_chimes"), ROSE_QUARTZ_CHIMES);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_lamp"), ROSE_QUARTZ_LAMP);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "soul_rose_quartz_lamp"), SOUL_ROSE_QUARTZ_LAMP);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_banner_pattern"), GOOP_BANNER_PATTERN);
 
         // Spawn Eggs
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_spawn_egg"), GOOP_SPAWN_EGG);

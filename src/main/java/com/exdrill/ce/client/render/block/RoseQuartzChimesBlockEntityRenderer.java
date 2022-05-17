@@ -81,9 +81,9 @@ public class RoseQuartzChimesBlockEntityRenderer implements BlockEntityRenderer<
         float g = entity.ticking + tickDelta;
 
         if (Objects.requireNonNull(entity.getWorld()).isRaining()) {
-            intensity = 1.5F;
+            intensity = 3.1415927F * 2 ;
         } else {
-            intensity = 3.1415927F;
+            intensity = 3.1415927F * 4;
         }
 
         float rot = MathHelper.sin(g / intensity) / 10.0F;
