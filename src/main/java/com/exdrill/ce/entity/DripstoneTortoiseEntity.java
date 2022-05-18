@@ -146,7 +146,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements Angerabl
     public void tick() {
         if (this.world.isClient) {
             if (this.getShouldStomp()) {
-                this.stompingAnimationState.startIfNotRunning();
+                this.stompingAnimationState.startIfNotRunning(this.age);
             } else {
                 this.stompingAnimationState.stop();
             }

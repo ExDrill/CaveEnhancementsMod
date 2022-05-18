@@ -96,7 +96,7 @@ public class DripstonePikeEntity extends MobEntity {
     public void tick() {
         super.tick();
         if (this.world.isClient) {
-            this.risingAnimationState.startIfNotRunning();
+            this.risingAnimationState.startIfNotRunning(this.age);
         }
         if(!world.isClient()) {
             if(!checkedSight){
