@@ -3,7 +3,6 @@ package com.exdrill.ce;
 import com.exdrill.ce.registry.*;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.block.entity.BannerPattern;
-import net.minecraft.entity.decoration.painting.PaintingVariant;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -14,14 +13,14 @@ public class CaveEnhancements implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        ModBlocks.registerBlocks();
-        ModItems.registerItems();
-        ModParticles.registerParticles();
+        ModBlocks.register();
+        ModItems.register();
+        ModParticles.register();
         ModBlocks.registerBlockEntities();
-        ModSounds.registerSounds();
-        ModEntities.registerEntities();
-        ModBiomes.registerBiomes();
-        ModBiomes.registerBiomeModifications();
+        ModSounds.register();
+        ModEntities.register();
+        ModBiomes.register();
+        ModBiomes.registerModifications();
 
 
         Registry.register(Registry.BANNER_PATTERN, new Identifier(NAMESPACE, "goop"), GOOP);

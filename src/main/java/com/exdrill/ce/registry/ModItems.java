@@ -50,7 +50,7 @@ public class ModItems {
 
 
     //Registry
-    public static void registerItems() {
+    public static void register() {
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop"), GOOP);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_block"), GOOP_BLOCK);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_trap"), GOOP_TRAP);

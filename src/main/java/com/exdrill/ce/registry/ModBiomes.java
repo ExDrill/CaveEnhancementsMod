@@ -21,12 +21,12 @@ public class ModBiomes {
         return RegistryKey.of(Registry.BIOME_KEY, new Identifier(CaveEnhancements.NAMESPACE, name));
     }
 
-    public static void registerBiomes() {
+    public static void register() {
         register(GOOP_CAVES_KEY, CaveBiomes.createGoopCaves());
         register(ROSE_QUARTZ_CAVES_KEY, CaveBiomes.createRoseQuartzCaves());
     }
 
-    public static void registerBiomeModifications() {
+    public static void registerModifications() {
           BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DRIPSTONE_CAVES), SpawnGroup.MONSTER, ModEntities.DRIPSTONE_TORTOISE, 100, 2, 3);
           BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), SpawnGroup.MONSTER, ModEntities.CRUNCHER, 75, 1, 1);
     }

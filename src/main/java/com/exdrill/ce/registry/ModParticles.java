@@ -18,7 +18,7 @@ public class ModParticles {
     public static final DefaultParticleType SOOTHINGNOTE = FabricParticleTypes.simple();
     public static final DefaultParticleType ROSE_CHIMES = FabricParticleTypes.simple();
 
-    public static void registerParticles() {
+    public static void register() {
         Registry.register(Registry.PARTICLE_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "small_goop_drip"), SMALL_GOOP_DRIP);
         Registry.register(Registry.PARTICLE_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "shockwave"), SHOCKWAVE);
         Registry.register(Registry.PARTICLE_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_aura"), ROSE_QUARTZ_AURA);
@@ -26,7 +26,7 @@ public class ModParticles {
         Registry.register(Registry.PARTICLE_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "rose_chimes"), ROSE_CHIMES);
     }
 
-    public static void registerClientParticles() {
+    public static void registerClient() {
         // Small Goop Drip Client Particle
         ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {
             registry.register(new Identifier(CaveEnhancements.NAMESPACE, "particle/small_goop_drip"));

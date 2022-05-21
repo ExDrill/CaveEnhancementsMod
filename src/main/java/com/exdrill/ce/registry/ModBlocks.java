@@ -3,7 +3,6 @@ package com.exdrill.ce.registry;
 import com.exdrill.ce.CaveEnhancements;
 import com.exdrill.ce.block.*;
 import com.exdrill.ce.block.entity.LightningAnchorBlockEntity;
-import com.exdrill.ce.block.entity.GoopTrapBlockEntity;
 import com.exdrill.ce.block.entity.RoseQuartzChimesBlockEntity;
 import com.exdrill.ce.block.entity.SpectacleCandleBlockEntity;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -42,7 +41,7 @@ public class ModBlocks {
     public static final RoseQuartzLampBlock SOUL_ROSE_QUARTZ_LAMP = new RoseQuartzLampBlock(FabricBlockSettings.of(Material.STONE).strength(1F, 10).requiresTool().mapColor(MapColor.PINK).sounds(BlockSoundGroup.LANTERN).luminance(15));
 
     // Block Registry
-    public static void registerBlocks() {
+    public static void register() {
         Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "goop_block"), GOOP_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "goop_splat"), GOOP_SPLAT);
         Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "goop_trap"), GOOP_TRAP);
@@ -67,7 +66,7 @@ public class ModBlocks {
     }
 
     // Block Render Type
-    public static void TransparentBlocks() {
+    public static void registerClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(GOOP_SPLAT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(DRIPPING_GOOP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(GLOW_SPLOTCH, RenderLayer.getCutout());
@@ -77,13 +76,11 @@ public class ModBlocks {
 
     // Block Entity
     public static BlockEntityType<SpectacleCandleBlockEntity> SPECTACLE_CANDLE_BLOCK_ENTITY;
-    public static BlockEntityType<GoopTrapBlockEntity> GOOP_TRAP_BLOCK_ENTITY;
     public static BlockEntityType<LightningAnchorBlockEntity> LIGHTNING_ANCHOR_BLOCK_ENTITY;
     public static BlockEntityType<RoseQuartzChimesBlockEntity> ROSE_QUARTZ_CHIMES_BLOCK_ENTITY;
 
     // Block Entity Registry
     public static void registerBlockEntities() {
-        GOOP_TRAP_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "goop_trap"), FabricBlockEntityTypeBuilder.create(GoopTrapBlockEntity::new, GOOP_TRAP).build(null));
         SPECTACLE_CANDLE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "spectacle_candle"), FabricBlockEntityTypeBuilder.create(SpectacleCandleBlockEntity::new, SPECTACLE_CANDLE).build(null));
         LIGHTNING_ANCHOR_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "lightning_anchor"), FabricBlockEntityTypeBuilder.create(LightningAnchorBlockEntity::new, LIGHTNING_ANCHOR).build(null));
         ROSE_QUARTZ_CHIMES_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_chimes"), FabricBlockEntityTypeBuilder.create(RoseQuartzChimesBlockEntity::new, ROSE_QUARTZ_CHIMES).build(null));

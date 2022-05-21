@@ -39,8 +39,8 @@ public class CaveEnhancementsClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        ModBlocks.TransparentBlocks();
-        ModParticles.registerClientParticles();
+        ModBlocks.registerClient();
+        ModParticles.registerClient();
 
         // Entity Renderers
         EntityRendererRegistry.register(ModEntities.GOOP, GoopEntityRenderer::new);
