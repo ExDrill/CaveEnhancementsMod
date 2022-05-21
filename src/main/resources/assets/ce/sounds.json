@@ -4,5 +4,14 @@
       "ce:item/glow_paste/place"
     ],
     "subtitle": "item.glow_paste.place"
+  },
+  "block.rose_quartz.break": {
+    "sounds": [
+      "ce:block/rose_quartz/break1",
+      "ce:block/rose_quartz/break2",
+      "ce:block/rose_quartz/break3",
+      "ce:block/rose_quartz/break4"
+    ],
+    "subtitle": "block.rose_quartz.break"
   }
 }

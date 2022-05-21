@@ -54,7 +54,8 @@
   "block.ce.rose_quartz_lamp": "Rose Quartz Lamp",
   "block.ce.soul_rose_quartz_lamp": "Soul Rose Quartz Lamp",
 
-  "item.glow_paste.place": "Glow Splotch placed",
+  "item.glow_paste.place": "Block placed",
+  "block.rose_quartz.break": "Block broken",
 
   "advancements.underground.root.title": "The Underground",
   "advancements.underground.root.description": "The deeper you go, the more you can find.",

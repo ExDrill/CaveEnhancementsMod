@@ -15,7 +15,6 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
@@ -27,15 +26,18 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+
 public class GoopEntity extends HostileEntity implements CustomBucketable {
     private static final TrackedData<Boolean> FROM_BUCKET = DataTracker.registerData(GoopEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Boolean> STICKING_UP = DataTracker.registerData(GoopEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
-    public ServerWorld world;
+    public World world;
 
     public GoopEntity(EntityType<? extends GoopEntity> entityType, World world) {
         super(entityType, world);
         this.experiencePoints = 5;
+        this.world = world;
     }
 
     // Sounds
@@ -97,10 +99,10 @@ public class GoopEntity extends HostileEntity implements CustomBucketable {
     }
 
     public boolean isFromBucket() {
-        return (Boolean)this.dataTracker.get(FROM_BUCKET);
+        return this.dataTracker.get(FROM_BUCKET);
     }
     public boolean isStickingUp() {
-        return (Boolean)this.dataTracker.get(STICKING_UP);
+        return this.dataTracker.get(STICKING_UP);
     }
 
     public void setFromBucket(boolean fromBucket) {
@@ -123,7 +125,7 @@ public class GoopEntity extends HostileEntity implements CustomBucketable {
 
     // Bucket Components
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
-        return (ActionResult)CustomBucketable.tryBucket(player, hand, this).orElse(super.interactMob(player, hand));
+        return CustomBucketable.tryBucket(player, hand, this).orElse(super.interactMob(player, hand));
     }
     public ItemStack getBucketItem() {
         return new ItemStack(ModItems.GOOP_BUCKET);
@@ -183,7 +185,7 @@ public class GoopEntity extends HostileEntity implements CustomBucketable {
 
     //Tick for checking if sticking up
     public void tickMovement() {
-        if(!getEntityWorld().isClient()){
+        if(!world.isClient){
             if(isStickingUp()) {
                 this.setVelocity(this.getVelocity().multiply(0D, 0D, 0D));
 
@@ -198,7 +200,7 @@ public class GoopEntity extends HostileEntity implements CustomBucketable {
                         setStickingUp(false);
                     }
                 }else{
-                    world = getServer().getWorld(getEntityWorld().getRegistryKey());
+                    world = Objects.requireNonNull(getServer()).getWorld(getEntityWorld().getRegistryKey());
                 }
             }
         }
