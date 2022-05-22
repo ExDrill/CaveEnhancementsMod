@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "ce:polished_rose_quartz_wall",
-    "ce:rose_quartz_tile_wall"
+    "cave_enhancements:polished_rose_quartz_wall",
+    "cave_enhancements:rose_quartz_tile_wall"
   ]
 }

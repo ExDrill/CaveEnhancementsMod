@@ -1,16 +1,16 @@
 {
   "replace": false,
   "values": [
-    "ce:rose_quartz_block",
-    "ce:jagged_rose_quartz",
-    "ce:polished_rose_quartz",
-    "ce:polished_rose_quartz_stairs",
-    "ce:polished_rose_quartz_slab",
-    "ce:polished_rose_quartz_wall",
-    "ce:rose_quartz_tiles",
-    "ce:rose_quartz_tile_slab",
-    "ce:rose_quartz_tile_stairs",
-    "ce:rose_quartz_tile_wall",
-    "ce:rose_quartz_chimes"
+    "cave_enhancements:rose_quartz_block",
+    "cave_enhancements:jagged_rose_quartz",
+    "cave_enhancements:polished_rose_quartz",
+    "cave_enhancements:polished_rose_quartz_stairs",
+    "cave_enhancements:polished_rose_quartz_slab",
+    "cave_enhancements:polished_rose_quartz_wall",
+    "cave_enhancements:rose_quartz_tiles",
+    "cave_enhancements:rose_quartz_tile_slab",
+    "cave_enhancements:rose_quartz_tile_stairs",
+    "cave_enhancements:rose_quartz_tile_wall",
+    "cave_enhancements:rose_quartz_chimes"
   ]
 }

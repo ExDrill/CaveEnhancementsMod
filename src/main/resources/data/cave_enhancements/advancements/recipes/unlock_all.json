@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_crafting_table": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:crafting_table"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_crafting_table"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cave_enhancements:goop_block",
+      "cave_enhancements:dripping_goop",
+      "cave_enhancements:glow_paste",
+      "cave_enhancements:spectacle_candle",
+      "cave_enhancements:rose_quartz_block",
+      "cave_enhancements:polished_rose_quartz",
+      "cave_enhancements:polished_rose_quartz_slab",
+      "cave_enhancements:polished_rose_quartz_stairs",
+      "cave_enhancements:polished_rose_quartz_wall",
+      "cave_enhancements:rose_quartz_tiles",
+      "cave_enhancements:rose_quartz_tile_slab",
+      "cave_enhancements:rose_quartz_tile_stairs",
+      "cave_enhancements:rose_quartz_tile_wall",
+      "cave_enhancements:rose_quartz_chimes",
+      "cave_enhancements:rose_quartz_lamp",
+      "cave_enhancements:soul_rose_quartz_lamp"
+    ]
+  }
+}

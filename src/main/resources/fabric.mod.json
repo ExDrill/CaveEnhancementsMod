@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "ce",
+  "id": "cave_enhancements",
   "version": "${version}",
 
   "name": "Cave Enhancements",
@@ -17,19 +17,19 @@
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/ce/icon.png",
+  "icon": "assets/cave_enhancements/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.exdrill.ce.CaveEnhancements"
+      "com.exdrill.cave_enhancements.CaveEnhancements"
     ],
     "client": [
-      "com.exdrill.ce.CaveEnhancementsClient"
+      "com.exdrill.cave_enhancements.CaveEnhancementsClient"
     ]
   },
   "mixins": [
-    "ce.mixins.json"
+    "cave_enhancements.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.5",

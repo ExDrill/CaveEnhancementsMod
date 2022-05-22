@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "ce:goop_block",
-    "ce:goop_splat",
-    "ce:goop_trap",
-    "ce:dripping_goop"
-  ]
-}

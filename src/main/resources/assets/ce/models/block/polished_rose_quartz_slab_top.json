@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "ce:block/polished_rose_quartz",
-    "top": "ce:block/polished_rose_quartz",
-    "side": "ce:block/polished_rose_quartz"
-  }
-}

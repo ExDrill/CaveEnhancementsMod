@@ -1,7 +1,0 @@
-{
-  "ambientocclusion": false,
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "ce:block/dripping_goop_body"
-  }
-}

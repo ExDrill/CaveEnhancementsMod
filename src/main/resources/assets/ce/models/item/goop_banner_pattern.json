@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "ce:items/goop_banner_pattern"
-  }
-}

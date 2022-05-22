@@ -1,7 +1,0 @@
-{
-  "ambientocclusion": false,
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "ce:block/jagged_rose_quartz"
-  }
-}
