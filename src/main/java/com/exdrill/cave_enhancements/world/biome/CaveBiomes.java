@@ -9,7 +9,10 @@ import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.biome.*;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeEffects;
+import net.minecraft.world.biome.GenerationSettings;
+import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
 public class CaveBiomes {
@@ -43,7 +46,7 @@ public class CaveBiomes {
 
         // Goop Caves
         BiomeModifications.create(new Identifier(CaveEnhancements.NAMESPACE + "goop_caves"))
-                .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(ModBiomes.GOOP_CAVES_KEY), ctx -> {
+                .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(ModBiomes.GOOP_CAVES), ctx -> {
                 });
 
         // Biome Builder
@@ -82,7 +85,7 @@ public class CaveBiomes {
         DefaultBiomeFeatures.addDefaultDisks(featureSettings);
 
         BiomeModifications.create(new Identifier(CaveEnhancements.NAMESPACE + "rose_quartz_caves"))
-                .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(ModBiomes.ROSE_QUARTZ_CAVES_KEY), ctx -> {
+                .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(ModBiomes.ROSE_QUARTZ_CAVES), ctx -> {
                 });
 
         return (new Biome.Builder())

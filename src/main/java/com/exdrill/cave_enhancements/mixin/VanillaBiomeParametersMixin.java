@@ -34,10 +34,10 @@ public class VanillaBiomeParametersMixin {
         this.writeCaveBiomeParameters(parameters, this.defaultParameter, MultiNoiseUtil.ParameterRange.of(0.7F, 1.0F), this.defaultParameter, this.defaultParameter, this.defaultParameter, 0.0F, BiomeKeys.LUSH_CAVES);
 
         // Rose Quartz Caves
-        this.writeCaveBiomeParameters(parameters, MultiNoiseUtil.ParameterRange.of(0.7F, 1F), this.defaultParameter, this.deepOceanContinentalness, MultiNoiseUtil.ParameterRange.of(-0.5F, 0.5F), MultiNoiseUtil.ParameterRange.of(-0.75F, 0.4F), 0.0F, ModBiomes.ROSE_QUARTZ_CAVES_KEY);
+        this.writeCaveBiomeParameters(parameters, MultiNoiseUtil.ParameterRange.of(0.7F, 1F), this.defaultParameter, this.deepOceanContinentalness, MultiNoiseUtil.ParameterRange.of(-0.5F, 0.5F), MultiNoiseUtil.ParameterRange.of(-0.75F, 0.4F), 0.0F, ModBiomes.ROSE_QUARTZ_CAVES);
 
         // Goop Caves
-        this.writeCaveBiomeParameters(parameters, MultiNoiseUtil.ParameterRange.of(-1F, 0.215F), MultiNoiseUtil.ParameterRange.of(-0.4F, 0.5F), MultiNoiseUtil.ParameterRange.of(0.32F, 0.72F), MultiNoiseUtil.ParameterRange.of(0.4F, 0.7F), MultiNoiseUtil.ParameterRange.of(0.8F, 0.875F), 0.0F, ModBiomes.GOOP_CAVES_KEY);
+        this.writeCaveBiomeParameters(parameters, MultiNoiseUtil.ParameterRange.of(-1F, 0.215F), MultiNoiseUtil.ParameterRange.of(-0.4F, 0.5F), MultiNoiseUtil.ParameterRange.of(0.32F, 0.72F), MultiNoiseUtil.ParameterRange.of(0.4F, 0.7F), MultiNoiseUtil.ParameterRange.of(0.8F, 0.875F), 0.0F, ModBiomes.GOOP_CAVES);
     }
 
     @Shadow

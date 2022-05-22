@@ -14,16 +14,16 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 
 public class ModBiomes {
-    public static final RegistryKey<Biome> GOOP_CAVES_KEY = registerBiomeKeys("goop_caves");
-    public static final RegistryKey<Biome> ROSE_QUARTZ_CAVES_KEY = registerBiomeKeys("rose_quartz_caves");
+    public static final RegistryKey<Biome> GOOP_CAVES = registerBiomeKeys("goop_caves");
+    public static final RegistryKey<Biome> ROSE_QUARTZ_CAVES = registerBiomeKeys("rose_quartz_caves");
 
     private static RegistryKey<Biome> registerBiomeKeys(String name) {
         return RegistryKey.of(Registry.BIOME_KEY, new Identifier(CaveEnhancements.NAMESPACE, name));
     }
 
     public static void register() {
-        register(GOOP_CAVES_KEY, CaveBiomes.createGoopCaves());
-        register(ROSE_QUARTZ_CAVES_KEY, CaveBiomes.createRoseQuartzCaves());
+        register(GOOP_CAVES, CaveBiomes.createGoopCaves());
+        register(ROSE_QUARTZ_CAVES, CaveBiomes.createRoseQuartzCaves());
     }
 
     public static void registerModifications() {
