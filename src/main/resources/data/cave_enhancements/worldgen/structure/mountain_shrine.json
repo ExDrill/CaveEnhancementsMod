@@ -3,7 +3,7 @@
   "biomes": "#cave_enhancements:has_structure/mountain_shrine",
   "step": "surface_structures",
   "spawn_overrides": {},
-  "terrain_adaptation": "beard_thin",
+  "terrain_adaptation": "beard_box",
   "start_pool": "cave_enhancements:mountain_shrine/start_pool",
   "size": 6,
   "start_height": {
