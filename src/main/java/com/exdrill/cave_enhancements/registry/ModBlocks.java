@@ -94,15 +94,15 @@ public class ModBlocks {
         BlockRenderLayerMap.INSTANCE.putBlock(SPECTACLE_CANDLE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(JAGGED_ROSE_QUARTZ, RenderLayer.getCutout());
 
-        BlockRenderLayerMap.INSTANCE.putBlock(REDSTONE_RECEIVER, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(EXPOSED_REDSTONE_RECEIVER, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(WEATHERED_REDSTONE_RECEIVER, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(OXIDIZED_REDSTONE_RECEIVER, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(REDSTONE_RECEIVER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(EXPOSED_REDSTONE_RECEIVER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(WEATHERED_REDSTONE_RECEIVER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(OXIDIZED_REDSTONE_RECEIVER, RenderLayer.getCutout());
 
-        BlockRenderLayerMap.INSTANCE.putBlock(WAXED_REDSTONE_RECEIVER, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(WAXED_EXPOSED_REDSTONE_RECEIVER, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(WAXED_WEATHERED_REDSTONE_RECEIVER, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(WAXED_OXIDIZED_REDSTONE_RECEIVER, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(WAXED_REDSTONE_RECEIVER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(WAXED_EXPOSED_REDSTONE_RECEIVER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(WAXED_WEATHERED_REDSTONE_RECEIVER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(WAXED_OXIDIZED_REDSTONE_RECEIVER, RenderLayer.getCutout());
     }
 
     // Block Entity
