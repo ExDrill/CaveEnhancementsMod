@@ -26,7 +26,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.random.AbstractRandom;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.LightType;
 import net.minecraft.world.ServerWorldAccess;
@@ -210,7 +210,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements Angerabl
         }
     }
 
-    public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, AbstractRandom random) {
+    public static boolean isSpawnDark(ServerWorldAccess world, BlockPos pos, Random random) {
         if (world.getLightLevel(LightType.SKY, pos) > random.nextInt(32)) {
             return false;
         } else if (world.getLightLevel(LightType.BLOCK, pos) > 0) {
@@ -221,7 +221,7 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements Angerabl
         }
     }
 
-    public static boolean canSpawnInDark(EntityType<? extends PathAwareEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos pos, AbstractRandom random) {
+    public static boolean canSpawnInDark(EntityType<? extends PathAwareEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return world.getDifficulty() != Difficulty.PEACEFUL && isSpawnDark(world, pos, random) && canMobSpawn(type, world, spawnReason, pos, random);
     }
 

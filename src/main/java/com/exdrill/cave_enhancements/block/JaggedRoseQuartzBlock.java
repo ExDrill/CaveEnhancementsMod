@@ -13,7 +13,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.random.AbstractRandom;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -62,7 +62,7 @@ public class JaggedRoseQuartzBlock extends Block implements Waterloggable {
         this.setDefaultState(this.getDefaultState().with(WATERLOGGED, world.getFluidState(pos).getFluid() == Fluids.WATER));
     }
 
-    public void randomDisplayTick(BlockState state, World world, BlockPos pos, AbstractRandom random) {
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
 
         if(random.nextBetween(0, 3) == 0){
             int l = pos.getX();

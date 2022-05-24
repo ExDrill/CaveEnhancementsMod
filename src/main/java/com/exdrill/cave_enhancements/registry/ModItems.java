@@ -26,6 +26,16 @@ public class ModItems {
     public static final GoopBucketItem GOOP_BUCKET = new GoopBucketItem(ModEntities.GOOP, Fluids.EMPTY, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new Item.Settings().group(ItemGroup.MISC).maxCount(1));
     public static final BannerPatternItem GOOP_BANNER_PATTERN = new BannerPatternItem(ModTags.GOOP_PATTERN_ITEM,new Item.Settings().group(ItemGroup.MISC));
 
+    // Redstone Receivers
+    public static final BlockItem REDSTONE_RECEIVER = new BlockItem(ModBlocks.REDSTONE_RECEIVER, new Item.Settings().group(ItemGroup.REDSTONE));
+    public static final BlockItem EXPOSED_REDSTONE_RECEIVER = new BlockItem(ModBlocks.EXPOSED_REDSTONE_RECEIVER, new Item.Settings().group(ItemGroup.REDSTONE));
+    public static final BlockItem WEATHERED_REDSTONE_RECEIVER = new BlockItem(ModBlocks.WEATHERED_REDSTONE_RECEIVER, new Item.Settings().group(ItemGroup.REDSTONE));
+    public static final BlockItem OXIDIZED_REDSTONE_RECEIVER = new BlockItem(ModBlocks.OXIDIZED_REDSTONE_RECEIVER, new Item.Settings().group(ItemGroup.REDSTONE));
+
+    public static final BlockItem WAXED_REDSTONE_RECEIVER = new BlockItem(ModBlocks.WAXED_REDSTONE_RECEIVER, new Item.Settings().group(ItemGroup.REDSTONE));
+    public static final BlockItem WAXED_EXPOSED_REDSTONE_RECEIVER = new BlockItem(ModBlocks.WAXED_EXPOSED_REDSTONE_RECEIVER, new Item.Settings().group(ItemGroup.REDSTONE));
+    public static final BlockItem WAXED_WEATHERED_REDSTONE_RECEIVER = new BlockItem(ModBlocks.WAXED_WEATHERED_REDSTONE_RECEIVER, new Item.Settings().group(ItemGroup.REDSTONE));
+    public static final BlockItem WAXED_OXIDIZED_REDSTONE_RECEIVER = new BlockItem(ModBlocks.WAXED_OXIDIZED_REDSTONE_RECEIVER, new Item.Settings().group(ItemGroup.REDSTONE));
 
 
     public static final Item BIG_GOOP_DRIP = new Item(new Item.Settings());
@@ -78,10 +88,20 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "soul_rose_quartz_lamp"), SOUL_ROSE_QUARTZ_LAMP);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_banner_pattern"), GOOP_BANNER_PATTERN);
 
+        // Redstone Receivers
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "redstone_receiver"), REDSTONE_RECEIVER);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "exposed_redstone_receiver"), EXPOSED_REDSTONE_RECEIVER);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "weathered_redstone_receiver"), WEATHERED_REDSTONE_RECEIVER);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "oxidized_redstone_receiver"), OXIDIZED_REDSTONE_RECEIVER);
+
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "waxed_redstone_receiver"), WAXED_REDSTONE_RECEIVER);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "waxed_exposed_redstone_receiver"), WAXED_EXPOSED_REDSTONE_RECEIVER);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "waxed_weathered_redstone_receiver"), WAXED_WEATHERED_REDSTONE_RECEIVER);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "waxed_oxidized_redstone_receiver"), WAXED_OXIDIZED_REDSTONE_RECEIVER);
+
         // Spawn Eggs
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_spawn_egg"), GOOP_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "cruncher_spawn_egg"), CRUNCHER_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "dripstone_tortoise_spawn_egg"), DRIPSTONE_TORTOISE_SPAWN_EGG);
     }
-
 }
