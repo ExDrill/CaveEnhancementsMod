@@ -1,13 +1,14 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_crafting_table": {
+    "obtained_rose_quartz": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:crafting_table"
+              "minecraft:redstone",
+              "minecraft:redstone_block"
             ]
           }
         ]
@@ -16,15 +17,11 @@
   },
   "requirements": [
     [
-      "has_crafting_table"
+      "obtained_rose_quartz"
     ]
   ],
   "rewards": {
     "recipes": [
-      "cave_enhancements:goop_block",
-      "cave_enhancements:dripping_goop",
-      "cave_enhancements:glow_paste",
-      "cave_enhancements:spectacle_candle",
       "cave_enhancements:rose_quartz_block",
       "cave_enhancements:polished_rose_quartz",
       "cave_enhancements:polished_rose_quartz_slab",

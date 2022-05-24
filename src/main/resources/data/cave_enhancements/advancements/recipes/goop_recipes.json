@@ -1,0 +1,28 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "obtained_goop": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cave_enhancements:goop"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtained_goop"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cave_enhancements:goop_block",
+      "cave_enhancements:dripping_goop"
+    ]
+  }
+}

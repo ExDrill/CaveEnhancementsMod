@@ -1,0 +1,55 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "obtained_redstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:redstone",
+              "minecraft:redstone_block"
+            ]
+          }
+        ]
+      }
+    },
+    "obtained_copper": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:copper_ingot",
+              "minecraft:copper_block"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtained_redstone"
+    ],
+    [
+      "obtained_copper"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cave_enhancements:redstone_receiver",
+      "cave_enhancements:waxed_redstone_receiver",
+      "cave_enhancements:waxed_redstone_receiver_from_honeycomb",
+      "cave_enhancements:exposed_redstone_receiver",
+      "cave_enhancements:waxed_exposed_redstone_receiver",
+      "cave_enhancements:waxed_exposed_redstone_receiver_from_honeycomb",
+      "cave_enhancements:weathered_redstone_receiver",
+      "cave_enhancements:waxed_weathered_redstone_receiver",
+      "cave_enhancements:waxed_weathered_redstone_receiver_from_honeycomb",
+      "cave_enhancements:oxidized_redstone_receiver",
+      "cave_enhancements:waxed_oxidized_redstone_receiver",
+      "cave_enhancements:waxed_oxidized_redstone_receiver_from_honeycomb"
+    ]
+  }
+}
