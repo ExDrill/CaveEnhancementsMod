@@ -1,28 +1,15 @@
 package com.exdrill.cave_enhancements.block;
 
-import com.exdrill.cave_enhancements.registry.ModBlocks;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
-import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Oxidizable.OxidationLevel;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.block.Oxidizable;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.World;
 
-public class OxidizableReceiverBlock extends ReceiverBlock implements OxidizableReceiver {
+public class OxidizableReceiverBlock extends ReceiverBlock implements Oxidizable {
     public OxidizableReceiverBlock(OxidationLevel oxidationLevel, Settings settings) {
         super(oxidationLevel, settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(POWERED, false).with(CAN_PASS, false));
@@ -39,10 +26,10 @@ public class OxidizableReceiverBlock extends ReceiverBlock implements Oxidizable
 
     @Override
     public boolean hasRandomTicks(BlockState state) {
-        return OxidizableReceiver.getIncreasedOxidationBlock(state.getBlock()).isPresent();
+        return Oxidizable.getIncreasedOxidationBlock(state.getBlock()).isPresent();
     }
 
-
+    /*
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getStackInHand(hand);
@@ -93,6 +80,8 @@ public class OxidizableReceiverBlock extends ReceiverBlock implements Oxidizable
         }
         return ActionResult.FAIL;
     }
+
+     */
 
     @Override
     public OxidationLevel getDegradationLevel() {

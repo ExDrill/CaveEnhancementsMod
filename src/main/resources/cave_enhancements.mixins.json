@@ -8,6 +8,7 @@
     "CreeperEntityMixin",
     "EnchantmentMixin",
     "ItemRendererMixin",
+    "LivingEntityMixin",
     "ModelLoaderMixin",
     "PhantomEntityMixin",
     "RedstoneWireBlockMixin",

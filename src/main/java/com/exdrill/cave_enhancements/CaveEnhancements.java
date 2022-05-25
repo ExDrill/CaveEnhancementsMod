@@ -21,7 +21,8 @@ public class CaveEnhancements implements ModInitializer {
         ModEntities.register();
         ModBiomes.register();
         ModBiomes.registerModifications();
-
+        ModStatusEffects.register();
+        ModBlocks.registerOxidizablePairs();
 
         Registry.register(Registry.BANNER_PATTERN, new Identifier(NAMESPACE, "goop"), GOOP);
 

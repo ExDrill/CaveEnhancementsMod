@@ -9,6 +9,7 @@ import com.exdrill.cave_enhancements.block.entity.SpectacleCandleBlockEntity;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.render.RenderLayer;
@@ -21,12 +22,15 @@ public class ModBlocks {
     // Block Components
     public static final Block GOOP_BLOCK = new Block(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).velocityMultiplier(0.3F).strength(0.5F, 1.0F).sounds(BlockSoundGroup.SLIME).jumpVelocityMultiplier(0.9F));
     public static final GoopTrapBlock GOOP_TRAP = new GoopTrapBlock(FabricBlockSettings.of(Material.GOURD).strength(2.0F, 5.0F).sounds(BlockSoundGroup.SLIME).velocityMultiplier( 0.01F).jumpVelocityMultiplier(0.3F).slipperiness(0.8F).mapColor(MapColor.PALE_YELLOW));
-    public static final MultifaceBlock GOOP_SPLAT = new GoopSplatBlock(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).breakInstantly().sounds(BlockSoundGroup.CORAL).noCollision().nonOpaque().mapColor(MapColor.PALE_YELLOW));
+    public static final GoopSplatBlock GOOP_SPLAT = new GoopSplatBlock(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).breakInstantly().sounds(BlockSoundGroup.CORAL).noCollision().nonOpaque().mapColor(MapColor.PALE_YELLOW));
     public static final DrippingGoopBlock DRIPPING_GOOP = new DrippingGoopBlock(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).sounds(BlockSoundGroup.CORAL).nonOpaque().noCollision().luminance(2).mapColor(MapColor.PALE_YELLOW));
+
     public static final GlowSplotchBlock GLOW_SPLOTCH = new GlowSplotchBlock(FabricBlockSettings.of(Material.ORGANIC_PRODUCT).sounds(BlockSoundGroup.HONEY).nonOpaque().noCollision().luminance(8).mapColor(MapColor.PALE_YELLOW));
     public static final SpectacleCandleBlock SPECTACLE_CANDLE = new SpectacleCandleBlock(FabricBlockSettings.of(Material.DECORATION).sounds(BlockSoundGroup.CANDLE).luminance(CandleBlock.STATE_TO_LUMINANCE).strength(0.1F, 0F));
+
     public static final Block LIGHTNING_ANCHOR = new LightningAnchorBlock(FabricBlockSettings.of(Material.METAL).strength(4, 100).requiresTool().mapColor(MapColor.ORANGE).sounds(BlockSoundGroup.COPPER));
     public static final Block CHARGED_LIGHTNING_ANCHOR = new ChargedLightningAnchorBlock(FabricBlockSettings.of(Material.METAL).strength(4, 100).requiresTool().mapColor(MapColor.ORANGE).sounds(BlockSoundGroup.COPPER).luminance((state) -> 15));
+
     public static final Block ROSE_QUARTZ_BLOCK = new Block(FabricBlockSettings.of(Material.STONE).strength(0.8F, 10).requiresTool().mapColor(MapColor.PINK).sounds(ModSounds.ROSE_QUARTZ));
     public static final JaggedRoseQuartzBlock JAGGED_ROSE_QUARTZ = new JaggedRoseQuartzBlock(FabricBlockSettings.of(Material.STONE).strength(0.8F, 10).requiresTool().mapColor(MapColor.PINK).noCollision().sounds(ModSounds.ROSE_QUARTZ));
     public static final Block POLISHED_ROSE_QUARTZ = new Block(FabricBlockSettings.of(Material.STONE).strength(1F, 10).requiresTool().mapColor(MapColor.PINK).sounds(ModSounds.ROSE_QUARTZ));
@@ -41,15 +45,15 @@ public class ModBlocks {
     public static final RoseQuartzLampBlock ROSE_QUARTZ_LAMP = new RoseQuartzLampBlock(FabricBlockSettings.of(Material.STONE).strength(1F, 10).requiresTool().mapColor(MapColor.PINK).sounds(BlockSoundGroup.LANTERN).luminance(15));
     public static final RoseQuartzLampBlock SOUL_ROSE_QUARTZ_LAMP = new RoseQuartzLampBlock(FabricBlockSettings.of(Material.STONE).strength(1F, 10).requiresTool().mapColor(MapColor.PINK).sounds(BlockSoundGroup.LANTERN).luminance(15));
 
-    public static final OxidizableReceiverBlock REDSTONE_RECEIVER = new OxidizableReceiverBlock(Oxidizable.OxidationLevel.UNAFFECTED, FabricBlockSettings.of(Material.DECORATION).strength(1F, 10).requiresTool().mapColor(MapColor.ORANGE).sounds(BlockSoundGroup.COPPER).breakInstantly());
-    public static final OxidizableReceiverBlock EXPOSED_REDSTONE_RECEIVER = new OxidizableReceiverBlock(Oxidizable.OxidationLevel.EXPOSED, FabricBlockSettings.of(Material.DECORATION).strength(1F, 10).requiresTool().mapColor(MapColor.ORANGE).sounds(BlockSoundGroup.COPPER).breakInstantly());
-    public static final OxidizableReceiverBlock WEATHERED_REDSTONE_RECEIVER = new OxidizableReceiverBlock(Oxidizable.OxidationLevel.WEATHERED, FabricBlockSettings.of(Material.DECORATION).strength(1F, 10).requiresTool().mapColor(MapColor.ORANGE).sounds(BlockSoundGroup.COPPER).breakInstantly());
-    public static final OxidizableReceiverBlock OXIDIZED_REDSTONE_RECEIVER = new OxidizableReceiverBlock(Oxidizable.OxidationLevel.OXIDIZED, FabricBlockSettings.of(Material.DECORATION).strength(1F, 10).requiresTool().mapColor(MapColor.ORANGE).sounds(BlockSoundGroup.COPPER).breakInstantly());
+    public static final OxidizableReceiverBlock REDSTONE_RECEIVER = new OxidizableReceiverBlock(Oxidizable.OxidationLevel.UNAFFECTED, FabricBlockSettings.of(Material.DECORATION).mapColor(MapColor.ORANGE).sounds(BlockSoundGroup.COPPER).breakInstantly());
+    public static final OxidizableReceiverBlock EXPOSED_REDSTONE_RECEIVER = new OxidizableReceiverBlock(Oxidizable.OxidationLevel.EXPOSED, FabricBlockSettings.of(Material.DECORATION).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).sounds(BlockSoundGroup.COPPER).breakInstantly());
+    public static final OxidizableReceiverBlock WEATHERED_REDSTONE_RECEIVER = new OxidizableReceiverBlock(Oxidizable.OxidationLevel.WEATHERED, FabricBlockSettings.of(Material.DECORATION).mapColor(MapColor.DARK_AQUA).sounds(BlockSoundGroup.COPPER).breakInstantly());
+    public static final OxidizableReceiverBlock OXIDIZED_REDSTONE_RECEIVER = new OxidizableReceiverBlock(Oxidizable.OxidationLevel.OXIDIZED, FabricBlockSettings.of(Material.DECORATION).mapColor(MapColor.TEAL).sounds(BlockSoundGroup.COPPER).breakInstantly());
 
-    public static final ReceiverBlock WAXED_REDSTONE_RECEIVER = new ReceiverBlock(Oxidizable.OxidationLevel.UNAFFECTED, FabricBlockSettings.of(Material.DECORATION).strength(1F, 10).requiresTool().mapColor(MapColor.ORANGE).sounds(BlockSoundGroup.COPPER).breakInstantly());
-    public static final ReceiverBlock WAXED_EXPOSED_REDSTONE_RECEIVER = new ReceiverBlock(Oxidizable.OxidationLevel.EXPOSED, FabricBlockSettings.of(Material.DECORATION).strength(1F, 10).requiresTool().mapColor(MapColor.ORANGE).sounds(BlockSoundGroup.COPPER).breakInstantly());
-    public static final ReceiverBlock WAXED_WEATHERED_REDSTONE_RECEIVER = new ReceiverBlock(Oxidizable.OxidationLevel.WEATHERED, FabricBlockSettings.of(Material.DECORATION).strength(1F, 10).requiresTool().mapColor(MapColor.ORANGE).sounds(BlockSoundGroup.COPPER).breakInstantly());
-    public static final ReceiverBlock WAXED_OXIDIZED_REDSTONE_RECEIVER = new ReceiverBlock(Oxidizable.OxidationLevel.OXIDIZED, FabricBlockSettings.of(Material.DECORATION).strength(1F, 10).requiresTool().mapColor(MapColor.ORANGE).sounds(BlockSoundGroup.COPPER).breakInstantly());
+    public static final ReceiverBlock WAXED_REDSTONE_RECEIVER = new ReceiverBlock(Oxidizable.OxidationLevel.UNAFFECTED, FabricBlockSettings.of(Material.DECORATION).mapColor(MapColor.ORANGE).sounds(BlockSoundGroup.COPPER).breakInstantly());
+    public static final ReceiverBlock WAXED_EXPOSED_REDSTONE_RECEIVER = new ReceiverBlock(Oxidizable.OxidationLevel.EXPOSED, FabricBlockSettings.of(Material.DECORATION).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).sounds(BlockSoundGroup.COPPER).breakInstantly());
+    public static final ReceiverBlock WAXED_WEATHERED_REDSTONE_RECEIVER = new ReceiverBlock(Oxidizable.OxidationLevel.WEATHERED, FabricBlockSettings.of(Material.DECORATION).mapColor(MapColor.DARK_AQUA).sounds(BlockSoundGroup.COPPER).breakInstantly());
+    public static final ReceiverBlock WAXED_OXIDIZED_REDSTONE_RECEIVER = new ReceiverBlock(Oxidizable.OxidationLevel.OXIDIZED, FabricBlockSettings.of(Material.DECORATION).mapColor(MapColor.TEAL).sounds(BlockSoundGroup.COPPER).breakInstantly());
 
     // Block Registry
     public static void register() {
@@ -57,10 +61,13 @@ public class ModBlocks {
         Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "goop_splat"), GOOP_SPLAT);
         Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "goop_trap"), GOOP_TRAP);
         Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "dripping_goop"), DRIPPING_GOOP);
+
         Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "glow_splotch"), GLOW_SPLOTCH);
         Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "spectacle_candle"), SPECTACLE_CANDLE);
+
         Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "lightning_anchor"), LIGHTNING_ANCHOR);
         Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "charged_lightning_anchor"), CHARGED_LIGHTNING_ANCHOR);
+
         Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_block"), ROSE_QUARTZ_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "jagged_rose_quartz"), JAGGED_ROSE_QUARTZ);
         Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "polished_rose_quartz"), POLISHED_ROSE_QUARTZ);
@@ -118,5 +125,17 @@ public class ModBlocks {
         LIGHTNING_ANCHOR_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "lightning_anchor"), FabricBlockEntityTypeBuilder.create(LightningAnchorBlockEntity::new, LIGHTNING_ANCHOR).build(null));
         ROSE_QUARTZ_CHIMES_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_chimes"), FabricBlockEntityTypeBuilder.create(RoseQuartzChimesBlockEntity::new, ROSE_QUARTZ_CHIMES).build(null));
         RECEIVER_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "redstone_receiver"),FabricBlockEntityTypeBuilder.create(ReceiverBlockEntity::new, REDSTONE_RECEIVER, EXPOSED_REDSTONE_RECEIVER, WEATHERED_REDSTONE_RECEIVER, OXIDIZED_REDSTONE_RECEIVER, WAXED_REDSTONE_RECEIVER, WAXED_EXPOSED_REDSTONE_RECEIVER, WAXED_WEATHERED_REDSTONE_RECEIVER, WAXED_OXIDIZED_REDSTONE_RECEIVER).build(null));
+    }
+
+    // Pairs
+    public static void registerOxidizablePairs() {
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(REDSTONE_RECEIVER, EXPOSED_REDSTONE_RECEIVER);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(EXPOSED_REDSTONE_RECEIVER, WEATHERED_REDSTONE_RECEIVER);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(WEATHERED_REDSTONE_RECEIVER, OXIDIZED_REDSTONE_RECEIVER);
+
+        OxidizableBlocksRegistry.registerWaxableBlockPair(REDSTONE_RECEIVER, WAXED_REDSTONE_RECEIVER);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(EXPOSED_REDSTONE_RECEIVER, WAXED_EXPOSED_REDSTONE_RECEIVER);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(WEATHERED_REDSTONE_RECEIVER, WAXED_WEATHERED_REDSTONE_RECEIVER);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(OXIDIZED_REDSTONE_RECEIVER, WAXED_OXIDIZED_REDSTONE_RECEIVER);
     }
 }

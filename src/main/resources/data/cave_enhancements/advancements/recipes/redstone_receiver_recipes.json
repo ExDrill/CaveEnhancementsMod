@@ -7,8 +7,7 @@
         "items": [
           {
             "items": [
-              "minecraft:redstone",
-              "minecraft:redstone_block"
+              "minecraft:redstone"
             ]
           }
         ]
@@ -20,8 +19,7 @@
         "items": [
           {
             "items": [
-              "minecraft:copper_ingot",
-              "minecraft:copper_block"
+              "minecraft:copper_ingot"
             ]
           }
         ]

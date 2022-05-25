@@ -28,35 +28,20 @@
               ]
             },
             {
-              "type": "minecraft:alternatives",
-              "children": [
+              "type": "minecraft:item",
+              "name": "cave_enhancements:rose_quartz",
+              "functions": [
                 {
-                  "type": "minecraft:item",
-                  "name": "cave_enhancements:rose_quartz",
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": {
-                        "min": 2,
-                        "max": 3
-                      },
-                      "add": false
-                    }
-                  ]
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 2,
+                    "max": 3
+                  },
+                  "add": false
                 },
                 {
-                  "type": "minecraft:item",
-                  "name": "cave_enhancements:rose_quartz",
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": 1,
-                      "add": false
-                    },
-                    {
-                      "function": "minecraft:explosion_decay"
-                    }
-                  ]
+                  "function": "minecraft:explosion_decay"
                 }
               ]
             }

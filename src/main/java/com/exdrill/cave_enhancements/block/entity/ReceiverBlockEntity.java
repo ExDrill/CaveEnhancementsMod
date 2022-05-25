@@ -8,6 +8,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LightningEntity;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
@@ -52,9 +53,6 @@ public class ReceiverBlockEntity extends BlockEntity {
         }
     }
 
-
-
-    /*
     @Override
     protected void writeNbt(NbtCompound nbt) {
         nbt.putInt("PoweredTicks", this.poweredTicks);
@@ -64,11 +62,10 @@ public class ReceiverBlockEntity extends BlockEntity {
 
     @Override
     public void readNbt(NbtCompound nbt) {
-        this.poweredTicks = nbt.getInt("poweredTicks");
+        this.poweredTicks = nbt.getInt("PoweredTicks");
         super.readNbt(nbt);
     }
 
-     */
 
 
 }

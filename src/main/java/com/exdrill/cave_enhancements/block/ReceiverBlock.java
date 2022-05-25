@@ -1,25 +1,14 @@
 package com.exdrill.cave_enhancements.block;
 
 import com.exdrill.cave_enhancements.block.entity.ReceiverBlockEntity;
-import com.exdrill.cave_enhancements.registry.ModBlocks;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
-import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
 import net.minecraft.particle.DustParticleEffect;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -141,7 +130,7 @@ public class ReceiverBlock extends AbstractRedstoneGateBlock implements BlockEnt
     }
 
 
-
+    /*
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getStackInHand(hand);
@@ -174,4 +163,6 @@ public class ReceiverBlock extends AbstractRedstoneGateBlock implements BlockEnt
         }
         return ActionResult.FAIL;
     }
+
+     */
 }

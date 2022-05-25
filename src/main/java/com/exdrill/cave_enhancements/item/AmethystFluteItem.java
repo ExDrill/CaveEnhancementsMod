@@ -61,8 +61,10 @@ public class AmethystFluteItem extends Item {
             itemStack.setNbt(nbt);
             user.getItemCooldownManager().set(this, 400);
         }
-        return TypedActionResult.success(itemStack, world.isClient());
+        return TypedActionResult.success(itemStack);
     }
+
+
 
     @ParametersAreNonnullByDefault
     public static boolean isScary(LivingEntity livingEntity) {

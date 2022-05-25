@@ -17,27 +17,28 @@
   "parent": "cave_enhancements:underground/root",
   "criteria": {
     "spyglass_at_goop": {
-      "trigger": "minecraft:using_item",
       "conditions": {
+        "item": {
+          "items": [
+            "minecraft:spyglass"
+          ]
+        },
         "player": [
           {
             "condition": "minecraft:entity_properties",
             "entity": "this",
             "predicate": {
-              "player": {
+              "type_specific": {
+                "type": "player",
                 "looking_at": {
                   "type": "cave_enhancements:goop"
                 }
               }
             }
           }
-        ],
-        "item": {
-          "items": [
-            "minecraft:spyglass"
-          ]
-        }
-      }
+        ]
+      },
+      "trigger": "minecraft:using_item"
     }
   },
   "requirements": [
