@@ -1,6 +1,7 @@
 package com.exdrill.cave_enhancements.entity;
 
 import com.exdrill.cave_enhancements.registry.ModItems;
+import com.exdrill.cave_enhancements.registry.ModSounds;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
@@ -42,11 +43,11 @@ public class GoopEntity extends HostileEntity implements CustomBucketable {
 
     // Sounds
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_SLIME_DEATH;
+        return ModSounds.ENTITY_GOOP_DEATH;
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundEvents.ENTITY_SLIME_HURT;
+        return ModSounds.ENTITY_GOOP_HURT;
     }
 
     // Attributes

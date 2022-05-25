@@ -74,6 +74,9 @@
   "item.glow_paste.place": "Block placed",
   "block.rose_quartz.break": "Block broken",
 
+  "subtitles.entity.goop.hurt": "Goop hurts",
+  "subtitles.entity.goop.death": "Goop dies",
+
   "advancements.underground.root.title": "The Underground",
   "advancements.underground.root.description": "The deeper you go, the more you can find.",
 
