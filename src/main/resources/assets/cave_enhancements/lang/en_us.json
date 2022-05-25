@@ -77,6 +77,11 @@
   "subtitles.entity.goop.hurt": "Goop hurts",
   "subtitles.entity.goop.death": "Goop dies",
 
+  "subtitles.entity.dripstone_tortoise.hurt": "Dripstone Tortoise hurts",
+  "subtitles.entity.dripstone_tortoise.death": "Dripstone Tortoise dies",
+  "subtitles.entity.dripstone_tortoise.step": "Dripstone Tortoise steps",
+  "subtitles.entity.dripstone_tortoise.idle": "Dripstone Tortoise sighs",
+
   "advancements.underground.root.title": "The Underground",
   "advancements.underground.root.description": "The deeper you go, the more you can find.",
 

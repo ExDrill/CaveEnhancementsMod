@@ -1,6 +1,8 @@
 package com.exdrill.cave_enhancements.entity;
 
 import com.exdrill.cave_enhancements.registry.ModEntities;
+import com.exdrill.cave_enhancements.registry.ModSounds;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -89,19 +91,27 @@ public class DripstoneTortoiseEntity extends PathAwareEntity implements Angerabl
 
     // Sounds
 
+
+
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_TURTLE_DEATH;
+        return ModSounds.ENTITY_DRIPSTONE_TORTOISE_DEATH;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundEvents.ENTITY_TURTLE_HURT;
+        return ModSounds.ENTITY_DRIPSTONE_TORTOISE_HURT;
     }
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.ENTITY_TURTLE_AMBIENT_LAND;
+        return ModSounds.ENTITY_DRIPSTONE_TORTOISE_IDLE;
+    }
+
+    @Override
+    protected void playStepSound(BlockPos pos, BlockState state) {
+        SoundEvent sound = ModSounds.ENTITY_DRIPSTONE_TORTOISE_STEP;
+        this.playSound(sound, 0.15F, 1.0F);
     }
 
     //AI

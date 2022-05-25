@@ -54,6 +54,19 @@ public class ModSounds {
     public static final Identifier ENTITY_GOOP_DEATH_ID = new Identifier(CaveEnhancements.NAMESPACE, "entity.goop.death");
     public static SoundEvent ENTITY_GOOP_DEATH = new SoundEvent(ENTITY_GOOP_DEATH_ID);
 
+    // Dripstone Tortoise Entity Sounds
+    public static final Identifier ENTITY_DRIPSTONE_TORTOISE_HURT_ID = new Identifier(CaveEnhancements.NAMESPACE, "entity.dripstone_tortoise.hurt");
+    public static SoundEvent ENTITY_DRIPSTONE_TORTOISE_HURT = new SoundEvent(ENTITY_DRIPSTONE_TORTOISE_HURT_ID);
+
+    public static final Identifier ENTITY_DRIPSTONE_TORTOISE_DEATH_ID = new Identifier(CaveEnhancements.NAMESPACE, "entity.dripstone_tortoise.death");
+    public static SoundEvent ENTITY_DRIPSTONE_TORTOISE_DEATH = new SoundEvent(ENTITY_DRIPSTONE_TORTOISE_DEATH_ID);
+
+    public static final Identifier ENTITY_DRIPSTONE_TORTOISE_STEP_ID = new Identifier(CaveEnhancements.NAMESPACE, "entity.dripstone_tortoise.step");
+    public static SoundEvent ENTITY_DRIPSTONE_TORTOISE_STEP = new SoundEvent(ENTITY_DRIPSTONE_TORTOISE_STEP_ID);
+
+    public static final Identifier ENTITY_DRIPSTONE_TORTOISE_IDLE_ID = new Identifier(CaveEnhancements.NAMESPACE, "entity.dripstone_tortoise.idle");
+    public static SoundEvent ENTITY_DRIPSTONE_TORTOISE_IDLE = new SoundEvent(ENTITY_DRIPSTONE_TORTOISE_IDLE_ID);
+
     // Block Sounds
     public static final BlockSoundGroup ROSE_QUARTZ  = new BlockSoundGroup(1.0F, 1.0F, BLOCK_ROSE_QUARTZ_BREAK, SoundEvents.BLOCK_GLASS_STEP, SoundEvents.BLOCK_CALCITE_PLACE, SoundEvents.BLOCK_GLASS_HIT, SoundEvents.BLOCK_GLASS_FALL);
     public static final BlockSoundGroup GOOP_BLOCK = new BlockSoundGroup(1.0F, 1.0F, BLOCK_GOOP_BLOCK_BREAK, BLOCK_GOOP_BLOCK_STEP, BLOCK_GOOP_BLOCK_PLACE, BLOCK_GOOP_BLOCK_HIT, BLOCK_GOOP_BLOCK_FALL);
@@ -77,6 +90,11 @@ public class ModSounds {
 
         Registry.register(Registry.SOUND_EVENT, ENTITY_GOOP_HURT_ID, ENTITY_GOOP_HURT);
         Registry.register(Registry.SOUND_EVENT, ENTITY_GOOP_DEATH_ID, ENTITY_GOOP_DEATH);
+
+        Registry.register(Registry.SOUND_EVENT, ENTITY_DRIPSTONE_TORTOISE_HURT_ID, ENTITY_DRIPSTONE_TORTOISE_HURT);
+        Registry.register(Registry.SOUND_EVENT, ENTITY_DRIPSTONE_TORTOISE_DEATH_ID, ENTITY_DRIPSTONE_TORTOISE_DEATH);
+        Registry.register(Registry.SOUND_EVENT, ENTITY_DRIPSTONE_TORTOISE_STEP_ID, ENTITY_DRIPSTONE_TORTOISE_STEP);
+        Registry.register(Registry.SOUND_EVENT, ENTITY_DRIPSTONE_TORTOISE_IDLE_ID, ENTITY_DRIPSTONE_TORTOISE_IDLE);
     }
 
 

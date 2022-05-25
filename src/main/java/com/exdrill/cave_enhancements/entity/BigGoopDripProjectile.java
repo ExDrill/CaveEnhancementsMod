@@ -92,7 +92,7 @@ public class BigGoopDripProjectile extends ThrownItemEntity {
 
             this.world.sendEntityStatus(this, (byte)3);
 
-            this.kill();
+            this.discard();
         }
     }
 
