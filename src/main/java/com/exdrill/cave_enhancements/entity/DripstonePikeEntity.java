@@ -1,5 +1,8 @@
 package com.exdrill.cave_enhancements.entity;
 
+import com.exdrill.cave_enhancements.registry.ModTags;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -13,9 +16,12 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Arm;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
@@ -73,6 +79,9 @@ public class DripstonePikeEntity extends MobEntity {
     @Nullable
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+
+
+
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
 
@@ -95,6 +104,24 @@ public class DripstonePikeEntity extends MobEntity {
     @Override
     public void tick() {
         super.tick();
+
+        if (this.age == 5) {
+            BlockPos pos = new BlockPos(this.getX(), this.getY(), this.getZ());
+            Random random = world.getRandom();
+
+            if (!(random.nextFloat() < 0.9f)) {
+                if (world.getBlockState(pos.up()).isIn(ModTags.PIKE_DESTROYABLES) || world.getBlockState(pos.down()).isIn(ModTags.PIKE_DESTROYABLES)) {
+                    world.playSound(null, pos, SoundEvents.BLOCK_POINTED_DRIPSTONE_LAND, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    ItemEntity itemEntity = new ItemEntity(this.world, this.getX(), this.getY(), this.getZ(), Items.POINTED_DRIPSTONE.getDefaultStack());
+                    this.world.syncWorldEvent(2001, pos, Block.getRawIdFromState(Blocks.POINTED_DRIPSTONE.getDefaultState()));
+                    this.world.spawnEntity(itemEntity);
+                    this.discard();
+                }
+            }
+
+        }
+
+
         if (this.world.isClient) {
             this.risingAnimationState.startIfNotRunning(this.age);
         }

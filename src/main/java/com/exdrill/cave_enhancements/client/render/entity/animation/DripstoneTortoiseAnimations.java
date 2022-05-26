@@ -42,11 +42,16 @@ public class DripstoneTortoiseAnimations {
                         new Keyframe(0.28F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37885)))
                 .build();
 
-        RISING = Builder.create(0.5F)
-                .addBoneAnimation("pike", new Transformation(Targets.TRANSLATE,
-                        new Keyframe(0.0F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37884),
-                        new Keyframe(0.25F, AnimationHelper.method_41829(0.0F, -1200.0F, 0.0F), Interpolations.field_37884),
-                        new Keyframe(0.5F, AnimationHelper.method_41829(0.0F, 0.0F, 0.0F), Interpolations.field_37884)))
-                .build();
+        RISING = Builder.create(0.6F)
+                .addBoneAnimation("pike", new Transformation(Targets.SCALE,
+                        new Keyframe(0.0F, AnimationHelper.method_41822(0.0F, 0.0F, 0.0F), Interpolations.field_37884),
+                        new Keyframe(0.1F, AnimationHelper.method_41822(1.0F, 1.0F, 1.0F), Interpolations.field_37884)))
+
+                .addBoneAnimation("pike",
+                        new Transformation(Targets.TRANSLATE,
+                            new Keyframe(0.0F, AnimationHelper.method_41823(0.0F, 0.0F, 0.0F), Interpolations.field_37884),
+                            new Keyframe(0.1F, AnimationHelper.method_41823(0.0F, 24.0F, 0.0F), Interpolations.field_37884),
+                            new Keyframe( 0.5F, AnimationHelper.method_41823(0.0F, 24.0F, 0.0F), Interpolations.field_37884),
+                            new Keyframe(0.6F, AnimationHelper.method_41823(0.0F, 0.0F, 0.0F), Interpolations.field_37884))).build();
     }
 }

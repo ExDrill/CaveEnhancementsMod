@@ -11,4 +11,5 @@ public class ModTags {
 
     public static final TagKey<BannerPattern> GOOP_PATTERN_ITEM = TagKey.of(Registry.BANNER_PATTERN_KEY, new Identifier(CaveEnhancements.NAMESPACE, "goop_pattern_item"));
     public static final TagKey<Block> RECEIVERS = TagKey.of(Registry.BLOCK_KEY, new Identifier(CaveEnhancements.NAMESPACE, "receivers"));
+    public static final TagKey<Block> PIKE_DESTROYABLES = TagKey.of(Registry.BLOCK_KEY, new Identifier(CaveEnhancements.NAMESPACE, "pike_destroyables"));
 }

@@ -27,8 +27,6 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Objects;
-
 public class GoopEntity extends HostileEntity implements CustomBucketable {
     private static final TrackedData<Boolean> FROM_BUCKET = DataTracker.registerData(GoopEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Boolean> STICKING_UP = DataTracker.registerData(GoopEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -185,12 +183,13 @@ public class GoopEntity extends HostileEntity implements CustomBucketable {
     }
 
     //Tick for checking if sticking up
+    @Override
     public void tickMovement() {
         if(!world.isClient){
             if(isStickingUp()) {
                 this.setVelocity(this.getVelocity().multiply(0D, 0D, 0D));
 
-                if(world != null){
+                if (world != null) {
                     double x = this.getX();
                     double y = this.getY();
                     double z = this.getZ();
@@ -200,8 +199,6 @@ public class GoopEntity extends HostileEntity implements CustomBucketable {
                     if(!world.getBlockState(blockUpPos).isSolidSurface(world, blockUpPos, this, Direction.DOWN)){
                         setStickingUp(false);
                     }
-                }else{
-                    world = Objects.requireNonNull(getServer()).getWorld(getEntityWorld().getRegistryKey());
                 }
             }
         }
@@ -213,6 +210,7 @@ public class GoopEntity extends HostileEntity implements CustomBucketable {
 
 
     //Tick For Spawning Drip
+    @Override
     public void mobTick() {
        dripCooldown--;
 
@@ -224,7 +222,7 @@ public class GoopEntity extends HostileEntity implements CustomBucketable {
            }
        }
 
-        super.mobTick();
+       super.mobTick();
     }
 
     //Spawn Drip Entity
