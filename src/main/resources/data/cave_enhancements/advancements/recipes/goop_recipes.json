@@ -22,7 +22,8 @@
   "rewards": {
     "recipes": [
       "cave_enhancements:goop_block",
-      "cave_enhancements:dripping_goop"
+      "cave_enhancements:dripping_goop",
+      "cave_enhancements:goop_banner_pattern"
     ]
   }
 }
