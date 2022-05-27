@@ -56,6 +56,14 @@ public class ModEntities {
                     .build()
     );
 
+    public static final EntityType<JingleArrowEntity> JINGLE_ARROW = Registry.register(
+            Registry.ENTITY_TYPE,
+            new Identifier(CaveEnhancements.NAMESPACE, "jingle_arrow"),
+            FabricEntityTypeBuilder.<JingleArrowEntity>create(SpawnGroup.MISC, JingleArrowEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.5F, 0.5F))
+                    .build()
+    );
+
     public static void register() {
         FabricDefaultAttributeRegistry.register(GOOP, GoopEntity.createGoopAttributes());
         FabricDefaultAttributeRegistry.register(CRUNCHER, CruncherEntity.createCruncherAttributes());

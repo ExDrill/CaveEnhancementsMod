@@ -11,6 +11,7 @@ public class CaveEnhancements implements ModInitializer {
 
     public static final BannerPattern GOOP = new BannerPattern("goop");
 
+
     @Override
     public void onInitialize() {
         ModBlocks.register();
@@ -23,6 +24,9 @@ public class CaveEnhancements implements ModInitializer {
         ModBiomes.registerModifications();
         ModStatusEffects.register();
         ModBlocks.registerOxidizablePairs();
+
+
+
 
         Registry.register(Registry.BANNER_PATTERN, new Identifier(NAMESPACE, "goop"), GOOP);
 

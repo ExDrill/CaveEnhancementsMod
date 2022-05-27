@@ -1,10 +1,7 @@
 package com.exdrill.cave_enhancements;
 
 import com.exdrill.cave_enhancements.client.render.block.RoseQuartzChimesBlockEntityRenderer;
-import com.exdrill.cave_enhancements.client.render.entity.CruncherEntityRenderer;
-import com.exdrill.cave_enhancements.client.render.entity.DripstonePikeEntityRenderer;
-import com.exdrill.cave_enhancements.client.render.entity.DripstoneTortoiseEntityRenderer;
-import com.exdrill.cave_enhancements.client.render.entity.GoopEntityRenderer;
+import com.exdrill.cave_enhancements.client.render.entity.*;
 import com.exdrill.cave_enhancements.client.render.entity.model.CruncherEntityModel;
 import com.exdrill.cave_enhancements.client.render.entity.model.DripstonePikeEntityModel;
 import com.exdrill.cave_enhancements.client.render.entity.model.DripstoneTortoiseEntityModel;
@@ -48,6 +45,7 @@ public class CaveEnhancementsClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.DRIPSTONE_TORTOISE, DripstoneTortoiseEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.DRIPSTONE_PIKE, DripstonePikeEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.BIG_GOOP_DRIP_PROJECTILE_ENTITY, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.JINGLE_ARROW, JingleArrowEntityRenderer::new);
 
 
         // Render Layers

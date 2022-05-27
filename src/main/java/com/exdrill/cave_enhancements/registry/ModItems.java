@@ -4,6 +4,7 @@ import com.exdrill.cave_enhancements.CaveEnhancements;
 import com.exdrill.cave_enhancements.item.AmethystFluteItem;
 import com.exdrill.cave_enhancements.item.GlowPasteItem;
 import com.exdrill.cave_enhancements.item.GoopBucketItem;
+import com.exdrill.cave_enhancements.item.JingleArrowItem;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.sound.SoundEvents;
@@ -58,6 +59,7 @@ public class ModItems {
     public static final BlockItem ROSE_QUARTZ_LAMP = new BlockItem(ModBlocks.ROSE_QUARTZ_LAMP, new Item.Settings().group(ItemGroup.DECORATIONS));
     public static final BlockItem SOUL_ROSE_QUARTZ_LAMP  = new BlockItem(ModBlocks.SOUL_ROSE_QUARTZ_LAMP, new Item.Settings().group(ItemGroup.DECORATIONS));
 
+    public static final JingleArrowItem JINGLE_ARROW = new JingleArrowItem(new Item.Settings().group(ItemGroup.COMBAT));
 
     //Registry
     public static void register() {
@@ -98,6 +100,8 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "waxed_exposed_redstone_receiver"), WAXED_EXPOSED_REDSTONE_RECEIVER);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "waxed_weathered_redstone_receiver"), WAXED_WEATHERED_REDSTONE_RECEIVER);
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "waxed_oxidized_redstone_receiver"), WAXED_OXIDIZED_REDSTONE_RECEIVER);
+
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "jingle_arrow"), JINGLE_ARROW);
 
         // Spawn Eggs
         Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_spawn_egg"), GOOP_SPAWN_EGG);
