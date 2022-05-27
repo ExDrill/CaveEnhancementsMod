@@ -22,6 +22,7 @@ public class AmethystBlastParticle extends AnimatedParticle {
         this.gravityStrength = 0.0F;
         this.maxAge = 5;
         this.setSpriteForAge(spriteProvider);
+        this.tick();
     }
 
     @Environment(EnvType.CLIENT)
@@ -33,9 +34,8 @@ public class AmethystBlastParticle extends AnimatedParticle {
         }
 
         public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
-            AmethystBlastParticle glowParticle = new AmethystBlastParticle(clientWorld, d, e, f, g, h, i, this.spriteProvider);
 
-            return glowParticle;
+            return new AmethystBlastParticle(clientWorld, d, e, f, g, h, i, this.spriteProvider);
         }
     }
 }

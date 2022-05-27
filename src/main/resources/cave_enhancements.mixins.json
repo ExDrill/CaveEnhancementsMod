@@ -6,6 +6,7 @@
   "mixins": [
     "BrewingRecipeRegistryMixin",
     "CreeperEntityMixin",
+    "DispenserBehaviorMixin",
     "EnchantmentMixin",
     "ItemRendererMixin",
     "LivingEntityMixin",

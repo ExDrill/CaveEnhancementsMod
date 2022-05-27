@@ -28,6 +28,7 @@ public class CaveEnhancements implements ModInitializer {
 
 
 
+
         Registry.register(Registry.BANNER_PATTERN, new Identifier(NAMESPACE, "goop"), GOOP);
 
     }

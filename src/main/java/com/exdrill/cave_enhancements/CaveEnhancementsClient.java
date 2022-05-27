@@ -45,7 +45,7 @@ public class CaveEnhancementsClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.DRIPSTONE_TORTOISE, DripstoneTortoiseEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.DRIPSTONE_PIKE, DripstonePikeEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.BIG_GOOP_DRIP_PROJECTILE_ENTITY, FlyingItemEntityRenderer::new);
-        EntityRendererRegistry.register(ModEntities.JINGLE_ARROW, JingleArrowEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.HARMONIC_ARROW, JingleArrowEntityRenderer::new);
 
 
         // Render Layers

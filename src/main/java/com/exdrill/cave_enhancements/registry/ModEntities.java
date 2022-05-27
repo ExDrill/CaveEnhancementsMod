@@ -56,10 +56,10 @@ public class ModEntities {
                     .build()
     );
 
-    public static final EntityType<JingleArrowEntity> JINGLE_ARROW = Registry.register(
+    public static final EntityType<HarmonicArrowEntity> HARMONIC_ARROW = Registry.register(
             Registry.ENTITY_TYPE,
-            new Identifier(CaveEnhancements.NAMESPACE, "jingle_arrow"),
-            FabricEntityTypeBuilder.<JingleArrowEntity>create(SpawnGroup.MISC, JingleArrowEntity::new)
+            new Identifier(CaveEnhancements.NAMESPACE, "harmonic_arrow"),
+            FabricEntityTypeBuilder.<HarmonicArrowEntity>create(SpawnGroup.MISC, HarmonicArrowEntity::new)
                     .dimensions(EntityDimensions.fixed(0.5F, 0.5F))
                     .build()
     );
