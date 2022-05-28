@@ -53,7 +53,7 @@ public class RoseQuartzChimesBlockEntity extends BlockEntity {
             if ((otherEntity instanceof PassiveEntity || otherEntity instanceof PlayerEntity)) {
                 if (world.isRaining() && entity.ticksTillActivateClear <= 600 && !otherEntity.hasStatusEffect(ModStatusEffects.EASING) ) {
                     otherEntity.addStatusEffect(new StatusEffectInstance(ModStatusEffects.EASING, 300, 1, false, true));
-                } else if (!world.isRaining() && entity.ticksTillActivateClear <= 0) {
+                } else if (!world.isRaining() && entity.ticksTillActivateClear <= 0 && !otherEntity.hasStatusEffect(ModStatusEffects.EASING)) {
                     otherEntity.addStatusEffect(new StatusEffectInstance(ModStatusEffects.EASING, 300, 0, false, true));
                 }
             }
