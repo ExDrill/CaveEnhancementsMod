@@ -19,6 +19,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -60,6 +61,7 @@ public class AmethystFluteItem extends Item {
             nbt.putLong("AmethystFluteScary", world.getTime());
             itemStack.setNbt(nbt);
             user.getItemCooldownManager().set(this, 400);
+            user.emitGameEvent(GameEvent.ITEM_INTERACT_START);
         }
         return TypedActionResult.success(itemStack);
     }
