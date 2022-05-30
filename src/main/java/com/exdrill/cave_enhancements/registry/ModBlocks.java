@@ -57,40 +57,40 @@ public class ModBlocks {
 
     // Block Registry
     public static void register() {
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "goop_block"), GOOP_BLOCK);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "goop_splat"), GOOP_SPLAT);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "goop_trap"), GOOP_TRAP);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "dripping_goop"), DRIPPING_GOOP);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "goop_block"), GOOP_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "goop_splat"), GOOP_SPLAT);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "goop_trap"), GOOP_TRAP);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "dripping_goop"), DRIPPING_GOOP);
 
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "glow_splotch"), GLOW_SPLOTCH);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "spectacle_candle"), SPECTACLE_CANDLE);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "glow_splotch"), GLOW_SPLOTCH);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "spectacle_candle"), SPECTACLE_CANDLE);
 
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "lightning_anchor"), LIGHTNING_ANCHOR);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "charged_lightning_anchor"), CHARGED_LIGHTNING_ANCHOR);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "lightning_anchor"), LIGHTNING_ANCHOR);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "charged_lightning_anchor"), CHARGED_LIGHTNING_ANCHOR);
 
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_block"), ROSE_QUARTZ_BLOCK);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "jagged_rose_quartz"), JAGGED_ROSE_QUARTZ);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "polished_rose_quartz"), POLISHED_ROSE_QUARTZ);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "polished_rose_quartz_slab"), POLISHED_ROSE_QUARTZ_SLAB);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "polished_rose_quartz_stairs"), POLISHED_ROSE_QUARTZ_STAIRS);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "polished_rose_quartz_wall"), POLISHED_ROSE_QUARTZ_WALL);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_tiles"), ROSE_QUARTZ_TILES);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_tile_slab"), ROSE_QUARTZ_TILE_SLAB);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_tile_stairs"), ROSE_QUARTZ_TILE_STAIRS);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_tile_wall"), ROSE_QUARTZ_TILE_WALL);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_chimes"), ROSE_QUARTZ_CHIMES);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_lamp"), ROSE_QUARTZ_LAMP);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "soul_rose_quartz_lamp"), SOUL_ROSE_QUARTZ_LAMP);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "rose_quartz_block"), ROSE_QUARTZ_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "jagged_rose_quartz"), JAGGED_ROSE_QUARTZ);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "polished_rose_quartz"), POLISHED_ROSE_QUARTZ);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "polished_rose_quartz_slab"), POLISHED_ROSE_QUARTZ_SLAB);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "polished_rose_quartz_stairs"), POLISHED_ROSE_QUARTZ_STAIRS);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "polished_rose_quartz_wall"), POLISHED_ROSE_QUARTZ_WALL);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "rose_quartz_tiles"), ROSE_QUARTZ_TILES);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "rose_quartz_tile_slab"), ROSE_QUARTZ_TILE_SLAB);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "rose_quartz_tile_stairs"), ROSE_QUARTZ_TILE_STAIRS);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "rose_quartz_tile_wall"), ROSE_QUARTZ_TILE_WALL);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "rose_quartz_chimes"), ROSE_QUARTZ_CHIMES);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "rose_quartz_lamp"), ROSE_QUARTZ_LAMP);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "soul_rose_quartz_lamp"), SOUL_ROSE_QUARTZ_LAMP);
 
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "redstone_receiver"), REDSTONE_RECEIVER);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "exposed_redstone_receiver"), EXPOSED_REDSTONE_RECEIVER);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "weathered_redstone_receiver"), WEATHERED_REDSTONE_RECEIVER);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "oxidized_redstone_receiver"), OXIDIZED_REDSTONE_RECEIVER);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "redstone_receiver"), REDSTONE_RECEIVER);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "exposed_redstone_receiver"), EXPOSED_REDSTONE_RECEIVER);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "weathered_redstone_receiver"), WEATHERED_REDSTONE_RECEIVER);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "oxidized_redstone_receiver"), OXIDIZED_REDSTONE_RECEIVER);
 
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "waxed_redstone_receiver"), WAXED_REDSTONE_RECEIVER);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "waxed_exposed_redstone_receiver"), WAXED_EXPOSED_REDSTONE_RECEIVER);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "waxed_weathered_redstone_receiver"), WAXED_WEATHERED_REDSTONE_RECEIVER);
-        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.NAMESPACE, "waxed_oxidized_redstone_receiver"), WAXED_OXIDIZED_REDSTONE_RECEIVER);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "waxed_redstone_receiver"), WAXED_REDSTONE_RECEIVER);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "waxed_exposed_redstone_receiver"), WAXED_EXPOSED_REDSTONE_RECEIVER);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "waxed_weathered_redstone_receiver"), WAXED_WEATHERED_REDSTONE_RECEIVER);
+        Registry.register(Registry.BLOCK, new Identifier(CaveEnhancements.MODID, "waxed_oxidized_redstone_receiver"), WAXED_OXIDIZED_REDSTONE_RECEIVER);
     }
 
     // Block Render Type
@@ -121,10 +121,10 @@ public class ModBlocks {
 
     // Block Entity Registry
     public static void registerBlockEntities() {
-        SPECTACLE_CANDLE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "spectacle_candle"), FabricBlockEntityTypeBuilder.create(SpectacleCandleBlockEntity::new, SPECTACLE_CANDLE).build(null));
-        LIGHTNING_ANCHOR_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "lightning_anchor"), FabricBlockEntityTypeBuilder.create(LightningAnchorBlockEntity::new, LIGHTNING_ANCHOR).build(null));
-        ROSE_QUARTZ_CHIMES_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_chimes"), FabricBlockEntityTypeBuilder.create(RoseQuartzChimesBlockEntity::new, ROSE_QUARTZ_CHIMES).build(null));
-        RECEIVER_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(CaveEnhancements.NAMESPACE, "redstone_receiver"),FabricBlockEntityTypeBuilder.create(ReceiverBlockEntity::new, REDSTONE_RECEIVER, EXPOSED_REDSTONE_RECEIVER, WEATHERED_REDSTONE_RECEIVER, OXIDIZED_REDSTONE_RECEIVER, WAXED_REDSTONE_RECEIVER, WAXED_EXPOSED_REDSTONE_RECEIVER, WAXED_WEATHERED_REDSTONE_RECEIVER, WAXED_OXIDIZED_REDSTONE_RECEIVER).build(null));
+        SPECTACLE_CANDLE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(CaveEnhancements.MODID, "spectacle_candle"), FabricBlockEntityTypeBuilder.create(SpectacleCandleBlockEntity::new, SPECTACLE_CANDLE).build(null));
+        LIGHTNING_ANCHOR_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(CaveEnhancements.MODID, "lightning_anchor"), FabricBlockEntityTypeBuilder.create(LightningAnchorBlockEntity::new, LIGHTNING_ANCHOR).build(null));
+        ROSE_QUARTZ_CHIMES_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(CaveEnhancements.MODID, "rose_quartz_chimes"), FabricBlockEntityTypeBuilder.create(RoseQuartzChimesBlockEntity::new, ROSE_QUARTZ_CHIMES).build(null));
+        RECEIVER_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(CaveEnhancements.MODID, "redstone_receiver"),FabricBlockEntityTypeBuilder.create(ReceiverBlockEntity::new, REDSTONE_RECEIVER, EXPOSED_REDSTONE_RECEIVER, WEATHERED_REDSTONE_RECEIVER, OXIDIZED_REDSTONE_RECEIVER, WAXED_REDSTONE_RECEIVER, WAXED_EXPOSED_REDSTONE_RECEIVER, WAXED_WEATHERED_REDSTONE_RECEIVER, WAXED_OXIDIZED_REDSTONE_RECEIVER).build(null));
     }
 
     // Pairs

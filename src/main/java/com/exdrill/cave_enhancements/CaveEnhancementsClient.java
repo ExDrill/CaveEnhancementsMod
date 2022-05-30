@@ -32,7 +32,7 @@ import java.util.UUID;
 @Environment(EnvType.CLIENT)
 public class CaveEnhancementsClient implements ClientModInitializer {
 
-    public static final Identifier PacketID = new Identifier(CaveEnhancements.NAMESPACE, "spawn_packet");
+    public static final Identifier PacketID = new Identifier(CaveEnhancements.MODID, "spawn_packet");
 
     @Override
     public void onInitializeClient() {
@@ -58,7 +58,7 @@ public class CaveEnhancementsClient implements ClientModInitializer {
         BlockEntityRendererRegistry.register(ModBlocks.ROSE_QUARTZ_CHIMES_BLOCK_ENTITY, RoseQuartzChimesBlockEntityRenderer::new);
 
         ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) ->
-                registry.register(new Identifier(CaveEnhancements.NAMESPACE, "entity/rose_quartz_chimes/chime")));
+                registry.register(new Identifier(CaveEnhancements.MODID, "entity/rose_quartz_chimes/chime")));
 
 
         receiveEntityPacket();

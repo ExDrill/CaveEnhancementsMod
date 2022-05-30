@@ -10,7 +10,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -43,7 +42,7 @@ public class HarmonicArrowEntity extends PersistentProjectileEntity {
     public void tick() {
         super.tick();
         if (this.world.isClient && !this.inGround) {
-            this.world.addParticle(ParticleTypes.WAX_OFF, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+            this.world.addParticle(ModParticles.HOVERING_NOTE, this.getX(), this.getY(), this.getZ(), 0.0D, 0.5D, 0.0D);
         }
     }
 

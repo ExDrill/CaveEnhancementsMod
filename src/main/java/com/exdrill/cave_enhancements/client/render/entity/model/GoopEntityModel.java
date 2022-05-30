@@ -11,7 +11,7 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.util.Identifier;
 
 public class GoopEntityModel<E extends MobEntity> extends EntityModel<GoopEntity> {
-	public static final EntityModelLayer ENTITY_MODEL_LAYER = new EntityModelLayer(new Identifier(CaveEnhancements.NAMESPACE, "goop"), "main");
+	public static final EntityModelLayer ENTITY_MODEL_LAYER = new EntityModelLayer(new Identifier(CaveEnhancements.MODID, "goop"), "main");
 	private final ModelPart goop;
 
 	public GoopEntityModel(ModelPart root) {

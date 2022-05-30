@@ -7,7 +7,7 @@ import net.minecraft.client.render.entity.ProjectileEntityRenderer;
 import net.minecraft.util.Identifier;
 
 public class JingleArrowEntityRenderer extends ProjectileEntityRenderer<HarmonicArrowEntity> {
-    public static final Identifier TEXTURE = new Identifier(CaveEnhancements.NAMESPACE, "textures/entity/harmonic_arrow.png");
+    public static final Identifier TEXTURE = new Identifier(CaveEnhancements.MODID, "textures/entity/harmonic_arrow.png");
 
     public JingleArrowEntityRenderer(EntityRendererFactory.Context context) {
         super(context);

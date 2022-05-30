@@ -40,8 +40,14 @@ public class RoseChimes extends AnimatedParticle {
             this.spriteProvider = spriteProvider;
         }
 
+
+
         public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
-            return new RoseChimes(clientWorld, d + clientWorld.random.nextBetween(-1, 1), e + clientWorld.random.nextBetween(-1, 1), f + clientWorld.random.nextBetween(-1, 1), 0.0D, 0.0D, 0.0D, this.spriteProvider);
+
+            int velocity = clientWorld.random.nextBetween(-1, 1);
+
+
+            return new RoseChimes(clientWorld, d + (velocity * 0.5F), e + (velocity * 0.5F), f + (velocity * 0.5F), 0.0D, 0.0D, 0.0D, this.spriteProvider);
         }
     }
 }

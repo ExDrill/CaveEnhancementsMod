@@ -14,6 +14,6 @@ public class GoopEntityRenderer extends MobEntityRenderer<GoopEntity, GoopEntity
 
     @Override
     public Identifier getTexture(GoopEntity entity) {
-        return new Identifier(CaveEnhancements.NAMESPACE, "textures/entity/goop.png");
+        return new Identifier(CaveEnhancements.MODID, "textures/entity/goop.png");
     }
 }

@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 
 public class DripstonePikeEntityRenderer extends MobEntityRenderer<DripstonePikeEntity, DripstonePikeEntityModel<DripstonePikeEntity>> {
 
-    public static final Identifier TEXTURE = new Identifier(CaveEnhancements.NAMESPACE, "textures/entity/dripstone_tortoise/dripstone_pike.png");
+    public static final Identifier TEXTURE = new Identifier(CaveEnhancements.MODID, "textures/entity/dripstone_tortoise/dripstone_pike.png");
 
     public DripstonePikeEntityRenderer(EntityRendererFactory.Context context) {
         super(context, new DripstonePikeEntityModel<>(context.getPart(DripstonePikeEntityModel.LAYER_LOCATION)), 0.0f);

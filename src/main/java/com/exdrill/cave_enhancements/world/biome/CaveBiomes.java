@@ -45,7 +45,7 @@ public class CaveBiomes {
         DefaultBiomeFeatures.addDefaultDisks(featureSettings);
 
         // Goop Caves
-        BiomeModifications.create(new Identifier(CaveEnhancements.NAMESPACE + "goop_caves"))
+        BiomeModifications.create(new Identifier(CaveEnhancements.MODID + "goop_caves"))
                 .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(ModBiomes.GOOP_CAVES), ctx -> {
                 });
 
@@ -84,7 +84,7 @@ public class CaveBiomes {
         DefaultBiomeFeatures.addDefaultOres(featureSettings);
         DefaultBiomeFeatures.addDefaultDisks(featureSettings);
 
-        BiomeModifications.create(new Identifier(CaveEnhancements.NAMESPACE + "rose_quartz_caves"))
+        BiomeModifications.create(new Identifier(CaveEnhancements.MODID + "rose_quartz_caves"))
                 .add(ModificationPhase.ADDITIONS, BiomeSelectors.includeByKey(ModBiomes.ROSE_QUARTZ_CAVES), ctx -> {
                 });
 

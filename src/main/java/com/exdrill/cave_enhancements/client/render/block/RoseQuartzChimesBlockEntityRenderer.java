@@ -19,9 +19,9 @@ import java.util.Objects;
 
 public class RoseQuartzChimesBlockEntityRenderer implements BlockEntityRenderer<RoseQuartzChimesBlockEntity> {
 
-    public static final SpriteIdentifier TEXTURE = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(CaveEnhancements.NAMESPACE, "entity/rose_quartz_chimes/chime"));
+    public static final SpriteIdentifier TEXTURE = new SpriteIdentifier(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE, new Identifier(CaveEnhancements.MODID, "entity/rose_quartz_chimes/chime"));
 
-    public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_chimes"), "main");
+    public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(new Identifier(CaveEnhancements.MODID, "rose_quartz_chimes"), "main");
     private final ModelPart chimes;
     private final ModelPart chime0;
     private final ModelPart chime1;

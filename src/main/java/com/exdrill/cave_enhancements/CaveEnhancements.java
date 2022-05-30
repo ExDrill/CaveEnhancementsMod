@@ -7,7 +7,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class CaveEnhancements implements ModInitializer {
-    public static final String NAMESPACE = "cave_enhancements";
+    public static final String MODID = "cave_enhancements";
 
     public static final BannerPattern GOOP = new BannerPattern("goop");
 
@@ -24,15 +24,8 @@ public class CaveEnhancements implements ModInitializer {
         ModBiomes.registerModifications();
         ModStatusEffects.register();
         ModBlocks.registerOxidizablePairs();
-
-
-
-
-
-        Registry.register(Registry.BANNER_PATTERN, new Identifier(NAMESPACE, "goop"), GOOP);
+        Registry.register(Registry.BANNER_PATTERN, new Identifier(MODID, "goop"), GOOP);
 
     }
-
-
 }
 

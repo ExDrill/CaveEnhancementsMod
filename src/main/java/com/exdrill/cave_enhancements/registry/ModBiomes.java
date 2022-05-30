@@ -18,7 +18,7 @@ public class ModBiomes {
     public static final RegistryKey<Biome> ROSE_QUARTZ_CAVES = registerBiomeKeys("rose_quartz_caves");
 
     private static RegistryKey<Biome> registerBiomeKeys(String name) {
-        return RegistryKey.of(Registry.BIOME_KEY, new Identifier(CaveEnhancements.NAMESPACE, name));
+        return RegistryKey.of(Registry.BIOME_KEY, new Identifier(CaveEnhancements.MODID, name));
     }
 
     public static void register() {

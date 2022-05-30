@@ -16,6 +16,6 @@ public class CruncherEntityRenderer extends MobEntityRenderer<CruncherEntity, Cr
 
     @Override
     public Identifier getTexture(CruncherEntity entity) {
-        return new Identifier(CaveEnhancements.NAMESPACE, "textures/entity/cruncher/cruncher.png");
+        return new Identifier(CaveEnhancements.MODID, "textures/entity/cruncher/cruncher.png");
     }
 }

@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 
 public class CruncherEntityModel<E extends MobEntity> extends EntityModel<CruncherEntity> {
-    public static final EntityModelLayer ENTITY_MODEL_LAYER = new EntityModelLayer(new Identifier(CaveEnhancements.NAMESPACE, "cruncher"), "main");
+    public static final EntityModelLayer ENTITY_MODEL_LAYER = new EntityModelLayer(new Identifier(CaveEnhancements.MODID, "cruncher"), "main");
 
     private final ModelPart root;
     private final ModelPart body;

@@ -12,6 +12,6 @@ public class ModStatusEffects {
     public static final StatusEffect EASING = new EasingStatusEffect(StatusEffectCategory.BENEFICIAL, 0xf7addc);
 
     public static void register() {
-        Registry.register(Registry.STATUS_EFFECT, new Identifier(CaveEnhancements.NAMESPACE, "easing"), EASING);
+        Registry.register(Registry.STATUS_EFFECT, new Identifier(CaveEnhancements.MODID, "easing"), EASING);
     }
 }

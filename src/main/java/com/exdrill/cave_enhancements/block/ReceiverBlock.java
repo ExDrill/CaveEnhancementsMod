@@ -128,41 +128,4 @@ public class ReceiverBlock extends AbstractRedstoneGateBlock implements BlockEnt
             }
         };
     }
-
-
-    /*
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack itemStack = player.getStackInHand(hand);
-        if (itemStack.isIn(ConventionalItemTags.AXES)) {
-            if (state.isOf(ModBlocks.WAXED_REDSTONE_RECEIVER)) {
-                world.setBlockState(pos, ModBlocks.REDSTONE_RECEIVER.getDefaultState().with(FACING, state.get(FACING)), 3);
-            }
-            if (state.isOf(ModBlocks.WAXED_EXPOSED_REDSTONE_RECEIVER)) {
-                world.setBlockState(pos, ModBlocks.EXPOSED_REDSTONE_RECEIVER.getDefaultState().with(FACING, state.get(FACING)), 3);
-            }
-            if (state.isOf(ModBlocks.WAXED_WEATHERED_REDSTONE_RECEIVER)) {
-                world.setBlockState(pos, ModBlocks.WEATHERED_REDSTONE_RECEIVER.getDefaultState().with(FACING, state.get(FACING)), 3);
-            }
-            if (state.isOf(ModBlocks.WAXED_OXIDIZED_REDSTONE_RECEIVER)) {
-                world.setBlockState(pos, ModBlocks.OXIDIZED_REDSTONE_RECEIVER.getDefaultState().with(FACING, state.get(FACING)), 3);
-
-            }
-
-            world.playSound(player, pos, SoundEvents.ITEM_AXE_SCRAPE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-
-
-            itemStack.damage(1, player, (p) -> p.sendToolBreakStatus(hand));
-            world.syncWorldEvent(player, 3004, pos, 0);
-
-            if (player instanceof ServerPlayerEntity) {
-                Criteria.ITEM_USED_ON_BLOCK.trigger((ServerPlayerEntity)player, pos, itemStack);
-            }
-            return ActionResult.SUCCESS;
-
-        }
-        return ActionResult.FAIL;
-    }
-
-     */
 }

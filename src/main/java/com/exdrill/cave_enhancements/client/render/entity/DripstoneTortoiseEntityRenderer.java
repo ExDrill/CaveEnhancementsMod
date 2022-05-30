@@ -14,6 +14,6 @@ public class DripstoneTortoiseEntityRenderer extends MobEntityRenderer<Dripstone
 
     @Override
     public Identifier getTexture(DripstoneTortoiseEntity entity) {
-        return new Identifier(CaveEnhancements.NAMESPACE, "textures/entity/dripstone_tortoise/dripstone_tortoise.png");
+        return new Identifier(CaveEnhancements.MODID, "textures/entity/dripstone_tortoise/dripstone_tortoise.png");
     }
 }

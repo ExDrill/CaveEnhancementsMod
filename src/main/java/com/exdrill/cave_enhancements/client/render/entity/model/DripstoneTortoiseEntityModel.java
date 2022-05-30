@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 
 public class DripstoneTortoiseEntityModel<T extends DripstoneTortoiseEntity> extends SinglePartEntityModel<T> {
-	public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(new Identifier(CaveEnhancements.NAMESPACE, "dripstone_tortoise"), "main");
+	public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(new Identifier(CaveEnhancements.MODID, "dripstone_tortoise"), "main");
 	private final ModelPart root;
 	private final ModelPart shell;
 	private final ModelPart head;

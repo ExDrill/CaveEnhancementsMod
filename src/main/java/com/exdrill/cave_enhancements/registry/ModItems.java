@@ -63,49 +63,49 @@ public class ModItems {
 
     //Registry
     public static void register() {
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop"), GOOP);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_block"), GOOP_BLOCK);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_trap"), GOOP_TRAP);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "dripping_goop"), DRIPPING_GOOP);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "glow_paste"), GLOW_PASTE);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "spectacle_candle"), SPECTACLE_CANDLE);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "lightning_anchor"), LIGHTNING_ANCHOR);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "charged_lightning_anchor"), CHARGED_LIGHTNING_ANCHOR);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "amethyst_flute"), AMETHYST_FLUTE);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_bucket"), GOOP_BUCKET);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "big_goop_drip"), BIG_GOOP_DRIP);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz"), ROSE_QUARTZ);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_block"), ROSE_QUARTZ_BLOCK);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "jagged_rose_quartz"), JAGGED_ROSE_QUARTZ);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "polished_rose_quartz"), POLISHED_ROSE_QUARTZ);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "polished_rose_quartz_slab"), POLISHED_ROSE_QUARTZ_SLAB);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "polished_rose_quartz_stairs"), POLISHED_ROSE_QUARTZ_STAIRS);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "polished_rose_quartz_wall"), POLISHED_ROSE_QUARTZ_WALL);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_tiles"), ROSE_QUARTZ_TILES);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_tile_slab"), ROSE_QUARTZ_TILE_SLAB);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_tile_stairs"), ROSE_QUARTZ_TILE_STAIRS);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_tile_wall"), ROSE_QUARTZ_TILE_WALL);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_chimes"), ROSE_QUARTZ_CHIMES);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "rose_quartz_lamp"), ROSE_QUARTZ_LAMP);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "soul_rose_quartz_lamp"), SOUL_ROSE_QUARTZ_LAMP);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_banner_pattern"), GOOP_BANNER_PATTERN);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "goop"), GOOP);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "goop_block"), GOOP_BLOCK);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "goop_trap"), GOOP_TRAP);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "dripping_goop"), DRIPPING_GOOP);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "glow_paste"), GLOW_PASTE);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "spectacle_candle"), SPECTACLE_CANDLE);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "lightning_anchor"), LIGHTNING_ANCHOR);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "charged_lightning_anchor"), CHARGED_LIGHTNING_ANCHOR);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "amethyst_flute"), AMETHYST_FLUTE);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "goop_bucket"), GOOP_BUCKET);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "big_goop_drip"), BIG_GOOP_DRIP);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "rose_quartz"), ROSE_QUARTZ);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "rose_quartz_block"), ROSE_QUARTZ_BLOCK);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "jagged_rose_quartz"), JAGGED_ROSE_QUARTZ);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "polished_rose_quartz"), POLISHED_ROSE_QUARTZ);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "polished_rose_quartz_slab"), POLISHED_ROSE_QUARTZ_SLAB);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "polished_rose_quartz_stairs"), POLISHED_ROSE_QUARTZ_STAIRS);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "polished_rose_quartz_wall"), POLISHED_ROSE_QUARTZ_WALL);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "rose_quartz_tiles"), ROSE_QUARTZ_TILES);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "rose_quartz_tile_slab"), ROSE_QUARTZ_TILE_SLAB);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "rose_quartz_tile_stairs"), ROSE_QUARTZ_TILE_STAIRS);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "rose_quartz_tile_wall"), ROSE_QUARTZ_TILE_WALL);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "rose_quartz_chimes"), ROSE_QUARTZ_CHIMES);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "rose_quartz_lamp"), ROSE_QUARTZ_LAMP);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "soul_rose_quartz_lamp"), SOUL_ROSE_QUARTZ_LAMP);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "goop_banner_pattern"), GOOP_BANNER_PATTERN);
 
         // Redstone Receivers
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "redstone_receiver"), REDSTONE_RECEIVER);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "exposed_redstone_receiver"), EXPOSED_REDSTONE_RECEIVER);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "weathered_redstone_receiver"), WEATHERED_REDSTONE_RECEIVER);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "oxidized_redstone_receiver"), OXIDIZED_REDSTONE_RECEIVER);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "redstone_receiver"), REDSTONE_RECEIVER);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "exposed_redstone_receiver"), EXPOSED_REDSTONE_RECEIVER);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "weathered_redstone_receiver"), WEATHERED_REDSTONE_RECEIVER);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "oxidized_redstone_receiver"), OXIDIZED_REDSTONE_RECEIVER);
 
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "waxed_redstone_receiver"), WAXED_REDSTONE_RECEIVER);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "waxed_exposed_redstone_receiver"), WAXED_EXPOSED_REDSTONE_RECEIVER);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "waxed_weathered_redstone_receiver"), WAXED_WEATHERED_REDSTONE_RECEIVER);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "waxed_oxidized_redstone_receiver"), WAXED_OXIDIZED_REDSTONE_RECEIVER);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "waxed_redstone_receiver"), WAXED_REDSTONE_RECEIVER);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "waxed_exposed_redstone_receiver"), WAXED_EXPOSED_REDSTONE_RECEIVER);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "waxed_weathered_redstone_receiver"), WAXED_WEATHERED_REDSTONE_RECEIVER);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "waxed_oxidized_redstone_receiver"), WAXED_OXIDIZED_REDSTONE_RECEIVER);
 
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "harmonic_arrow"), HARMONIC_ARROW);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "harmonic_arrow"), HARMONIC_ARROW);
 
         // Spawn Eggs
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "goop_spawn_egg"), GOOP_SPAWN_EGG);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "cruncher_spawn_egg"), CRUNCHER_SPAWN_EGG);
-        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.NAMESPACE, "dripstone_tortoise_spawn_egg"), DRIPSTONE_TORTOISE_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "goop_spawn_egg"), GOOP_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "cruncher_spawn_egg"), CRUNCHER_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(CaveEnhancements.MODID, "dripstone_tortoise_spawn_egg"), DRIPSTONE_TORTOISE_SPAWN_EGG);
     }
 }
