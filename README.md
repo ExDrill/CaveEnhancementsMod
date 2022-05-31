@@ -6,12 +6,16 @@ Cave Enhancements is a mod for Fabric that expands upon the Caves and Cliffs upd
 
 ## Other
 
-This mod needs [GeckoLib](https://github.com/bernie-g/geckolib) to function properly!
+We won't backport to a specific version.
 
-Currently, there aren't any plans for:
+There aren't any plans for a forge port at the moment.
 
-- A forge port
 
-- A 1.18.1 port
+## For those on 1.18!
+This mod needs [GeckoLib](https://github.com/bernie-g/geckolib) and [Terrablender](https://github.com/Glitchfiend/TerraBlender) to function properly!
+1.18 support is finished, please do not ask for updates on 1.18 :)
 
-So please, do not ask :)
+Otherwise, you won't need anything as of now.
+
+## Readme Last Updated
+(5/31/2022)
