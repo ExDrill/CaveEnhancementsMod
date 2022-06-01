@@ -3,7 +3,6 @@ package com.exdrill.cave_enhancements.world.biome;
 import com.exdrill.cave_enhancements.CaveEnhancements;
 import com.exdrill.cave_enhancements.registry.ModBiomes;
 import com.exdrill.cave_enhancements.registry.ModEntities;
-import com.exdrill.cave_enhancements.registry.ModPlacedFeatures;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
@@ -14,7 +13,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
-import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
 public class CaveBiomes {
@@ -106,10 +104,13 @@ public class CaveBiomes {
                 .build();
     }
 
+    /*
     public static void addGoopCavesFeatures(GenerationSettings.Builder builder) {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.GOOP_SPLAT);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.ORE_GOOP);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.GOOP_PATCH);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.DRIPPING_GOOP);
     }
+
+     */
 }
