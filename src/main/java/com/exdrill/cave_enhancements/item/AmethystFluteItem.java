@@ -12,7 +12,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
@@ -37,14 +36,12 @@ public class AmethystFluteItem extends Item {
         double y = user.getY();
         double z = user.getZ();
         BlockPos pos = new BlockPos(x, y, z);
+        if (world.isClient) {
+            world.addParticle(ModParticles.SOOTHINGNOTE, pos.getX(), pos.getY() + 1D, pos.getZ(), 0, 0.5, 0);
+        }
         if (!world.isClient) {
-            itemStack.damage(1, user, (userx) -> {
-                userx.sendToolBreakStatus(hand);
-            });
+            itemStack.damage(1, user, (userx) -> userx.sendToolBreakStatus(hand));
             world.playSound(null, pos, SoundEvents.BLOCK_NOTE_BLOCK_FLUTE, SoundCategory.PLAYERS, 1.0F, 1.0F);
-            ((ServerWorld)world).spawnParticles(ModParticles.SOOTHINGNOTE, pos.getX() + 1D, pos.getY() + 1D, pos.getZ(), 1, 0, 0, 0, 0);
-            ((ServerWorld)world).spawnParticles(ModParticles.SOOTHINGNOTE, pos.getX() + 1D, pos.getY() + 1D, pos.getZ() + 1D, 1, 0, 0, 0, 0);
-            ((ServerWorld)world).spawnParticles(ModParticles.SOOTHINGNOTE, pos.getX() - 1D, pos.getY() + 1D, pos.getZ() - 1D, 1, 0, 0, 0, 0);
             user.world.getOtherEntities(user, user.getBoundingBox().expand(10D), user::canSee).forEach(entity -> {
                 if (entity instanceof RavagerEntity ravagerEntity) {
                     ravagerEntity.handleStatus((byte)39);

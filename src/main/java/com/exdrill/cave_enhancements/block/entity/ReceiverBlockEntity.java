@@ -1,10 +1,10 @@
 package com.exdrill.cave_enhancements.block.entity;
 
-import com.exdrill.cave_enhancements.block.OxidizableReceiver;
 import com.exdrill.cave_enhancements.block.OxidizableReceiverBlock;
 import com.exdrill.cave_enhancements.block.ReceiverBlock;
 import com.exdrill.cave_enhancements.registry.ModBlocks;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Oxidizable;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LightningEntity;
@@ -43,7 +43,7 @@ public class ReceiverBlockEntity extends BlockEntity {
         if (block instanceof OxidizableReceiverBlock) {
             for (Entity entity : list) {
                 if (entity instanceof LightningEntity && entity.age % 5 == 0) {
-                    Optional<BlockState> optionalReceiver = OxidizableReceiver.getDecreasedOxidationState(state);
+                    Optional<BlockState> optionalReceiver = Oxidizable.getDecreasedOxidationState(state);
                     if (optionalReceiver.isPresent()) {
                         world.syncWorldEvent(3005, pos, 0);
                         world.setBlockState(pos, optionalReceiver.get(), 11);

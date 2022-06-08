@@ -53,9 +53,8 @@ public class GoopBucketItem extends BucketItem {
     }
 
     private void spawnEntity(ServerWorld world, ItemStack stack, BlockPos pos) {
-        Entity entity = this.entityType.spawnFromItemStack(world, stack, (PlayerEntity)null, pos, SpawnReason.BUCKET, true, false);
-        if (entity instanceof CustomBucketable) {
-            CustomBucketable bucketable = (CustomBucketable)entity;
+        Entity entity = this.entityType.spawnFromItemStack(world, stack, null, pos, SpawnReason.BUCKET, true, false);
+        if (entity instanceof CustomBucketable bucketable) {
             bucketable.copyDataFromNbt(stack.getOrCreateNbt());
             bucketable.setFromBucket(true);
         }

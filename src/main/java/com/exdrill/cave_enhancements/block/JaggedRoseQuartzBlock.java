@@ -63,7 +63,7 @@ public class JaggedRoseQuartzBlock extends Block implements Waterloggable {
     }
 
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if(random.nextBetween(0, 3) == 0){
+        if (random.nextBetween(0, 3) == 0){
             int l = pos.getX();
             int j = pos.getY();
             int k = pos.getZ();

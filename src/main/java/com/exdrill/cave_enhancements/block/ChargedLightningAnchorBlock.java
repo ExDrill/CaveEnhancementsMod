@@ -11,7 +11,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
@@ -25,7 +24,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 
 public class ChargedLightningAnchorBlock extends Block {
     public ChargedLightningAnchorBlock(FabricBlockSettings settings){
@@ -62,14 +60,14 @@ public class ChargedLightningAnchorBlock extends Block {
             return true;
         }
 
-        if(world.getEmittedRedstonePower(pos.south(), Direction.SOUTH) > 0 && !world.getBlockState(pos.south()).isOf(Blocks.LIGHTNING_ROD)){
+        if (world.getEmittedRedstonePower(pos.south(), Direction.SOUTH) > 0 && !world.getBlockState(pos.south()).isOf(Blocks.LIGHTNING_ROD)){
             return true;
         }
         return false;
     }
 
+
     private void activate(World world, BlockPos pos, boolean interact, BlockPos fromPos){
-        if(world.isClient) return;
 
         boolean powered = isPowered(world, pos);
 
@@ -77,21 +75,29 @@ public class ChargedLightningAnchorBlock extends Block {
 
             List<? extends LivingEntity> list = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(4.0D), (e) -> true);
 
+
+
+            world.addSyncedBlockEvent(pos, this, 1, 0);
+
             double power = 0.9D;
             double verticalPower = 0.5D;
 
             LivingEntity livingEntity;
-            for (Iterator var2 = list.iterator(); var2.hasNext(); knockBack(livingEntity, pos, power, verticalPower)) {
+            for (Iterator<? extends LivingEntity> var2 = list.iterator(); var2.hasNext(); knockBack(livingEntity, pos, power, verticalPower)) {
                 livingEntity = (LivingEntity) var2.next();
                 livingEntity.damage(DamageSource.LIGHTNING_BOLT, 20.0F);
             }
 
-            world.setBlockState(pos, ModBlocks.LIGHTNING_ANCHOR.getDefaultState());
-            world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            if (world.isClient) {
+                world.addParticle(ModParticles.SHOCKWAVE, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, 0.0D, 0.0D, 0.0D);
+            }
 
-            ((ServerWorld)world).spawnParticles(ModParticles.SHOCKWAVE, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 1, 0, 0, 0, 1);
+            world.setBlockState(pos, ModBlocks.LIGHTNING_ANCHOR.getDefaultState());
+
+            world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
     }
+
 
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         activate(world, pos, true, pos);
@@ -103,30 +109,18 @@ public class ChargedLightningAnchorBlock extends Block {
         activate(world, pos, false, fromPos);
     }
 
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        activate(world, pos, false, pos);
-    }
-
-    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        activate(world, pos, false, pos);
-    }
-
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         activate(world, pos, false, pos);
-
-        world.createAndScheduleBlockTick(pos, this, 2);
     }
+
+
 
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
         activate(world, pos, false, pos);
-
-        world.createAndScheduleBlockTick(pos, this, 2);
     }
 
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         activate(world, pos, false, pos);
-
-        world.createAndScheduleBlockTick(pos, this, 2);
     }
 
     @Override

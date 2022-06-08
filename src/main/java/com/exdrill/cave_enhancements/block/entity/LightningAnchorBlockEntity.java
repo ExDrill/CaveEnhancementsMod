@@ -9,7 +9,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class LightningAnchorBlockEntity extends BlockEntity {
@@ -28,12 +27,12 @@ public class LightningAnchorBlockEntity extends BlockEntity {
 
         Box box = new Box(pos).expand(1.5);
 
-        List<Entity> list = world.getEntitiesByClass(Entity.class, box, (e) -> {return true;});
+        List<Entity> list = world.getEntitiesByClass(Entity.class, box, (e) -> true);
 
         Entity otherEntity;
-        for(Iterator var2 = list.iterator(); var2.hasNext();) {
-            otherEntity = (Entity)var2.next();
-            if(otherEntity.getClass() == LightningEntity.class && entity.ticksTillActivate <= 0){
+        for (Entity value : list) {
+            otherEntity = value;
+            if (otherEntity.getClass() == LightningEntity.class && entity.ticksTillActivate <= 0) {
                 world.setBlockState(pos, ModBlocks.CHARGED_LIGHTNING_ANCHOR.getDefaultState());
                 return;
             }

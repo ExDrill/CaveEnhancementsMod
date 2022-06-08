@@ -16,7 +16,6 @@ public class CaveEnhancements implements ModInitializer {
     public void onInitialize() {
         ModBlocks.register();
         ModItems.register();
-        ModParticles.register();
         ModBlocks.registerBlockEntities();
         ModSounds.register();
         ModEntities.register();

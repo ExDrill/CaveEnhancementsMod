@@ -8,15 +8,16 @@
     "CreeperEntityMixin",
     "DispenserBehaviorMixin",
     "EnchantmentMixin",
-    "ItemRendererMixin",
     "LivingEntityMixin",
-    "ModelLoaderMixin",
     "PhantomEntityMixin",
     "RedstoneWireBlockMixin",
     "UnbreakingEnchantmentMixin",
     "VanillaBiomeParametersMixin"
   ],
-  "client": [],
+  "client": [
+    "ItemRendererMixin",
+    "ModelLoaderMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

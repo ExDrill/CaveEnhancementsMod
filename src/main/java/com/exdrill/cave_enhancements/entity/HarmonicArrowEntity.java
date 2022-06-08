@@ -49,7 +49,9 @@ public class HarmonicArrowEntity extends PersistentProjectileEntity {
     @Override
     protected void onBlockHit(BlockHitResult blockHitResult) {
         knockbackEntitiesAround(0.35F);
-        this.world.addParticle(ModParticles.AMETHYST_BLAST, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+        if (this.world.isClient) {
+            this.world.addParticle(ModParticles.AMETHYST_BLAST, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+        }
         super.onBlockHit(blockHitResult);
     }
 
