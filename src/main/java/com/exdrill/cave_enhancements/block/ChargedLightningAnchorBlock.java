@@ -1,7 +1,6 @@
 package com.exdrill.cave_enhancements.block;
 
 import com.exdrill.cave_enhancements.registry.ModBlocks;
-import com.exdrill.cave_enhancements.registry.ModParticles;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -40,34 +39,20 @@ public class ChargedLightningAnchorBlock extends Block {
     }
 
     private boolean isPowered(World world, BlockPos pos){
-        if(world.getEmittedRedstonePower(pos.down(), Direction.DOWN) > 0 && !world.getBlockState(pos.down()).isOf(Blocks.LIGHTNING_ROD)){
-            return true;
-        }
 
-        if(world.getEmittedRedstonePower(pos.up(), Direction.UP) > 0 && !world.getBlockState(pos.up()).isOf(Blocks.LIGHTNING_ROD)){
-            return true;
-        }
+        for (Direction dir : Direction.values()) {
+            BlockPos pos2 = pos.offset(dir);
+            BlockState state = world.getBlockState(pos2);
 
-        if(world.getEmittedRedstonePower(pos.east(), Direction.EAST) > 0 && !world.getBlockState(pos.east()).isOf(Blocks.LIGHTNING_ROD)){
-            return true;
-        }
-
-        if(world.getEmittedRedstonePower(pos.west(), Direction.WEST) > 0 && !world.getBlockState(pos.west()).isOf(Blocks.LIGHTNING_ROD)){
-            return true;
-        }
-
-        if(world.getEmittedRedstonePower(pos.north(), Direction.NORTH) > 0 && !world.getBlockState(pos.north()).isOf(Blocks.LIGHTNING_ROD)){
-            return true;
-        }
-
-        if (world.getEmittedRedstonePower(pos.south(), Direction.SOUTH) > 0 && !world.getBlockState(pos.south()).isOf(Blocks.LIGHTNING_ROD)){
-            return true;
+            if (world.getEmittedRedstonePower(pos2, dir) > 0 && !state.isOf(Blocks.LIGHTNING_ROD)) {
+                return true;
+            }
         }
         return false;
     }
 
 
-    private void activate(World world, BlockPos pos, boolean interact, BlockPos fromPos){
+    private void activate(World world, BlockPos pos, boolean interact){
 
         boolean powered = isPowered(world, pos);
 
@@ -75,22 +60,16 @@ public class ChargedLightningAnchorBlock extends Block {
 
             List<? extends LivingEntity> list = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(4.0D), (e) -> true);
 
-
-
-            world.addSyncedBlockEvent(pos, this, 1, 0);
-
             double power = 0.9D;
             double verticalPower = 0.5D;
 
             LivingEntity livingEntity;
             for (Iterator<? extends LivingEntity> var2 = list.iterator(); var2.hasNext(); knockBack(livingEntity, pos, power, verticalPower)) {
-                livingEntity = (LivingEntity) var2.next();
+                livingEntity = var2.next();
                 livingEntity.damage(DamageSource.LIGHTNING_BOLT, 20.0F);
             }
 
-            if (world.isClient) {
-                world.addParticle(ModParticles.SHOCKWAVE, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, 0.0D, 0.0D, 0.0D);
-            }
+            world.syncWorldEvent(5190, pos, 0);
 
             world.setBlockState(pos, ModBlocks.LIGHTNING_ANCHOR.getDefaultState());
 
@@ -100,27 +79,25 @@ public class ChargedLightningAnchorBlock extends Block {
 
 
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        activate(world, pos, true, pos);
+        activate(world, pos, true);
 
         return ActionResult.SUCCESS;
     }
 
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
-        activate(world, pos, false, fromPos);
+        activate(world, pos, false);
     }
 
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-        activate(world, pos, false, pos);
+        activate(world, pos, false);
     }
 
-
-
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
-        activate(world, pos, false, pos);
+        activate(world, pos, false);
     }
 
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-        activate(world, pos, false, pos);
+        activate(world, pos, false);
     }
 
     @Override
