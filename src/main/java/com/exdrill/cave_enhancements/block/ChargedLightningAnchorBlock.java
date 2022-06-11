@@ -39,7 +39,6 @@ public class ChargedLightningAnchorBlock extends Block {
     }
 
     private boolean isPowered(World world, BlockPos pos){
-
         for (Direction dir : Direction.values()) {
             BlockPos pos2 = pos.offset(dir);
             BlockState state = world.getBlockState(pos2);

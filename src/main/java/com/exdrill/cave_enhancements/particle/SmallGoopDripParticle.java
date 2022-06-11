@@ -2,14 +2,17 @@ package com.exdrill.cave_enhancements.particle;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.particle.*;
+import net.minecraft.client.particle.AnimatedParticle;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.ParticleFactory;
+import net.minecraft.client.particle.SpriteProvider;
 import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.util.math.BlockPos;
 
-public class SmallGoopDrip extends AnimatedParticle {
-    SmallGoopDrip(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
+public class SmallGoopDripParticle extends AnimatedParticle {
+    SmallGoopDripParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
         super(world, x, y, z, spriteProvider, 0.0F);
         this.velocityX = velocityX;
         this.velocityY = velocityY;
@@ -36,10 +39,7 @@ public class SmallGoopDrip extends AnimatedParticle {
         }
 
         public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
-            SmallGoopDrip smallGoopDrip = new SmallGoopDrip(clientWorld, d, e, f, 0.0D, 0.0D, 0.0D, this.spriteProvider);
-            boolean j = true;
-            boolean k = true;
-            return smallGoopDrip;
+            return new SmallGoopDripParticle(clientWorld, d, e, f, 0.0D, 0.0D, 0.0D, this.spriteProvider);
         }
     }
 }

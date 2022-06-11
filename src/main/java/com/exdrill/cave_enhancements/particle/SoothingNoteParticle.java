@@ -9,11 +9,10 @@ import net.minecraft.client.particle.SpriteProvider;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 
-@Environment(EnvType.CLIENT)
-public class SoothingNote extends AnimatedParticle {
+public class SoothingNoteParticle extends AnimatedParticle {
 
 
-    SoothingNote(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
+    public SoothingNoteParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
         super(world, x, y, z, spriteProvider, 0.0F);
         this.velocityX = velocityX;
         this.velocityY = velocityY;
@@ -35,7 +34,7 @@ public class SoothingNote extends AnimatedParticle {
         }
 
         public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
-            SoothingNote glowParticle = new SoothingNote(clientWorld, d, e, f, 0.0D, 0.0D, 0.0D, this.spriteProvider);
+            SoothingNoteParticle glowParticle = new SoothingNoteParticle(clientWorld, d, e, f, 0.0D, 0.0D, 0.0D, this.spriteProvider);
             boolean j = true;
             boolean k = true;
             return glowParticle;

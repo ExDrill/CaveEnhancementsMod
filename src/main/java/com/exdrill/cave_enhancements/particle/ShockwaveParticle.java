@@ -2,7 +2,10 @@ package com.exdrill.cave_enhancements.particle;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.particle.*;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.ParticleFactory;
+import net.minecraft.client.particle.ParticleTextureSheet;
+import net.minecraft.client.particle.SpriteProvider;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.texture.Sprite;
@@ -14,11 +17,11 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3f;
 
 @Environment(EnvType.CLIENT)
-public class Shockwave extends Particle {
+public class ShockwaveParticle extends Particle {
     protected Sprite sprite;
     protected float scale;
 
-    Shockwave(ClientWorld world, double x, double y, double z, double d) {
+    ShockwaveParticle(ClientWorld world, double x, double y, double z, double d) {
         super(world, x, y, z, 0.0D, 0.0D, 0.0D);
         this.scale = 1;
         this.velocityX = 0;
@@ -114,7 +117,7 @@ public class Shockwave extends Particle {
         }
 
         public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
-            Shockwave shockwave = new Shockwave(clientWorld, d, e, f, g);
+            ShockwaveParticle shockwave = new ShockwaveParticle(clientWorld, d, e, f, g);
             shockwave.setSprite(this.spriteProvider);
             return shockwave;
         }

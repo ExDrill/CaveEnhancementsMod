@@ -10,9 +10,9 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 
 @Environment(EnvType.CLIENT)
-public class RoseChimes extends AnimatedParticle {
+public class RoseChimesParticle extends AnimatedParticle {
 
-    RoseChimes(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
+    RoseChimesParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
         super(world, x, y, z, spriteProvider, 0.0F);
         this.velocityX = 0.1 * (random.nextBetween(0, 2) * 2 - 1);
         this.velocityY = 0.1 * (random.nextBetween(0, 2) * 2 - 1);
@@ -47,7 +47,7 @@ public class RoseChimes extends AnimatedParticle {
             int velocity = clientWorld.random.nextBetween(-1, 1);
 
 
-            return new RoseChimes(clientWorld, d + (velocity * 0.5F), e + (velocity * 0.5F), f + (velocity * 0.5F), 0.0D, 0.0D, 0.0D, this.spriteProvider);
+            return new RoseChimesParticle(clientWorld, d + (velocity * 0.5F), e + (velocity * 0.5F), f + (velocity * 0.5F), 0.0D, 0.0D, 0.0D, this.spriteProvider);
         }
     }
 }

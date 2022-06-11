@@ -37,7 +37,7 @@ public class AmethystFluteItem extends Item {
         double z = user.getZ();
         BlockPos pos = new BlockPos(x, y, z);
         if (world.isClient) {
-            world.addParticle(ModParticles.SOOTHINGNOTE, pos.getX(), pos.getY() + 1D, pos.getZ(), 0, 0.5, 0);
+            world.addParticle(ModParticles.SOOTHING_NOTE, pos.getX(), pos.getY() + 1D, pos.getZ(), 0, 0.5, 0);
         }
         if (!world.isClient) {
             itemStack.damage(1, user, (userx) -> userx.sendToolBreakStatus(hand));
