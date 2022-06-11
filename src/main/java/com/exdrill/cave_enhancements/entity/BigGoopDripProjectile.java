@@ -1,6 +1,5 @@
 package com.exdrill.cave_enhancements.entity;
 
-import com.exdrill.cave_enhancements.CaveEnhancementsClient;
 import com.exdrill.cave_enhancements.registry.ModBlocks;
 import com.exdrill.cave_enhancements.registry.ModEntities;
 import com.exdrill.cave_enhancements.registry.ModItems;
@@ -15,7 +14,6 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
@@ -96,9 +94,5 @@ public class BigGoopDripProjectile extends ThrownItemEntity {
         }
     }
 
-    //Spawn Packet For Less Lag
-    @Override
-    public Packet<?> createSpawnPacket() {
-        return EntitySpawnPacket.create(this, CaveEnhancementsClient.PacketID);
-    }
+
 }
